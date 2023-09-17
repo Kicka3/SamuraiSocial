@@ -10,7 +10,7 @@ import "./header.css";
 // import {AuthContext} from "../../context/AuthContext";
 
 //У ДИМЫЧА ЧЕРЕЗ ANT-DESIGN!
-//У МЕНЯ ЧЕРЕЗ MUI
+
 
 export default function Header() {
    return (
