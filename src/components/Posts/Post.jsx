@@ -9,7 +9,7 @@ const Post = () => {
                <div className="postTopLeft">
                   {/*<Link to={}>*/}
                   <img className="postProfileImg"
-                       src={"assets/person/Cover/cover1.jpeg"}
+                       src={'assets/person/person0.jpeg'}
                        alt="ProfilePucture"/>
                   {/*</Link>*/}
                   <span className="postUserName">User name post</span>
