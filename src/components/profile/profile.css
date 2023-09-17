@@ -9,7 +9,7 @@
 
 .profileCover {
    height: 320px;
-   /* position: relative; */
+    position: relative;
 }
 
 .profileCoverImg {
@@ -38,7 +38,7 @@
    align-items: center;
 }
 
-.profileInfoDesc{
+.profileStatus{
    font-weight: 300;
    margin-bottom: 20px;
 }

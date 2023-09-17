@@ -13,7 +13,7 @@ export default function Feed() {
    return (
       <div className="feed">
          <div className="feedWrapper">
-            {/*<Post/>*/}
+            <Post/>
          </div>
       </div>
    );

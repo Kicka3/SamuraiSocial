@@ -5,10 +5,10 @@ const OnlineUsers = () => {
       <div>
          <li className="rightbarFriend">
             <div className="rightbarProfileImgContainer">
-               <img className="rightbarProfileImg" src={'assets/person/person3.jpeg'} alt="ProfileImg"/>
+               <img className="rightbarProfileImg" src={'assets/person/person12.jpeg'} alt="ProfileImg"/>
                <span className="rightbarOnline"></span>
             </div>
-            <span className="rightbarUserName">Nina Mishutikina</span>
+            <span className="rightbarUserName">Nina Matushkina</span>
          </li>
          <li className="rightbarFriend">
             <div className="rightbarProfileImgContainer">

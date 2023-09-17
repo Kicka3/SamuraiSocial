@@ -45,14 +45,24 @@ const ProfileBar = () => {
                </div>
             </div>
             <h4 className="rightbarTitle">User Friends</h4>
-            <div className="rightbarFollowings">
-               <div className="rightbarFollowing">
-                  <img className="rightbarFollowingImg" src={"assets/person/Cover/cover1.jpeg"} alt=""/>
-                  <span className="rightbarFolliwingName">Anastasia Kozlova</span>
-               </div>
-               <div className="rightbarFollowing">
-                  <img className="rightbarFollowingImg" src={"assets/person/Cover/cover1.jpeg"} alt=""/>
-                  <span className="rightbarFolliwingName">Anastasia Kozlova</span>
+            <div>
+               <div className="rightbarFollowings">
+                  <div className="rightbarFollowing">
+                     <img className="rightbarFollowingImg" src={'assets/person/person10.jpeg'} alt=""/>
+                     <span className="rightbarFolliwingName">Anastasia Kozlova</span>
+                  </div>
+                  <div className="rightbarFollowing">
+                     <img className="rightbarFollowingImg" src={'assets/person/person9.jpeg'} alt=""/>
+                     <span className="rightbarFolliwingName">Evgeny Bulichev</span>
+                  </div>
+                  <div className="rightbarFollowing">
+                     <img className="rightbarFollowingImg" src={'assets/person/person1.jpeg'} alt=""/>
+                     <span className="rightbarFolliwingName">Vasilisa Ampermetrova</span>
+                  </div>
+                  <div className="rightbarFollowing">
+                     <img className="rightbarFollowingImg" src={'assets/person/person8.jpeg'} alt=""/>
+                     <span className="rightbarFolliwingName">Pank Dots</span>
+                  </div>
                </div>
             </div>
          </>

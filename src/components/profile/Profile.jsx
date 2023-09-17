@@ -12,6 +12,7 @@ function Profile () {
 
             <Sidebar/>
 
+            {/*ПРОФИЛЬ*/}
             <div className="profileRight">
                <div className="profileRightTop">
                   <div className="pfrofileCover">
@@ -20,10 +21,11 @@ function Profile () {
                   </div>
                   <div className="profileInfo">
                      <h4 className="profileInfoName">Diana</h4>
-                     <span className="profileInfoDesc">Farbazova</span>
+                     <span className="profileStatus">I'm happy</span>
                   </div>
                </div>
 
+               {/*ПОСТЫ В ПРОФИЛЕ*/}
                <div className="profileRightBottom">
                   <Feed/>
                   <Rightbar/>
