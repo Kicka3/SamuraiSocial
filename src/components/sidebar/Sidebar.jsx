@@ -23,44 +23,40 @@ export default function Sidebar() {
             <ul className="sidebarList">
                <li className="sidebarListItem">
                   {/*<RssFeedIcon className="sidebarIcon" />*/}
-                  <span className="sidebarListItemText">Feed</span>
+                  <span className="sidebarListItemText">Profile</span>
                </li>
                <li className="sidebarListItem">
                   {/*<ForumIcon className="sidebarIcon" />*/}
-                  <span className="sidebarListItemText">Chats</span>
+                  <span className="sidebarListItemText">News</span>
                </li>
                <li className="sidebarListItem">
                   {/*<PlayCircleOutlineSharpIcon className="sidebarIcon" />*/}
-                  <span className="sidebarListItemText">Videos</span>
+                  <span className="sidebarListItemText">Message</span>
                </li>
                <li className="sidebarListItem">
                   {/*<GroupsIcon className="sidebarIcon" />*/}
-                  <span className="sidebarListItemText">Groups</span>
+                  <span className="sidebarListItemText">Friends</span>
                </li>
-               {/* <li className="sidebarListItem"> */}
-               {/* <BookmarksIcon className="sidebarIcon"/>
-            <span className="sidebarListItemText">Friends</span>
-          </li> */}
                <li className="sidebarListItem">
                   {/*<BookmarksIcon className="sidebarIcon" />*/}
-                  <span className="sidebarListItemText">Bookmarks</span>
+                  <span className="sidebarListItemText">Music</span>
                </li>
                <li className="sidebarListItem">
                   {/*<HelpOutlineIcon className="sidebarIcon" />*/}
-                  <span className="sidebarListItemText">Questions</span>
+                  <span className="sidebarListItemText">Settings</span>
                </li>
-               <li className="sidebarListItem">
-                  {/*<WorkIcon className="sidebarIcon"/>*/}
-                  <span className="sidebarListItemText">Jobs</span>
-               </li>
-               <li className="sidebarListItem">
-                  {/*<EventIcon className="sidebarIcon" />*/}
-                  <span className="sidebarListItemText">Events</span>
-               </li>
-               <li className="sidebarListItem">
-                  {/*<SchoolIcon className="sidebarIcon" />*/}
-                  <span className="sidebarListItemText">Courses</span>
-               </li>
+               {/*<li className="sidebarListItem">*/}
+               {/*   /!*<WorkIcon className="sidebarIcon"/>*!/*/}
+               {/*   <span className="sidebarListItemText">Jobs</span>*/}
+               {/*</li>*/}
+               {/*<li className="sidebarListItem">*/}
+               {/*   /!*<EventIcon className="sidebarIcon" />*!/*/}
+               {/*   <span className="sidebarListItemText">Events</span>*/}
+               {/*</li>*/}
+               {/*<li className="sidebarListItem">*/}
+               {/*   /!*<SchoolIcon className="sidebarIcon" />*!/*/}
+               {/*   <span className="sidebarListItemText">Courses</span>*/}
+               {/*</li>*/}
             </ul>
 
             {/*<button className="sidebarBtn">Show More</button>*/}

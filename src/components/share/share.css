@@ -68,9 +68,11 @@
 .shareBtn {
     border: none;
     border-radius: 5px;
-    background-color: #db7fff;;
+    background-color: #7B68EE;;
     font-weight: 500;
     margin-right: 20px;
     cursor: pointer;
     color: white;
+    width: 60px;
+    height: 20px;
 }

@@ -7,13 +7,6 @@ const ProfileBar = () => {
    const HomeRightbar = () => {
       return (
          <div className="HomeRightbarWrapper">
-            <div className="birthdayContainer">
-               <img className="birthdayImg" src={"assets/gift.png"} alt="birthdayImg"/>
-               <span className="birthdayText">
-            <b>Alexandr Mironov</b> <b>and 2 other friends</b> have a birthday today.
-          </span>
-            </div>
-            <img className="rightbarAd" src={'assets/ad.png'} alt="rightbarAdImg"/>
 
             <div className="UserOnlineWrapper">
                <h4 className="rightbarTitle">Online Friends</h4>
@@ -21,6 +14,15 @@ const ProfileBar = () => {
                   <OnlineUsers/>
                </ul>
             </div>
+
+            <div className="birthdayContainer">
+               <img className="birthdayImg" src={"assets/gift.png"} alt="birthdayImg"/>
+               <span className="birthdayText">
+            <b>Alexandr Mironov</b> <b>and 2 other friends</b> have a birthday today.
+          </span>
+            </div>
+            {/*//КАРТИНКА с днем рождения*/}
+            {/*<img className="rightbarAd" src={'assets/ad.png'} alt="rightbarAdImg"/>*/}
 
          </div>
       )
@@ -40,10 +42,15 @@ const ProfileBar = () => {
                   <span className="rightbar_info_value">User from</span>
                </div>
                <div className="rightbarInfo__item">
+                  <span className="rightbar_info_key">Education:</span>
+                  <span className="rightbar_info_value">Master</span>
+               </div>
+               <div className="rightbarInfo__item">
                   <span className="rightbar_info_key">Relationship:</span>
                   <span className="rightbar_info_value">user relationship</span>
                </div>
             </div>
+
             <h4 className="rightbarTitle">User Friends</h4>
             <div>
                <div className="rightbarFollowings">
@@ -72,8 +79,8 @@ const ProfileBar = () => {
    return (
       <div className="rightbar">
          <div className="rightBarWrapper">
-            <HomeRightbar/>
             <PfrofileRightbar/>
+            <HomeRightbar/>
          </div>
       </div>
    );

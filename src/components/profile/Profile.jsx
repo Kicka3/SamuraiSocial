@@ -16,11 +16,11 @@ function Profile () {
             <div className="profileRight">
                <div className="profileRightTop">
                   <div className="pfrofileCover">
-                     <img className="profileCoverImg" src={"assets/person/Cover/cover1.jpeg"} alt="coverImg"/>
-                     <img className="profileUserImg" src={'assets/person/person2.jpeg'} alt={"UserImage"}/>
+                     <img className="profileCoverImg" src={"assets/person/Cover/cover3.jpeg"} alt="coverImg"/>
+                     <img className="profileUserImg" src={'assets/person/person0.jpeg'} alt={"UserImage"}/>
                   </div>
                   <div className="profileInfo">
-                     <h4 className="profileInfoName">Diana</h4>
+                     <h4 className="profileInfoName">Kirill</h4>
                      <span className="profileStatus">I'm happy</span>
                   </div>
                </div>
