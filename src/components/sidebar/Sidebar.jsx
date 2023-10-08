@@ -1,6 +1,8 @@
-import "./sidebar.css"
+import "./Sidebar.css"
 
-//Всё будет на ant-design!!!
+
+
+
 // import RssFeedIcon from '@mui/icons-material/RssFeed';
 // import ForumIcon from '@mui/icons-material/Forum';
 // import PlayCircleOutlineSharpIcon from '@mui/icons-material/PlayCircleOutlineSharp';
@@ -11,9 +13,6 @@ import "./sidebar.css"
 // import EventIcon from '@mui/icons-material/Event';
 // import SchoolIcon from '@mui/icons-material/School';
 // import { Users } from "../../someData";
-
-
-//У ДИМЫЧА ЧЕРЕЗ ANT-DESIGN!
 
 
 export default function Sidebar() {
@@ -45,18 +44,6 @@ export default function Sidebar() {
                   {/*<HelpOutlineIcon className="sidebarIcon" />*/}
                   <span className="sidebarListItemText">Settings</span>
                </li>
-               {/*<li className="sidebarListItem">*/}
-               {/*   /!*<WorkIcon className="sidebarIcon"/>*!/*/}
-               {/*   <span className="sidebarListItemText">Jobs</span>*/}
-               {/*</li>*/}
-               {/*<li className="sidebarListItem">*/}
-               {/*   /!*<EventIcon className="sidebarIcon" />*!/*/}
-               {/*   <span className="sidebarListItemText">Events</span>*/}
-               {/*</li>*/}
-               {/*<li className="sidebarListItem">*/}
-               {/*   /!*<SchoolIcon className="sidebarIcon" />*!/*/}
-               {/*   <span className="sidebarListItemText">Courses</span>*/}
-               {/*</li>*/}
             </ul>
 
             {/*<button className="sidebarBtn">Show More</button>*/}
