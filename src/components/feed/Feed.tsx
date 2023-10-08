@@ -1,11 +1,6 @@
 import "./feed.css"
-import Post from "../posts/Post";
+import MyPost from "../myPosts/MyPost";
 import Share from "../share/Share";
-
-
-// import {useContext, useEffect, useState} from "react";
-// import axios from "axios";
-
 
 export default function Feed() {
 
@@ -13,7 +8,7 @@ export default function Feed() {
       <div className="feed">
          <div className="feedWrapper">
             <Share/>
-            <Post/>
+            <MyPost/>
          </div>
       </div>
    );
