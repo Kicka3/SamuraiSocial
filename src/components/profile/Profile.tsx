@@ -1,7 +1,7 @@
 import "./profile.css";
 import Feed from "../feed/Feed";
-import Rightbar from "../rightbar/Rightbar";
-import Sidebar from "../sidebar/Sidebar";
+import Rightbar from "./rightbar/Rightbar";
+import Sidebar from "./sidebar/Sidebar";
 
 
 function Profile() {

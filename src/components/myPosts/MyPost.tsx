@@ -5,8 +5,12 @@ const MyPost = () => {
 
    return (
       <>
-         <Post name={"Jopa"}/>
-         <Post name={"My little jopa"}/>
+         <Post titlePost={"Jopa"}
+               likesCount={5}
+         />
+         <Post titlePost={"My little jopa"}
+               likesCount={25}
+         />
       </>
    )
 };
