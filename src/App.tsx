@@ -10,7 +10,7 @@ function App() {
         <div className="App-wrapper">
             {/*<Header/>*/}
             {/*<div className="homeContainer">*/}
-            {/*<Profile/>*/}
+            <Profile/>
             <Messenger/>
 
             {/*</div>*/}
