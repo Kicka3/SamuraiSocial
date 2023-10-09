@@ -27,7 +27,6 @@ function Profile() {
                      <span className="profileStatus">I'm happy</span>
                   </div>
                </div>
-
                {/*ПОСТЫ В ПРОФИЛЕ*/}
                <div className="profileRightBottom">
                   <Feed/>
