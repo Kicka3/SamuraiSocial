@@ -3,17 +3,15 @@ import './App.css';
 import Header from "./components/header/Header";
 import Profile from "./components/profile/Profile";
 import {Messenger} from "./components/messanger/Messenger";
+import Sidebar from "./components/profile/sidebar/Sidebar";
 
 
 function App() {
     return (
         <div className="App-wrapper">
-            {/*<Header/>*/}
-            {/*<div className="homeContainer">*/}
-            <Profile/>
+            <Header/>
+            {/*<Profile/>*/}
             <Messenger/>
-
-            {/*</div>*/}
         </div>
     );
 }

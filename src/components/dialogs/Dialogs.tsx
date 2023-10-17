@@ -1,8 +1,8 @@
-import '../conversations/Conversation.css'
+import './dialogs.css'
 import React from 'react';
 import AvatarForConversation from '../../public/assets/person/person0.jpeg'
 
-export const Conversation = () => {
+export const Dialogs = () => {
     return (
         <div className={"conversation"}>
                 <img className={"conversationImg"}
