@@ -1,0 +1,23 @@
+
+.chatMenu {
+    flex: 3.5;
+}
+
+.chatMenuWrapper {
+    padding: 10px;
+    height: 100%;
+}
+
+.chatMenuInput {
+    width: 90%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+.dialogsFriends {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 15px;
+    color: #555;
+}

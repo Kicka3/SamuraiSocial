@@ -1,0 +1,6 @@
+.contentWrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    top: 40px;
+}

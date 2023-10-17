@@ -6,6 +6,9 @@ export const ChatOnline = () => {
     return (
         <div className={"chatOnline"}>
             {/*//Друзья online*/}
+            <div className="onlineFriendsWrapper">
+                <div className={"onlineFriends"}>Friends online:</div>
+            </div>
             <div className="chatOnlineFriend">
                 <div className="chatOnlineImgContainer">
                     <img className="chatOnlineImg"

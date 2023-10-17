@@ -28,3 +28,15 @@
     top: 28px;
     right: 2px;
 }
+
+.onlineFriendsWrapper {
+    margin: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #555;
+}
+
+.onlineFriends {
+    margin-bottom: 20px;
+}
+

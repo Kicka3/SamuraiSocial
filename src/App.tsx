@@ -1,17 +1,24 @@
 import React from 'react';
 import './App.css';
 import Header from "./components/header/Header";
-import Profile from "./components/profile/Profile";
 import {Messenger} from "./components/messanger/Messenger";
-import Sidebar from "./components/profile/sidebar/Sidebar";
+import Profile from "./components/profile/Profile";
+import Sidebar from "./components/sidebar/Sidebar";
 
 
 function App() {
     return (
         <div className="App-wrapper">
-            <Header/>
-            {/*<Profile/>*/}
-            <Messenger/>
+            <div className="mainContentWrapper">
+                <Header/>
+
+            </div>
+
+            <div className="contentWrapper">
+                <Sidebar/>
+                {/*<Profile/>*/}
+                <Messenger/>
+            </div>
         </div>
     );
 }

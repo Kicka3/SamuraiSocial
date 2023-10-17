@@ -1,24 +1,13 @@
 import React from 'react';
 import './messenger.css'
-import Header from "../header/Header";
-import {Dialogs} from "../dialogs/Dialogs";
 import {Message} from "./message/Message";
 import {ChatOnline} from "./chatOnline/ChatOnline";
+import {ChatMenu} from "./chatMenu/ChatMenu";
 
 export const Messenger = () => {
     return (
         <>
             <div className={"messenger"}>
-                <div className="chatMenu">
-                    <div className="chatMenuWrapper">
-                        <input className={"chatMenuInput"}
-                               type="text"
-                               placeholder={"Search for friends"}/>
-                        {/*//Люди слева*/}
-                        <Dialogs/>
-
-                    </div>
-                </div>
                 <div className="chatBox">
                     <div className="chatBoxWrapper">
                         <div className="chatboxTop">
@@ -45,11 +34,17 @@ export const Messenger = () => {
                         </div>
                     </div>
                 </div>
+
                 <div className="chatOnline">
+                    {/*//Люди справа*/}
                     <div className="chatOnlineWrapper">
+                        <ChatMenu/>
+                        <hr/>
                         <ChatOnline/>
                     </div>
+
                 </div>
+
             </div>
         </>
     );

@@ -1,6 +1,6 @@
 import './dialogs.css'
 import React from 'react';
-import AvatarForConversation from '../../public/assets/person/person0.jpeg'
+import AvatarForConversation from '../../../public/assets/person/person0.jpeg'
 
 export const Dialogs = () => {
     return (

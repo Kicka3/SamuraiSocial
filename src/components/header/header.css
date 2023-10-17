@@ -1,11 +1,10 @@
 .headerContainer {
    height: 50px;
-   width: 100%; 
-   /* background-color: #1877f2; */
+   width: 100%;
    background-color: #7B68EE;
    display: flex;
    align-items: center;
-   position: sticky;
+   position: fixed;
    top: 0;
    z-index: 999;
 }
