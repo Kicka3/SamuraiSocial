@@ -15,7 +15,11 @@
     border-bottom: 1px solid grey;
 }
 
-.dialogsFriends {
+.chatMenuInput:focus {
+    outline: none;
+}
+
+.dialogsFriendsTitle {
     font-size: 18px;
     font-weight: 500;
     margin: 15px;

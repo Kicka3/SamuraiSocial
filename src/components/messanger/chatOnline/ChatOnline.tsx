@@ -16,7 +16,7 @@ export const ChatOnline = () => {
                          alt={"avatarUsersInChat"}/>
                     <div className="chatOnlineBadge"></div>
                 </div>
-                <span className="chatOnlineUserName">John Doe</span>
+                <span className="chatOnlineUserName">Diana</span>
             </div>
 
             <div className="chatOnlineFriend">
@@ -26,7 +26,7 @@ export const ChatOnline = () => {
                          alt={"avatarUsersInChat"}/>
                     <div className="chatOnlineBadge"></div>
                 </div>
-                <span className="chatOnlineUserName">John Doe</span>
+                <span className="chatOnlineUserName">John</span>
             </div>
 
             <div className="chatOnlineFriend">
@@ -36,7 +36,7 @@ export const ChatOnline = () => {
                          alt={"avatarUsersInChat"}/>
                     <div className="chatOnlineBadge"></div>
                 </div>
-                <span className="chatOnlineUserName">John Doe</span>
+                <span className="chatOnlineUserName">Alex</span>
             </div>
 
         </div>

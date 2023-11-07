@@ -1,6 +1,12 @@
-.contentWrapper {
+.mainContentWrapper {
     position: relative;
     display: grid;
     grid-template-columns: 400px 1fr;
     top: 40px;
+}
+
+a.text:active, /* активная/посещенная ссылка */
+a.text:hover,  /* при наведении */
+a.text {
+    text-decoration: none;
 }
