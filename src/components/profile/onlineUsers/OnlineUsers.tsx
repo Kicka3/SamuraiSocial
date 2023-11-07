@@ -1,4 +1,4 @@
-import './online.css'
+import './onlineUsers.css'
 
 const OnlineUsers = () => {
    return (

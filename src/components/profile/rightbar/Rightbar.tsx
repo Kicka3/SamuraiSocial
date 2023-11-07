@@ -1,7 +1,7 @@
 import "./rightbar.css";
 import React from "react";
 import "./rightbar.css";
-import OnlineUsers from "../../online/Online";
+import OnlineUsers from "../onlineUsers/OnlineUsers";
 
 const ProfileBar = () => {
     const HomeRightbar = () => {

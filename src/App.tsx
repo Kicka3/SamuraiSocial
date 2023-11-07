@@ -26,10 +26,12 @@ function App() {
                         <Route path={'/messages'} component={Dialogs}/>
                         <Route path={'/mypost'} component={MyPost}/>
                         <Route path={'/feed'} component={Feed}/>
+
+
                         {/*<MyPost/>*/}
                         {/*<Post titlePost={'lolo'} likesCount={21}/>*/}
                         {/*<Profile/>*/}
-                        {/*<DialogsItem/>*/}
+                        {/*<DialogItem/>*/}
                     </div>
                 </div>
             </div>

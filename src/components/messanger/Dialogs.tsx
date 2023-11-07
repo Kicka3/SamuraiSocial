@@ -3,8 +3,10 @@ import './dialogs.css'
 import {Message} from "./message/Message";
 import {ChatOnline} from "./chatOnline/ChatOnline";
 import '../messanger/chatMenu/chatMenu.css'
-import './dialogsItem/dialogsItem.css'
+import './dialogItem/dialogItem.css'
 import AvatarForChatOnline from "../../public/assets/person/person0.jpeg";
+import {NavLink} from "react-router-dom";
+import {DialogItem} from "./dialogItem/DialogItem";
 
 
 export const Dialogs = () => {
@@ -43,7 +45,6 @@ export const Dialogs = () => {
                 <div className={"dialogs"}>
                     <div className="chatOnlineWrapper">
                         <div className="chatMenu">
-
                             <div className="chatMenuWrapper">
 
                                 {/*//ChatMenu из компоненты CHATMENU*/}
@@ -56,33 +57,9 @@ export const Dialogs = () => {
                                     </div>
                                 </div>
 
-                                <div className={`${"conversation"} ${'conversationActive'}`}>
-                                    <div className="chatOnlineFriend">
-                                        <div className="chatOnlineImgContainer">
-                                            <img className="chatOnlineImg"
-                                                 src={AvatarForChatOnline}
-                                                 alt={"avatarUsersInChat"}/>
-                                            <div className="chatOnlineBadge"></div>
-                                        </div>
-                                        <span className="chatOnlineUserName">Diana</span>
-                                    </div>
-                                </div>
-
-                                <div className={"conversation"}>
-                                    <div className="chatOnlineFriend">
-                                        <div className="chatOnlineImgContainer">
-                                            <img className="chatOnlineImg"
-                                                 src={AvatarForChatOnline}
-                                                 alt={"avatarUsersInChat"}/>
-                                            <div className="chatOnlineBadge"></div>
-                                        </div>
-                                        <span className="chatOnlineUserName">John</span>
-                                    </div>
-                                </div>
-
-
-                                {/*//Тут всё из компоненты DialogsItem*/}
-                                {/*            /!*<DialogsItem/>*!/*/}
+                                <DialogItem name={'Diana'} id={1}/>
+                                <DialogItem name={'Alex'} id={2}/>
+                                <DialogItem name={'John'} id={3}/>
                             </div>
                         </div>
 

@@ -5,7 +5,7 @@ import AvatarForChatOnline from '../../../public/assets/person/person0.jpeg'
 export const ChatOnline = () => {
     return (
         <div className={"chatOnline"}>
-            {/*//Друзья online*/}
+            {/*//Друзья onlineUsers*/}
             <div className="onlineFriendsWrapper">
                 <div className={"onlineFriends"}>Friends online:</div>
             </div>

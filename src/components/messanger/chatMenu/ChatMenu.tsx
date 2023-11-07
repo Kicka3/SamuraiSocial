@@ -1,6 +1,6 @@
 import React from 'react';
 import './chatMenu.css'
-import {DialogsItem} from "../dialogsItem/DialogsItem";
+import {DialogItem} from "../dialogItem/DialogItem";
 
 export const ChatMenu = () => {
     return (
@@ -10,8 +10,6 @@ export const ChatMenu = () => {
                 <input className={"chatMenuInput"}
                        type="text"
                        placeholder={"Search for friends"}/>
-                <DialogsItem/>
-                <DialogsItem/>
             </div>
         </div>
     );
