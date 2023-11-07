@@ -10,27 +10,39 @@ import {DialogItem} from "./dialogItem/DialogItem";
 
 
 export const Dialogs = () => {
+
+    let dialogsData = [
+        {id: 1, name: 'Diana'},
+        {id: 2, name: 'Alex'},
+        {id: 3, name: 'John'},
+        {id: 4, name: 'Evgeny'},
+        {id: 5, name: 'Pank'},
+    ]
+
+    let messagesData = [
+        {id: 1, ownMessage: false, message: 'Hello this is a message!'},
+        {id: 2, ownMessage: true, message: 'Hello this is a message from own!!'},
+        {id: 3, ownMessage: false, message: 'Hello this is a message!'},
+        {id: 4, ownMessage: true, message: 'Hello this is a message from own!!'},
+        {id: 5, ownMessage: false, message: 'Hello this is a message!'},
+        {id: 6, ownMessage: true, message: 'Hello this is a message from own!!!'},
+        {id: 7, ownMessage: false, message: 'Hello this is a message!'},
+        {id: 8, ownMessage: true, message: 'Hello this is a message from own!!!'},
+    ]
+
+
+    const dialogsElements = dialogsData.map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>)
+
+    const messageElements = messagesData.map(message => <Message key={message.id} message={message.message} id={message.id}
+                                                                 ownMessage={message.ownMessage}/>)
+
     return (
         <>
             <div className={"messenger"}>
                 <div className="messages">
                     <div className="messagesWrapper">
                         <div className="messagesTop">
-                            {/*//Message принимает пропс onwMessage(сообщение овнера)*/}
-                            <Message/>
-                            <Message ownMessage={true}/>
-                            <Message/>
-                            <Message ownMessage={true}/>
-                            <Message/>
-                            <Message ownMessage={true}/>
-                            <Message/>
-                            <Message ownMessage={true}/>
-                            <Message/>
-                            <Message/>
-                            <Message ownMessage={true}/>
-                            <Message/>
-                            <Message ownMessage={true}/>
-                            <Message/>
+                            {messageElements}
                         </div>
                         <div className="chatMessagesBottom">
                                 <textarea className="chatMessageInput"
@@ -56,10 +68,7 @@ export const Dialogs = () => {
                                                placeholder={"Search for friends"}/>
                                     </div>
                                 </div>
-
-                                <DialogItem name={'Diana'} id={1}/>
-                                <DialogItem name={'Alex'} id={2}/>
-                                <DialogItem name={'John'} id={3}/>
+                                {dialogsElements}
                             </div>
                         </div>
 

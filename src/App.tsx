@@ -23,7 +23,7 @@ function App() {
                     {/*<Sidebar/>*/}
                     <div>
                         <Route path={'/profile'} component={Profile}/>
-                        <Route path={'/messages'} component={Dialogs}/>
+                        <Route exact path={'/messages'} component={Dialogs}/>
                         <Route path={'/mypost'} component={MyPost}/>
                         <Route path={'/feed'} component={Feed}/>
 
