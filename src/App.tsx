@@ -27,7 +27,6 @@ function App() {
                         <Route path={'/myposts'} component={MyPosts}/>
 
                         {/*<Route path={'/mypost'} component={MyPost}/>*/}
-
                         {/*<MyPost/>*/}
                         {/*<Post titlePost={'lolo'} likesCount={21}/>*/}
                         {/*<Profile/>*/}
