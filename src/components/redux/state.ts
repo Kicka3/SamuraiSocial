@@ -91,7 +91,6 @@ let state: RootStateType = {
 
 
 export const addPost = (postMessage: string) => {
-    debugger
     let newPost = {
         id: 5,
         message: postMessage,
