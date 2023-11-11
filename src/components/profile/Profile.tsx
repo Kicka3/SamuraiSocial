@@ -1,5 +1,5 @@
 import "./profile.css";
-import Feed from "../feed/Feed";
+import MyPosts from "./myPosts/MyPosts";
 import Rightbar from "./rightbar/Rightbar";
 import React from "react";
 import ProfileInfo from "./profileInfo/ProfileInfo";
@@ -16,7 +16,7 @@ function Profile() {
 
                     {/*ПОСТЫ В ПРОФИЛЕ*/}
                     <div className="profileRightBottom">
-                        <Feed/>
+                        <MyPosts/>
                         <Rightbar/> {/*/PROFILEINFO/*/}
                     </div>
 

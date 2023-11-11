@@ -2,10 +2,8 @@ import React from 'react';
 import './dialogs.css'
 import {Message} from "./message/Message";
 import {ChatOnline} from "./chatOnline/ChatOnline";
-import '../messanger/chatMenu/chatMenu.css'
+import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
-import AvatarForChatOnline from "../../public/assets/person/person0.jpeg";
-import {NavLink} from "react-router-dom";
 import {DialogItem} from "./dialogItem/DialogItem";
 
 
@@ -31,10 +29,16 @@ export const Dialogs = () => {
     ]
 
 
-    const dialogsElements = dialogsData.map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>)
+    const dialogsElements = dialogsData.map(dialog => <DialogItem key={dialog.id}
+                                                                  name={dialog.name}
+                                                                  id={dialog.id}
+    />)
 
-    const messageElements = messagesData.map(message => <Message key={message.id} message={message.message} id={message.id}
-                                                                 ownMessage={message.ownMessage}/>)
+    const messageElements = messagesData.map(message => <Message key={message.id}
+                                                                 message={message.message}
+                                                                 id={message.id}
+                                                                 ownMessage={message.ownMessage}
+    />)
 
     return (
         <>

@@ -1,8 +1,8 @@
-import "./feed.css"
-import MyPost from "../myPosts/MyPost";
+import "./myPosts.css"
+import MyPost from "./myPost/MyPost";
 import Share from "./share/Share";
 
-export default function Feed() {
+export default function MyPosts() {
 
    return (
       <div className="feed">

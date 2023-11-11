@@ -26,12 +26,12 @@ export default function Sidebar() {
 
                     <li className="sidebarListItem">
                         {/*<PlayCircleOutlineSharpIcon className="sidebarIcon" />*/}
-                        <NavLink to={'/messages'} className="sidebarListItemText">Messages</NavLink>
+                        <NavLink to={'/dialogs'} className="sidebarListItemText">Messages</NavLink>
                     </li>
 
                     <li className="sidebarListItem">
                         {/*<ForumIcon className="sidebarIcon" />*/}
-                        <NavLink to={'/feed'} className="sidebarListItemText">News</NavLink>
+                        <NavLink to={'/myposts'} className="sidebarListItemText">News</NavLink>
                     </li>
 
                     {/*<li className="sidebarListItem">*/}
