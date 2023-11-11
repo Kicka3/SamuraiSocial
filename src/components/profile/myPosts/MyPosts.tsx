@@ -7,6 +7,7 @@ import {PostsDataType} from "../../redux/state";
 
 type MyPostsPropsType = {
     posts: PostsDataType
+    addPost: (postMessage: string) => void
 }
 
 export const MyPosts: React.FC<MyPostsPropsType> = (props) => {
@@ -14,8 +15,10 @@ const {posts} = props
    return (
       <div className="feed">
          <div className="feedWrapper">
-            <Share/>
-            <MyPost posts={props.posts}/>
+            <Share addPost={props.addPost}/>
+            <MyPost posts={props.posts}
+
+            />
          </div>
       </div>
    );

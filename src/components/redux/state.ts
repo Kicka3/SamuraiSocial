@@ -22,17 +22,17 @@
 //     {id: 2, message: "My little jopa", likesCount: 25},
 // ]
 
-type PostsType = {
+export type PostsType = {
     id: number
     message: string
     likesCount: number
 }
-type MessageType = {
+export type MessageType = {
     id: number
     ownMessage: boolean
     message: string
 }
-type DialogsType = {
+export type DialogsType = {
     id: number
     name: string
 }
@@ -88,5 +88,17 @@ let state: RootStateType = {
     },
     sideBarPage: {},
 }
+
+
+export const addPost = (postMessage: string) => {
+    debugger
+    let newPost = {
+        id: 5,
+        message: postMessage,
+        likesCount: 0
+    }
+    state.profilePage.postsData.push(newPost)
+}
+
 
 export default state;

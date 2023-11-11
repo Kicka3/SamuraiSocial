@@ -6,9 +6,9 @@ import {MyPosts} from "./myPosts/MyPosts";
 import {ProfilePageType} from "../redux/state";
 
 
-
 type ProfilePropsType = {
     state: ProfilePageType
+    addPost: (postMessage: string) => void
 }
 
 function Profile(props: ProfilePropsType) {
@@ -23,7 +23,10 @@ function Profile(props: ProfilePropsType) {
 
                     {/*ПОСТЫ В ПРОФИЛЕ*/}
                     <div className="profileRightBottom">
-                        <MyPosts posts={props.state.postsData}/>
+                        <MyPosts posts={props.state.postsData}
+                                 addPost={props.addPost}
+
+                        />
                         <Rightbar/> {/*/PROFILEINFO/*/}
                     </div>
 
