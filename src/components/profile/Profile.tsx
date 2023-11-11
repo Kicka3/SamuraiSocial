@@ -1,11 +1,18 @@
 import "./profile.css";
-import MyPosts from "./myPosts/MyPosts";
 import Rightbar from "./rightbar/Rightbar";
 import React from "react";
 import ProfileInfo from "./profileInfo/ProfileInfo";
+import {MyPosts} from "./myPosts/MyPosts";
+import {ProfilePageType} from "../redux/state";
 
 
-function Profile() {
+type ProfilePropsType = {
+    state: ProfilePageType
+    addPost: (postMessage: string) => void
+}
+
+function Profile(props: ProfilePropsType) {
+
     return (
         <div className="ProfileWrapper">
             <div className="profile">
@@ -16,7 +23,10 @@ function Profile() {
 
                     {/*ПОСТЫ В ПРОФИЛЕ*/}
                     <div className="profileRightBottom">
-                        <MyPosts/>
+                        <MyPosts posts={props.state.postsData}
+                                 addPost={props.addPost}
+
+                        />
                         <Rightbar/> {/*/PROFILEINFO/*/}
                     </div>
 

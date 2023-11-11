@@ -4,37 +4,54 @@ import Header from "./components/header/Header";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
-import {BrowserRouter, Route} from "react-router-dom";
-import MyPost from "./components/profile/myPosts/myPost/MyPost";
-import Post from "./components/profile/myPosts/myPost/post/Post";
-import MyPosts from "./components/profile/myPosts/MyPosts";
+import {Route} from "react-router-dom";
+import {MyPosts} from "./components/profile/myPosts/MyPosts";
+import {RootStateType} from "./components/redux/state";
 
+type AppPropsType = {
+    state: RootStateType
+    addPost: (postMessage: string) => void
+}
 
-function App() {
+function App(props: AppPropsType) {
+
     return (
-        <BrowserRouter>
-            <div className="App-wrapper">
-                <div className="contentWrapper">
-                    <Header/>
-                </div>
 
-                <div className="mainContentWrapper">
-                    <Sidebar/>
-                    {/*<Sidebar/>*/}
-                    <div>
-                        <Route path={'/profile'} component={Profile}/>
-                        <Route exact path={'/dialogs'} component={Dialogs}/>
-                        <Route path={'/myposts'} component={MyPosts}/>
+        <div className="App-wrapper">
+            <div className="contentWrapper">
+                <Header/>
+            </div>
 
-                        {/*<Route path={'/mypost'} component={MyPost}/>*/}
-                        {/*<MyPost/>*/}
-                        {/*<Post titlePost={'lolo'} likesCount={21}/>*/}
-                        {/*<Profile/>*/}
-                        {/*<DialogItem/>*/}
-                    </div>
+            <div className="mainContentWrapper">
+                <Sidebar/>
+                {/*<Sidebar/>*/}
+                <div>
+                    {/*Вариант без пропсов*/}
+                    {/*<Route path={'/profile'} component={Profile}/>*/}
+                    {/*<Route exact path={'/dialogs'} component={Dialogs}/>*/}
+                    <Route path={'/dialogs'}
+                           render={() =>
+                               <Dialogs state={props.state.messagesPage}
+
+                               />}
+                    />
+                    <Route path={'/profile'}
+                           render={() =>
+                               <Profile state={props.state.profilePage}
+                                        addPost={props.addPost}
+                               />}
+                    />
+
+
+                    <Route path={'/myposts'} component={MyPosts}/>
+                    {/*<MyPost/>*/}
+                    {/*<Post titlePost={'lolo'} likesCount={21}/>*/}
+                    {/*<Profile/>*/}
+                    {/*<DialogItem/>*/}
                 </div>
             </div>
-        </BrowserRouter>
+        </div>
+
     );
 }
 
