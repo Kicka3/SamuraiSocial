@@ -1,6 +1,10 @@
 import "./share.css"
 
 const Share = () => {
+
+   const addPostHandler = () => {
+      console.log('Добавить пост!')
+   }
    return (
       <div className="share">
          <div className="shareWrapper">
@@ -29,7 +33,6 @@ const Share = () => {
                             accept=".png,.jpeg,.jpg"/>
 
                   </label>
-
                   {/*<div className="shareOption">*/}
                   {/*   /!*ИКОНКА*!/*/}
                   {/*   /!*<LabelImportantIcon htmlColor="#1E90FF" className="shareIcon"/>*!/*/}
@@ -50,10 +53,11 @@ const Share = () => {
 
                   {/*   <span className="shareOptionText">Feelings</span>*/}
                   {/*</div>*/}
-
                </div>
                <button className="shareBtn"
-                       type="submit">Share
+                       // type="submit"
+                       onClick={addPostHandler}
+               >Share
                </button>
             </form>
          </div>

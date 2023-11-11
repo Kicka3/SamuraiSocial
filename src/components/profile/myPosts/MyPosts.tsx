@@ -2,20 +2,20 @@ import "./myPosts.css"
 import MyPost from "./myPost/MyPost";
 import Share from "./share/Share";
 import React from "react";
-import {postsDataType} from "../../../index";
+import {PostsDataType} from "../../redux/state";
 
 
 type MyPostsPropsType = {
-    postsData: postsDataType[]
+    posts: PostsDataType
 }
 
-export const MyPosts = (props: MyPostsPropsType) => {
-
+export const MyPosts: React.FC<MyPostsPropsType> = (props) => {
+const {posts} = props
    return (
       <div className="feed">
          <div className="feedWrapper">
             <Share/>
-            <MyPost postsData={props.postsData}/>
+            <MyPost posts={props.posts}/>
          </div>
       </div>
    );

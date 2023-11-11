@@ -3,12 +3,12 @@ import Rightbar from "./rightbar/Rightbar";
 import React from "react";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import {MyPosts} from "./myPosts/MyPosts";
-import {postsDataType} from "../../index";
+import {ProfilePageType} from "../redux/state";
 
 
 
 type ProfilePropsType = {
-    postsData: postsDataType[]
+    state: ProfilePageType
 }
 
 function Profile(props: ProfilePropsType) {
@@ -23,7 +23,7 @@ function Profile(props: ProfilePropsType) {
 
                     {/*ПОСТЫ В ПРОФИЛЕ*/}
                     <div className="profileRightBottom">
-                        <MyPosts postsData={props.postsData}/>
+                        <MyPosts posts={props.state.postsData}/>
                         <Rightbar/> {/*/PROFILEINFO/*/}
                     </div>
 

@@ -5,25 +5,24 @@ import {ChatOnline} from "./chatOnline/ChatOnline";
 import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {DialogItem} from "./dialogItem/DialogItem";
-import {DialogsDataType, MessagesDataType} from "../../index";
+import {MessagesPage} from "../redux/state";
 
 
 type DialogsPropsType = {
-    dialogsData: DialogsDataType[]
-    messagesData: MessagesDataType[]
+    state: MessagesPage
 }
 
 export const Dialogs = (props: DialogsPropsType) => {
 
-    const dialogsElements = props.dialogsData.map(dialog => <DialogItem key={dialog.id}
-                                                                        name={dialog.name}
-                                                                        id={dialog.id}
+    const dialogsElements = props.state.dialogsData.map(dialog => <DialogItem key={dialog.id}
+                                                                              name={dialog.name}
+                                                                              id={dialog.id}
     />)
 
-    const messageElements = props.messagesData.map(message => <Message key={message.id}
-                                                                       message={message.message}
-                                                                       id={message.id}
-                                                                       ownMessage={message.ownMessage}
+    const messageElements = props.state.messagesData.map(message => <Message key={message.id}
+                                                                             message={message.message}
+                                                                             id={message.id}
+                                                                             ownMessage={message.ownMessage}
     />)
 
     return (
