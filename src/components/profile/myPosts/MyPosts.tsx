@@ -5,6 +5,7 @@ import React from "react";
 import {PostsDataType} from "../../redux/state";
 
 
+
 type MyPostsPropsType = {
     posts: PostsDataType
     addPost: (postMessage: string) => void
