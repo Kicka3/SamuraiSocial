@@ -5,39 +5,25 @@ import {ChatOnline} from "./chatOnline/ChatOnline";
 import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {DialogItem} from "./dialogItem/DialogItem";
+import {DialogsDataType, MessagesDataType} from "../../index";
 
 
-export const Dialogs = () => {
+type DialogsPropsType = {
+    dialogsData: DialogsDataType[]
+    messagesData: MessagesDataType[]
+}
 
-    let dialogsData = [
-        {id: 1, name: 'Diana'},
-        {id: 2, name: 'Alex'},
-        {id: 3, name: 'John'},
-        {id: 4, name: 'Evgeny'},
-        {id: 5, name: 'Pank'},
-    ]
+export const Dialogs = (props: DialogsPropsType) => {
 
-    let messagesData = [
-        {id: 1, ownMessage: false, message: 'Hello this is a message!'},
-        {id: 2, ownMessage: true, message: 'Hello this is a message from own!!'},
-        {id: 3, ownMessage: false, message: 'Hello this is a message!'},
-        {id: 4, ownMessage: true, message: 'Hello this is a message from own!!'},
-        {id: 5, ownMessage: false, message: 'Hello this is a message!'},
-        {id: 6, ownMessage: true, message: 'Hello this is a message from own!!!'},
-        {id: 7, ownMessage: false, message: 'Hello this is a message!'},
-        {id: 8, ownMessage: true, message: 'Hello this is a message from own!!!'},
-    ]
-
-
-    const dialogsElements = dialogsData.map(dialog => <DialogItem key={dialog.id}
-                                                                  name={dialog.name}
-                                                                  id={dialog.id}
+    const dialogsElements = props.dialogsData.map(dialog => <DialogItem key={dialog.id}
+                                                                        name={dialog.name}
+                                                                        id={dialog.id}
     />)
 
-    const messageElements = messagesData.map(message => <Message key={message.id}
-                                                                 message={message.message}
-                                                                 id={message.id}
-                                                                 ownMessage={message.ownMessage}
+    const messageElements = props.messagesData.map(message => <Message key={message.id}
+                                                                       message={message.message}
+                                                                       id={message.id}
+                                                                       ownMessage={message.ownMessage}
     />)
 
     return (

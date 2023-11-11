@@ -1,16 +1,17 @@
 import "./myPost.css"
 import Post from "./post/Post";
+import {postsDataType} from "../../../../index";
 
-const MyPost = () => {
 
-    let postsData = [
-        {id: 1, message: "Jopa", likesCount: 5},
-        {id: 2, message: "My little jopa", likesCount: 25},
-    ]
+type MyPostPropsType = {
+    postsData: postsDataType[]
+}
 
-    const postsElements = postsData.map(posts => <Post key={posts.id}
-                                                       titlePost={posts.message}
-                                                       likesCount={posts.likesCount}
+const MyPost = (props: MyPostPropsType) => {
+
+    const postsElements = props.postsData.map(posts => <Post key={posts.id}
+                                                             titlePost={posts.message}
+                                                             likesCount={posts.likesCount}
     />)
 
     return (
