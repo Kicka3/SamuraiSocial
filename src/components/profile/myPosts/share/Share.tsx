@@ -1,5 +1,5 @@
 import "./share.css"
-import React, {RefObject} from "react";
+import React from "react";
 
 type SharePropsType = {
     addPost: (postMessage: string) => void
@@ -11,10 +11,10 @@ const Share: React.FC<SharePropsType> = (props) => {
     let newPostElement = React.createRef<HTMLInputElement>()
     const addPostHandler = () => {
         debugger
-        // let text = newPostElement?.current?.value
+        let text = newPostElement.current?.value
         if (newPostElement.current) {
             let text = newPostElement.current.value
-            addPost(text)
+            addPost(text);
         }
 
 
@@ -78,7 +78,7 @@ const Share: React.FC<SharePropsType> = (props) => {
                 </form>
             </div>
         </div>
-    )
+    );
 }
 
 export default Share;

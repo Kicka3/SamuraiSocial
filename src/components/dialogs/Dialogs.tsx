@@ -5,7 +5,7 @@ import {ChatOnline} from "./chatOnline/ChatOnline";
 import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {DialogItem} from "./dialogItem/DialogItem";
-import {MessagesPage} from "../redux/state";
+import {MessagesPage} from "../../redux/state";
 
 
 type DialogsPropsType = {

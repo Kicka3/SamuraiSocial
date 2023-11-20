@@ -1,6 +1,6 @@
 import "./myPost.css"
 import Post from "./post/Post";
-import {PostsDataType} from "../../../redux/state";
+import {PostsDataType} from "../../../../redux/state";
 
 
 type MyPostPropsType = {

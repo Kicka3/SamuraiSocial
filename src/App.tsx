@@ -6,7 +6,7 @@ import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
 import {MyPosts} from "./components/profile/myPosts/MyPosts";
-import {RootStateType} from "./components/redux/state";
+import {RootStateType} from "./redux/state";
 
 type AppPropsType = {
     state: RootStateType
