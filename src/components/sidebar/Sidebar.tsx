@@ -14,7 +14,7 @@ import {NavLink} from "react-router-dom";
 
 export default function Sidebar() {
     return (
-        <div className="sidebar">
+        <nav className="sidebar">
             <div className="sidebarWrapper">
                 <ul className="sidebarList">
 
@@ -56,6 +56,6 @@ export default function Sidebar() {
                 {/*<ul className="sidebarFrindList"></ul>*/}
 
             </div>
-        </div>
+        </nav>
     )
 }

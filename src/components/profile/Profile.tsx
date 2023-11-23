@@ -11,10 +11,10 @@ type ProfilePropsType = {
     addPost: (postMessage: string) => void
 }
 
-function Profile(props: ProfilePropsType) {
+const Profile: React.FC<ProfilePropsType> = ({addPost, state}) => {
 
     return (
-        <div className="ProfileWrapper">
+        <section className="ProfileWrapper">
             <div className="profile">
 
                 {/*ПРОФИЛЬ*/}
@@ -23,8 +23,8 @@ function Profile(props: ProfilePropsType) {
 
                     {/*ПОСТЫ В ПРОФИЛЕ*/}
                     <div className="profileRightBottom">
-                        <MyPosts posts={props.state.postsData}
-                                 addPost={props.addPost}
+                        <MyPosts posts={state.postsData}
+                                 addPost={addPost}
 
                         />
                         <Rightbar/> {/*/PROFILEINFO/*/}
@@ -32,7 +32,7 @@ function Profile(props: ProfilePropsType) {
 
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

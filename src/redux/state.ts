@@ -89,15 +89,17 @@ let state: RootStateType = {
     sideBarPage: {},
 }
 
-
 export const addPost = (postMessage: string) => {
     debugger
     let newPost = {
-        id: 5,
+        id: 555,
         message: postMessage,
         likesCount: 0
     }
-    state.profilePage.postsData.push(newPost)
+
+    let newState = {...state, profilePage: {postsData: [newPost, ...state.profilePage.postsData]}}
+    console.log(newState.profilePage.postsData)
+   return newState
 }
 
 

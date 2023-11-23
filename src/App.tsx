@@ -14,7 +14,7 @@ type AppPropsType = {
 }
 
 function App(props: AppPropsType) {
-
+    console.log('rerender App')
     return (
 
         <div className="App-wrapper">

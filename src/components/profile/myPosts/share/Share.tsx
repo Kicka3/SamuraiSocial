@@ -10,13 +10,11 @@ const Share: React.FC<SharePropsType> = (props) => {
 
     let newPostElement = React.createRef<HTMLInputElement>()
     const addPostHandler = () => {
-        debugger
-        let text = newPostElement.current?.value
+        // debugger
         if (newPostElement.current) {
             let text = newPostElement.current.value
             addPost(text);
         }
-
 
     }
     return (
@@ -38,10 +36,8 @@ const Share: React.FC<SharePropsType> = (props) => {
                 <form className="shareBottom">
                     <div className="shareOptions">
                         <label htmlFor="file" className="shareOption">
-
                             {/*ИКОНКА*/}
                             {/*<PermMediaIcon htmlColor="#7B68EE" className="shareIcon"/>*/}
-
 
                             <span className="shareOptionText">Photo / Video</span>
                             <input style={{display: "none"}}

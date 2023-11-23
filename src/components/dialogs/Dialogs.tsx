@@ -27,7 +27,7 @@ export const Dialogs = (props: DialogsPropsType) => {
 
     return (
         <>
-            <div className={"messenger"}>
+            <section className={"messenger"}>
                 <div className="messages">
                     <div className="messagesWrapper">
                         <div className="messagesTop">
@@ -66,7 +66,7 @@ export const Dialogs = (props: DialogsPropsType) => {
                     </div>
 
                 </div>
-            </div>
+            </section>
         </>
     );
 };

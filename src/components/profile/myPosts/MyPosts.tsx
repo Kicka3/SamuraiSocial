@@ -14,13 +14,13 @@ type MyPostsPropsType = {
 export const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 const {posts, addPost} = props
    return (
-      <div className="feed">
+      <section className="feed">
          <div className="feedWrapper">
             <Share addPost={addPost}/>
             <MyPost posts={posts}
 
             />
          </div>
-      </div>
+      </section>
    );
 }
