@@ -1,22 +1,25 @@
 import "./share.css"
-import React from "react";
+import React, {ChangeEvent} from "react";
 
 type SharePropsType = {
-    addPost: (postMessage: string) => void
+    newPostText: string
+    addPost: () => void
+    updatePostNewText: (newPostText: string) => void
 }
 
 const Share: React.FC<SharePropsType> = (props) => {
-    const {addPost} = props
+    const {addPost, newPostText, updatePostNewText} = props
 
     let newPostElement = React.createRef<HTMLInputElement>()
     const addPostHandler = () => {
-        // debugger
-        if (newPostElement.current) {
-            let text = newPostElement.current.value
-            addPost(text);
-        }
-
+            addPost();
     }
+
+    const shareInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        let newText = e.currentTarget.value;
+        updatePostNewText(newText);
+    }
+
     return (
         <div className="share">
             <div className="shareWrapper">
@@ -30,6 +33,8 @@ const Share: React.FC<SharePropsType> = (props) => {
                     <input className="shareInput"
                            placeholder={"What's in your mind ?"}
                            ref={newPostElement}
+                           value={newPostText}
+                           onChange={shareInputHandler}
                     />
                 </div>
                 <hr className="sharHr"/>
@@ -68,7 +73,10 @@ const Share: React.FC<SharePropsType> = (props) => {
                     </div>
                     <button className="shareBtn"
                         // type="submit"
-                            onClick={addPostHandler}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                addPostHandler()
+                            }}
                     >Share
                     </button>
                 </form>

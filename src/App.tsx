@@ -6,11 +6,12 @@ import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
 import {MyPosts} from "./components/profile/myPosts/MyPosts";
-import {RootStateType} from "./redux/state";
+import {RootStateType, updatePostNewText} from "./redux/state";
 
 type AppPropsType = {
     state: RootStateType
-    addPost: (postMessage: string) => void
+    addPost: () => void
+    updatePostNewText: (newPostText: string) => void
 }
 
 function App(props: AppPropsType) {
@@ -37,8 +38,9 @@ function App(props: AppPropsType) {
                     />
                     <Route path={'/profile'}
                            render={() =>
-                               <Profile state={props.state.profilePage}
+                               <Profile profilePage={props.state.profilePage}
                                         addPost={props.addPost}
+                                        updatePostNewText={updatePostNewText}
                                />}
                     />
 

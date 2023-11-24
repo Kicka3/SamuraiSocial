@@ -7,11 +7,13 @@ import {ProfilePageType} from "../../redux/state";
 
 
 type ProfilePropsType = {
-    state: ProfilePageType
-    addPost: (postMessage: string) => void
+    profilePage: ProfilePageType
+    addPost: () => void
+    updatePostNewText: (newPostText: string) => void
 }
 
-const Profile: React.FC<ProfilePropsType> = ({addPost, state}) => {
+const Profile: React.FC<ProfilePropsType> = (props) => {
+    const {addPost, profilePage, updatePostNewText} = props;
 
     return (
         <section className="ProfileWrapper">
@@ -23,8 +25,10 @@ const Profile: React.FC<ProfilePropsType> = ({addPost, state}) => {
 
                     {/*ПОСТЫ В ПРОФИЛЕ*/}
                     <div className="profileRightBottom">
-                        <MyPosts posts={state.postsData}
+                        <MyPosts posts={profilePage.postsData}
+                                 newPostText={profilePage.newPostText}
                                  addPost={addPost}
+                                 updatePostNewText={updatePostNewText}
 
                         />
                         <Rightbar/> {/*/PROFILEINFO/*/}
