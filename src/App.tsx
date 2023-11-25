@@ -6,7 +6,7 @@ import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
 import {MyPosts} from "./components/profile/myPosts/MyPosts";
-import {RootStateType, updatePostNewText} from "./redux/state";
+import {RootStateType} from "./redux/state";
 
 type AppPropsType = {
     state: RootStateType
@@ -14,10 +14,11 @@ type AppPropsType = {
     updatePostNewText: (newPostText: string) => void
 }
 
-function App(props: AppPropsType) {
+export const App: React.FC<AppPropsType> = (props) => {
+    const {state, addPost, updatePostNewText} = props;
     console.log('rerender App')
-    return (
 
+    return (
         <div className="App-wrapper">
             <div className="contentWrapper">
                 <Header/>
@@ -32,14 +33,14 @@ function App(props: AppPropsType) {
                     {/*<Route exact path={'/dialogs'} component={Dialogs}/>*/}
                     <Route path={'/dialogs'}
                            render={() =>
-                               <Dialogs state={props.state.messagesPage}
+                               <Dialogs state={state.messagesPage}
 
                                />}
                     />
                     <Route path={'/profile'}
                            render={() =>
-                               <Profile profilePage={props.state.profilePage}
-                                        addPost={props.addPost}
+                               <Profile profilePage={state.profilePage}
+                                        addPost={addPost}
                                         updatePostNewText={updatePostNewText}
                                />}
                     />
@@ -55,6 +56,6 @@ function App(props: AppPropsType) {
         </div>
 
     );
-}
+};
 
-export default App;
+

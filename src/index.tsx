@@ -1,26 +1,24 @@
 import './index.css';
-import state, {addPost, RootStateType, subscribe, updatePostNewText} from "./redux/state";
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
-import App from "./App";
 import React from "react";
+import {MainStoreType, store} from "./redux/state";
+import {App} from "./App";
 
 
-// <link href = "https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@100;300;400;700;900&display=swap"
-// rel = "stylesheet"/>
+export const RerenderEntireTree = (_state: MainStoreType) => {
+    const state = store.getState();
 
-
-export const rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={state}
-                 addPost={addPost}
-                 updatePostNewText={updatePostNewText}
+                 addPost={store.addPost.bind(store)}
+                 updatePostNewText={store.updatePostNewText.bind(store)}
             />
         </BrowserRouter>, document.getElementById('root')
     );
 }
 
-rerenderEntireTree(state);
+RerenderEntireTree(store);
 
-subscribe(rerenderEntireTree)
+store.subscribe(RerenderEntireTree)
