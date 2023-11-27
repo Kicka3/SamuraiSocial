@@ -1,29 +1,55 @@
-import React from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import './dialogs.css'
 import {Message} from "./message/Message";
 import {ChatOnline} from "./chatOnline/ChatOnline";
 import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {DialogItem} from "./dialogItem/DialogItem";
-import {MessagesPage} from "../../redux/state";
+import {
+    MainStoreType,
+} from "../../redux/state";
+import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/messages-reducer";
 
 
 type DialogsPropsType = {
-    state: MessagesPage
+    store: MainStoreType
 }
 
-export const Dialogs = (props: DialogsPropsType) => {
+export const Dialogs: React.FC<DialogsPropsType> = (props) => {
+    const {store} = props;
+    const state = store.getState().messagesPage;
 
-    const dialogsElements = props.state.dialogsData.map(dialog => <DialogItem key={dialog.id}
-                                                                              name={dialog.name}
-                                                                              id={dialog.id}
-    />)
+    const dialogsElements = state.dialogsData.map(dialog =>
+        <DialogItem key={dialog.id}
+                    name={dialog.name}
+                    id={dialog.id}
+        />
+    );
 
-    const messageElements = props.state.messagesData.map(message => <Message key={message.id}
-                                                                             message={message.message}
-                                                                             id={message.id}
-                                                                             ownMessage={message.ownMessage}
-    />)
+    const messageElements = state.messagesData.map(message =>
+        <Message key={message.id}
+                 message={message.message}
+                 id={message.id}
+                 ownMessage={message.ownMessage}
+        />
+    );
+
+    //SEND MESSAGE:
+    const PressEnterHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+        const value = e.key;
+        if (value === 'Enter') {
+            onSendMessageClickHandler();
+        }
+    }
+    const onSendMessageClickHandler = () => {
+        store.dispatch(sendMessageAC());
+    }
+    const newMessageBody = state.newMessageBody;
+    const onNewMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        let body = e.currentTarget.value;
+        store.dispatch(updateNewMessageBodyAC(body));
+    }
+
 
     return (
         <>
@@ -36,8 +62,14 @@ export const Dialogs = (props: DialogsPropsType) => {
                         <div className="chatMessagesBottom">
                                 <textarea className="chatMessageInput"
                                           placeholder={"Say hello!"}
+                                          value={newMessageBody}
+                                          onChange={onNewMessageChangeHandler}
+                                          onKeyPress={PressEnterHandler}
                                 ></textarea>
-                            <button className="chatSubmitBtn">Send</button>
+                            <button className="chatSubmitBtn"
+                                    onClick={onSendMessageClickHandler}
+                            >Send
+                            </button>
                         </div>
                     </div>
                 </div>

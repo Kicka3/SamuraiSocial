@@ -6,7 +6,7 @@ import PersonAvatar0 from '../../../public/assets/person/person0.jpeg'
 type MessagePropsType = {
     ownMessage?: boolean
     message: string
-    id?: number
+    id?: string
 }
 export const Message: React.FC<MessagePropsType> = (props) => {
     const {id, ownMessage, message} = props

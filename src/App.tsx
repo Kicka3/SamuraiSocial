@@ -6,15 +6,16 @@ import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
 import {MyPosts} from "./components/profile/myPosts/MyPosts";
-import {MainReducerType, RootStateType} from "./redux/state";
+import {MainReducerType, MainStoreType, RootStateType} from "./redux/state";
 
 type AppPropsType = {
     state: RootStateType
+    store: MainStoreType
     dispatch: (action: MainReducerType) => void
 }
 
 export const App: React.FC<AppPropsType> = (props) => {
-    const {state, dispatch} = props;
+    const {state, store, dispatch} = props;
     console.log('rerender App')
 
     return (
@@ -32,8 +33,8 @@ export const App: React.FC<AppPropsType> = (props) => {
                     {/*<Route exact path={'/dialogs'} component={Dialogs}/>*/}
                     <Route path={'/dialogs'}
                            render={() =>
-                               <Dialogs state={state.messagesPage}
-
+                               <Dialogs
+                                   store={store}
                                />}
                     />
                     <Route path={'/profile'}

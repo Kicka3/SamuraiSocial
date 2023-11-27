@@ -1,6 +1,7 @@
 import "./share.css"
 import React, {ChangeEvent} from "react";
-import {addPostAC, MainReducerType, updatePostNewTextAC} from "../../../../redux/state";
+import {MainReducerType} from "../../../../redux/state";
+import {addPostAC, updatePostNewTextAC} from "../../../../redux/profile-reducer";
 
 type SharePropsType = {
     newPostText: string
@@ -12,12 +13,12 @@ const Share: React.FC<SharePropsType> = (props) => {
 
     let newPostElement = React.createRef<HTMLInputElement>()
     const addPostHandler = () => {
-        dispatch(addPostAC(newPostText))
+        dispatch(addPostAC(newPostText));
     }
 
     const updatePostNewText = (e: ChangeEvent<HTMLInputElement>) => {
         let newText = e.currentTarget.value;
-        dispatch(updatePostNewTextAC(newText))
+        dispatch(updatePostNewTextAC(newText));
     }
 
     return (
