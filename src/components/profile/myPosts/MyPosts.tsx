@@ -2,7 +2,7 @@ import "./myPosts.css"
 import MyPost from "./myPost/MyPost";
 import Share from "./share/Share";
 import React from "react";
-import {MainReducerType, PostsDataType} from "../../../redux/state";
+import {MainReducerType, PostsDataType} from "../../../redux/old-store-for-my-redux/my-old-store";
 
 
 

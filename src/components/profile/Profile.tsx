@@ -3,7 +3,7 @@ import Rightbar from "./rightbar/Rightbar";
 import React from "react";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import {MyPosts} from "./myPosts/MyPosts";
-import {MainReducerType, ProfilePageType} from "../../redux/state";
+import {MainReducerType, ProfilePageType} from "../../redux/old-store-for-my-redux/my-old-store";
 
 
 type ProfilePropsType = {

@@ -1,8 +1,15 @@
 import {v1} from "uuid";
-import {MainReducerType, ProfilePageType} from "./state";
+import {MainReducerType, ProfilePageType} from "../old-store-for-my-redux/my-old-store";
 
+const initialState = {
+    postsData: [
+        {id: v1(), message: "Jopa", likesCount: 5},
+        {id: v1(), message: "My little Jopa", likesCount: 25},
+    ],
+    newPostText: 'Whussap?',
+};
 
-const ProfileReducer = (state: ProfilePageType, action: MainReducerType): ProfilePageType => {
+const profileReducer = (state: ProfilePageType = initialState, action: MainReducerType): ProfilePageType => {
     switch (action.type) {
         case 'ADD-POST': {
             let newPost = {
@@ -40,4 +47,4 @@ export const updatePostNewTextAC = (newText: string) => {
     } as const
 }
 
-export default ProfileReducer;
+export default profileReducer;

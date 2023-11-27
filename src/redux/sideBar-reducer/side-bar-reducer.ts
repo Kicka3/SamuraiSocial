@@ -1,4 +1,5 @@
-const SideBarReducer = (state: any, action: any) => {
+const initialState = {}
+const sideBarReducer = (state: any = initialState, action: any) => {
     switch (action.type) {
         case 'XXX': {
             return state;
@@ -8,4 +9,4 @@ const SideBarReducer = (state: any, action: any) => {
     }
 }
 
-export default SideBarReducer;
+export default sideBarReducer;

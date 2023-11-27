@@ -5,19 +5,17 @@ import {ChatOnline} from "./chatOnline/ChatOnline";
 import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {DialogItem} from "./dialogItem/DialogItem";
-import {
-    MainStoreType,
-} from "../../redux/state";
-import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/messages-reducer";
+import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/messages-reducer/messages-reducer";
+import {StoreType} from "../../redux/redux-store";
 
 
 type DialogsPropsType = {
-    store: MainStoreType
+    store: StoreType
 }
 
 export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     const {store} = props;
-    const state = store.getState().messagesPage;
+    const state = store.getState();
 
     const dialogsElements = state.dialogsData.map(dialog =>
         <DialogItem key={dialog.id}

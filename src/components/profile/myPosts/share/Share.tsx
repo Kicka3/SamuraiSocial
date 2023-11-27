@@ -1,7 +1,7 @@
 import "./share.css"
 import React, {ChangeEvent} from "react";
-import {MainReducerType} from "../../../../redux/state";
-import {addPostAC, updatePostNewTextAC} from "../../../../redux/profile-reducer";
+import {MainReducerType} from "../../../../redux/old-store-for-my-redux/my-old-store";
+import {addPostAC, updatePostNewTextAC} from "../../../../redux/profile-reducer/profile-reducer";
 
 type SharePropsType = {
     newPostText: string

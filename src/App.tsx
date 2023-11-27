@@ -6,16 +6,17 @@ import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
 import {MyPosts} from "./components/profile/myPosts/MyPosts";
-import {MainReducerType, MainStoreType, RootStateType} from "./redux/state";
+import {MainReducerType, MainStoreType, RootStateType} from "./redux/old-store-for-my-redux/my-old-store";
+import {RootReduxStoreType, StoreType} from "./redux/redux-store";
 
 type AppPropsType = {
-    state: RootStateType
-    store: MainStoreType
+   state: RootStateType
+    store: StoreType
     dispatch: (action: MainReducerType) => void
 }
 
 export const App: React.FC<AppPropsType> = (props) => {
-    const {state, store, dispatch} = props;
+    const { store, dispatch} = props;
     console.log('rerender App')
 
     return (
