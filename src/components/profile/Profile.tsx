@@ -3,17 +3,16 @@ import Rightbar from "./rightbar/Rightbar";
 import React from "react";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import {MyPosts} from "./myPosts/MyPosts";
-import {ProfilePageType} from "../../redux/state";
+import {MainReducerType, ProfilePageType} from "../../redux/state";
 
 
 type ProfilePropsType = {
     profilePage: ProfilePageType
-    addPost: () => void
-    updatePostNewText: (newPostText: string) => void
+    dispatch: (action: MainReducerType) => void
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
-    const {addPost, profilePage, updatePostNewText} = props;
+    const {dispatch, profilePage} = props;
 
     return (
         <section className="ProfileWrapper">
@@ -27,9 +26,7 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
                     <div className="profileRightBottom">
                         <MyPosts posts={profilePage.postsData}
                                  newPostText={profilePage.newPostText}
-                                 addPost={addPost}
-                                 updatePostNewText={updatePostNewText}
-
+                                 dispatch={dispatch}
                         />
                         <Rightbar/> {/*/PROFILEINFO/*/}
                     </div>

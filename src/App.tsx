@@ -6,16 +6,15 @@ import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
 import {MyPosts} from "./components/profile/myPosts/MyPosts";
-import {RootStateType} from "./redux/state";
+import {MainReducerType, RootStateType} from "./redux/state";
 
 type AppPropsType = {
     state: RootStateType
-    addPost: () => void
-    updatePostNewText: (newPostText: string) => void
+    dispatch: (action: MainReducerType) => void
 }
 
 export const App: React.FC<AppPropsType> = (props) => {
-    const {state, addPost, updatePostNewText} = props;
+    const {state, dispatch} = props;
     console.log('rerender App')
 
     return (
@@ -40,8 +39,7 @@ export const App: React.FC<AppPropsType> = (props) => {
                     <Route path={'/profile'}
                            render={() =>
                                <Profile profilePage={state.profilePage}
-                                        addPost={addPost}
-                                        updatePostNewText={updatePostNewText}
+                                        dispatch={dispatch}
                                />}
                     />
 

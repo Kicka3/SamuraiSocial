@@ -1,23 +1,23 @@
 import "./share.css"
 import React, {ChangeEvent} from "react";
+import {addPostAC, MainReducerType, updatePostNewTextAC} from "../../../../redux/state";
 
 type SharePropsType = {
     newPostText: string
-    addPost: () => void
-    updatePostNewText: (newPostText: string) => void
+    dispatch: (action: MainReducerType) => void
 }
 
 const Share: React.FC<SharePropsType> = (props) => {
-    const {addPost, newPostText, updatePostNewText} = props
+    const {dispatch, newPostText} = props
 
     let newPostElement = React.createRef<HTMLInputElement>()
     const addPostHandler = () => {
-            addPost();
+        dispatch(addPostAC(newPostText))
     }
 
-    const shareInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const updatePostNewText = (e: ChangeEvent<HTMLInputElement>) => {
         let newText = e.currentTarget.value;
-        updatePostNewText(newText);
+        dispatch(updatePostNewTextAC(newText))
     }
 
     return (
@@ -34,7 +34,7 @@ const Share: React.FC<SharePropsType> = (props) => {
                            placeholder={"What's in your mind ?"}
                            ref={newPostElement}
                            value={newPostText}
-                           onChange={shareInputHandler}
+                           onChange={updatePostNewText}
                     />
                 </div>
                 <hr className="sharHr"/>
