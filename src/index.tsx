@@ -6,15 +6,15 @@ import {App} from "./App";
 import {RootReduxStoreType, store} from "./redux/redux-store";
 
 
-
 export const RerenderEntireTree = (_state: RootReduxStoreType) => {
-    const state = store.getState();
+    const state = store.getState() as RootReduxStoreType;
 
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state}
-                 dispatch={store.dispatch.bind(store)}
-                 store={store}
+            <App
+                // state={state}
+                dispatch={store.dispatch.bind(store)}
+                store={store}
             />
         </BrowserRouter>, document.getElementById('root')
     );
@@ -25,4 +25,4 @@ RerenderEntireTree(store.getState());
 store.subscribe(() => {
     const state = store.getState()
     RerenderEntireTree(state);
-})
+});

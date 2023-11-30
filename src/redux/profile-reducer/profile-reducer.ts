@@ -1,15 +1,27 @@
 import {v1} from "uuid";
-import {MainReducerType, ProfilePageType} from "../old-store-for-my-redux/my-old-store";
+
+
+export type MainProfileReducerType = AddPostACType | UpdatePostNewTextACType
+
+
+//Зависимость
+export type initialProfileStateType = typeof initialState
+
+export type PostsType = {
+    id: string;
+    message: string;
+    likesCount: number;
+}
 
 const initialState = {
     postsData: [
         {id: v1(), message: "Jopa", likesCount: 5},
         {id: v1(), message: "My little Jopa", likesCount: 25},
-    ],
+    ] as PostsType[],
     newPostText: 'Whussap?',
 };
 
-const profileReducer = (state: ProfilePageType = initialState, action: MainReducerType): ProfilePageType => {
+const profileReducer = (state: initialProfileStateType = initialState, action: MainProfileReducerType): initialProfileStateType => {
     switch (action.type) {
         case 'ADD-POST': {
             let newPost = {

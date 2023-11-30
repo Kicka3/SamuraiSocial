@@ -6,17 +6,17 @@ import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
 import {MyPosts} from "./components/profile/myPosts/MyPosts";
-import {MainReducerType, MainStoreType, RootStateType} from "./redux/old-store-for-my-redux/my-old-store";
 import {RootReduxStoreType, StoreType} from "./redux/redux-store";
+import {MainProfileReducerType} from "./redux/profile-reducer/profile-reducer";
 
 type AppPropsType = {
-   state: RootStateType
+    // state: StoreType
     store: StoreType
-    dispatch: (action: MainReducerType) => void
+    dispatch: (action: MainProfileReducerType) => void
 }
 
 export const App: React.FC<AppPropsType> = (props) => {
-    const { store, dispatch} = props;
+    const {store, dispatch} = props;
     console.log('rerender App')
 
     return (
@@ -40,7 +40,7 @@ export const App: React.FC<AppPropsType> = (props) => {
                     />
                     <Route path={'/profile'}
                            render={() =>
-                               <Profile profilePage={state.profilePage}
+                               <Profile profilePage={store.getState().profile}
                                         dispatch={dispatch}
                                />}
                     />

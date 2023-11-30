@@ -17,14 +17,16 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     const {store} = props;
     const state = store.getState();
 
-    const dialogsElements = state.dialogsData.map(dialog =>
+    // const dialogsElements = state.dialogsData.map(dialog =>
+    const dialogsElements = state.message.dialogsData.map(dialog =>
         <DialogItem key={dialog.id}
                     name={dialog.name}
                     id={dialog.id}
         />
     );
 
-    const messageElements = state.messagesData.map(message =>
+    // const messageElements = state.messagesData.map(message =>
+    const messageElements = state.message.messagesData.map(message =>
         <Message key={message.id}
                  message={message.message}
                  id={message.id}
@@ -42,7 +44,8 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     const onSendMessageClickHandler = () => {
         store.dispatch(sendMessageAC());
     }
-    const newMessageBody = state.newMessageBody;
+    // const newMessageBody = state.newMessageBody;
+    const newMessageBody = state.message.newMessageBody;
     const onNewMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.currentTarget.value;
         store.dispatch(updateNewMessageBodyAC(body));

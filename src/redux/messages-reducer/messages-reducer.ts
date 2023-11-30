@@ -1,6 +1,17 @@
 import {v1} from "uuid";
-import {MainReducerType, MessagesPage} from "../old-store-for-my-redux/my-old-store";
 
+export type initialMessageStateType = typeof initialState;
+
+export type DialogsType = {
+    id: string;
+    name: string;
+}
+
+export type MessageType = {
+    id: string;
+    ownMessage: boolean;
+    message: string;
+}
 
 const initialState = {
     dialogsData: [
@@ -9,7 +20,7 @@ const initialState = {
         {id: v1(), name: 'John'},
         {id: v1(), name: 'Evgeny'},
         {id: v1(), name: 'Pank'},
-    ],
+    ] as DialogsType[],
     messagesData: [
         {id: v1(), ownMessage: false, message: 'Hello this is a message!'},
         {id: v1(), ownMessage: true, message: 'Hello this is a message from own!!'},
@@ -19,10 +30,13 @@ const initialState = {
         {id: v1(), ownMessage: true, message: 'Hello this is a message from own!!!'},
         {id: v1(), ownMessage: false, message: 'Hello this is a message!'},
         {id: v1(), ownMessage: true, message: 'Hello this is a message from own!!!'},
-    ],
+    ] as MessageType[],
     newMessageBody: '',
 }
-const messagesReducer = (state: MessagesPage = initialState, action: MainReducerType): MessagesPage => {
+
+export type MainMessageReducerType = UpdateNewMessageBodyACType | SendMessageACType
+
+const messagesReducer = (state: initialMessageStateType = initialState, action: MainMessageReducerType): initialMessageStateType => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-BODY': {
             debugger
@@ -41,6 +55,7 @@ const messagesReducer = (state: MessagesPage = initialState, action: MainReducer
             return state
     }
 }
+
 
 export type UpdateNewMessageBodyACType = ReturnType<typeof updateNewMessageBodyAC>
 export const updateNewMessageBodyAC = (body: string) => {

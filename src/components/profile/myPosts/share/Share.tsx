@@ -1,24 +1,26 @@
 import "./share.css"
 import React, {ChangeEvent} from "react";
-import {MainReducerType} from "../../../../redux/old-store-for-my-redux/my-old-store";
-import {addPostAC, updatePostNewTextAC} from "../../../../redux/profile-reducer/profile-reducer";
 
 type SharePropsType = {
     newPostText: string
-    dispatch: (action: MainReducerType) => void
+    addNewPost: (newPostText: string) => void
+    updateNewPostText: (newText: string) => void
+    // dispatch: (action: MainProfileReducerType) => void
 }
 
 const Share: React.FC<SharePropsType> = (props) => {
-    const {dispatch, newPostText} = props
+    const {addNewPost, updateNewPostText, newPostText} = props
 
     let newPostElement = React.createRef<HTMLInputElement>()
     const addPostHandler = () => {
-        dispatch(addPostAC(newPostText));
+        addNewPost(newPostText)
+        // dispatch(addPostAC(newPostText));
     }
 
     const updatePostNewText = (e: ChangeEvent<HTMLInputElement>) => {
         let newText = e.currentTarget.value;
-        dispatch(updatePostNewTextAC(newText));
+        updateNewPostText(newText)
+        // dispatch(updatePostNewTextAC(newText));
     }
 
     return (

@@ -1,10 +1,10 @@
 import "./myPost.css"
 import Post from "./post/Post";
-import {PostsDataType} from "../../../../redux/old-store-for-my-redux/my-old-store";
+import {PostsType} from "../../../../redux/profile-reducer/profile-reducer";
 
 
 type MyPostPropsType = {
-    posts: PostsDataType
+    posts: PostsType[]
 }
 
 const MyPost = (props: MyPostPropsType) => {
