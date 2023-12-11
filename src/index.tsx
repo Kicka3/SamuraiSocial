@@ -7,12 +7,10 @@ import {RootReduxStoreType, store} from "./redux/redux-store";
 
 
 export const RerenderEntireTree = (_state: RootReduxStoreType) => {
-    const state = store.getState() as RootReduxStoreType;
 
     ReactDOM.render(
         <BrowserRouter>
             <App
-                // state={state}
                 dispatch={store.dispatch.bind(store)}
                 store={store}
             />

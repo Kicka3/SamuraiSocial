@@ -3,16 +3,17 @@ import Rightbar from "./rightbar/Rightbar";
 import React from "react";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import {MyPostsContainer} from "./myPosts/MyPostsContainer";
-import {initialProfileStateType, MainProfileReducerType} from "../../redux/profile-reducer/profile-reducer";
+import {StoreType} from "../../redux/redux-store";
 
 
 type ProfilePropsType = {
-    profilePage: initialProfileStateType
-    dispatch: (action: MainProfileReducerType) => void
+    store: StoreType
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
-    const {dispatch, profilePage} = props;
+    debugger
+    const {store} = props;
+
 
     return (
         <section className="ProfileWrapper">
@@ -24,10 +25,9 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
 
                     {/*ПОСТЫ В ПРОФИЛЕ*/}
                     <div className="profileRightBottom">
-                        {/*<MyPostsContainer posts={profilePage.postsData}*/}
-                        <MyPostsContainer posts={profilePage.postsData}
-                                          newPostText={profilePage.newPostText}
-                                          dispatch={dispatch}
+
+                        <MyPostsContainer
+                            store={store}
                         />
                         <Rightbar/> {/*/PROFILEINFO/*/}
                     </div>

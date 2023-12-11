@@ -12,12 +12,12 @@ const Share: React.FC<SharePropsType> = (props) => {
     const {addNewPost, updateNewPostText, newPostText} = props
 
     let newPostElement = React.createRef<HTMLInputElement>()
-    const addPostHandler = () => {
+    const onAddPost = () => {
         addNewPost(newPostText)
         // dispatch(addPostAC(newPostText));
     }
 
-    const updatePostNewText = (e: ChangeEvent<HTMLInputElement>) => {
+    const onPostChange = (e: ChangeEvent<HTMLInputElement>) => {
         let newText = e.currentTarget.value;
         updateNewPostText(newText)
         // dispatch(updatePostNewTextAC(newText));
@@ -37,7 +37,7 @@ const Share: React.FC<SharePropsType> = (props) => {
                            placeholder={"What's in your mind ?"}
                            ref={newPostElement}
                            value={newPostText}
-                           onChange={updatePostNewText}
+                           onChange={onPostChange}
                     />
                 </div>
                 <hr className="sharHr"/>
@@ -78,7 +78,7 @@ const Share: React.FC<SharePropsType> = (props) => {
                         // type="submit"
                             onClick={(e) => {
                                 e.preventDefault();
-                                addPostHandler()
+                                onAddPost()
                             }}
                     >Share
                     </button>
