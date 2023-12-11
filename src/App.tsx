@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import Header from "./components/header/Header";
-import {Dialogs} from "./components/dialogs/Dialogs";
 import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
 import {MyPosts} from "./components/profile/myPosts/MyPosts";
 import {StoreType} from "./redux/redux-store";
 import {MainProfileReducerType} from "./redux/profile-reducer/profile-reducer";
+import {DialogsContainer} from "./components/dialogs/DialogsContainer";
 
 type AppPropsType = {
     store: StoreType
@@ -30,7 +30,7 @@ export const App: React.FC<AppPropsType> = (props) => {
 
                     <Route path={'/dialogs'}
                            render={() =>
-                               <Dialogs
+                               <DialogsContainer
                                    store={store}
                                />}
                     />
