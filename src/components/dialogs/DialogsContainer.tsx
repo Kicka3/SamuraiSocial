@@ -5,6 +5,8 @@ import {Dialogs} from "./Dialogs";
 import React from "react";
 import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/messages-reducer/messages-reducer";
 import StoreContext from "../../store-context/StoreContext";
+import {connect} from "react-redux";
+import {StoreType} from "../../redux/redux-store";
 
 
 type DialogsPropsType = {
@@ -43,3 +45,20 @@ export const DialogsContainer: React.FC<DialogsPropsType> = (props) => {
     );
 };
 
+type MapStateToPropsType = {
+    state: StoreType
+}
+const mapStateToProps = (props: MapStateToPropsType) => {
+
+    return {
+        dialogsData: {props.},
+    }
+}
+const mapDispatchToProps = () => {
+    return {
+        updateNewMessageBody: () => {},
+        sendMessage: () => {},
+    }
+}
+
+const SuperDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
