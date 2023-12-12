@@ -5,17 +5,16 @@ import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
 import {MyPosts} from "./components/profile/myPosts/MyPosts";
-import {StoreType} from "./redux/redux-store";
-import {MainProfileReducerType} from "./redux/profile-reducer/profile-reducer";
 import {DialogsContainer} from "./components/dialogs/DialogsContainer";
+import {store} from "./redux/redux-store";
 
 type AppPropsType = {
-    store: StoreType
-    dispatch: (action: MainProfileReducerType) => void
+    // store: StoreType
+    // dispatch: (action: MainProfileReducerType) => void
 }
 
 export const App: React.FC<AppPropsType> = (props) => {
-    const {store} = props;
+    const {} = props;
     console.log('rerender App')
 
     return (
@@ -31,7 +30,7 @@ export const App: React.FC<AppPropsType> = (props) => {
                     <Route path={'/dialogs'}
                            render={() =>
                                <DialogsContainer
-                                   store={store}
+                                   // store={store}
                                />}
                     />
                     <Route path={'/profile'}

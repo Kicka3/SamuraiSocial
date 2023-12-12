@@ -4,16 +4,20 @@ import {BrowserRouter} from "react-router-dom";
 import React from "react";
 import {App} from "./App";
 import {RootReduxStoreType, store} from "./redux/redux-store";
+import StoreContext from "./store-context/StoreContext";
 
 
 export const RerenderEntireTree = (_state: RootReduxStoreType) => {
 
     ReactDOM.render(
         <BrowserRouter>
-            <App
-                dispatch={store.dispatch.bind(store)}
-                store={store}
-            />
+            <StoreContext.Provider value={store}>
+                <App
+                    // dispatch={store.dispatch.bind(store)}  //Передаёт все это через контекст
+                    // store={store}
+                />
+            </StoreContext.Provider>
+
         </BrowserRouter>, document.getElementById('root')
     );
 }

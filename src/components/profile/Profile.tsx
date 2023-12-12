@@ -12,7 +12,7 @@ type ProfilePropsType = {
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
     debugger
-    const {store} = props;
+    const {store} = props;  //юзаю CONTEXT без стора
 
 
     return (
@@ -27,7 +27,7 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
                     <div className="profileRightBottom">
 
                         <MyPostsContainer
-                            store={store}
+                            // store={store}
                         />
                         <Rightbar/> {/*/PROFILEINFO/*/}
                     </div>

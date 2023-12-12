@@ -1,17 +1,19 @@
 import {v1} from "uuid";
+import {StoreType} from "../redux-store";
 
-export type initialMessageStateType = typeof initialState;
+export type InitialMessageStateType = typeof initialState;
 
 export type DialogsType = {
     id: string;
     name: string;
 }
-
-export type MessageType = {
+export type MessagesDataType = {
     id: string;
     ownMessage: boolean;
     message: string;
 }
+
+export type NewMessageBody = string;
 
 const initialState = {
     dialogsData: [
@@ -30,13 +32,13 @@ const initialState = {
         {id: v1(), ownMessage: true, message: 'Hello this is a message from own!!!'},
         {id: v1(), ownMessage: false, message: 'Hello this is a message!'},
         {id: v1(), ownMessage: true, message: 'Hello this is a message from own!!!'},
-    ] as MessageType[],
+    ] as MessagesDataType [],
     newMessageBody: '',
 }
 
 export type MainMessageReducerType = UpdateNewMessageBodyACType | SendMessageACType
 
-const messagesReducer = (state: initialMessageStateType = initialState, action: MainMessageReducerType): initialMessageStateType => {
+const messagesReducer = (state: InitialMessageStateType = initialState, action: MainMessageReducerType): InitialMessageStateType => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-BODY': {
             debugger

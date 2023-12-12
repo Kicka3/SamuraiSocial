@@ -1,44 +1,45 @@
 import './dialogs.css'
 import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
-import {StoreType} from "../../redux/redux-store";
 import {Dialogs} from "./Dialogs";
-import React, {ChangeEvent, KeyboardEvent} from "react";
-import {DialogItem} from "./dialogItem/DialogItem";
-import {Message} from "./message/Message";
+import React from "react";
 import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/messages-reducer/messages-reducer";
+import StoreContext from "../../store-context/StoreContext";
 
 
 type DialogsPropsType = {
-    store: StoreType
+    // store: StoreType
 }
 
 export const DialogsContainer: React.FC<DialogsPropsType> = (props) => {
-    const {store} = props;
-    const state = store.getState();
-
-
-    //SEND MESSAGE:
-    // const PressEnterHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    //     const value = e.key;
-    //     if (value === 'Enter') {
-    //         onSendMessageClickHandler();
-    //     }
-    // }
-    const onSendMessageClickHandler = () => {
-        store.dispatch(sendMessageAC());
-    }
-
-    const newMessageBody = state.message.newMessageBody;
-    const onNewMessageChangeHandler = (body: string) => {
-        store.dispatch(updateNewMessageBodyAC(body));
-    }
-
-
+    // const {store} = props;
     return (
-        <Dialogs sendMessage={onSendMessageClickHandler}
-                 updateNewMessageBody={onNewMessageChangeHandler}
-        />
+
+        <StoreContext.Consumer>
+            {store => {
+                const state = store.getState().message;
+
+                const onSendMessageClickHandler = () => {
+                    store.dispatch(sendMessageAC());
+                }
+
+                const onNewMessageChangeHandler = (body: string) => {
+                    store.dispatch(updateNewMessageBodyAC(body));
+                }
+
+                const dialogsData = state.dialogsData;
+                const messagesData = state.messagesData;
+                const newMessageBody = state.newMessageBody;
+
+                return <Dialogs sendMessage={onSendMessageClickHandler}
+                                updateNewMessageBody={onNewMessageChangeHandler}
+                                dialogsData={dialogsData}
+                                messagesData={messagesData}
+                                newMessageBody={newMessageBody}
+                />
+            }
+            }
+        </StoreContext.Consumer>
     );
 };
 

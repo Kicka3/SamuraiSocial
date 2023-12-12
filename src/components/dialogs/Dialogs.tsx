@@ -5,26 +5,39 @@ import {ChatOnline} from "./chatOnline/ChatOnline";
 import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {DialogItem} from "./dialogItem/DialogItem";
+import {DialogsType, MessagesDataType, NewMessageBody} from "../../redux/messages-reducer/messages-reducer";
 
 
 type DialogsPropsType = {
     updateNewMessageBody: (body: string) => void
     sendMessage: () => void
-    //передать ещё state x3 шт
+    dialogsData: DialogsType[]
+    messagesData: MessagesDataType[]
+    newMessageBody: NewMessageBody
 }
 
 export const Dialogs: React.FC<DialogsPropsType> = (props) => {
-    const {updateNewMessageBody, sendMessage} = props;
+    const {
+        dialogsData,
+        messagesData,
+        newMessageBody,
+        updateNewMessageBody,
+        sendMessage
+    } = props;
 
 
-    const dialogsElements = state.message.dialogsData.map(dialog =>
+    // const dialogsElements = state.message.dialogsData.map(dialog =>
+
+    const dialogsElements = dialogsData.map(dialog =>
         <DialogItem key={dialog.id}
                     name={dialog.name}
                     id={dialog.id}
         />
     );
 
-    const messageElements = state.message.messagesData.map(message =>
+    // const messageElements = state.message.messagesData.map(message =>
+
+    const messageElements = messagesData.map(message =>
         <Message key={message.id}
                  message={message.message}
                  id={message.id}
@@ -42,7 +55,7 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     const onSendMessageClickHandler = () => {
         sendMessage();
     }
-    const newMessageBody = state.message.newMessageBody;
+    // const newMessageBody = state.message.newMessageBody;
 
     const onNewMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.currentTarget.value;
