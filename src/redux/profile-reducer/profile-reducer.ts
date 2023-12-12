@@ -5,7 +5,7 @@ export type MainProfileReducerType = AddPostACType | UpdatePostNewTextACType
 
 
 //Зависимость
-export type initialProfileStateType = typeof initialState
+export type InitialProfileStateType = typeof initialState
 
 export type PostsType = {
     id: string;
@@ -13,6 +13,9 @@ export type PostsType = {
     likesCount: number;
 }
 
+// const initialState:InitialProfileStateType  = {
+//     users: []
+// }
 const initialState = {
     postsData: [
         {id: v1(), message: "Jopa", likesCount: 5},
@@ -21,7 +24,7 @@ const initialState = {
     newPostText: 'Whussap?',
 };
 
-const profileReducer = (state: initialProfileStateType = initialState, action: MainProfileReducerType): initialProfileStateType => {
+const profileReducer = (state: InitialProfileStateType = initialState, action: MainProfileReducerType): InitialProfileStateType => {
     switch (action.type) {
         case 'ADD-POST': {
             let newPost = {

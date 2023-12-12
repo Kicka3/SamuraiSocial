@@ -36,9 +36,9 @@ const initialState = {
     newMessageBody: '',
 }
 
-export type MainMessageReducerType = UpdateNewMessageBodyACType | SendMessageACType
+export type MainMessageActionsType = UpdateNewMessageBodyACType | SendMessageACType
 
-const messagesReducer = (state: InitialMessageStateType = initialState, action: MainMessageReducerType): InitialMessageStateType => {
+const messagesReducer = (state: InitialMessageStateType = initialState, action: MainMessageActionsType): InitialMessageStateType => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-BODY': {
             debugger

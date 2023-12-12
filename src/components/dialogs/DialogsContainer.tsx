@@ -6,7 +6,8 @@ import React from "react";
 import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/messages-reducer/messages-reducer";
 import StoreContext from "../../store-context/StoreContext";
 import {connect} from "react-redux";
-import {StoreType} from "../../redux/redux-store";
+import {RootReduxStoreType, StoreType} from "../../redux/redux-store";
+import {InitialProfileStateType} from "../../redux/profile-reducer/profile-reducer";
 
 
 type DialogsPropsType = {
@@ -46,18 +47,22 @@ export const DialogsContainer: React.FC<DialogsPropsType> = (props) => {
 };
 
 type MapStateToPropsType = {
-    state: StoreType
+    dialogsData: InitialProfileStateType
 }
-const mapStateToProps = (props: MapStateToPropsType) => {
+const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
 
     return {
-        dialogsData: {props.},
+        dialogsData: state.message.dialogsData,
     }
 }
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch: any) => {
     return {
-        updateNewMessageBody: () => {},
-        sendMessage: () => {},
+        updateNewMessageBody: (body: string) => {
+            dispatch(updateNewMessageBodyAC(body));
+        },
+        sendMessage: () => {
+            dispatch(sendMessageAC());
+        },
     }
 }
 
