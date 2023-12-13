@@ -5,14 +5,15 @@ import {
     updatePostNewTextAC
 } from "../../../redux/profile-reducer/profile-reducer";
 import StoreContext from "../../../store-context/StoreContext";
+import {StoreType} from "../../../redux/redux-store";
 
 
 type MyPostsPropsType = {
     // store: StoreType
 }
 
-export const MyPostsContainer: React.FC<MyPostsPropsType> = () => {
-    // const {store} = props;
+export const MyPostsContainer: React.FC<MyPostsPropsType> = (props) => {
+
 
     return <StoreContext.Consumer>
         {store => {

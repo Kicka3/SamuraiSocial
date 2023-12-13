@@ -1,7 +1,5 @@
 import {v1} from "uuid";
-import {StoreType} from "../redux-store";
 
-export type InitialMessageStateType = typeof initialState;
 
 export type DialogsType = {
     id: string;
@@ -12,8 +10,10 @@ export type MessagesDataType = {
     ownMessage: boolean;
     message: string;
 }
-
 export type NewMessageBody = string;
+
+
+export type InitialMessageStateType = typeof initialState;
 
 const initialState = {
     dialogsData: [

@@ -1,11 +1,8 @@
 import {v1} from "uuid";
 
 
-export type MainProfileReducerType = AddPostACType | UpdatePostNewTextACType
+export type MainProfileReducerType = AddPostACType | UpdatePostNewTextACType;
 
-
-//Зависимость
-export type InitialProfileStateType = typeof initialState
 
 export type PostsType = {
     id: string;
@@ -13,16 +10,17 @@ export type PostsType = {
     likesCount: number;
 }
 
-// const initialState:InitialProfileStateType  = {
-//     users: []
-// }
+
+export type InitialProfileStateType = typeof initialState;
+
 const initialState = {
     postsData: [
         {id: v1(), message: "Jopa", likesCount: 5},
         {id: v1(), message: "My little Jopa", likesCount: 25},
     ] as PostsType[],
     newPostText: 'Whussap?',
-};
+}
+
 
 const profileReducer = (state: InitialProfileStateType = initialState, action: MainProfileReducerType): InitialProfileStateType => {
     switch (action.type) {

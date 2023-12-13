@@ -11,8 +11,7 @@ type ProfilePropsType = {
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
-    debugger
-    const {store} = props;  //юзаю CONTEXT без стора
+    // const {store} = props;  //юзаю CONTEXT без стора
 
 
     return (
