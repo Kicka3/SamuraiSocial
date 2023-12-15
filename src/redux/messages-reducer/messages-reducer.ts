@@ -41,13 +41,11 @@ export type MainMessageActionsType = UpdateNewMessageBodyACType | SendMessageACT
 const messagesReducer = (state: InitialMessageStateType = initialState, action: MainMessageActionsType): InitialMessageStateType => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-BODY': {
-            debugger
             return {
                 ...state, newMessageBody: state.newMessageBody = action.payload.body
             }
         }
         case "SEND-MESSAGE": {
-            debugger
             let body = state.newMessageBody;
             state.newMessageBody = '';
             let newMessage = {id: v1(), ownMessage: true, message: body}

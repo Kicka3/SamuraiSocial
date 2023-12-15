@@ -15,6 +15,7 @@ type AppPropsType = {
 
 export const App: React.FC<AppPropsType> = (props) => {
     const {} = props;
+    const state = store.getState();
 
     console.log('rerender App')
 
@@ -30,7 +31,9 @@ export const App: React.FC<AppPropsType> = (props) => {
 
                     <Route path={'/dialogs'}
                            render={() =>
-                               <DialogsContainer/>
+                               <DialogsContainer messagesData={state.message.messagesData}
+                                                 newMessageBody={state.message.newMessageBody}
+                               />
                            }
                     />
                     <Route path={'/profile'}
