@@ -3,7 +3,7 @@ import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {Dialogs} from "./Dialogs";
 import {
-    DialogsType,
+    DialogsType, MessagesDataType,
     sendMessageAC,
     updateNewMessageBodyAC
 } from "../../redux/messages-reducer/messages-reducer";
@@ -12,15 +12,16 @@ import {RootReduxStoreType} from "../../redux/redux-store";
 import {Dispatch} from "redux";
 
 
-export type DialogsPropsType = MapStateToPropsType & MapDispatchToProps;
-
-
 type MapStateToPropsType = {
     dialogsData: DialogsType[]
+    messagesData: MessagesDataType[]
+    newMessageBody: string
 }
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
-        dialogsData: state.message.dialogsData
+        dialogsData: state.message.dialogsData,
+        messagesData: state.message.messagesData,
+        newMessageBody: state.message.newMessageBody,
     }
 }
 
@@ -33,7 +34,6 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
     return {
         updateNewMessageBody: (body: string) => {
             dispatch(updateNewMessageBodyAC(body));
-            console.log('диспатчу: ' + body)
         },
         sendMessage: () => {
             dispatch(sendMessageAC());
@@ -41,4 +41,5 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
     }
 }
 
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+export const DialogsContainer =
+    connect<MapStateToPropsType, MapDispatchToProps, any, RootReduxStoreType>(mapStateToProps, mapDispatchToProps)(Dialogs)

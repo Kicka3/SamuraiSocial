@@ -12,6 +12,9 @@ export const store = createStore(rootReducer);
 
 export type RootReduxStoreType = ReturnType<typeof rootReducer>
 
+
+
+
 export type StoreType = typeof store;
 
 //@ts-ignore

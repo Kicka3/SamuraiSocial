@@ -4,9 +4,9 @@ import Header from "./components/header/Header";
 import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
-import {MyPosts} from "./components/profile/myPosts/MyPosts";
 import {store} from "./redux/redux-store";
 import {DialogsContainer} from "./components/dialogs/DialogsContainer";
+import {MyPostsContainer} from "./components/profile/myPosts/MyPostsContainer";
 
 type AppPropsType = {
     // store: StoreType
@@ -31,20 +31,18 @@ export const App: React.FC<AppPropsType> = (props) => {
 
                     <Route path={'/dialogs'}
                            render={() =>
-                               <DialogsContainer messagesData={state.message.messagesData}
-                                                 newMessageBody={state.message.newMessageBody}
+                               <DialogsContainer
                                />
                            }
                     />
                     <Route path={'/profile'}
                            render={() =>
-                               <Profile
-                                   store={store}
-                               />}
+                               <Profile/>
+                    }
                     />
 
 
-                    <Route path={'/myposts'} component={MyPosts}/>
+                    <Route path={'/myposts'} component={MyPostsContainer}/>
 
                     {/*<MyPost/>*/}
                     {/*<Post titlePost={'lolo'} likesCount={21}/>*/}

@@ -54,10 +54,9 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     }
 
     const onNewMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        debugger
         let body = e.currentTarget.value;
         updateNewMessageBody(body)
-        console.log('ввёл: ' + body)
+        // console.log('ввёл: ' + body)
     }
 
 
@@ -70,12 +69,14 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                             {messageElements}
                         </div>
                         <div className="chatMessagesBottom">
+
                                 <textarea className="chatMessageInput"
                                           placeholder={"Say hello!"}
                                           value={newMessageBody}
                                           onChange={onNewMessageChangeHandler}
                                           onKeyPress={PressEnterHandler}
                                 ></textarea>
+
                             <button className="chatSubmitBtn"
                                     onClick={onSendMessageClickHandler}
                             >Send

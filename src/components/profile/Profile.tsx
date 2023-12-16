@@ -3,16 +3,13 @@ import Rightbar from "./rightbar/Rightbar";
 import React from "react";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import {MyPostsContainer} from "./myPosts/MyPostsContainer";
-import {StoreType} from "../../redux/redux-store";
 
 
 type ProfilePropsType = {
-    store: StoreType
+
 }
 
-const Profile: React.FC<ProfilePropsType> = (props) => {
-    // const {store} = props;  //юзаю CONTEXT без стора
-
+ const Profile: React.FC<ProfilePropsType> = () => {
 
     return (
         <section className="ProfileWrapper">
@@ -25,9 +22,7 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
                     {/*ПОСТЫ В ПРОФИЛЕ*/}
                     <div className="profileRightBottom">
 
-                        <MyPostsContainer
-                            // store={store}
-                        />
+                        <MyPostsContainer/>
                         <Rightbar/> {/*/PROFILEINFO/*/}
                     </div>
 

@@ -1,4 +1,3 @@
-import {MyPosts} from "./MyPosts";
 import {
     addPostAC,
     updatePostNewTextAC
@@ -6,6 +5,7 @@ import {
 import {connect} from "react-redux";
 import {RootReduxStoreType} from "../../../redux/redux-store";
 import {Dispatch} from "redux";
+import {MyPosts} from "./MyPosts";
 
 const mapStateToProps = (state: RootReduxStoreType) => {
     return {
@@ -27,4 +27,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 
-export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
