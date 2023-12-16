@@ -31,6 +31,19 @@
     cursor: pointer;
     background-color: teal;
     color: white;
+    letter-spacing: 2px;
+
+    transition: 8ms;
+}
+
+.chatSubmitBtn:hover {
+    background-color: #0f5858;
+    transform: scale(0.9);
+    letter-spacing: 1px;
+}
+
+.chatSubmitBtn:active {
+    transform: rotateY(5deg);
 }
 
 .dialogs {

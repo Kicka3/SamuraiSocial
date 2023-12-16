@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import './dialogs.css'
 import {Message} from "./message/Message";
 import {ChatOnline} from "./chatOnline/ChatOnline";
@@ -25,9 +25,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
         sendMessage
     } = props;
 
-
-    // const dialogsElements = state.message.dialogsData.map(dialog =>
-
     const dialogsElements = dialogsData.map(dialog =>
         <DialogItem key={dialog.id}
                     name={dialog.name}
@@ -35,7 +32,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
         />
     );
 
-    // const messageElements = state.message.messagesData.map(message =>
 
     const messageElements = messagesData.map(message =>
         <Message key={message.id}
@@ -53,13 +49,15 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
         }
     }
     const onSendMessageClickHandler = () => {
+        console.log('SEND')
         sendMessage();
     }
-    // const newMessageBody = state.message.newMessageBody;
 
     const onNewMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        debugger
         let body = e.currentTarget.value;
         updateNewMessageBody(body)
+        console.log('ввёл: ' + body)
     }
 
 
