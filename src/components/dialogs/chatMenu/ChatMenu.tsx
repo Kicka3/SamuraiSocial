@@ -1,6 +1,5 @@
 import React from 'react';
 import './chatMenu.css'
-import {DialogItem} from "../dialogItem/DialogItem";
 
 export const ChatMenu = () => {
     return (

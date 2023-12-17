@@ -3,7 +3,7 @@ import {v1} from "uuid";
 
 export type UsersType = {
     id: string
-    // photoURL: string
+    photoUrl: string
     followed: boolean
     fullName: string
     status: string
@@ -19,21 +19,27 @@ const initialState = {
     // usersPage: []
     users: [
         {
-            id: v1(), followed: false, fullName: 'Kirych', status: 'Ama lolos',
+            id: v1(),
+            photoUrl: '../../public/assets/person/person0.jpeg',
+            followed: false, fullName: 'Kirych', status: 'Ama lolos and we going to job, again again again again again',
             location: {
                 city: 'EKB',
                 country: 'Russia',
             }
         },
         {
-            id: v1(), followed: true, fullName: 'Dianych', status: 'I am on elephant',
+            id: v1(),
+            photoUrl: '../../public/assets/person/person0.jpeg',
+            followed: true, fullName: 'Dianych', status: 'I am on elephant yaaay!',
             location: {
                 city: 'EKB',
                 country: 'Russia',
             }
         },
         {
-            id: v1(), followed: false, fullName: 'Evgeny', status: 'Lived in colhozee',
+            id: v1(),
+            photoUrl: '../../public/assets/person/person0.jpeg',
+            followed: false, fullName: 'Evgeny', status: 'Lived in colhozee',
             location: {
                 city: 'Moscow',
                 country: 'Russia',

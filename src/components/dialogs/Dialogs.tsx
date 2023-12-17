@@ -6,6 +6,7 @@ import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {DialogItem} from "./dialogItem/DialogItem";
 import {DialogsType, MessagesDataType, NewMessageBody} from "../../redux/messages-reducer/messages-reducer";
+import {ChatMenu} from "./chatMenu/ChatMenu";
 
 
 type DialogsPropsType = {

@@ -1,0 +1,150 @@
+
+.usersMenu {
+    flex: 3.5;
+}
+
+.usersMenuWrapper {
+    padding: 10px;
+    height: 100%;
+}
+
+.usersMenuInput {
+    width: 90%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+.usersMenuInput:focus {
+    outline: none;
+}
+
+.usersTitle {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 15px;
+    color: #555;
+}
+
+.usersPage {
+
+}
+
+.usersTitleWrapper {
+    margin: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #555;
+}
+
+.usersTitle {
+    margin-bottom: 20px;
+}
+
+
+.usersListWrapper {
+    padding: 0 20px 10px 20px;
+}
+
+.users_wrapper {
+    margin-bottom: 12px;
+    min-height: 90px;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 17px -8px rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    overflow: hidden;
+}
+
+.users_list {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+
+
+}
+
+.users_img_Container {
+    position: relative;
+    margin-right: 10px;
+}
+
+.user_img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.user_online_badge {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: limegreen;
+    position: absolute;
+    top: 72px;
+    right: 9px;
+}
+
+.user_btn {
+    cursor: pointer;
+    margin-left: 6px;
+
+    border: none;
+    border-radius: 5px;
+    background-color: #7B68EE;
+    font-weight: 500;
+    margin-right: 20px;
+    color: white;
+    width: 70px;
+    height: 22px;
+    transition: 50ms;
+}
+
+.user_btn:hover {
+    background-color: #5a42f1;
+}
+
+.user_info {
+    margin-top: 8px;
+}
+
+.user_info__item {
+    margin-bottom: 10px;
+}
+
+.user_info_value {
+    font-weight: 300;
+}
+
+.user_info_value__name {
+    color: rgb(101, 94, 179);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.user_info__status {
+    color: grey;
+    font-style: italic;
+}
+
+.user_info_key__city {
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
