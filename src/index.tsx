@@ -5,7 +5,6 @@ import React from "react";
 import {App} from "./App";
 import {store} from "./redux/redux-store";
 import {Provider} from "react-redux";
-// export const RerenderEntireTree = (_state: RootReduxStoreType) => {
 
 
 ReactDOM.render(
@@ -17,10 +16,3 @@ ReactDOM.render(
     </BrowserRouter>, document.getElementById('root')
 );
 
-
-// }
-// RerenderEntireTree(store.getState());
-// store.subscribe(() => {
-//     const state = store.getState()
-//     RerenderEntireTree(state);
-// });

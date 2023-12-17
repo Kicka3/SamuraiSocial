@@ -8,35 +8,35 @@ import React from "react";
 //     {id: 5, name: 'Pank'},
 // ]
 // let messagesData = [
-//     {id: 1, ownMessage: false, message: 'Hello this is a message!'},
-//     {id: 2, ownMessage: true, message: 'Hello this is a message from own!!'},
-//     {id: 3, ownMessage: false, message: 'Hello this is a message!'},
-//     {id: 4, ownMessage: true, message: 'Hello this is a message from own!!'},
-//     {id: 5, ownMessage: false, message: 'Hello this is a message!'},
-//     {id: 6, ownMessage: true, message: 'Hello this is a message from own!!!'},
-//     {id: 7, ownMessage: false, message: 'Hello this is a message!'},
-//     {id: 8, ownMessage: true, message: 'Hello this is a message from own!!!'},
+//     {id: 1, ownMessage: false, messagePage: 'Hello this is a messagePage!'},
+//     {id: 2, ownMessage: true, messagePage: 'Hello this is a messagePage from own!!'},
+//     {id: 3, ownMessage: false, messagePage: 'Hello this is a messagePage!'},
+//     {id: 4, ownMessage: true, messagePage: 'Hello this is a messagePage from own!!'},
+//     {id: 5, ownMessage: false, messagePage: 'Hello this is a messagePage!'},
+//     {id: 6, ownMessage: true, messagePage: 'Hello this is a messagePage from own!!!'},
+//     {id: 7, ownMessage: false, messagePage: 'Hello this is a messagePage!'},
+//     {id: 8, ownMessage: true, messagePage: 'Hello this is a messagePage from own!!!'},
 // ]
 //From Profile
 // let postsData = [
-//     {id: 1, message: "Jopa", likesCount: 5},
-//     {id: 2, message: "My little jopa", likesCount: 25},
+//     {id: 1, messagePage: "Jopa", likesCount: 5},
+//     {id: 2, messagePage: "My little jopa", likesCount: 25},
 // ]
 // import {v1} from "uuid";
 // import messagesReducer, {SendMessageACType, UpdateNewMessageBodyACType} from "../messages-reducer/messages-reducer";
-// import profileReducer, {AddPostACType, UpdatePostNewTextACType} from "../profile-reducer/profile-reducer";
+// import usersReducer, {AddPostACType, UpdatePostNewTextACType} from "../profilePage-reducer/profilePage-reducer";
 // import sideBarReducer from "../sideBar-reducer/side-bar-reducer";
 //
 //
 // export type PostsType = {
 //     id: string;
-//     message: string;
+//     messagePage: string;
 //     likesCount: number;
 // }
 // export type MessageType = {
 //     id: string;
 //     ownMessage: boolean;
-//     message: string;
+//     messagePage: string;
 // }
 // export type DialogsType = {
 //     id: string;
@@ -85,8 +85,8 @@ import React from "react";
 //     _state: {
 //         profilePage: {
 //             postsData: [
-//                 {id: v1(), message: "Jopa", likesCount: 5},
-//                 {id: v1(), message: "My little Jopa", likesCount: 25},
+//                 {id: v1(), messagePage: "Jopa", likesCount: 5},
+//                 {id: v1(), messagePage: "My little Jopa", likesCount: 25},
 //             ],
 //             newPostText: 'Whussap?',
 //         },
@@ -99,14 +99,14 @@ import React from "react";
 //                 {id: v1(), name: 'Pank'},
 //             ],
 //             messagesData: [
-//                 {id: v1(), ownMessage: false, message: 'Hello this is a message!'},
-//                 {id: v1(), ownMessage: true, message: 'Hello this is a message from own!!'},
-//                 {id: v1(), ownMessage: false, message: 'Hello this is a message!'},
-//                 {id: v1(), ownMessage: true, message: 'Hello this is a message from own!!'},
-//                 {id: v1(), ownMessage: false, message: 'Hello this is a message!'},
-//                 {id: v1(), ownMessage: true, message: 'Hello this is a message from own!!!'},
-//                 {id: v1(), ownMessage: false, message: 'Hello this is a message!'},
-//                 {id: v1(), ownMessage: true, message: 'Hello this is a message from own!!!'},
+//                 {id: v1(), ownMessage: false, messagePage: 'Hello this is a messagePage!'},
+//                 {id: v1(), ownMessage: true, messagePage: 'Hello this is a messagePage from own!!'},
+//                 {id: v1(), ownMessage: false, messagePage: 'Hello this is a messagePage!'},
+//                 {id: v1(), ownMessage: true, messagePage: 'Hello this is a messagePage from own!!'},
+//                 {id: v1(), ownMessage: false, messagePage: 'Hello this is a messagePage!'},
+//                 {id: v1(), ownMessage: true, messagePage: 'Hello this is a messagePage from own!!!'},
+//                 {id: v1(), ownMessage: false, messagePage: 'Hello this is a messagePage!'},
+//                 {id: v1(), ownMessage: true, messagePage: 'Hello this is a messagePage from own!!!'},
 //             ],
 //             newMessageBody: '',
 //         },
@@ -124,7 +124,7 @@ import React from "react";
 //
 //     dispatch(action) {
 //
-//         this._state.profilePage = profileReducer(this._state.profilePage, action);
+//         this._state.profilePage = usersReducer(this._state.profilePage, action);
 //         this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
 //         this._state.sideBarPage = sideBarReducer(this._state.sideBarPage, action);
 //

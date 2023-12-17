@@ -12,7 +12,7 @@ export const Message: React.FC<MessagePropsType> = (props) => {
     const {id, ownMessage, message} = props
     return (
         // У него есть активный класс onwMessage
-        // <div className={ownMessage ? "message onwMessage" : "message"}>
+        // <div className={ownMessage ? "messagePage onwMessage" : "messagePage"}>
         <div className={ownMessage ? "message ownMessage" : "message"}>
             <div className="messageTop">
                 <img className="messageImg"

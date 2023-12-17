@@ -19,9 +19,9 @@ type MapStateToPropsType = {
 }
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
-        dialogsData: state.message.dialogsData,
-        messagesData: state.message.messagesData,
-        newMessageBody: state.message.newMessageBody,
+        dialogsData: state.messagePage.dialogsData,
+        messagesData: state.messagePage.messagesData,
+        newMessageBody: state.messagePage.newMessageBody,
     }
 }
 

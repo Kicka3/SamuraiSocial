@@ -3,28 +3,28 @@ import MyPost from "./myPost/MyPost";
 import Share from "./share/Share";
 import React from "react";
 import {PostsType} from "../../../redux/profile-reducer/profile-reducer";
+import {PostsPropsType} from "./MyPostsContainer";
 
 
-type MyPostsPropsType = {
-    posts: PostsType[]
-    newPostText: string
-    addNewPost: (newPostText: string) => void
-    updateNewPostText: (newText: string) => void
-    // dispatch: (action: MainReducerType) => void
-}
+// type MyPostsPropsType = {
+//     posts: PostsType[]
+//     newPostText: string
+//     addNewPost: (newPostText: string) => void
+//     updateNewPostText: (newText: string) => void
+// }
 
-export const MyPosts: React.FC<MyPostsPropsType> = (props) => {
-    const {posts, newPostText, addNewPost, updateNewPostText} = props;
+export const MyPosts = (props: PostsPropsType) => {
+    // const {posts, addNewPost, updateNewPostText} = props;
 
 
     return (
         <section className="feed">
             <div className="feedWrapper">
-                <Share addNewPost={addNewPost}
-                       newPostText={newPostText}
-                       updateNewPostText={updateNewPostText}
+                <Share addNewPost={props.addNewPost}
+                       newPostText={props.posts.newPostText}
+                       updateNewPostText={props.updateNewPostText}
                 />
-                <MyPost posts={posts}
+                <MyPost posts={props.posts.postsData}
 
                 />
             </div>

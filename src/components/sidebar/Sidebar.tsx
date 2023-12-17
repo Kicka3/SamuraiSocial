@@ -31,13 +31,13 @@ export default function Sidebar() {
 
                     <li className="sidebarListItem">
                         {/*<ForumIcon className="sidebarIcon" />*/}
-                        <NavLink to={'/myposts'} className="sidebarListItemText">News</NavLink>
+                        <NavLink to={'/posts'} className="sidebarListItemText">News</NavLink>
                     </li>
 
-                    {/*<li className="sidebarListItem">*/}
-                    {/*   /!*<GroupsIcon className="sidebarIcon" />*!/*/}
-                    {/*   <a href={'/friends'} className="sidebarListItemText">Friends</a>*/}
-                    {/*</li>*/}
+                    <li className="sidebarListItem">
+                       {/*<GroupsIcon className="sidebarIcon" />*/}
+                       <a href={'/users'} className="XXXX">Find friends</a>
+                    </li>
 
                     <li className="sidebarListItem">
                         {/*<BookmarksIcon className="sidebarIcon" />*/}

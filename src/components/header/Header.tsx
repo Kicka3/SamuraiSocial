@@ -47,7 +47,7 @@ export default function Header() {
                   <span className="headerIconBadge">1</span>
                </div>
             </div>
-            {/*<Link to={`/profile/${user.username}`}>*/}
+            {/*<Link to={`/profilePage/${user.username}`}>*/}
                <img src={""}/>
             {/*</Link>*/}
          </div>

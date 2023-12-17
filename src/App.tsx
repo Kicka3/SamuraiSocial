@@ -4,18 +4,13 @@ import Header from "./components/header/Header";
 import Profile from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
-import {store} from "./redux/redux-store";
 import {DialogsContainer} from "./components/dialogs/DialogsContainer";
 import {MyPostsContainer} from "./components/profile/myPosts/MyPostsContainer";
+import UsersContainer from "./components/users/UsersContainer";
 
-type AppPropsType = {
-    // store: StoreType
-    // dispatch: (action: MainProfileReducerType) => void
-}
+type AppPropsType = {}
 
-export const App: React.FC<AppPropsType> = (props) => {
-    const {} = props;
-    const state = store.getState();
+export const App: React.FC<AppPropsType> = () => {
 
     console.log('rerender App')
 
@@ -27,27 +22,23 @@ export const App: React.FC<AppPropsType> = (props) => {
 
             <div className="mainContentWrapper">
                 <Sidebar/>
-                <div>
 
+                <div>
                     <Route path={'/dialogs'}
                            render={() =>
-                               <DialogsContainer
-                               />
-                           }
+                               <DialogsContainer/>}
                     />
                     <Route path={'/profile'}
                            render={() =>
                                <Profile/>
-                    }
-                    />
+                           }/>
 
+                    <Route path={'/users'}
+                           render={() =>
+                               <UsersContainer/>
+                           }/>
 
-                    <Route path={'/myposts'} component={MyPostsContainer}/>
-
-                    {/*<MyPost/>*/}
-                    {/*<Post titlePost={'lolo'} likesCount={21}/>*/}
-                    {/*<Profile/>*/}
-                    {/*<DialogItem/>*/}
+                    <Route path={'/posts'} component={MyPostsContainer}/>
                 </div>
             </div>
         </div>
