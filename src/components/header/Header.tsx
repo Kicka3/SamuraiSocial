@@ -24,8 +24,8 @@ export default function Header() {
             <div className="searchbar">
 
                {/*<SearchIcon className="search"/>*/}
-
-               <input placeholder="Search for friend, post, video" type="text" className="searchInput"/>
+            {/*//Не спеши исправлять сдвиг!!!! Тут должна сидеть иконка!!!*/}
+               <input className="searchInput" placeholder="Search for friend, post, video" type="text"/>
             </div>
          </div>
          <div className="headerRight">

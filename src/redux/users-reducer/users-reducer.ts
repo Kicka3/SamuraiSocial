@@ -15,37 +15,11 @@ type LocationUsersType = {
 }
 
 export type InitialUsersStateType = typeof initialState;
+
+
+
 const initialState = {
-    // users: []
-    users: [
-        {
-            id: v1(),
-            photoUrl: '../../public/assets/person/person0.jpeg',
-            followed: false, fullName: 'Kirych', status: 'Ama lolos and we going to job, again again again again again',
-            location: {
-                city: 'EKB',
-                country: 'Russia',
-            }
-        },
-        {
-            id: v1(),
-            photoUrl: '../../public/assets/person/person0.jpeg',
-            followed: true, fullName: 'Dianych', status: 'I am on elephant yaaay!',
-            location: {
-                city: 'EKB',
-                country: 'Russia',
-            }
-        },
-        {
-            id: v1(),
-            photoUrl: '../../public/assets/person/person0.jpeg',
-            followed: false, fullName: 'Evgeny', status: 'Lived in colhozee',
-            location: {
-                city: 'Moscow',
-                country: 'Russia',
-            }
-        },
-    ]
+    users: [] as UsersType[]
 }
 
 export type MainProfileReducerType = FollowAC | UnFollowAC | SetUsersAC
@@ -63,7 +37,7 @@ export const usersReducer = (state: InitialUsersStateType = initialState, action
         }
         case "SET-USERS": {
             return {
-                ...state, users: [...state.users, action.payload.users]
+                ...state, users: [...state.users, ...action.payload.users]
             }
         }
         default:
@@ -96,17 +70,18 @@ export const setUsersAC = (users: UsersType[]) => {
     return {
         type: 'SET-USERS',
         payload: {
-            users: {
-                id: v1(),
-                photoUrl: '',
-                followed: false,
-                fullName: 'XXXX',
-                status: 'XXXXXX',
-                location: {
-                    city: 'XXXX',
-                    country: 'XXXX',
-                }
-            }
+            users,
+            // users: {
+            //     id: v1(),
+            //     photoUrl: '',
+            //     followed: false,
+            //     fullName: 'XXXX',
+            //     status: 'XXXXXX',
+            //     location: {
+            //         city: 'XXXX',
+            //         country: 'XXXX',
+            //     }
+            // }
 
         }
     } as const
