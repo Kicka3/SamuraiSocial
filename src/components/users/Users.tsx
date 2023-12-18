@@ -3,10 +3,44 @@ import {UsersPropsType} from "./UsersContainer";
 import AvatarForChatOnline from "../../public/assets/person/person0.jpeg";
 import "./usersMenu.css"
 import {UsersPageTop} from "./UsersPageTop";
+import {v1} from "uuid";
 
 
 export const Users = (props: UsersPropsType) => {
 
+    if (props.users.users.length === 0) {
+        props.setUsers([
+            {
+                id: v1(),
+                photoUrl: '../../public/assets/person/person0.jpeg',
+                followed: false, fullName: 'Kirych', status: 'Ama lolos and we going to job, again again again again again',
+                location: {
+                    city: 'EKB',
+                    country: 'Russia',
+                }
+            },
+            {
+                id: v1(),
+                photoUrl: '../../public/assets/person/person0.jpeg',
+                followed: true, fullName: 'Dianych', status: 'I am on elephant yaaay!',
+                location: {
+                    city: 'EKB',
+                    country: 'Russia',
+                }
+            },
+            {
+                id: v1(),
+                photoUrl: '../../public/assets/person/person0.jpeg',
+                followed: false, fullName: 'Evgeny', status: 'Lived in colhozee',
+                location: {
+                    city: 'Moscow',
+                    country: 'Russia',
+                }
+            },
+        ]);
+    }
+
+//Когда фолловишься, должена появляться зеленая галочка на аватарке, а если отписываешься, то красный крестик
     return (
         <>
             <UsersPageTop/>
@@ -62,12 +96,10 @@ export const Users = (props: UsersPropsType) => {
 
                                 </div>
 
-
-
                             </div>
                             {el.followed
                                 ? <button onClick={() => {
-                                    props.follow(el.id)
+                                    props.unFollow(el.id)
                                 }} className={'user_btn'}>follow
                                 </button>
                                 : <button onClick={() => {

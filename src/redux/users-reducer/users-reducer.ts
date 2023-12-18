@@ -16,7 +16,7 @@ type LocationUsersType = {
 
 export type InitialUsersStateType = typeof initialState;
 const initialState = {
-    // usersPage: []
+    // users: []
     users: [
         {
             id: v1(),
@@ -63,7 +63,7 @@ export const usersReducer = (state: InitialUsersStateType = initialState, action
         }
         case "SET-USERS": {
             return {
-                ...state, users: [...state.users, ...action.payload.users]
+                ...state, users: [...state.users, action.payload.users]
             }
         }
         default:
@@ -96,7 +96,18 @@ export const setUsersAC = (users: UsersType[]) => {
     return {
         type: 'SET-USERS',
         payload: {
-            users
+            users: {
+                id: v1(),
+                photoUrl: '',
+                followed: false,
+                fullName: 'XXXX',
+                status: 'XXXXXX',
+                location: {
+                    city: 'XXXX',
+                    country: 'XXXX',
+                }
+            }
+
         }
     } as const
 }
