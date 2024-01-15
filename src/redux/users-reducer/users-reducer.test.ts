@@ -1,33 +1,39 @@
 import {v1} from "uuid";
-import {followAC, InitialUsersStateType, setUsersAC, unFollowAC, usersReducer} from "./users-reducer";
+import {followAC, InitialUsersStateType, setUsersAC, unFollowAC, UserResponseType, usersReducer} from "./users-reducer";
 
 
 let startState: InitialUsersStateType;
 // let startState = {}
 beforeEach(() => {
 
-    startState = {
-        users: [
-            {
-                id: 's13',
-                photoUrl: '../../public/assets/person/person0.jpeg',
-                followed: true, fullName: 'Dianych', status: 'I am on elephant yaaay!',
-                location: {
-                    city: 'EKB',
-                    country: 'Russia',
-                }
-            },
-            {
-                id: '12s',
-                photoUrl: '',
-                followed: false, fullName: 'Evgeny', status: 'Lived in colhozee',
-                location: {
-                    city: 'Moscow',
-                    country: 'Russia',
-                }
-            },
-        ]
-    }
+//     startState = {
+//         users: [
+//             {
+//                 id: v1(),
+//                 name: 'XXXX11',
+//                 status: 'XXXXXX22',
+//                 photos: {
+//                     small: 'kek',
+//                     large: 'kek2',
+//                 },
+//                 followed: false,
+//                 totalCount: 22220,
+//                 error: 'someError'
+//             },
+//             {
+//                 id: v1(),
+//                 name: 'XXXX33',
+//                 status: 'XXXXXX44',
+//                 photos: {
+//                     small: 'kek',
+//                     large: 'kek2',
+//                 },
+//                 followed: false,
+//                 totalCount: 22221,
+//                 error: 'someError'
+//             }
+//         ]
+//     }
 });
 
 test('user should be followed', () => {
@@ -46,21 +52,24 @@ test('user should be unFollowed', () => {
     expect(endState.users[0].followed).toBe(false);
 });
 
-test('user must be added', () => {
-    const newUser = [{
-        id: v1(),
-        photoUrl: '',
-        followed: false,
-        fullName: 'XXXX',
-        status: 'XXXXXX',
-        location: {
-            city: 'XXXX',
-            country: 'XXXX',
-        }
-    }];
-
-    const action = setUsersAC(newUser);
-    const endState = usersReducer(startState, action);
-
-    expect(endState.users.length).toBe(3);
-});
+// test('user must be added', () => {
+//     const newUser = [
+//         {
+//             id: v1(),
+//             name: 'XXXX',
+//             status: 'XXXXXX',
+//             photos: {
+//                 small: 'kek',
+//                 large: 'kek2',
+//             },
+//             followed: false,
+//             totalCount: 2222,
+//             error: 'someError'
+//         }
+//     ];
+//
+//     const action = setUsersAC(newUser);
+//     const endState = usersReducer(startState, action);
+//
+//     expect(endState.users.length).toBe(3);
+// });

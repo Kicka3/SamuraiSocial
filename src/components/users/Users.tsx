@@ -1,43 +1,48 @@
 import React from 'react';
 import {UsersPropsType} from "./UsersContainer";
-import AvatarForChatOnline from "../../public/assets/person/person0.jpeg";
 import "./usersMenu.css"
 import {UsersPageTop} from "./UsersPageTop";
-import {v1} from "uuid";
-
+import axios from "axios";
+import noUserAvatar from '../../assets/images/avatars/noAvatar.jpeg'
+// props.setUsers([
+// {
+//     id: v1(),
+//     photos: '../../public/assets/person/person0.jpeg',
+//     followed: false, name: 'Kirych', status: 'Ama lolos and we going to job, again again again again again',
+//     location: {
+//         city: 'EKB',
+//         country: 'Russia',
+//     }
+// },
+// {
+//     id: v1(),
+//     photos: '../../public/assets/person/person0.jpeg',
+//     followed: true, name: 'Dianych', status: 'I am on elephant yaaay!',
+//     location: {
+//         city: 'EKB',
+//         country: 'Russia',
+//     }
+// },
+// {
+//     id: v1(),
+//     photos: '../../public/assets/person/person0.jpeg',
+//     followed: false, name: 'Evgeny', status: 'Lived in colhozee',
+//     location: {
+//         city: 'Moscow',
+//         country: 'Russia',
+//     }
+// },
+// ]);
 
 export const Users = (props: UsersPropsType) => {
 
     if (props.users.users.length === 0) {
-        props.setUsers([
-            {
-                id: v1(),
-                photoUrl: '../../public/assets/person/person0.jpeg',
-                followed: false, fullName: 'Kirych', status: 'Ama lolos and we going to job, again again again again again',
-                location: {
-                    city: 'EKB',
-                    country: 'Russia',
-                }
-            },
-            {
-                id: v1(),
-                photoUrl: '../../public/assets/person/person0.jpeg',
-                followed: true, fullName: 'Dianych', status: 'I am on elephant yaaay!',
-                location: {
-                    city: 'EKB',
-                    country: 'Russia',
-                }
-            },
-            {
-                id: v1(),
-                photoUrl: '../../public/assets/person/person0.jpeg',
-                followed: false, fullName: 'Evgeny', status: 'Lived in colhozee',
-                location: {
-                    city: 'Moscow',
-                    country: 'Russia',
-                }
-            },
-        ]);
+        const getUsers = () => {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users')
+                .then((res) => {
+                    props.setUsers(res.data.items)
+                });
+        }
     }
 
 //Когда фолловишься, должена появляться зеленая галочка на аватарке, а если отписываешься, то красный крестик
@@ -58,7 +63,8 @@ export const Users = (props: UsersPropsType) => {
                             <div className="users_list">
                                 <div className="users_img_Container">
                                     <img className="user_img"
-                                         src={AvatarForChatOnline}
+                                        // src={AvatarForChatOnline}
+                                         src={el.photos.small !== null ? el.photos.small : noUserAvatar}
                                          alt={"avatarUsersInChat"}/>
                                     <div className="user_online_badge"></div>
                                 </div>
@@ -66,7 +72,7 @@ export const Users = (props: UsersPropsType) => {
                                 <div className="user_info">
                                     <div className="user_info__item">
                                              <span className="user_info_value">
-                                                <span className={'user_info_value__name'}>{el.fullName}</span>
+                                                <span className={'user_info_value__name'}>{el.name}</span>
                                             </span>
                                     </div>
 
@@ -75,7 +81,7 @@ export const Users = (props: UsersPropsType) => {
                                             <span className="user_info_key__city">City: </span>
                                         </span>
                                         <span className="user_info_value">
-                                            <span className="user_info_key__city">{el.location.city}</span>
+                                            <span className="user_info_key__city">{'el.location.city'}</span>
                                         </span>
                                     </div>
 
@@ -84,7 +90,7 @@ export const Users = (props: UsersPropsType) => {
                                             <span className="user_info_key__city">From:  </span>
                                         </span>
                                         <span className="rightbar_info_value">
-                                           <span className="user_info_key__city">{el.location.country}</span>
+                                           <span className="user_info_key__city">{'el.location.country'}</span>
                                     </span>
                                     </div>
 

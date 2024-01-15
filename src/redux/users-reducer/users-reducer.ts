@@ -1,11 +1,27 @@
 import {v1} from "uuid";
 
+type PhotosUserType = {
+    small: 'kek',
+    large: 'kek2',
+}
+export type UserResponseType = {
+    id: number,
+    name: string,
+    status: string,
+    photos: PhotosUserType,
+    followed: boolean,
+    totalCount: number,
+    error: string,
+}
+
+
+
 
 export type UsersType = {
     id: string
-    photoUrl: string
+    photos: PhotosUserType
     followed: boolean
-    fullName: string
+    name: string
     status: string
     location: LocationUsersType
 }
@@ -15,7 +31,6 @@ type LocationUsersType = {
 }
 
 export type InitialUsersStateType = typeof initialState;
-
 
 
 const initialState = {
@@ -73,7 +88,7 @@ export const setUsersAC = (users: UsersType[]) => {
             users,
             // users: {
             //     id: v1(),
-            //     photoUrl: '',
+            //     photos: '',
             //     followed: false,
             //     fullName: 'XXXX',
             //     status: 'XXXXXX',
