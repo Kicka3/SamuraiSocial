@@ -20,7 +20,7 @@ class UsersС extends React.Component<UsersPropsType> {
     }
 
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then((res) => {
                 this.props.setUsers(res.data.items)
             });
