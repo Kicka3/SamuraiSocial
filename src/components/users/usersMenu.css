@@ -135,7 +135,11 @@
     font-size: 14px;
 }
 
+/*----------PAGINATION-----------*/
 
+.selectedPage {
+    font-weight: bold;
+}
 
 
 

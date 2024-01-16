@@ -1,20 +1,29 @@
 import React from 'react';
-import {UsersPropsType} from "./UsersContainer";
 import "./usersMenu.css"
 import {UsersPageTop} from "./UsersPageTop";
 import axios from "axios";
 import noUserAvatar from '../../assets/images/avatars/noAvatar.jpeg'
+import {UsersType} from "../../redux/users-reducer/users-reducer";
+import {UsersPropsType} from "./UsersContainer";
 
-class UsersС extends React.Component {
-    constructor(props) {
+interface UsersCProps {
+    follow: (userId: string) => void
+    unFollow: (userId: string) => void
+    setUsers: (users: UsersType[]) => void
+    children?: React.ReactNode;
+}
+
+class UsersС extends React.Component<UsersPropsType> {
+
+    constructor(props: UsersPropsType) {
         super(props);
+    }
 
-        const getUsers = () => {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users')
-                .then((res) => {
-                    props.setUsers(res.data.items)
-                });
-        }
+    componentDidMount() {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then((res) => {
+                this.props.setUsers(res.data.items)
+            });
     }
 
     render() {
@@ -27,6 +36,13 @@ class UsersС extends React.Component {
                         <div className={"usersTitle"}>Users:</div>
                     </div>
 
+                    <div>
+                        <span>1</span>
+                        <span className={'selectedPage'}>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                    </div>
 
                     <div className={'usersListWrapper'}>
                         {this.props.users.users.map(el => (

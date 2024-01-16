@@ -1,30 +1,28 @@
-import {v1} from "uuid";
 
 type PhotosUserType = {
     small: 'kek',
     large: 'kek2',
 }
-export type UserResponseType = {
-    id: number,
+export type UsersType = {
+    id: string,
     name: string,
     status: string,
     photos: PhotosUserType,
     followed: boolean,
     totalCount: number,
     error: string,
+
+    // location: LocationUsersType
 }
 
-
-
-
-export type UsersType = {
-    id: string
-    photos: PhotosUserType
-    followed: boolean
-    name: string
-    status: string
-    location: LocationUsersType
-}
+// export type UsersType = {
+//     id: string
+//     name: string
+//     status: string
+//     photos: PhotosUserType
+//     followed: boolean
+//     location: LocationUsersType
+// }
 type LocationUsersType = {
     city: string
     country: string

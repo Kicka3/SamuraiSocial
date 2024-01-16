@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {followAC, InitialUsersStateType, setUsersAC, unFollowAC, UserResponseType, usersReducer} from "./users-reducer";
+import {followAC, InitialUsersStateType, setUsersAC, unFollowAC, UsersType, usersReducer} from "./users-reducer";
 
 
 let startState: InitialUsersStateType;

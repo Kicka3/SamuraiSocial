@@ -2,12 +2,13 @@ import {connect} from "react-redux";
 import {Users} from "./Users";
 import {RootReduxStoreType} from "../../redux/redux-store";
 import {Dispatch} from "redux";
+import UsersC from '../users/UsersС';
 import {
     followAC,
     InitialUsersStateType,
     setUsersAC,
-    unFollowAC,
-    UsersType
+    unFollowAC, UsersType,
+
 } from "../../redux/users-reducer/users-reducer";
 
 
@@ -42,5 +43,5 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Users);
+export default connect(mapStateToProps, mapDispatchToProps)(UsersC);
 
