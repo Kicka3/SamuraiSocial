@@ -27,6 +27,14 @@ class UsersС extends React.Component<UsersPropsType> {
     }
 
     render() {
+        //Рассчитываю кол-во страниц
+        const pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+        const pages = [];
+        for (let i = 1; i < pagesCount; i++) {
+            pages.push(i);
+        }
+
         return (
             <>
                 <UsersPageTop/>
@@ -37,11 +45,11 @@ class UsersС extends React.Component<UsersPropsType> {
                     </div>
 
                     <div>
-                        <span>1</span>
-                        <span className={'selectedPage'}>2</span>
-                        <span>3</span>
-                        <span>4</span>
-                        <span>5</span>
+                        {
+                            pages.map(pg => {
+                                return <span className={this.props.currentPage === pg ? `selectedPage` : ''}>{pg}</span>
+                            })
+                        }
                     </div>
 
                     <div className={'usersListWrapper'}>

@@ -14,7 +14,6 @@ export type UsersType = {
 
     // location: LocationUsersType
 }
-
 // export type UsersType = {
 //     id: string
 //     name: string
@@ -31,8 +30,11 @@ type LocationUsersType = {
 export type InitialUsersStateType = typeof initialState;
 
 
-const initialState = {
-    users: [] as UsersType[]
+let initialState = {
+    users: [] as UsersType[],
+    pageSize: 5,
+    totalUsersCount: 10,
+    currentPage: 1,
 }
 
 export type MainProfileReducerType = FollowAC | UnFollowAC | SetUsersAC

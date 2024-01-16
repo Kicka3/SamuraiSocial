@@ -16,10 +16,16 @@ export type UsersPropsType = MapStateToPropsType & mapDispatchToPropsType
 
 type MapStateToPropsType = {
     users: InitialUsersStateType
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
-        users: state.usersPage
+        users: state.usersPage,
+        pageSize: state.usersPage.pageSize,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        currentPage: state.usersPage.currentPage,
     }
 }
 
