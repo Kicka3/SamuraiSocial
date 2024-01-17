@@ -137,13 +137,74 @@
 
 /*----------PAGINATION-----------*/
 
-.selectedPage {
-    font-weight: bold;
+.pagination-wrapper {
+    max-width: 62%;
+    display: flex;
+    justify-content: center;
+    /*border: 2px solid red;*/
+    overflow: hidden;
+}
+
+.pagination {
+    padding: 0 25px;
+    border-radius: 35px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.page-number-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-number {
+    cursor: pointer;
+    padding: 0 15px;
+    transition: 400ms ease;
+    color: #595959;
+    font-size: 18px;
+    letter-spacing: 2px;
+    line-height: 36px;
+
+    margin: 0 2px;
+}
+
+.page-number:hover {
+    background-color: #7B68EE;
+    color: #fff;
+}
+
+.selected-page {
+    background-color: #7B68EE;
+    cursor: pointer;
+    padding: 0 15px;
+    color: #fff;
+    line-height: 36px;
+    font-size: 18px;
+    margin: 0 2px;
+}
+
+.selected-page:hover {
+    color: #ee68ec;
 }
 
 
-
-
+.prev-btn,
+.next-btn {
+    font-size: 20px;
+}
+.prev-btn:hover,
+.next-btn:hover {
+    background-color: transparent;
+    color: #7B68EE;
+    cursor: pointer;
+}
 
 
 

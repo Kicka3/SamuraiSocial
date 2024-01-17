@@ -1,17 +1,10 @@
-import React from 'react';
+import React, {MouseEventHandler} from 'react';
 import "./usersMenu.css"
 import {UsersPageTop} from "./UsersPageTop";
 import axios from "axios";
 import noUserAvatar from '../../assets/images/avatars/noAvatar.jpeg'
 import {UsersType} from "../../redux/users-reducer/users-reducer";
 import {UsersPropsType} from "./UsersContainer";
-
-interface UsersCProps {
-    follow: (userId: string) => void
-    unFollow: (userId: string) => void
-    setUsers: (users: UsersType[]) => void
-    children?: React.ReactNode;
-}
 
 class UsersС extends React.Component<UsersPropsType> {
 
@@ -22,9 +15,19 @@ class UsersС extends React.Component<UsersPropsType> {
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then((res) => {
+                this.props.setUsers(res.data.items);
+                this.props.setTotalUsersCount(res.data.totalCount);
+            });
+    }
+
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then((res) => {
                 this.props.setUsers(res.data.items)
             });
     }
+
 
     render() {
         //Рассчитываю кол-во страниц
@@ -32,7 +35,9 @@ class UsersС extends React.Component<UsersPropsType> {
 
         const pages = [];
         for (let i = 1; i < pagesCount; i++) {
-            pages.push(i);
+            if (pages.length < 10) {
+                pages.push(i);
+            }
         }
 
         return (
@@ -44,13 +49,36 @@ class UsersС extends React.Component<UsersPropsType> {
                         <div className={"usersTitle"}>Users:</div>
                     </div>
 
-                    <div>
-                        {
-                            pages.map(pg => {
-                                return <span className={this.props.currentPage === pg ? `selectedPage` : ''}>{pg}</span>
-                            })
-                        }
-                    </div>
+                    <nav className={'pagination-wrapper'}>
+                        <ul className={'pagination'}>
+                            <li className={'prev-btn'}>«</li>
+                            <li className={'page-number-wrapper'}>
+                                {pages.map(pg => {
+                                    return (<>
+                                            <li
+                                                className={this.props.currentPage === pg ? `selected-page` : 'page-number'}
+                                                onClick={(e) => {
+                                                    this.onPageChanged(pg);
+                                                }}>{pg}</li>
+                                        </>
+                                    );
+                                })}
+                            </li>
+                            <span className={'next-btn'}>»</span>
+                        </ul>
+                    </nav>
+
+
+                    {/*<nav aria-label="pagination">*/}
+                    {/*    <ul className="pagination">*/}
+                    {/*        <li>    <a href=""><span aria-hidden="true">«</span></a>    </li>*/}
+                    {/*        <li><a href=""><span className="visuallyhidden">page </span>1</a></li>*/}
+                    {/*        <li><a href="" aria-current="page"><span className="visuallyhidden">page </span>2</a></li>*/}
+                    {/*        <li><a href=""><span className="visuallyhidden">page </span>3</a></li>*/}
+                    {/*        <li><a href=""><span className="visuallyhidden">page </span>4</a></li>*/}
+                    {/*        <li><a href=""><span aria-hidden="true">»</span></a></li>*/}
+                    {/*    </ul>*/}
+                    {/*</nav>*/}
 
                     <div className={'usersListWrapper'}>
                         {this.props.users.users.map(el => (
@@ -102,11 +130,11 @@ class UsersС extends React.Component<UsersPropsType> {
                                 {el.followed
                                     ? <button onClick={() => {
                                         this.props.unFollow(el.id)
-                                    }} className={'user_btn'}>follow
+                                    }} className={'user_btn'}>unfollow
                                     </button>
                                     : <button onClick={() => {
                                         this.props.follow(el.id)
-                                    }} className={'user_btn'}>unfollow
+                                    }} className={'user_btn'}>follow
                                     </button>
                                 }
 
