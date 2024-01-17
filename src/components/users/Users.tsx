@@ -1,126 +1,122 @@
 import React from 'react';
-import {UsersPropsType} from "./UsersContainer";
-import "./usersMenu.css"
 import {UsersPageTop} from "./UsersPageTop";
-import axios from "axios";
-import noUserAvatar from '../../assets/images/avatars/noAvatar.jpeg'
-// props.setUsers([
-// {
-//     id: v1(),
-//     photos: '../../public/assets/person/person0.jpeg',
-//     followed: false, name: 'Kirych', status: 'Ama lolos and we going to job, again again again again again',
-//     location: {
-//         city: 'EKB',
-//         country: 'Russia',
-//     }
-// },
-// {
-//     id: v1(),
-//     photos: '../../public/assets/person/person0.jpeg',
-//     followed: true, name: 'Dianych', status: 'I am on elephant yaaay!',
-//     location: {
-//         city: 'EKB',
-//         country: 'Russia',
-//     }
-// },
-// {
-//     id: v1(),
-//     photos: '../../public/assets/person/person0.jpeg',
-//     followed: false, name: 'Evgeny', status: 'Lived in colhozee',
-//     location: {
-//         city: 'Moscow',
-//         country: 'Russia',
-//     }
-// },
-// ]);
+import noUserAvatar from "../../assets/images/avatars/noAvatar.jpeg";
+import {InitialUsersStateType} from "../../redux/users-reducer/users-reducer";
 
-export const Users = (props: UsersPropsType) => {
+type UsersType = {
+    users: InitialUsersStateType
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
+    onPageChanged: (pageNumber: number) => void
+    follow: (userId: string) => void
+    unFollow: (userId: string) => void
+}
 
-    if (props.users.users.length === 0) {
-        const getUsers = () => {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users')
-                .then((res) => {
-                    props.setUsers(res.data.items)
-                });
+export const Users: React.FC<UsersType> = (props) => {
+
+    //Рассчитываю кол-во страниц
+    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+
+    const pages = [];
+    for (let i = 1; i < pagesCount; i++) {
+        if (pages.length < 10) {
+            pages.push(i);
         }
     }
 
-//Когда фолловишься, должена появляться зеленая галочка на аватарке, а если отписываешься, то красный крестик
-    return (
-        <>
-            <UsersPageTop/>
+    return <>
+        <UsersPageTop/>
 
-            <div className={"usersPage"}>
-                <div className="usersTitleWrapper">
-                    <div className={"usersTitle"}>Users:</div>
-                </div>
+        <div className={"usersPage"}>
+            <div className="usersTitleWrapper">
+                <div className={"usersTitle"}>Users:</div>
+            </div>
 
+            <nav className={'pagination-wrapper'}>
+                <ul className={'pagination'}>
+                    <li className={'prev-btn'}>«</li>
+                    <li className={'page-number-wrapper'}>
+                        {pages.map(pg => {
+                            return (<>
+                                    <li
+                                        className={props.currentPage === pg ? `selected-page` : 'page-number'}
+                                        onClick={(e) => {
+                                            props.onPageChanged(pg);
+                                        }}>{pg}</li>
+                                </>
+                            );
+                        })}
+                    </li>
+                    <span className={'next-btn'}>»</span>
+                </ul>
+            </nav>
 
-                <div className={'usersListWrapper'}>
-                    {props.users.users.map(el => (
-                        <div className={'users_wrapper'} key={el.id}>
+            <div className={'usersListWrapper'}>
 
-                            <div className="users_list">
-                                <div className="users_img_Container">
-                                    <img className="user_img"
-                                        // src={AvatarForChatOnline}
-                                         src={el.photos.small !== null ? el.photos.small : noUserAvatar}
-                                         alt={"avatarUsersInChat"}/>
-                                    <div className="user_online_badge"></div>
-                                </div>
+                {props.users.users.map(el => (
+                    <div className={'users_wrapper'} key={el.id}>
 
-                                <div className="user_info">
-                                    <div className="user_info__item">
+                        <div className="users_list">
+                            <div className="users_img_Container">
+                                <img className="user_img"
+                                    // src={AvatarForChatOnline}
+                                     src={el.photos.small !== null ? el.photos.small : noUserAvatar}
+                                     alt={"avatarUsersInChat"}/>
+                                <div className="user_online_badge"></div>
+                            </div>
+
+                            <div className="user_info">
+                                <div className="user_info__item">
                                              <span className="user_info_value">
                                                 <span className={'user_info_value__name'}>{el.name}</span>
                                             </span>
-                                    </div>
+                                </div>
 
-                                    <div className="user_info__item">
+                                <div className="user_info__item">
                                         <span className="user_info_key">
                                             <span className="user_info_key__city">City: </span>
                                         </span>
-                                        <span className="user_info_value">
+                                    <span className="user_info_value">
                                             <span className="user_info_key__city">{'el.location.city'}</span>
                                         </span>
-                                    </div>
+                                </div>
 
-                                    <div className="user_info__item">
+                                <div className="user_info__item">
                                         <span className="user_info_key">
                                             <span className="user_info_key__city">From:  </span>
                                         </span>
-                                        <span className="rightbar_info_value">
+                                    <span className="rightbar_info_value">
                                            <span className="user_info_key__city">{'el.location.country'}</span>
                                     </span>
-                                    </div>
+                                </div>
 
-                                    <div className="user_info__item">
+                                <div className="user_info__item">
                                         <span className="user_info_value">
                                             <span className="user_info__status">{el.status}</span>
                                         </span>
-                                    </div>
-
                                 </div>
 
                             </div>
-                            {el.followed
-                                ? <button onClick={() => {
-                                    props.unFollow(el.id)
-                                }} className={'user_btn'}>follow
-                                </button>
-                                : <button onClick={() => {
-                                    props.follow(el.id)
-                                }} className={'user_btn'}>unfollow
-                                </button>
-                            }
 
                         </div>
-                    ))}
-                </div>
+                        {el.followed
+                            ? <button onClick={() => {
+                                props.unFollow(el.id)
+                            }} className={'user_btn'}>unfollow
+                            </button>
+                            : <button onClick={() => {
+                                props.follow(el.id)
+                            }} className={'user_btn'}>follow
+                            </button>
+                        }
 
+                    </div>
+                ))}
             </div>
-        </>
-    );
-};
+
+        </div>
+    </>
+}
 
 
