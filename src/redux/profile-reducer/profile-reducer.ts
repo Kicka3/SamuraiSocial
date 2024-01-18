@@ -15,7 +15,7 @@ export type PostsType = {
 
 export type InitialProfileStateType = typeof initialState;
 
-const initialState = {
+export const initialState = {
     postsData: [
         {id: v1(), message: "Jopa", likesCount: 5},
         {id: v1(), message: "My little Jopa", likesCount: 25},
@@ -39,9 +39,9 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
         case 'UPDATE-NEW-POST-TEXT': {
             return {...state, newPostText: state.newPostText = action.payload.newText};
         }
-        case "SET-USER-PROFILE": {
-            return {...state, profile: action.payload.profileId}
-        }
+        // case "SET-USER-PROFILE": {
+        //     return {...state, profile: action.payload.profileId}
+        // }
         default:
             return state
     }

@@ -6,7 +6,7 @@ import {Route} from "react-router-dom";
 import {DialogsContainer} from "./components/dialogs/DialogsContainer";
 import {MyPostsContainer} from "./components/profile/myPosts/MyPostsContainer";
 import UsersContainer from "./components/users/UsersContainer";
-import {ProfileContainer} from "./components/profile/ProfileContainer";
+import ProfileContainer from "./components/profile/ProfileContainer";
 
 type AppPropsType = {}
 
