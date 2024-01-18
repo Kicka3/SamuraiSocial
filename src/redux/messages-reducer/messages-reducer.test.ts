@@ -6,7 +6,6 @@ import messagesReducer, {
     updateNewMessageBodyAC
 } from "./messages-reducer";
 import {v1} from "uuid";
-import {unFollowAC, usersReducer} from "../users-reducer/users-reducer";
 
 
 let startState: InitialMessageStateType;

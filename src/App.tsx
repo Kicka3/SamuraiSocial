@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from "./components/header/Header";
-import Profile from "./components/profile/Profile";
+import {Profile} from "./components/profile/Profile";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route} from "react-router-dom";
 import {DialogsContainer} from "./components/dialogs/DialogsContainer";

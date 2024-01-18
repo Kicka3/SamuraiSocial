@@ -9,7 +9,7 @@ type ProfilePropsType = {
 
 }
 
- const Profile: React.FC<ProfilePropsType> = () => {
+export const Profile: React.FC<ProfilePropsType> = () => {
 
     return (
         <section className="ProfileWrapper">
@@ -23,7 +23,8 @@ type ProfilePropsType = {
                     <div className="profileRightBottom">
 
                         <MyPostsContainer/>
-                        <Rightbar/> {/*/PROFILEINFO/*/}
+                        {/*/PROFILEINFO/*/}
+                        <Rightbar/>
                     </div>
 
                 </div>
@@ -32,4 +33,4 @@ type ProfilePropsType = {
     );
 }
 
-export default Profile;
+

@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {followAC, InitialUsersStateType, setUsersAC, unFollowAC, UsersType, usersReducer} from "./users-reducer";
+import {follow, InitialUsersStateType, unFollow, usersReducer} from "./users-reducer";
 
 
 let startState: InitialUsersStateType;
@@ -38,7 +38,7 @@ beforeEach(() => {
 
 test('user should be followed', () => {
     const userId = '12s';
-    const action = followAC(userId);
+    const action = follow(userId);
     const endState = usersReducer(startState, action);
 
     expect(endState.users[0].followed).toBe(true);
@@ -46,7 +46,7 @@ test('user should be followed', () => {
 
 test('user should be unFollowed', () => {
     const userId = 's13';
-    const action = unFollowAC(userId);
+    const action = unFollow(userId);
     const endState = usersReducer(startState, action);
 
     expect(endState.users[0].followed).toBe(false);

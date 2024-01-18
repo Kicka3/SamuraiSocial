@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 import {UsersPageTop} from "./UsersPageTop";
 import noUserAvatar from "../../assets/images/avatars/noAvatar.jpeg";
 import {InitialUsersStateType} from "../../redux/users-reducer/users-reducer";
+import {NavLink} from "react-router-dom";
+
 
 type UsersType = {
     users: InitialUsersStateType
@@ -59,10 +61,12 @@ export const Users: React.FC<UsersType> = (props) => {
 
                         <div className="users_list">
                             <div className="users_img_Container">
-                                <img className="user_img"
-                                    // src={AvatarForChatOnline}
-                                     src={el.photos.small !== null ? el.photos.small : noUserAvatar}
-                                     alt={"avatarUsersInChat"}/>
+                                <NavLink to={'/profile/' + el.id}>
+                                    <img className="user_img"
+                                        // src={AvatarForChatOnline}
+                                         src={el.photos.small !== null ? el.photos.small : noUserAvatar}
+                                         alt={"avatarUsersInChat"}/>
+                                </NavLink>
                                 <div className="user_online_badge"></div>
                             </div>
 
