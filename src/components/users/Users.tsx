@@ -37,19 +37,17 @@ export const Users: React.FC<UsersType> = (props) => {
 
             <nav className={'pagination-wrapper'}>
                 <ul className={'pagination'}>
-                    <li className={'prev-btn'}>«</li>
-                    <li className={'page-number-wrapper'}>
-                        {pages.map(pg => {
-                            return (<>
-                                    <li
+                    <span className={'prev-btn'}>«</span>
+                    <div className={'page-number-wrapper'}>
+                        {pages.map((pg, index) => {
+                            return (<li
                                         className={props.currentPage === pg ? `selected-page` : 'page-number'}
                                         onClick={(e) => {
                                             props.onPageChanged(pg);
                                         }}>{pg}</li>
-                                </>
                             );
                         })}
-                    </li>
+                    </div>
                     <span className={'next-btn'}>»</span>
                 </ul>
             </nav>

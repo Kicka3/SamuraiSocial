@@ -90,29 +90,6 @@ type mapDispatchToPropsType = {
     toggleIsFetching: (value: boolean) => void
 }
 
-// const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
-//     return {
-//         follow: (userId: string) => {
-//             dispatch(followAC(userId));
-//         },
-//         unFollow: (userId: string) => {
-//             dispatch(unFollowAC(userId));
-//         },
-//         setUsers: (users: UsersType[]) => {
-//             dispatch(setUsersAC(users));
-//         },
-//         setCurrentPage: (pageNumber: number) => {
-//             dispatch(setCurrentPageAC(pageNumber));
-//         },
-//         setTotalUsersCount: (totalCount: number) => {
-//             dispatch(setTotalUserCountAC(totalCount));
-//         },
-//         toggleIsFetching: (value: boolean) => {
-//             dispatch(toggleIsFetchingAC(value));
-//         }
-//     }
-// }
-
 export default connect(mapStateToProps, {
     follow,
     unFollow,

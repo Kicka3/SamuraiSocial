@@ -2,8 +2,14 @@ import "./rightbar.css";
 import React from "react";
 import "./rightbar.css";
 import OnlineUsers from "../onlineUsers/OnlineUsers";
+import {ProfileResponseType} from "../../../redux/profile-reducer/profile-reducer";
 
-const ProfileBar = () => {
+
+type ProfileBarPropsType = {
+    profile: ProfileResponseType
+}
+
+const ProfileBar: React.FC<ProfileBarPropsType> = ({profile}) => {
     const HomeRightbar = () => {
         return (
             <div className="HomeRightbarWrapper">
@@ -31,11 +37,11 @@ const ProfileBar = () => {
     const PfrofileRightbar = () => {
         return (
             <>
-                <h4 className="rightbarTitle">User information</h4>
+                <h4 className="rightbarTitle">User information:</h4>
                 <div className="rightbarInfo">
                     <div className="rightbarInfo__item">
-                        <span className="rightbar_info_key">City:</span>
-                        <span className="rightbar_info_value">User city</span>
+                        <span className="rightbar_info_key">Looking for a job:</span>
+                        <span className="rightbar_info_value">{'ssssss'}</span>
                     </div>
                     <div className="rightbarInfo__item">
                         <span className="rightbar_info_key">From:</span>
