@@ -39,7 +39,7 @@ export const Users: React.FC<UsersType> = (props) => {
                 <ul className={'pagination'}>
                     <span className={'prev-btn'}>«</span>
                     <div className={'page-number-wrapper'}>
-                        {pages.map((pg, index) => {
+                        {pages.map((pg) => {
                             return (<li
                                         className={props.currentPage === pg ? `selected-page` : 'page-number'}
                                         onClick={(e) => {
