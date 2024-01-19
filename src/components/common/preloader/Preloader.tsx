@@ -3,7 +3,7 @@ import preloader from "../../../assets/images/things/loader.svg";
 
 
 type PreloaderType = {
-    isFetching: boolean
+    isFetching?: boolean
 }
 
 export const Preloader: React.FC<PreloaderType> = ({isFetching}) => {

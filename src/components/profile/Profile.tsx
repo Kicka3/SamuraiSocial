@@ -3,13 +3,15 @@ import Rightbar from "./rightbar/Rightbar";
 import React from "react";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import {MyPostsContainer} from "./myPosts/MyPostsContainer";
+import {ProfileResponseType} from "../../redux/profile-reducer/profile-reducer";
 
 
 type ProfilePropsType = {
+    profile: ProfileResponseType,
 
 }
 
-export const Profile: React.FC<ProfilePropsType> = () => {
+export const Profile: React.FC<ProfilePropsType> = ({profile}) => {
 
     return (
         <section className="ProfileWrapper">
@@ -17,14 +19,14 @@ export const Profile: React.FC<ProfilePropsType> = () => {
 
                 {/*ПРОФИЛЬ*/}
                 <div className="profileRight">
-                    <ProfileInfo/>
+                    <ProfileInfo profile={profile}/>
 
                     {/*ПОСТЫ В ПРОФИЛЕ*/}
                     <div className="profileRightBottom">
 
                         <MyPostsContainer/>
                         {/*/PROFILEINFO/*/}
-                        <Rightbar/>
+                        <Rightbar profile={profile}/>
                     </div>
 
                 </div>

@@ -13,15 +13,40 @@ export type PostsType = {
 }
 
 
-export type InitialProfileStateType = typeof initialState;
+export type ProfileResponseType = {
+    aboutMe: string;
+    contacts: ContactsProfileType;
+    lookingForAJob: boolean;
+    lookingForAJobDescription: string;
+    fullName: string;
+    userId: number;
+    photos: PhotosProfileType;
+}
+type ContactsProfileType = {
+    facebook: string | null;
+    website: string | null;
+    vk: string | null;
+    twitter: string | null;
+    instagram: string | null;
+    youtube: string | null;
+    github: string | null;
+    mainLink: string | null;
+}
+export type PhotosProfileType = {
+    small: string;
+    large: string;
+}
 
+
+export type InitialProfileStateType = typeof initialState;
 export const initialState = {
     postsData: [
         {id: v1(), message: "Jopa", likesCount: 5},
         {id: v1(), message: "My little Jopa", likesCount: 25},
     ] as PostsType[],
     newPostText: 'Whussap?',
-    profile: null
+    profile: {} as ProfileResponseType,
+    // profileId: 0,
 }
 
 
@@ -39,9 +64,9 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
         case 'UPDATE-NEW-POST-TEXT': {
             return {...state, newPostText: state.newPostText = action.payload.newText};
         }
-        // case "SET-USER-PROFILE": {
-        //     return {...state, profile: action.payload.profileId}
-        // }
+        case "SET-USER-PROFILE": {
+            return {...state, profile: action.payload.profileUserId}
+        }
         default:
             return state
     }
@@ -66,12 +91,12 @@ export const updatePostNewTextAC = (newText: string) => {
     } as const
 }
 
-type SetUserProfileACType = ReturnType<typeof setUserProfile>
-export const setUserProfile = (profileId: number) => {
+export type SetUserProfileACType = ReturnType<typeof setUserProfile>
+export const setUserProfile = (profileUserId: any) => {
     return {
         type: 'SET-USER-PROFILE',
         payload: {
-            profileId
+            profileUserId
         }
     } as const
 }

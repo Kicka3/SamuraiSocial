@@ -24,8 +24,16 @@
     align-items: center;
 }
 
+.profileInfoName {
+    color: #000;
+    font-size: 20px;
+}
+
 .profileStatus{
+    margin-top: 10px;
     font-weight: 300;
     margin-bottom: 20px;
+    color: grey;
+    font-style: italic;
 }
 

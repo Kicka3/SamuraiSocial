@@ -30,7 +30,7 @@ export const App: React.FC<AppPropsType> = () => {
                     />
                     <Route path={'/profile'}
                            render={() =>
-                               <ProfileContainer/>
+                               <ProfileContainer />
                            }/>
 
                     <Route path={'/users'}
