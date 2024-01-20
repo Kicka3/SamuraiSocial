@@ -11,7 +11,7 @@ type ProfileBarPropsType = {
     profile: ProfileResponseType | null,
 }
 
-export const ProfileBar: React.FC<ProfileBarPropsType> = ({profile}) => {
+export const RightBar: React.FC<ProfileBarPropsType> = ({profile}) => {
 
 
     return (

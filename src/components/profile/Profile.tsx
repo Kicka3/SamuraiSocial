@@ -3,7 +3,7 @@ import React from "react";
 import ProfileInfo from "./profileInfo/ProfileInfo";
 import {MyPostsContainer} from "./myPosts/MyPostsContainer";
 import {ProfileResponseType} from "../../redux/profile-reducer/profile-reducer";
-import {ProfileBar} from "./rightbar/Rightbar";
+import {RightBar} from "./rightbar/Rightbar";
 
 
 type ProfilePropsType = {
@@ -26,7 +26,7 @@ export const Profile: React.FC<ProfilePropsType> = ({profile}) => {
 
                         <MyPostsContainer/>
                         {/*/PROFILEINFO/*/}
-                        <ProfileBar profile={profile}/>
+                        <RightBar profile={profile}/>
                     </div>
 
                 </div>

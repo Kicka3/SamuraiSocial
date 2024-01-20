@@ -23,47 +23,47 @@ export const ProfileContacts: React.FC<ProfileContactsPropsType> = ({profile}) =
         <>
             <nav className={'profile_contacts__wrapper'}>
                 <div className={'profile_contacts__section'}>
-                    <h4 className={'profile_contacts__title'}>Contact me</h4>
+                    <h4 className={'profile_contacts__title'}>Contact me:</h4>
                     <ul className={'profile_contacts__list'}>
 
                         <li className={'profile_contacts__item'}>
                             <span className={'contact_item__title'}>My VK: </span>
-                            <a href="#" className={'contact_link'}>{link_vk}</a>
+                            <a href="#" target={'_blank'} className={'contact_link'}>{link_vk}</a>
                         </li>
 
                         <li className={'profile_contacts__item'}>
                             <span className={'contact_item__title'}>My Github: </span>
-                            <a href="#" className={'contact_link'}>{link_github}</a>
+                            <a href="#" target={'_blank'} className={'contact_link'}>{link_github}</a>
                         </li>
 
                         <li className={'profile_contacts__item'}>
                             <span className={'contact_item__title'}>My main link: </span>
-                            <a href="#" className={'contact_link'}>{link_mainLink}</a>
+                            <a href="#" target={'_blank'} className={'contact_link'}>{link_mainLink}</a>
                         </li>
 
                         <li className={'profile_contacts__item'}>
                             <span className={'contact_item__title'}>My YouTube: </span>
-                            <a href="#" className={'contact_link'}>{link_youtube}</a>
+                            <a href="#" target={'_blank'} className={'contact_link'}>{link_youtube}</a>
                         </li>
 
                         <li className={'profile_contacts__item'}>
                             <span className={'contact_item__title'}>My Facebook: </span>
-                            <a href="#" className={'contact_link'}>{link_facebook}</a>
+                            <a href="#" target={'_blank'} className={'contact_link'}>{link_facebook}</a>
                         </li>
 
                         <li className={'profile_contacts__item'}>
                             <span className={'contact_item__title'}>My Instagram: </span>
-                            <a href="#" className={'contact_link'}>{link_instagram}</a>
+                            <a href="#" target={'_blank'} className={'contact_link'}>{link_instagram}</a>
                         </li>
 
                         <li className={'profile_contacts__item'}>
                             <span className={'contact_item__title'}>My Twitter: </span>
-                            <a href="#" className={'contact_link'}>{link_twitter}</a>
+                            <a href="#" target={'_blank'} className={'contact_link'}>{link_twitter}</a>
                         </li>
 
                         <li className={'profile_contacts__item'}>
                             <span className={'contact_item__title'}>My Website: </span>
-                            <a href="#" className={'contact_link'}>{link_website}</a>
+                            <a href="#" target={'_blank'} className={'contact_link'}>{link_website}</a>
                         </li>
                     </ul>
                 </div>

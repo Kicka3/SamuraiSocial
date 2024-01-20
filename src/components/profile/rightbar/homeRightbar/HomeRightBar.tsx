@@ -12,7 +12,7 @@ export const HomeRightBar:React.FC<HomeRightBarPropsType> = ({profile}) => {
         <div className="HomeRightbarWrapper">
 
             <div className="UserOnlineWrapper">
-                <h4 className="rightbarTitle">Online Friends</h4>
+                <h4 className="rightbarTitle">Online Friends:</h4>
                 <ul className="rightbarFriendList">
                     <OnlineUsers/>
                 </ul>
