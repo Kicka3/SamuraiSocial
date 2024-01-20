@@ -4,21 +4,35 @@ import {Profile} from "./Profile";
 import axios from "axios";
 import {connect} from "react-redux";
 import {
-    PhotosProfileType,
     ProfileResponseType,
     setUserProfile
 } from "../../redux/profile-reducer/profile-reducer";
 import {RootReduxStoreType} from "../../redux/redux-store";
+import {RouteComponentProps, withRouter} from "react-router-dom";
 
 
-class ProfileContainer extends React.Component<ProfilePropsContainerType> {
+type PathParamsType = {
+    userId: string,
+}
+type PropsType = RouteComponentProps<PathParamsType> & ProfilePropsContainerType
 
+class ProfileContainer extends React.Component<PropsType> {
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
-            .then((res) => {
-                this.props.setUserProfile(res.data)
-            });
+
+        let userId = this.props.match.params.userId
+        if (!userId) {
+            userId = '2';
+        }
+        try {
+            axios.get<ProfileResponseType>(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
+                .then((res) => {
+                    console.log(res.data)
+                    this.props.setUserProfile(res.data)
+                });
+        } catch (e) {
+            console.log(e + 'Error in get user')
+        }
     }
 
     render() {
@@ -34,10 +48,10 @@ class ProfileContainer extends React.Component<ProfilePropsContainerType> {
 export type ProfilePropsContainerType = MapStateToPropsType & MapDispatchToProps
 
 type MapDispatchToProps = {
-    setUserProfile: (profileUserId: number) => void
+    setUserProfile: (profileData: ProfileResponseType) => void
 }
 type MapStateToPropsType = {
-    profile: ProfileResponseType
+    profile: ProfileResponseType | null
 }
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
@@ -45,4 +59,6 @@ const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     }
 };
 
-export default connect(mapStateToProps, {setUserProfile})(ProfileContainer)
+const WitchUrlDataContainerComponent = withRouter(ProfileContainer);
+
+export default connect(mapStateToProps, {setUserProfile})(WitchUrlDataContainerComponent)

@@ -28,7 +28,7 @@ export const App: React.FC<AppPropsType> = () => {
                            render={() =>
                                <DialogsContainer/>}
                     />
-                    <Route path={'/profile'}
+                    <Route path={'/profile/:userId?'}
                            render={() =>
                                <ProfileContainer />
                            }/>

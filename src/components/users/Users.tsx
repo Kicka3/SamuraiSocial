@@ -20,6 +20,7 @@ export const Users: React.FC<UsersType> = (props) => {
     //Рассчитываю кол-во страниц
     const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
+    //кликаешь на last el + 5 к стейту
     const pages = [];
     for (let i = 1; i < pagesCount; i++) {
         if (pages.length < 10) {
@@ -39,8 +40,8 @@ export const Users: React.FC<UsersType> = (props) => {
                 <ul className={'pagination'}>
                     <span className={'prev-btn'}>«</span>
                     <div className={'page-number-wrapper'}>
-                        {pages.map((pg) => {
-                            return (<li
+                        {pages.map((pg, index) => {
+                            return (<li key={index}
                                         className={props.currentPage === pg ? `selected-page` : 'page-number'}
                                         onClick={(e) => {
                                             props.onPageChanged(pg);

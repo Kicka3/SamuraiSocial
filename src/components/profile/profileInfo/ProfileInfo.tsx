@@ -7,11 +7,15 @@ import {ProfileResponseType} from "../../../redux/profile-reducer/profile-reduce
 
 
 type ProfileInfoPropsType = {
-    profile: ProfileResponseType
+    profile: ProfileResponseType | null
 }
 
 const ProfileInfo: React.FC<ProfileInfoPropsType> = ({profile}) => {
-    if (!profile.photos) {
+
+    const largePhoto =  profile?.photos.large ? profile.photos.large : noAvatar;
+    const smallPhoto = profile?.photos.small ? profile?.photos.small : noAvatar;
+
+    if (!profile) {
         return <Preloader/>
     }
 
@@ -22,12 +26,12 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = ({profile}) => {
                      src={imageLarge}
                      alt="coverImg"/>
                 <img className="profileUserImg"
-                     src={profile.photos.large ? profile.photos.large : noAvatar}
+                     src={largePhoto}
 
                      alt="UserImage"/>
             </div>
             <div className="profileInfo">
-                <h4 className="profileInfoName">{profile.fullName.split(' ')[1]}</h4>
+                <h4 className="profileInfoName">{profile.fullName}</h4>
                 <span className="profileStatus">{profile.aboutMe}</span>
             </div>
         </div>

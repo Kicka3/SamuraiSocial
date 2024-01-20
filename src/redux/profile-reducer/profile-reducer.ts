@@ -38,15 +38,19 @@ export type PhotosProfileType = {
 }
 
 
-export type InitialProfileStateType = typeof initialState;
-export const initialState = {
+export type InitialProfileStateType = {
+    postsData: PostsType[]
+    newPostText: string
+    profile: ProfileResponseType | null
+}
+
+export const initialState: InitialProfileStateType = {
     postsData: [
         {id: v1(), message: "Jopa", likesCount: 5},
         {id: v1(), message: "My little Jopa", likesCount: 25},
     ] as PostsType[],
     newPostText: 'Whussap?',
-    profile: {} as ProfileResponseType,
-    // profileId: 0,
+    profile: null
 }
 
 
@@ -65,7 +69,7 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
             return {...state, newPostText: state.newPostText = action.payload.newText};
         }
         case "SET-USER-PROFILE": {
-            return {...state, profile: action.payload.profileUserId}
+            return {...state, profile: action.payload.profileData}
         }
         default:
             return state
@@ -92,11 +96,12 @@ export const updatePostNewTextAC = (newText: string) => {
 }
 
 export type SetUserProfileACType = ReturnType<typeof setUserProfile>
-export const setUserProfile = (profileUserId: any) => {
+export const setUserProfile = (profileData: ProfileResponseType) => {
+    console.log(profileData)
     return {
         type: 'SET-USER-PROFILE',
         payload: {
-            profileUserId
+            profileData
         }
     } as const
 }

@@ -1,6 +1,5 @@
 import profileReducer, {
-    addPostAC,
-    InitialProfileStateType, initialState,
+    addPostAC, InitialProfileStateType, initialState,
     updatePostNewTextAC,
 } from "./profile-reducer";
 
