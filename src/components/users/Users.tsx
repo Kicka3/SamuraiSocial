@@ -5,7 +5,7 @@ import {InitialUsersStateType} from "../../redux/users-reducer/users-reducer";
 import {NavLink} from "react-router-dom";
 
 
-type UsersType = {
+type UsersTypePropsType = {
     users: InitialUsersStateType
     pageSize: number
     totalUsersCount: number
@@ -15,10 +15,14 @@ type UsersType = {
     unFollow: (userId: string) => void
 }
 
-export const Users: React.FC<UsersType> = (props) => {
+export const Users: React.FC<UsersTypePropsType> = (props) => {
+    const {
+        totalUsersCount, pageSize, currentPage, onPageChanged, users, unFollow
+        , follow
+    } = props;
 
     //Рассчитываю кол-во страниц
-    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    const pagesCount = Math.ceil(totalUsersCount / pageSize);
 
     //кликаешь на last el + 5 к стейту
     const pages = [];
@@ -42,9 +46,9 @@ export const Users: React.FC<UsersType> = (props) => {
                     <div className={'page-number-wrapper'}>
                         {pages.map((pg, index) => {
                             return (<li key={index}
-                                        className={props.currentPage === pg ? `selected-page` : 'page-number'}
+                                        className={currentPage === pg ? `selected-page` : 'page-number'}
                                         onClick={(e) => {
-                                            props.onPageChanged(pg);
+                                            onPageChanged(pg);
                                         }}>{pg}</li>
                             );
                         })}
@@ -55,14 +59,13 @@ export const Users: React.FC<UsersType> = (props) => {
 
             <div className={'usersListWrapper'}>
 
-                {props.users.users.map(el => (
+                {users.users.map(el => (
                     <div className={'users_wrapper'} key={el.id}>
 
                         <div className="users_list">
                             <div className="users_img_Container">
                                 <NavLink to={'/profile/' + el.id}>
                                     <img className="user_img"
-                                        // src={AvatarForChatOnline}
                                          src={el.photos.small !== null ? el.photos.small : noUserAvatar}
                                          alt={"avatarUsersInChat"}/>
                                 </NavLink>
@@ -105,11 +108,11 @@ export const Users: React.FC<UsersType> = (props) => {
                         </div>
                         {el.followed
                             ? <button onClick={() => {
-                                props.unFollow(el.id)
+                                unFollow(el.id)
                             }} className={'user_btn'}>unfollow
                             </button>
                             : <button onClick={() => {
-                                props.follow(el.id)
+                                follow(el.id)
                             }} className={'user_btn'}>follow
                             </button>
                         }

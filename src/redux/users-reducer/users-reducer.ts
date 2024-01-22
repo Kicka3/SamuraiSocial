@@ -1,8 +1,5 @@
-type PhotosUserType = {
-    small: 'kek',
-    large: 'kek2',
-}
-export type UsersType = {
+
+export type ResponseUsersType = {
     id: string,
     name: string,
     status: string,
@@ -10,20 +7,18 @@ export type UsersType = {
     followed: boolean,
     totalCount: number,
     error: string,
-
-    // location: LocationUsersType
+}
+type PhotosUserType = {
+    small: string
+    large: string
 }
 
-type LocationUsersType = {
-    city: string
-    country: string
-}
 
 export type InitialUsersStateType = typeof initialState;
 
 
 let initialState = {
-    users: [] as UsersType[],
+    users: [] as ResponseUsersType[],
     pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
@@ -91,7 +86,7 @@ export const unFollow = (userId: string) => {
 }
 
 export type SetUsersAC = ReturnType<typeof setUsers>
-export const setUsers = (users: UsersType[]) => {
+export const setUsers = (users: ResponseUsersType[]) => {
     return {
         type: 'SET-USERS',
         payload: {

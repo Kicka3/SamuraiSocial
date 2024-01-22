@@ -11,6 +11,8 @@ import {RootReduxStoreType} from "../../redux/redux-store";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 
 
+export type ProfilePropsContainerType = MapStateToPropsType & MapDispatchToProps
+
 type PathParamsType = {
     userId: string,
 }
@@ -44,7 +46,6 @@ class ProfileContainer extends React.Component<PropsType> {
 
 }
 
-export type ProfilePropsContainerType = MapStateToPropsType & MapDispatchToProps
 
 type MapDispatchToProps = {
     setUserProfile: (profileData: ProfileResponseType) => void

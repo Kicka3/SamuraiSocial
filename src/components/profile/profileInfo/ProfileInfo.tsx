@@ -13,7 +13,6 @@ type ProfileInfoPropsType = {
 const ProfileInfo: React.FC<ProfileInfoPropsType> = ({profile}) => {
 
     const largePhoto =  profile?.photos.large ? profile.photos.large : noAvatar;
-    const smallPhoto = profile?.photos.small ? profile?.photos.small : noAvatar;
 
     if (!profile) {
         return <Preloader/>
