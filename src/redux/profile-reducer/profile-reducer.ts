@@ -22,7 +22,7 @@ export type ProfileResponseType = {
     userId: number;
     photos: PhotosProfileType;
 }
-type ContactsProfileType = {
+export type ContactsProfileType = {
     facebook: string | null;
     website: string | null;
     vk: string | null;

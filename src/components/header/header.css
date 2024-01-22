@@ -87,7 +87,25 @@
    font-size: 12px;
 }
 
-.headerImg {
+/*.loginImg {*/
+/*   width: 30px;*/
+/*   height: 30px;*/
+/*}*/
+
+/*.headerImgWrapper {*/
+/*   width: 60px;*/
+/*   height: 60px;*/
+/*}*/
+
+.headerLogin {
+   font-size: 20px;
+   margin-left: 20px;
+   font-weight: bold;
+   color: white;
+   cursor: pointer;
+}
+
+.headerUserImg {
    width: 32px;
    height: 32px;
    border-radius: 50%;
