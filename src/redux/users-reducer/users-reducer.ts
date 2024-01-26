@@ -46,8 +46,6 @@ export const usersReducer = (state: InitialUsersStateType = initialState, action
         }
         case "SET-USERS": {
             return {
-                //mutablity
-                // ...state, users: [...state.users, ...action.payload.users]
                 ...state, users: action.payload.users
             }
         }
