@@ -13,6 +13,7 @@ import {
     unFollow,
     ResponseUsersType
 } from "../../redux/users-reducer/users-reducer";
+import {usersAPI} from "../../api/API";
 
 
 //протипизировать get-запросы
@@ -27,26 +28,26 @@ class UsersContainer extends React.Component<UsersPropsType> {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then((res) => {
+
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
+            .then((data) => {
                 this.props.toggleIsFetching(false);
-                this.props.setUsers(res.data.items);
-                this.props.setTotalUsersCount(res.data.totalCount);
-            });
+                this.props.setUsers(data.items);
+                this.props.setTotalUsersCount(data.totalCount);
+            })
+            .catch(err => console.log(err))
     }
 
     onPageChanged = (pageNumber: number) => {
         this.props.toggleIsFetching(true);
         this.props.setCurrentPage(pageNumber);
-        axios.get<{
-            items: ResponseUsersType[],
-            totalCount: number,
-            error: null | string
-        }>(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then((res) => {
+
+        usersAPI.getUsers(pageNumber, this.props.pageSize)
+            .then((data) => {
                 this.props.toggleIsFetching(false);
-                this.props.setUsers(res.data.items)
-            });
+                this.props.setUsers(data.items)
+            })
+            .catch(err => console.log(err))
     }
 
 

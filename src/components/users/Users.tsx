@@ -3,6 +3,8 @@ import {UsersPageTop} from "./UsersPageTop";
 import noUserAvatar from "../../assets/images/avatars/noAvatar.jpeg";
 import {InitialUsersStateType} from "../../redux/users-reducer/users-reducer";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
+import {usersAPI} from "../../api/API";
 
 
 type UsersTypePropsType = {
@@ -108,11 +110,26 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
                         </div>
                         {el.followed
                             ? <button onClick={() => {
-                                unFollow(el.id)
+                                usersAPI.unFollow(el.id)
+                                    .then((res) => {
+                                        if (res.data.resultCode === 0) {
+                                            unFollow(el.id)
+                                        }
+                                    })
+                                    .catch(err => console.log(err))
+
                             }} className={'user_btn'}>unfollow
                             </button>
+
                             : <button onClick={() => {
-                                follow(el.id)
+                                usersAPI.follow(el.id)
+                                    .then((res) => {
+                                        if (res.data.resultCode === 0) {
+                                            follow(el.id)
+                                        }
+                                    })
+                                    .catch(err => console.log(err))
+
                             }} className={'user_btn'}>follow
                             </button>
                         }
