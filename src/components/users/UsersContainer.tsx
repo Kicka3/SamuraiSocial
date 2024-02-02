@@ -2,7 +2,6 @@ import {connect} from "react-redux";
 import './usersMenu.css'
 import {RootReduxStoreType} from "../../redux/redux-store";
 import React from "react";
-import axios from "axios";
 import {Users} from "./Users";
 import {Preloader} from "../common/preloader/Preloader";
 import {

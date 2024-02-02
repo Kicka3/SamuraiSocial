@@ -3,7 +3,6 @@ import {UsersPageTop} from "./UsersPageTop";
 import noUserAvatar from "../../assets/images/avatars/noAvatar.jpeg";
 import {InitialUsersStateType} from "../../redux/users-reducer/users-reducer";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
 import {usersAPI} from "../../api/API";
 
 
@@ -26,6 +25,7 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
     //Рассчитываю кол-во страниц
     const pagesCount = Math.ceil(totalUsersCount / pageSize);
 
+    //НЕ ДОДЕЛАНО!
     //кликаешь на last el + 5 к стейту
     const pages = [];
     for (let i = 1; i < pagesCount; i++) {
