@@ -1,4 +1,3 @@
-
 export type ResponseUsersType = {
     id: string,
     name: string,
@@ -22,7 +21,8 @@ let initialState = {
     pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: true
+    isFetching: true,
+    followingInProgress: false,
 }
 
 export type MainProfileReducerType = FollowAC
@@ -31,6 +31,7 @@ export type MainProfileReducerType = FollowAC
     | SetCurrentPageACType
     | SetTotalUserCountACType
     | ToggleIsFetchingACType
+    | SetFollowingProgress
 
 export const usersReducer = (state: InitialUsersStateType = initialState, action: MainProfileReducerType): InitialUsersStateType => {
     switch (action.type) {
@@ -57,6 +58,9 @@ export const usersReducer = (state: InitialUsersStateType = initialState, action
         }
         case "TOGGLE-IS-FETCHING": {
             return {...state, isFetching: action.payload.value}
+        }
+        case 'TOGGLE-IS-FOLLOWING-PROGRESS': {
+            return {...state, followingInProgress: action.payload.value}
         }
         default:
             return state
@@ -118,6 +122,16 @@ type ToggleIsFetchingACType = ReturnType<typeof toggleIsFetching>
 export const toggleIsFetching = (value: boolean) => {
     return {
         type: 'TOGGLE-IS-FETCHING',
+        payload: {
+            value
+        }
+    } as const
+}
+
+type SetFollowingProgress = ReturnType<typeof setFollowingProgress>
+export const setFollowingProgress = (value: boolean) => {
+    return {
+        type: 'TOGGLE-IS-FOLLOWING-PROGRESS',
         payload: {
             value
         }
