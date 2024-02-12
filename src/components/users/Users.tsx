@@ -26,7 +26,7 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
     const pagesCount = Math.ceil(totalUsersCount / pageSize);
 
     //НЕ ДОДЕЛАНО!
-    //кликаешь на last el + 5 к стейту
+    //кликаешь на last el + 5 к стейту//
     const pages = [];
     for (let i = 1; i < pagesCount; i++) {
         if (pages.length < 10) {
