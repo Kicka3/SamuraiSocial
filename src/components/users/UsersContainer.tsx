@@ -12,7 +12,7 @@ import {
     unFollow,
     ResponseUsersType, toggleFollowingProgress
 } from "../../redux/users-reducer/users-reducer";
-import {usersAPI} from "../../api/API";
+import {usersAPI} from "../../../src/api/API";
 
 
 //протипизировать get-запросы
@@ -75,7 +75,7 @@ type MapStateToPropsType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-    followingInProgress: number[]
+    followingInProgress: string[]
 }
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
@@ -96,7 +96,7 @@ type mapDispatchToPropsType = {
     setCurrentPage: (pageNumber: number) => void
     setTotalUsersCount: (totalCount: number) => void
     toggleIsFetching: (value: boolean) => void
-    toggleFollowingProgress: (userId: number, isFetching: boolean) => void
+    toggleFollowingProgress: (userId: string, isFetching: boolean) => void
 }
 
 export default connect(mapStateToProps, {

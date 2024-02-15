@@ -11,11 +11,11 @@ type UsersTypePropsType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
-    followingInProgress: number[]
+    followingInProgress: string[]
     onPageChanged: (pageNumber: number) => void
     follow: (userId: string) => void
     unFollow: (userId: string) => void
-    toggleFollowingProgress: (userId: number, isFetching: boolean) => void
+    toggleFollowingProgress: (userId: string, isFetching: boolean) => void
 }
 
 export const Users: React.FC<UsersTypePropsType> = (props) => {
@@ -117,7 +117,7 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
 
                         </div>
                         {el.followed
-                            ? <button disabled={followingInProgress} onClick={() => {
+                            ? <button disabled={followingInProgress.some(id => id === el.id)} onClick={() => {
                                 toggleFollowingProgress(el.id, true);
                                 usersAPI.unFollow(el.id)
                                     .then((res) => {
@@ -129,7 +129,7 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
                                     .catch(err => console.log(err));
 
                                 // }} className={'user_btn'}>unfollow
-                            }} className={followingInProgress ? 'disabled_btn' : 'user_btn'}>unfollow
+                            }} className={!followingInProgress ? 'disabled_btn' : 'user_btn'}>unfollow
                             </button>
 
                             : <button disabled={followingInProgress.some(id => id === el.id)} onClick={() => {
@@ -144,7 +144,7 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
                                     .catch(err => console.log(err));
 
                                 // }} className={'user_btn'}>follow
-                            }} className={followingInProgress ? 'disabled_btn' : 'user_btn'}>follow
+                            }} className={!followingInProgress ? 'disabled_btn' : 'user_btn'}>follow
                             </button>
                         }
 
