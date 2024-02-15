@@ -1,7 +1,7 @@
 import React from "react";
 import {UsersPageTop} from "./UsersPageTop";
 import noUserAvatar from "../../assets/images/avatars/noAvatar.jpeg";
-import {InitialUsersStateType} from "../../redux/users-reducer/users-reducer";
+import {InitialUsersStateType, toggleFollowingProgress} from "../../redux/users-reducer/users-reducer";
 import {NavLink} from "react-router-dom";
 import {usersAPI} from "../../api/API";
 
@@ -11,15 +11,23 @@ type UsersTypePropsType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    followingInProgress: number[]
     onPageChanged: (pageNumber: number) => void
     follow: (userId: string) => void
     unFollow: (userId: string) => void
+    toggleFollowingProgress: (userId: number, isFetching: boolean) => void
 }
 
 export const Users: React.FC<UsersTypePropsType> = (props) => {
     const {
-        totalUsersCount, pageSize, currentPage, onPageChanged, users, unFollow
-        , follow
+        totalUsersCount,
+        pageSize,
+        currentPage,
+        onPageChanged, users,
+        unFollow,
+        follow,
+        followingInProgress,
+        toggleFollowingProgress
     } = props;
 
     //Рассчитываю кол-во страниц
@@ -109,28 +117,34 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
 
                         </div>
                         {el.followed
-                            ? <button onClick={() => {
+                            ? <button disabled={followingInProgress} onClick={() => {
+                                toggleFollowingProgress(el.id, true);
                                 usersAPI.unFollow(el.id)
                                     .then((res) => {
                                         if (res.data.resultCode === 0) {
-                                            unFollow(el.id)
+                                            unFollow(el.id);
                                         }
+                                        toggleFollowingProgress(el.id, false);
                                     })
-                                    .catch(err => console.log(err))
+                                    .catch(err => console.log(err));
 
-                            }} className={'user_btn'}>unfollow
+                                // }} className={'user_btn'}>unfollow
+                            }} className={followingInProgress ? 'disabled_btn' : 'user_btn'}>unfollow
                             </button>
 
-                            : <button onClick={() => {
+                            : <button disabled={followingInProgress.some(id => id === el.id)} onClick={() => {
+                                toggleFollowingProgress(el.id, true);
                                 usersAPI.follow(el.id)
                                     .then((res) => {
                                         if (res.data.resultCode === 0) {
-                                            follow(el.id)
+                                            follow(el.id);
                                         }
+                                        toggleFollowingProgress(el.id, false);
                                     })
-                                    .catch(err => console.log(err))
+                                    .catch(err => console.log(err));
 
-                            }} className={'user_btn'}>follow
+                                // }} className={'user_btn'}>follow
+                            }} className={followingInProgress ? 'disabled_btn' : 'user_btn'}>follow
                             </button>
                         }
 

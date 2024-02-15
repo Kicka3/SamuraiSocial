@@ -35,8 +35,8 @@ export const Header: React.FC<HeaderPropsType> = ({isAuth, login, avatarCurrenUs
             <div className="headerCenter">
                 <div className="searchbar">
                     <img className={'headerUserImg'}
+                         // src={noUserAvatar}
                          src={currentUserAvatar !== null ? currentUserAvatar : noUserAvatar}
-                        //  src={noUserAvatar}
                          alt={currentUserAvatar}
                     />
                     {/*<SearchIcon className="search"/>*/}

@@ -108,6 +108,20 @@
     background-color: #5a42f1;
 }
 
+.disabled_btn {
+    opacity: .5;
+    margin-left: 6px;
+    border: none;
+    border-radius: 5px;
+    background-color: #7B68EE;
+    font-weight: 500;
+    margin-right: 20px;
+    color: white;
+    width: 70px;
+    height: 22px;
+    transition: 50ms;
+}
+
 .user_info {
     margin-top: 8px;
 }
