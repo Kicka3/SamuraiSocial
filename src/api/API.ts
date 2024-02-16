@@ -40,15 +40,4 @@ export const authAPI = {
             .then((data) => data.data)
             .catch((e) => console.log('HeaderContainer Error ' + e))
     },
-
 }
-
-
-// try {
-//     axios.get<ProfileResponseType>(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-//         .then((res) => {
-//             this.props.setUserProfile(res.data)
-//         });
-// } catch (e) {
-//     console.log(e + 'Error in get user')
-// }
