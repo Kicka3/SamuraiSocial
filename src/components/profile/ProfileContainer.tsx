@@ -3,7 +3,7 @@ import React from "react";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import {
-    getUserTC,
+    getUserProfileTC,
     ProfileResponseType,
     setUserProfile
 } from "../../redux/profile-reducer/profile-reducer";
@@ -26,11 +26,8 @@ class ProfileContainer extends React.Component<PropsType> {
         if (!userId) {
             userId = '2';
         }
-        try {
-            this.props.getUserTC(userId)
-        } catch (e) {
-            console.log(e)
-        }
+
+        this.props.getUserProfileTC(userId);
     }
 
     render() {
@@ -46,7 +43,7 @@ class ProfileContainer extends React.Component<PropsType> {
 
 type MapDispatchToProps = {
     setUserProfile: (profileData: ProfileResponseType) => void
-    getUserTC: (userId: string) => void
+    getUserProfileTC: (userId: string) => void
 }
 type MapStateToPropsType = {
     profile: ProfileResponseType | null
@@ -59,4 +56,4 @@ const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
 
 const WitchUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, {setUserProfile, getUserTC})(WitchUrlDataContainerComponent)
+export default connect(mapStateToProps, {setUserProfile, getUserProfileTC})(WitchUrlDataContainerComponent)

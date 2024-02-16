@@ -49,8 +49,8 @@ export type InitialProfileStateType = {
 
 export const initialState: InitialProfileStateType = {
     postsData: [
-        {id: v1(), message: "Jopa", likesCount: 5},
-        {id: v1(), message: "My little Jopa", likesCount: 25},
+        // {id: v1(), message: "Jopa", likesCount: 5},
+        // {id: v1(), message: "My little Jopa", likesCount: 25},
     ] as PostsType[],
     newPostText: 'Whussap?',
     profile: null
@@ -112,14 +112,14 @@ export const setUserProfile = (profileData: ProfileResponseType) => {
 
 //Thunks
 
-export const getUserTC = (userId: string) => (dispatch: Dispatch) => {
+export const getUserProfileTC = (userId: string) => (dispatch: Dispatch) => {
 
     usersAPI.profile(userId)
         .then((res) => {
-            dispatch(setUserProfile(res))
+            dispatch(setUserProfile(res));
         })
         .catch(err => {
-            console.log('Error in get user' + err)
+            console.log('Error in get user' + err);
         })
 }
 

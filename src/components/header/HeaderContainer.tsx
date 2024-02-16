@@ -1,9 +1,8 @@
 import "./header.css";
 import React from "react";
 import {Header} from "./Header";
-import axios from "axios";
 import {connect} from "react-redux";
-import {getAuthMeTC, setAuthUserDataAC, setAvatarCurrentUserDataType} from "../../redux/auth-reducer/auth-reducer";
+import {getAuthUserDataTC, setAuthUserDataAC, setAvatarCurrentUserDataType} from "../../redux/auth-reducer/auth-reducer";
 import {RootReduxStoreType} from "../../redux/redux-store";
 import {PhotosProfileType} from "../../redux/profile-reducer/profile-reducer";
 import {useParams} from "react-router-dom";
@@ -15,19 +14,19 @@ export type HeaderPropsContainerType = MapStateToPropsType & MapDispatchToProps 
 class HeaderContainer extends React.Component<HeaderPropsContainerType> {
 
     componentDidMount() {
-        this.props.getAuthMeTC();
+        this.props.getAuthUserDataTC();
     }
 
     render() {
         return <Header {...this.props}/>
     }
-};
+}
 
 
 type MapDispatchToProps = {
     setAuthUserData: (email: string, id: number, login: string) => void
     setAvatarCurrentUserDataType: (currentAvatars: PhotosProfileType) => void
-    getAuthMeTC: () => void
+    getAuthUserDataTC: () => void
 }
 type MapStateToPropsType = {
     login: string | null,
@@ -53,5 +52,5 @@ const WithParams = (props: HeaderPropsContainerType) => {
 export default connect(mapStateToProps, {
     setAuthUserData: setAuthUserDataAC,
     setAvatarCurrentUserDataType,
-    getAuthMeTC
+    getAuthUserDataTC
 })(WithParams)
