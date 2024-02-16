@@ -1,9 +1,8 @@
 import React from "react";
 import {UsersPageTop} from "./UsersPageTop";
 import noUserAvatar from "../../assets/images/avatars/noAvatar.jpeg";
-import {InitialUsersStateType, toggleFollowingProgress} from "../../redux/users-reducer/users-reducer";
+import {followTC, InitialUsersStateType, unfollowTC} from "../../redux/users-reducer/users-reducer";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/API";
 
 
 type UsersTypePropsType = {
@@ -13,8 +12,8 @@ type UsersTypePropsType = {
     currentPage: number
     followingInProgress: string[]
     onPageChanged: (pageNumber: number) => void
-    follow: (userId: string) => void
-    unFollow: (userId: string) => void
+    followTC: (userId: string) => void
+    unFollowTC: (userId: string) => void
     toggleFollowingProgress: (userId: string, isFetching: boolean) => void
 }
 
@@ -24,8 +23,8 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
         pageSize,
         currentPage,
         onPageChanged, users,
-        unFollow,
-        follow,
+        unFollowTC,
+        followTC,
         followingInProgress,
         toggleFollowingProgress
     } = props;
@@ -40,6 +39,14 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
         if (pages.length < 10) {
             pages.push(i);
         }
+    }
+
+
+    const unFollowClickHandler = (userId: string) => {
+        unFollowTC(userId)
+    }
+    const followClickHandler = (userId: string) => {
+        followTC(userId)
     }
 
     return <>
@@ -117,34 +124,16 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
 
                         </div>
                         {el.followed
-                            ? <button disabled={followingInProgress.some(id => id === el.id)} onClick={() => {
-                                toggleFollowingProgress(el.id, true);
-                                usersAPI.unFollow(el.id)
-                                    .then((res) => {
-                                        if (res.data.resultCode === 0) {
-                                            unFollow(el.id);
-                                        }
-                                        toggleFollowingProgress(el.id, false);
-                                    })
-                                    .catch(err => console.log(err));
-
-                                // }} className={'user_btn'}>unfollow
-                            }} className={!followingInProgress ? 'disabled_btn' : 'user_btn'}>unfollow
+                            ? <button disabled={followingInProgress.some(id => id === el.id)}
+                                      onClick={() => unFollowClickHandler(el.id)}
+                                      className={'user_btn'}>unfollow
+                                {/*}} className={!followingInProgress ? 'disabled_btn' : 'user_btn'}>{followingInProgress ? 'unfollow' : ''}*/}
                             </button>
 
-                            : <button disabled={followingInProgress.some(id => id === el.id)} onClick={() => {
-                                toggleFollowingProgress(el.id, true);
-                                usersAPI.follow(el.id)
-                                    .then((res) => {
-                                        if (res.data.resultCode === 0) {
-                                            follow(el.id);
-                                        }
-                                        toggleFollowingProgress(el.id, false);
-                                    })
-                                    .catch(err => console.log(err));
-
-                                // }} className={'user_btn'}>follow
-                            }} className={!followingInProgress ? 'disabled_btn' : 'user_btn'}>follow
+                            : <button disabled={followingInProgress.some(id => id === el.id)}
+                                      onClick={() => followClickHandler(el.id)}
+                                      className={'user_btn'}>follow
+                                {/*}} className={!followingInProgress ? 'disabled_btn' : 'user_btn'}>follow*/}
                             </button>
                         }
 

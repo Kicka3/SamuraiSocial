@@ -35,7 +35,7 @@ export const App: React.FC<AppPropsType> = () => {
 
                     <Route path={'/users'}
                            render={() =>
-                               <UsersContainer/>
+                               <UsersContainer />
                            }/>
 
                     <Route path={'/posts'} component={MyPostsContainer}/>

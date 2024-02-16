@@ -5,7 +5,7 @@ import axios from "axios";
 import {connect} from "react-redux";
 import {setAuthUserData, setAvatarCurrentUserDataType} from "../../redux/auth-reducer/auth-reducer";
 import {RootReduxStoreType} from "../../redux/redux-store";
-import {PhotosProfileType, ProfileResponseType} from "../../redux/profile-reducer/profile-reducer";
+import {PhotosProfileType} from "../../redux/profile-reducer/profile-reducer";
 import {useParams} from "react-router-dom";
 
 //протипизировать get-запросы
@@ -19,6 +19,7 @@ class HeaderContainer extends React.Component<HeaderPropsContainerType> {
         if (!userId) {
             userId = '2';
         }
+
         axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
             withCredentials: true
         })
@@ -27,12 +28,15 @@ class HeaderContainer extends React.Component<HeaderPropsContainerType> {
                     const {email, id, login} = res.data.data;
                     this.props.setAuthUserData(email, id, login);
                 }
-                axios.get<ProfileResponseType>(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-                    .then((userData) => {
-                        const currentAvatars: PhotosProfileType = userData.data.photos
-                        userId = res.data.data.id
-                            this.props.setAvatarCurrentUserDataType(currentAvatars)
-                    });
+
+                //does not work!!!!!!
+
+                // axios.get<ProfileResponseType>(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
+                //     .then((userData) => {
+                //         const currentAvatars: PhotosProfileType = userData.data.photos
+                //         userId = res.data.data.id
+                //             this.props.setAvatarCurrentUserDataType(currentAvatars)
+                //     });
             })
             .catch((e) => {
                 console.log('HeaderContainer Error ' + e)
