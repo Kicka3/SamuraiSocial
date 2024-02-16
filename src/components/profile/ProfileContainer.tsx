@@ -1,9 +1,9 @@
 import "./profile.css";
 import React from "react";
 import {Profile} from "./Profile";
-import axios from "axios";
 import {connect} from "react-redux";
 import {
+    getUserTC,
     ProfileResponseType,
     setUserProfile
 } from "../../redux/profile-reducer/profile-reducer";
@@ -27,12 +27,9 @@ class ProfileContainer extends React.Component<PropsType> {
             userId = '2';
         }
         try {
-            axios.get<ProfileResponseType>(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-                .then((res) => {
-                    this.props.setUserProfile(res.data)
-                });
+            this.props.getUserTC(userId)
         } catch (e) {
-            console.log(e + 'Error in get user')
+            console.log(e)
         }
     }
 
@@ -49,6 +46,7 @@ class ProfileContainer extends React.Component<PropsType> {
 
 type MapDispatchToProps = {
     setUserProfile: (profileData: ProfileResponseType) => void
+    getUserTC: (userId: string) => void
 }
 type MapStateToPropsType = {
     profile: ProfileResponseType | null
@@ -61,4 +59,4 @@ const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
 
 const WitchUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, {setUserProfile})(WitchUrlDataContainerComponent)
+export default connect(mapStateToProps, {setUserProfile, getUserTC})(WitchUrlDataContainerComponent)

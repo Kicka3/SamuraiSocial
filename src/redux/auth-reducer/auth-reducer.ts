@@ -1,10 +1,12 @@
-// export type AuthResponseType = {
-//     resultCode: number
-//     messages: [],
-//     data: InitialAuthStateType | null
-// }
-
 import {PhotosProfileType} from "../profile-reducer/profile-reducer";
+import {Dispatch} from "redux";
+import {authAPI, usersAPI} from "../../../src/api/API";
+
+export type AuthResponseType = {
+    resultCode: number
+    messages: [],
+    data: InitialAuthStateType | null
+}
 
 type InitialAuthStateType = {
     email: string | null
@@ -40,9 +42,10 @@ export const authReducer = (state: InitialAuthStateType = initialState, action: 
     }
 }
 
-//AC
-type SetAuthUserDataType = ReturnType<typeof setAuthUserData>
-export const setAuthUserData = (email: string, id: number, login: string) => {
+//Actions
+
+type SetAuthUserDataType = ReturnType<typeof setAuthUserDataAC>
+export const setAuthUserDataAC = (email: string, id: number, login: string) => {
     return {
         type: 'SET-USER-DATA',
         payload: {
@@ -63,4 +66,17 @@ export const setAvatarCurrentUserDataType = (currentAvatars: PhotosProfileType) 
             currentAvatars
         }
     } as const
+}
+
+//Thunks
+
+export const getAuthMeTC = () => (dispatch: Dispatch) => {
+    authAPI.authMe()
+        .then((data) => {
+            if (data.resultCode === 0) {
+                const {email, id, login} = data.data;
+                dispatch(setAuthUserDataAC(email, id, login));
+            }
+        })
+        .catch(err => console.log(err));
 }

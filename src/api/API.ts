@@ -1,4 +1,5 @@
 import axios from "axios";
+import {ProfileResponseType} from "../../src/redux/profile-reducer/profile-reducer";
 
 export const instance = axios.create({
     withCredentials: true,
@@ -10,13 +11,44 @@ export const usersAPI = {
     getUsers: (currentPage: number, pageSize: number) => {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(data => data.data)
+            .catch((e) => console.log('getUsers Error ' + e))
     },
     unFollow: (id: string) => {
         return instance.delete(`follow/${id}`)
             .then(data => data.data)
+            .catch((e) => console.log('unFollow Error ' + e))
     },
     follow: (id: string) => {
         return instance.post(`/follow/${id}`)
             .then(data => data.data)
+            .catch((e) => console.log('follow Error ' + e))
+    },
+    profile: (userId: string) => {
+        // return instance.get<ProfileResponseType>(`profile/${userId}`)
+        return instance.get(`profile/${userId}`)
+            .then(data => {
+                console.log(data.data)
+               return  data.data
+            })
+            .catch(e => console.log('profile Error ' + e))
     }
 }
+
+export const authAPI = {
+    authMe: () => {
+        return instance.get(`auth/me`)
+            .then((data) => data.data)
+            .catch((e) => console.log('HeaderContainer Error ' + e))
+    },
+
+}
+
+
+// try {
+//     axios.get<ProfileResponseType>(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
+//         .then((res) => {
+//             this.props.setUserProfile(res.data)
+//         });
+// } catch (e) {
+//     console.log(e + 'Error in get user')
+// }

@@ -3,7 +3,7 @@ import React from "react";
 import {Header} from "./Header";
 import axios from "axios";
 import {connect} from "react-redux";
-import {setAuthUserData, setAvatarCurrentUserDataType} from "../../redux/auth-reducer/auth-reducer";
+import {getAuthMeTC, setAuthUserDataAC, setAvatarCurrentUserDataType} from "../../redux/auth-reducer/auth-reducer";
 import {RootReduxStoreType} from "../../redux/redux-store";
 import {PhotosProfileType} from "../../redux/profile-reducer/profile-reducer";
 import {useParams} from "react-router-dom";
@@ -15,33 +15,7 @@ export type HeaderPropsContainerType = MapStateToPropsType & MapDispatchToProps 
 class HeaderContainer extends React.Component<HeaderPropsContainerType> {
 
     componentDidMount() {
-        let userId = this.props.id
-        if (!userId) {
-            userId = '2';
-        }
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true
-        })
-            .then((res) => {
-                if (res.data.resultCode === 0) {
-                    const {email, id, login} = res.data.data;
-                    this.props.setAuthUserData(email, id, login);
-                }
-
-                //does not work!!!!!!
-
-                // axios.get<ProfileResponseType>(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-                //     .then((userData) => {
-                //         const currentAvatars: PhotosProfileType = userData.data.photos
-                //         userId = res.data.data.id
-                //             this.props.setAvatarCurrentUserDataType(currentAvatars)
-                //     });
-            })
-            .catch((e) => {
-                console.log('HeaderContainer Error ' + e)
-            })
-
+        this.props.getAuthMeTC();
     }
 
     render() {
@@ -53,6 +27,7 @@ class HeaderContainer extends React.Component<HeaderPropsContainerType> {
 type MapDispatchToProps = {
     setAuthUserData: (email: string, id: number, login: string) => void
     setAvatarCurrentUserDataType: (currentAvatars: PhotosProfileType) => void
+    getAuthMeTC: () => void
 }
 type MapStateToPropsType = {
     login: string | null,
@@ -75,4 +50,8 @@ const WithParams = (props: HeaderPropsContainerType) => {
     return <HeaderContainer id={userId} {...props} />
 }
 
-export default connect(mapStateToProps, {setAuthUserData, setAvatarCurrentUserDataType})(WithParams)
+export default connect(mapStateToProps, {
+    setAuthUserData: setAuthUserDataAC,
+    setAvatarCurrentUserDataType,
+    getAuthMeTC
+})(WithParams)
