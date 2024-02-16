@@ -1,4 +1,7 @@
 import {v1} from "uuid";
+import {Dispatch} from "redux";
+import {usersAPI} from "../../../src/api/API";
+import {toggleFollowingProgressAC, unfollowSuccessAC} from "../../../src/redux/users-reducer/users-reducer";
 
 
 export type MainProfileReducerType = AddPostACType
@@ -76,6 +79,8 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
     }
 }
 
+//Actions
+
 export type AddPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = (newPostText: string) => {
     return {
@@ -104,5 +109,19 @@ export const setUserProfile = (profileData: ProfileResponseType) => {
         }
     } as const
 }
+
+//Thunks
+
+export const getUserTC = (userId: string) => (dispatch: Dispatch) => {
+
+    usersAPI.profile(userId)
+        .then((res) => {
+            dispatch(setUserProfile(res))
+        })
+        .catch(err => {
+            console.log('Error in get user' + err)
+        })
+}
+
 
 export default profileReducer;
