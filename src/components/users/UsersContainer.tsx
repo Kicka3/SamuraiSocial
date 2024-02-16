@@ -74,7 +74,6 @@ type mapDispatchToPropsType = {
     //types for UI-component from container
     setCurrentPage: (pageNumber: number) => void
     toggleFollowingProgress: (userId: string, isFetching: boolean) => void
-
     followTC: (userId: string) => void
     unfollowTC: (userId: string) => void
     getUserTC: (currentPage: number, pageSize: number) => void
