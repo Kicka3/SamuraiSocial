@@ -6,7 +6,7 @@ import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {DialogItem} from "./dialogItem/DialogItem";
 import {DialogsType, MessagesDataType, NewMessageBody} from "../../redux/messages-reducer/messages-reducer";
-import {ChatMenu} from "./chatMenu/ChatMenu";
+import {Redirect} from "react-router-dom";
 
 
 type DialogsPropsType = {
@@ -15,6 +15,7 @@ type DialogsPropsType = {
     dialogsData: DialogsType[]
     messagesData: MessagesDataType[]
     newMessageBody: NewMessageBody
+    isAuth: boolean
 }
 
 export const Dialogs: React.FC<DialogsPropsType> = (props) => {
@@ -60,6 +61,7 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
         // console.log('ввёл: ' + body)
     }
 
+    if (!props.isAuth) return <Redirect to={'/login'}/>
 
     return (
         <>
