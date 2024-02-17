@@ -24,7 +24,6 @@ export const usersAPI = {
             .catch((e) => console.log('follow Error ' + e))
     },
     profile: (userId: string) => {
-        // return instance.get<ProfileResponseType>(`profile/${userId}`)
         return instance.get(`profile/${userId}`)
             .then(data => {
                 console.log(data.data)
