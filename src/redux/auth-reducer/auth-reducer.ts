@@ -1,6 +1,6 @@
 import {PhotosProfileType} from "../profile-reducer/profile-reducer";
 import {Dispatch} from "redux";
-import {authAPI, usersAPI} from "../../../src/api/API";
+import {authAPI} from "../../../src/api/API";
 
 export type AuthResponseType = {
     resultCode: number
@@ -70,8 +70,8 @@ export const setAvatarCurrentUserDataType = (currentAvatars: PhotosProfileType) 
 
 //Thunks
 
-export const getAuthMeTC = () => (dispatch: Dispatch) => {
-    authAPI.authMe()
+export const getAuthUserDataTC = () => (dispatch: Dispatch) => {
+    authAPI.me()
         .then((data) => {
             if (data.resultCode === 0) {
                 const {email, id, login} = data.data;

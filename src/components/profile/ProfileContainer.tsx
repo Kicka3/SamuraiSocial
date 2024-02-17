@@ -3,12 +3,13 @@ import React from "react";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import {
-    getUserTC,
+    getUserProfileTC,
     ProfileResponseType,
     setUserProfile
 } from "../../redux/profile-reducer/profile-reducer";
 import {RootReduxStoreType} from "../../redux/redux-store";
 import {RouteComponentProps, withRouter} from "react-router-dom";
+import {WithAuthRedirect} from "../../../src/hoc/WithAuthRedirect";
 
 
 export type ProfilePropsContainerType = MapStateToPropsType & MapDispatchToProps
@@ -26,14 +27,12 @@ class ProfileContainer extends React.Component<PropsType> {
         if (!userId) {
             userId = '2';
         }
-        try {
-            this.props.getUserTC(userId)
-        } catch (e) {
-            console.log(e)
-        }
+
+        this.props.getUserProfileTC(userId);
     }
 
     render() {
+
         return (
             <Profile {...this.props}
                      profile={this.props.profile}
@@ -44,19 +43,32 @@ class ProfileContainer extends React.Component<PropsType> {
 }
 
 
+// type mapStateToPropsForRedirectType = {
+//     profile: ProfileResponseType | null
+// }
+// const mapStateToPropsForRedirect = (state: RootReduxStoreType): MapStateToPropsType => {
+//     return {
+//         profile: state.profilePage.profile,
+//     }
+// };
+
 type MapDispatchToProps = {
     setUserProfile: (profileData: ProfileResponseType) => void
-    getUserTC: (userId: string) => void
+    getUserProfileTC: (userId: string) => void
 }
 type MapStateToPropsType = {
     profile: ProfileResponseType | null
 }
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
     }
 };
 
+
+//HOCRedirect
+// const AuthRedirectComponent = WithAuthRedirectComponent(Profile);
+
 const WitchUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, {setUserProfile, getUserTC})(WitchUrlDataContainerComponent)
+export default WithAuthRedirect(connect(mapStateToProps, {setUserProfile, getUserProfileTC})(WitchUrlDataContainerComponent));

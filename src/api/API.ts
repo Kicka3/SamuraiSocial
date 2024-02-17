@@ -35,7 +35,7 @@ export const usersAPI = {
 }
 
 export const authAPI = {
-    authMe: () => {
+    me: () => {
         return instance.get(`auth/me`)
             .then((data) => data.data)
             .catch((e) => console.log('HeaderContainer Error ' + e))

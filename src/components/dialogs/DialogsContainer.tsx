@@ -10,6 +10,7 @@ import {
 import {connect} from "react-redux";
 import {RootReduxStoreType} from "../../redux/redux-store";
 import {Dispatch} from "redux";
+import {WithAuthRedirect} from "../../../src/hoc/WithAuthRedirect";
 
 
 type MapStateToPropsType = {
@@ -29,7 +30,6 @@ type MapDispatchToProps = {
     updateNewMessageBody: (body: string) => void
     sendMessage: () => void
 }
-
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
     return {
         updateNewMessageBody: (body: string) => {
@@ -41,5 +41,7 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
     }
 }
 
+const AuthRedirectComponent = WithAuthRedirect(Dialogs);
+
 export const DialogsContainer =
-    connect<MapStateToPropsType, MapDispatchToProps, any, RootReduxStoreType>(mapStateToProps, mapDispatchToProps)(Dialogs)
+    connect<MapStateToPropsType, MapDispatchToProps, any, RootReduxStoreType>(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
