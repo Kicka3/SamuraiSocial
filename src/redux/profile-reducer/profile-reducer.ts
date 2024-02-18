@@ -1,12 +1,12 @@
 import {v1} from "uuid";
 import {Dispatch} from "redux";
-import {usersAPI} from "../../../src/api/API";
+import {profileAPI, usersAPI} from "../../../src/api/API";
 
 
 export type MainProfileReducerType = AddPostACType
     | UpdatePostNewTextACType
     | SetUserProfileACType
-
+    | SetUserStatusACType
 
 export type PostsType = {
     id: string;
@@ -44,6 +44,7 @@ export type InitialProfileStateType = {
     postsData: PostsType[]
     newPostText: string
     profile: ProfileResponseType | null
+    status: string
 }
 
 export const initialState: InitialProfileStateType = {
@@ -53,7 +54,8 @@ export const initialState: InitialProfileStateType = {
         {id: v1(), message: "My little Jopa", likesCount: 25},
     ] as PostsType[],
     newPostText: 'Whussap?',
-    profile: null
+    profile: null,
+    status: ''
 }
 
 
@@ -73,6 +75,9 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
         }
         case "SET-USER-PROFILE": {
             return {...state, profile: action.payload.profileData}
+        }
+        case 'SET-USER-STATUS': {
+            return {...state, status: action.payload.status}
         }
         default:
             return state
@@ -110,16 +115,47 @@ export const setUserProfile = (profileData: ProfileResponseType) => {
     } as const
 }
 
+export type SetUserStatusACType = ReturnType<typeof SetUserStatusAC>
+export const SetUserStatusAC = (status: string) => {
+    return {
+        type: 'SET-USER-STATUS',
+        payload: {
+            status
+        }
+    } as const
+}
+
 //Thunks
 
 export const getUserProfileTC = (userId: string) => (dispatch: Dispatch) => {
-
     usersAPI.profile(userId)
         .then((res) => {
             dispatch(setUserProfile(res));
         })
         .catch(err => {
             console.log('Error in get user' + err);
+        })
+}
+
+export const getUserStatusTC = (status: string) => (dispatch: Dispatch) => {
+    profileAPI.getStatus(status)
+        .then((res) => {
+            dispatch(SetUserStatusAC(res.aboutMe));
+        })
+        .catch(err => {
+            console.log('Error in set user status' + err);
+        })
+}
+
+export const updateUserStatusTC = (status: string) => (dispatch: Dispatch) => {
+    profileAPI.updateStatus(status)
+        .then((res) => {
+            if (res.resultCode === 0) {
+                dispatch(SetUserStatusAC(status));
+            }
+        })
+        .catch(err => {
+            console.log('Error in set user status' + err);
         })
 }
 

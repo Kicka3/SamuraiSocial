@@ -9,11 +9,16 @@ import {ProfileStatus} from "../../../components/profile/profileInfo/profileStat
 
 type ProfileInfoPropsType = {
     profile: ProfileResponseType | null
+    status: string
+    updateUserStatusTC: (status: string) => void
 }
 
-const ProfileInfo: React.FC<ProfileInfoPropsType> = ({profile}) => {
+const ProfileInfo: React.FC<ProfileInfoPropsType> = ({profile,
+                                                         status,
+                                                         updateUserStatusTC}) => {
 
-    const largePhoto =  profile?.photos.large ? profile.photos.large : noAvatar;
+    const largePhoto = profile?.photos.large ? profile.photos.large : noAvatar;
+
 
     if (!profile) {
         return <Preloader/>
@@ -32,7 +37,7 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = ({profile}) => {
             </div>
             <div className="profileInfo">
                 <h4 className="profileInfoName">{profile.fullName}</h4>
-                <ProfileStatus profileStatus={profile.aboutMe}/>
+                <ProfileStatus profileStatus={status} updateUserStatusTC={updateUserStatusTC}/>
                 {/*<span className="profileStatus">{profile.aboutMe}</span>*/}
             </div>
         </div>

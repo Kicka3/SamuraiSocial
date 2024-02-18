@@ -2,43 +2,51 @@ import React, {ChangeEvent} from 'react';
 
 type ProfileStatusType = {
     profileStatus: string
+    updateUserStatusTC: (status: string) => void
 }
 
 export class ProfileStatus extends React.Component<ProfileStatusType> {
 
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.profileStatus
     }
 
     activateViewModeHandler = () => {
         this.setState({
             editeMode: false
-        })
-        this.state.editMode = false
+        });
+        this.state.editMode = false;
+
+        this.props.updateUserStatusTC(this.state.status)
     }
-    activeEditModeHandler() {
+
+    activeEditModeHandler = () => {
         this.setState({
             editeMode: true
         })
         this.state.editMode = true;
     }
 
-    // changeStatusHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    //     (e.currentTarget.value)
-    // }
+    changeStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        this.setState({
+            status: e.currentTarget.value
+        })
+    }
+
 
     render() {
 
         return (this.state.editMode
-                ? <input value={this.props.profileStatus}
-                    // onChange={this.changeStatusHandler}
-                    onBlur={this.activateViewModeHandler}
+                ? <input value={this.state.status}
+                         onChange={this.changeStatusHandler}
+                         onBlur={this.activateViewModeHandler}
                          autoFocus
                          maxLength={30}
                 />
                 : <span className="profileStatus"
-                        onDoubleClick={this.activeEditModeHandler.bind(this)}
-                >{this.props.profileStatus}</span>
+                        onDoubleClick={this.activeEditModeHandler}
+                >{this.props.profileStatus  || 'no status'}</span>
         );
     }
 }
