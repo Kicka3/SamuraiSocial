@@ -8,10 +8,14 @@ import {RightBar} from "./rightbar/Rightbar";
 
 type ProfilePropsType = {
     profile: ProfileResponseType | null,
-
+    status: string
+    updateUserStatusTC: (status: string) => void
 }
 
-export const Profile: React.FC<ProfilePropsType> = ({profile}) => {
+export const Profile: React.FC<ProfilePropsType> = ({profile,
+                                                        status,
+                                                        updateUserStatusTC}) => {
+
 
     return (
         <section className="ProfileWrapper">
@@ -19,7 +23,7 @@ export const Profile: React.FC<ProfilePropsType> = ({profile}) => {
 
                 {/*ПРОФИЛЬ*/}
                 <div className="profileRight">
-                    <ProfileInfo profile={profile}/>
+                    <ProfileInfo profile={profile} status={status} updateUserStatusTC={updateUserStatusTC}/>
 
                     {/*ПОСТЫ В ПРОФИЛЕ*/}
                     <div className="profileRightBottom">
