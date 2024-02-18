@@ -10,6 +10,7 @@ import {
 import {RootReduxStoreType} from "../../redux/redux-store";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {WithAuthRedirect} from "../../../src/hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 
 export type ProfilePropsContainerType = MapStateToPropsType & MapDispatchToProps
@@ -42,16 +43,6 @@ class ProfileContainer extends React.Component<PropsType> {
 
 }
 
-
-// type mapStateToPropsForRedirectType = {
-//     profile: ProfileResponseType | null
-// }
-// const mapStateToPropsForRedirect = (state: RootReduxStoreType): MapStateToPropsType => {
-//     return {
-//         profile: state.profilePage.profile,
-//     }
-// };
-
 type MapDispatchToProps = {
     setUserProfile: (profileData: ProfileResponseType) => void
     getUserProfileTC: (userId: string) => void
@@ -65,10 +56,8 @@ const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     }
 };
 
-
-//HOCRedirect
-// const AuthRedirectComponent = WithAuthRedirectComponent(Profile);
-
-const WitchUrlDataContainerComponent = withRouter(ProfileContainer);
-
-export default WithAuthRedirect(connect(mapStateToProps, {setUserProfile, getUserProfileTC})(WitchUrlDataContainerComponent));
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {setUserProfile, getUserProfileTC}),
+    withRouter,
+    // WithAuthRedirect
+)(ProfileContainer);

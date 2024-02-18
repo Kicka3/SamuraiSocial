@@ -1,7 +1,6 @@
 import {v1} from "uuid";
 import {Dispatch} from "redux";
 import {usersAPI} from "../../../src/api/API";
-import {toggleFollowingProgressAC, unfollowSuccessAC} from "../../../src/redux/users-reducer/users-reducer";
 
 
 export type MainProfileReducerType = AddPostACType
@@ -49,8 +48,9 @@ export type InitialProfileStateType = {
 
 export const initialState: InitialProfileStateType = {
     postsData: [
-        // {id: v1(), message: "Jopa", likesCount: 5},
-        // {id: v1(), message: "My little Jopa", likesCount: 25},
+        //fake posts
+        {id: v1(), message: "Jopa", likesCount: 5},
+        {id: v1(), message: "My little Jopa", likesCount: 25},
     ] as PostsType[],
     newPostText: 'Whussap?',
     profile: null

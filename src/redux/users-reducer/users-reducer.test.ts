@@ -11,7 +11,7 @@ beforeEach(() => {
 //             {
 //                 id: v1(),
 //                 name: 'XXXX11',
-//                 status: 'XXXXXX22',
+//                 profileStatus: 'XXXXXX22',
 //                 photos: {
 //                     small: 'kek',
 //                     large: 'kek2',
@@ -23,7 +23,7 @@ beforeEach(() => {
 //             {
 //                 id: v1(),
 //                 name: 'XXXX33',
-//                 status: 'XXXXXX44',
+//                 profileStatus: 'XXXXXX44',
 //                 photos: {
 //                     small: 'kek',
 //                     large: 'kek2',
@@ -57,7 +57,7 @@ test('user should be unFollowed', () => {
 //         {
 //             id: v1(),
 //             name: 'XXXX',
-//             status: 'XXXXXX',
+//             profileStatus: 'XXXXXX',
 //             photos: {
 //                 small: 'kek',
 //                 large: 'kek2',
