@@ -4,6 +4,7 @@ import {Preloader} from "../../common/preloader/Preloader";
 import imageLarge from '../../../assets/images/Cover/cover1.jpeg'
 import noAvatar from '../../../assets/images/avatars/noAvatar.jpeg'
 import {ProfileResponseType} from "../../../redux/profile-reducer/profile-reducer";
+import {ProfileStatus} from "../../../components/profile/profileInfo/profileStatus/ProfileStatus";
 
 
 type ProfileInfoPropsType = {
@@ -31,7 +32,8 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = ({profile}) => {
             </div>
             <div className="profileInfo">
                 <h4 className="profileInfoName">{profile.fullName}</h4>
-                <span className="profileStatus">{profile.aboutMe}</span>
+                <ProfileStatus profileStatus={profile.aboutMe}/>
+                {/*<span className="profileStatus">{profile.aboutMe}</span>*/}
             </div>
         </div>
     );

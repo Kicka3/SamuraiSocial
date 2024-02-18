@@ -36,7 +36,7 @@ export default function Sidebar() {
 
                     <li className="sidebarListItem">
                        {/*<GroupsIcon className="sidebarIcon" />*/}
-                       <a href={'/users'} className="XXXX">Find friends</a>
+                       <NavLink to={'/users'} className="XXXX">Find friends</NavLink>
                     </li>
 
                     <li className="sidebarListItem">

@@ -11,9 +11,11 @@ import {
     getUserTC,
     setUserTC, unfollowTC, followTC
 } from "../../redux/users-reducer/users-reducer";
+import {WithAuthRedirect} from "../../../src/hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 
-//протипизировать get-запросы
+//протипизировать запросы
 
 export type UsersPropsType = MapStateToPropsType & mapDispatchToPropsType
 
@@ -25,6 +27,9 @@ class UsersContainer extends React.Component<UsersPropsType> {
 
     componentDidMount() {
         this.props.getUserTC(this.props.currentPage, this.props.pageSize);
+
+
+
     }
 
     onPageChanged = (pageNumber: number) => {
@@ -81,12 +86,13 @@ type mapDispatchToPropsType = {
     setUserTC: (pageNumber: number, pageSize: number) => void
 }
 
-export default connect(mapStateToProps, {
-    followTC,
-    unfollowTC,
-    getUserTC,
-    setUserTC,
-    setCurrentPage: setCurrentPageAC,
-    toggleFollowingProgress: toggleFollowingProgressAC,
-})(UsersContainer);
-
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {
+            followTC,
+            unfollowTC,
+            getUserTC,
+            setUserTC,
+            setCurrentPage: setCurrentPageAC,
+            toggleFollowingProgress: toggleFollowingProgressAC,
+        }
+    ), WithAuthRedirect)(UsersContainer)

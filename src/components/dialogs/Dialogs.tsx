@@ -61,8 +61,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
         // console.log('ввёл: ' + body)
     }
 
-    if (!props.isAuth) return <Redirect to={'/login'}/>
-
     return (
         <>
             <section className={"messenger"}>

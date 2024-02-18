@@ -24,15 +24,26 @@ export const usersAPI = {
             .catch((e) => console.log('follow Error ' + e))
     },
     profile: (userId: string) => {
-        // return instance.get<ProfileResponseType>(`profile/${userId}`)
+        console.log('Obsolete method. Pls profileAPI object')
+        return profileAPI.profile(userId);
+        // .then(data => {
+        //    return  data.data
+        // })
+        // .catch(e => console.log('profile Error ' + e))
+    }
+}
+
+
+export const profileAPI = {
+    profile: (userId: string) => {
         return instance.get(`profile/${userId}`)
             .then(data => {
-                console.log(data.data)
-               return  data.data
+                return data.data
             })
             .catch(e => console.log('profile Error ' + e))
     }
 }
+
 
 export const authAPI = {
     me: () => {

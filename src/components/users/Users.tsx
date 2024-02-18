@@ -1,7 +1,7 @@
 import React from "react";
-import {UsersPageTop} from "./UsersPageTop";
+import {UsersPageTop} from "../../../src/components/users/usersPageTop/UsersPageTop";
 import noUserAvatar from "../../assets/images/avatars/noAvatar.jpeg";
-import {followTC, InitialUsersStateType, unfollowTC} from "../../redux/users-reducer/users-reducer";
+import {InitialUsersStateType} from "../../redux/users-reducer/users-reducer";
 import {NavLink} from "react-router-dom";
 
 
@@ -26,7 +26,6 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
         unFollowTC,
         followTC,
         followingInProgress,
-        toggleFollowingProgress
     } = props;
 
     //Рассчитываю кол-во страниц
@@ -107,7 +106,7 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
 
                                 <div className="user_info__item">
                                         <span className="user_info_key">
-                                            <span className="user_info_key__city">From:  </span>
+                                            <span className="user_info_key__city">From: </span>
                                         </span>
                                     <span className="rightbar_info_value">
                                            <span className="user_info_key__city">{'el.location.country'}</span>
@@ -115,9 +114,9 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
                                 </div>
 
                                 <div className="user_info__item">
-                                        <span className="user_info_value">
-                                            <span className="user_info__status">{el.status}</span>
-                                        </span>
+                                    <span className="user_info_value">
+                                        <span className="user_info__status">{el.status}</span>
+                                    </span>
                                 </div>
 
                             </div>

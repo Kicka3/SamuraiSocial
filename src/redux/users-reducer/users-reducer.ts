@@ -1,5 +1,7 @@
 import {usersAPI} from "../../../src/api/API";
 import {Dispatch} from "redux";
+import {getAuthUserDataTC, setAuthUserDataAC} from "../../../src/redux/auth-reducer/auth-reducer";
+import {log} from "util";
 
 export type ResponseUsersType = {
     id: string,
