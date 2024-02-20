@@ -38,7 +38,7 @@ export const profileAPI = {
             .catch(e => console.log('profileAPI profile Error ' + e))
     },
     getStatus: (userId: string) => {
-        return instance.get(`profile/${userId}`)
+        return instance.get(`profile/status/${userId}`)
             .then(data => {
                 return data.data
             })
@@ -47,7 +47,6 @@ export const profileAPI = {
     updateStatus: (status: string) => {
         return instance.put(`profile/status`, {status})
             .then(data => {
-                console.log(data)
                 return data.data
             })
             .catch(e => console.log('profileAPI status Error ' + e))

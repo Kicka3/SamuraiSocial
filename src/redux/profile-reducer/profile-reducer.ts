@@ -139,8 +139,8 @@ export const getUserProfileTC = (userId: string) => (dispatch: Dispatch) => {
 
 export const getUserStatusTC = (status: string) => (dispatch: Dispatch) => {
     profileAPI.getStatus(status)
-        .then((res) => {
-            dispatch(SetUserStatusAC(res.aboutMe));
+        .then((statusFromServer) => {
+            dispatch(SetUserStatusAC(statusFromServer));
         })
         .catch(err => {
             console.log('Error in set user status' + err);
@@ -151,6 +151,7 @@ export const updateUserStatusTC = (status: string) => (dispatch: Dispatch) => {
     profileAPI.updateStatus(status)
         .then((res) => {
             if (res.resultCode === 0) {
+                console.log(res)
                 dispatch(SetUserStatusAC(status));
             }
         })

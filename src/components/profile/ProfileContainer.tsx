@@ -59,7 +59,7 @@ type MapStateToPropsType = {
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
         profile: state.profilePage.profile,
-        status: state.profilePage.status,
+        status: state.profilePage.status
     }
 };
 

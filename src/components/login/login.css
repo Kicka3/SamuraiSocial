@@ -232,6 +232,11 @@
   margin-top: 30px;
 }
 
+.login-text-middle {
+  display: flex;
+  justify-content: space-around;
+}
+
 .forms .form-content .input-box{
   display: flex;
   align-items: center;

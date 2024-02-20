@@ -34,6 +34,13 @@ export class ProfileStatus extends React.Component<ProfileStatusType> {
         })
     }
 
+    componentDidUpdate(prevProps: Readonly<ProfileStatusType>, prevState: Readonly<{}>) {
+        if (prevProps.profileStatus !== this.props.profileStatus) {
+            this.setState({
+                status: this.props.profileStatus
+            })
+        }
+    }
 
     render() {
 
@@ -46,7 +53,7 @@ export class ProfileStatus extends React.Component<ProfileStatusType> {
                 />
                 : <span className="profileStatus"
                         onDoubleClick={this.activeEditModeHandler}
-                >{this.props.profileStatus  || 'no status'}</span>
+                >{this.props.profileStatus || 'no status'}</span>
         );
     }
 }
