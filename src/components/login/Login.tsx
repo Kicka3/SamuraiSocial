@@ -1,12 +1,13 @@
 import './login.css'
-import {Link} from "react-router-dom";
-import {useRef} from "react";
 import loginImg from '../../assets/images/things/loginPage.png'
-import {LoginForm} from "../../../src/components/login/loginForm/LoginForm";
+import {FormDataType, LoginReduxForm} from "../../../src/components/login/loginForm/LoginForm";
 
 
 export default function Login() {
 
+    const onSubmit = (formData: FormDataType) => {
+        console.log(formData);
+    }
 
     return (
         <section className='loginWrapper'>
@@ -30,7 +31,7 @@ export default function Login() {
                     </div>
                 </div>
 
-                <LoginForm/>
+                <LoginReduxForm onSubmit={onSubmit}/>
 
             </div>
         </section>

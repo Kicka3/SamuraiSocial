@@ -1,14 +1,17 @@
 import React from 'react';
 import '../login.css'
 import {Link} from "react-router-dom";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
-export const LoginForm: React.FC = () => {
+export type FormDataType = {
+    login: string
+    password: string
+    rememberMe: boolean
+}
+
+export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
     const valueForinp = 'заглушка'
-
-    const handleClick = () => {
-        console.log('click')
-    };
 
 
     return (
@@ -16,32 +19,39 @@ export const LoginForm: React.FC = () => {
             <div className="form-content">
                 <div className="login-form">
                     <div className="title">Login</div>
-                    <form onSubmit={handleClick} action="#">
+                    <form onSubmit={props.handleSubmit}>
 
                         <div className="input-boxes">
                             <div className="input-box">
-                                <input
-                                    // ref={email}
+                                <Field
+                                    name={'login'}
                                     type="email"
                                     placeholder="Enter your email"
-                                    required/>
+                                    required
+                                    component={'input'}
+                                />
                             </div>
 
 
                             <div className="input-box">
-                                <input
+                                <Field
                                     type="password"
-                                    // ref={password}
-                                    // minLength="6"
+                                    name={'password'}
                                     placeholder="Enter your password"
-                                    required/>
+                                    required
+                                    component={'input'}
+                                />
                             </div>
 
 
                             <div className={'text login-text-middle'}>
                                 <div><a href="#">Forgot password?</a></div>
                                 <div>
-                                    <input type={"checkbox"}/>Remember me?
+                                    <Field
+                                        component={'input'}
+                                        type={"checkbox"}
+                                        name={'rememberMe'}
+                                    />Remember me?
                                 </div>
                             </div>
 
@@ -73,6 +83,10 @@ export const LoginForm: React.FC = () => {
         </section>
     );
 };
+
+export const LoginReduxForm = reduxForm<FormDataType>({
+    form: 'login'
+})(LoginForm);
 
 {/*animation for registerPage*/
 }

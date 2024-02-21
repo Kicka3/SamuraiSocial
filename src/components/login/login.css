@@ -236,6 +236,9 @@
   display: flex;
   justify-content: space-around;
 }
+.login-text-middle input {
+  cursor: pointer;
+}
 
 .forms .form-content .input-box{
   display: flex;
