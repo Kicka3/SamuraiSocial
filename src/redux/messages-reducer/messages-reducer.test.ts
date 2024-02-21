@@ -6,6 +6,7 @@ import messagesReducer, {
     updateNewMessageBodyAC
 } from "./messages-reducer";
 import {v1} from "uuid";
+import {FormDialogsDataType} from "../../../src/components/dialogs/addMessageForm/AddMessageForm";
 
 
 let startState: InitialMessageStateType;
@@ -21,10 +22,12 @@ beforeEach(() => {
         ] as MessagesDataType [],
         newMessageBody: '',
     }
+
 });
 
 test('message must be sent', () => {
-    const action = sendMessageAC();
+    const newMessageBody: string = 'TESTMESSAGE'
+    const action = sendMessageAC({newMessageBody});
     const endState = messagesReducer(startState, action);
 
     expect(endState.messagesData.length).toBe(2);

@@ -13,7 +13,6 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
     const valueForinp = 'заглушка'
 
-
     return (
         <section className="forms">
             <div className="form-content">
@@ -88,6 +87,26 @@ export const LoginReduxForm = reduxForm<FormDataType>({
     form: 'login'
 })(LoginForm);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {/*animation for registerPage*/
 }
 {/*<div className="signup-form">*/
@@ -136,4 +155,3 @@ export const LoginReduxForm = reduxForm<FormDataType>({
 }
 {/*</div>*/
 }
-

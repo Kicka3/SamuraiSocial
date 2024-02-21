@@ -1,4 +1,5 @@
 import {v1} from "uuid";
+import {FormDialogsDataType} from "../../../src/components/dialogs/addMessageForm/AddMessageForm";
 
 
 export type DialogsType = {
@@ -47,8 +48,7 @@ const messagesReducer = (state: InitialMessageStateType = initialState, action: 
             }
         }
         case "SEND-MESSAGE": {
-            let body = state.newMessageBody;
-            state.newMessageBody = '';
+            let body = action.payload.messageBody;
             let newMessage = {id: v1(), ownMessage: true, message: body}
             return {...state, messagesData: [...state.messagesData, newMessage]}
         }
@@ -68,10 +68,12 @@ export const updateNewMessageBodyAC = (body: string) => {
     } as const
 }
 export type SendMessageACType = ReturnType<typeof sendMessageAC>
-export const sendMessageAC = () => {
+export const sendMessageAC = (messageBody: FormDialogsDataType) => {
     return {
         type: 'SEND-MESSAGE',
-        payload: {}
+        payload: {
+            messageBody
+        }
     } as const
 }
 

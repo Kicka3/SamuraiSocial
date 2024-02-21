@@ -6,12 +6,12 @@ import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {DialogItem} from "./dialogItem/DialogItem";
 import {DialogsType, MessagesDataType, NewMessageBody} from "../../redux/messages-reducer/messages-reducer";
-import {Redirect} from "react-router-dom";
+import {AddMessageReduxForm, FormDialogsDataType} from "../../../src/components/dialogs/addMessageForm/AddMessageForm";
 
 
 type DialogsPropsType = {
     updateNewMessageBody: (body: string) => void
-    sendMessage: () => void
+    sendMessage: (messageBody: FormDialogsDataType) => void
     dialogsData: DialogsType[]
     messagesData: MessagesDataType[]
     newMessageBody: NewMessageBody
@@ -44,21 +44,23 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     );
 
     //SEND MESSAGE:
-    const PressEnterHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-        const value = e.key;
-        if (value === 'Enter') {
-            onSendMessageClickHandler();
-        }
-    }
-    const onSendMessageClickHandler = () => {
-        console.log('SEND')
-        sendMessage();
-    }
+    // const PressEnterHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    //     const value = e.key;
+    //     if (value === 'Enter') {
+    //         onSendMessageClickHandler();
+    //     }
+    // }
+    // const onSendMessageClickHandler = () => {
+    //     console.log('SEND')
+    //     sendMessage();
+    // }
 
-    const onNewMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let body = e.currentTarget.value;
-        updateNewMessageBody(body)
-        // console.log('ввёл: ' + body)
+    // const onNewMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    //     let body = e.currentTarget.value;
+    //     updateNewMessageBody(body)
+    // }
+    const addNewMessage = (messageBody: FormDialogsDataType) => {
+        sendMessage(messageBody);
     }
 
     return (
@@ -69,20 +71,9 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                         <div className="messagesTop">
                             {messageElements}
                         </div>
-                        <div className="chatMessagesBottom">
 
-                                <textarea className="chatMessageInput"
-                                          placeholder={"Say hello!"}
-                                          value={newMessageBody}
-                                          onChange={onNewMessageChangeHandler}
-                                          onKeyPress={PressEnterHandler}
-                                ></textarea>
+                        <AddMessageReduxForm onSubmit={addNewMessage}/>
 
-                            <button className="chatSubmitBtn"
-                                    onClick={onSendMessageClickHandler}
-                            >Send
-                            </button>
-                        </div>
                     </div>
                 </div>
 

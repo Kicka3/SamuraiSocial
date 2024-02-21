@@ -12,6 +12,7 @@ import {RootReduxStoreType} from "../../redux/redux-store";
 import {compose, Dispatch} from "redux";
 import {WithAuthRedirect} from "../../../src/hoc/WithAuthRedirect";
 import React from "react";
+import {FormDialogsDataType} from "../../../src/components/dialogs/addMessageForm/AddMessageForm";
 
 
 type MapStateToPropsType = {
@@ -29,15 +30,15 @@ const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
 
 type MapDispatchToProps = {
     updateNewMessageBody: (body: string) => void
-    sendMessage: () => void
+    sendMessage: (formData: FormDialogsDataType) => void
 }
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
     return {
         updateNewMessageBody: (body: string) => {
             dispatch(updateNewMessageBodyAC(body));
         },
-        sendMessage: () => {
-            dispatch(sendMessageAC());
+        sendMessage: (messageBody: FormDialogsDataType) => {
+            dispatch(sendMessageAC(messageBody));
         },
     }
 }
