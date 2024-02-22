@@ -3,10 +3,9 @@ import messagesReducer, {
     InitialMessageStateType,
     MessagesDataType,
     sendMessageAC,
-    updateNewMessageBodyAC
+    // updateNewMessageBodyAC
 } from "./messages-reducer";
 import {v1} from "uuid";
-import {FormDialogsDataType} from "../../../src/components/dialogs/addMessageForm/AddMessageForm";
 
 
 let startState: InitialMessageStateType;
@@ -20,7 +19,7 @@ beforeEach(() => {
         messagesData: [
             {id: v1(), ownMessage: false, message: 'Hello this is a messagePage!'},
         ] as MessagesDataType [],
-        newMessageBody: '',
+        // newMessageBody: '',
     }
 
 });
@@ -33,10 +32,10 @@ test('message must be sent', () => {
     expect(endState.messagesData.length).toBe(2);
 });
 
-test('new message body should be changed', () => {
-    const newBody = 's13';
-    const action = updateNewMessageBodyAC(newBody);
-    const endState = messagesReducer(startState, action);
-
-    expect(endState.newMessageBody).toBe(newBody);
-});
+// test('new message body should be changed', () => {
+//     const newBody = 's13';
+//     const action = updateNewMessageBodyAC(newBody);
+//     const endState = messagesReducer(startState, action);
+//
+//     expect(endState.newMessageBody).toBe(newBody);
+// });

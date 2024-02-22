@@ -5,7 +5,11 @@ import {ChatOnline} from "./chatOnline/ChatOnline";
 import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {DialogItem} from "./dialogItem/DialogItem";
-import {DialogsType, MessagesDataType, NewMessageBody} from "../../redux/messages-reducer/messages-reducer";
+import {
+    DialogsType,
+    MessagesDataType,
+    NewMessageBody
+} from "../../redux/messages-reducer/messages-reducer";
 import {AddMessageReduxForm, FormDialogsDataType} from "../../../src/components/dialogs/addMessageForm/AddMessageForm";
 
 
@@ -54,7 +58,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     //     console.log('SEND')
     //     sendMessage();
     // }
-
     // const onNewMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     //     let body = e.currentTarget.value;
     //     updateNewMessageBody(body)
@@ -72,7 +75,7 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                             {messageElements}
                         </div>
 
-                        <AddMessageReduxForm onSubmit={addNewMessage}/>
+                        <AddMessageReduxForm onSubmit={addNewMessage} />
 
                     </div>
                 </div>

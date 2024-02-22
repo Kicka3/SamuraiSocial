@@ -3,7 +3,7 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
 
 export type FormDialogsDataType = {
-    newMessageBody: string
+    newMessageBody: FormDialogsDataType
 }
 
 export const AddMessageForm: React.FC<InjectedFormProps<FormDialogsDataType>> = (props) => {

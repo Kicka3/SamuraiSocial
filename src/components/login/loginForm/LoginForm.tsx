@@ -11,7 +11,7 @@ export type FormDataType = {
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
-    const valueForinp = 'заглушка'
+    const valueForInp = 'заглушка'
 
     return (
         <section className="forms">
@@ -58,7 +58,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                             <div className="button input-box">
                                 <button className="inputBtn"
                                         type="submit"
-                                        value={valueForinp}>Submit
+                                        value={valueForInp}>Submit
 
                                     {/*   value="sumbit"{isFetching ?*/}
                                     {/*<CircularProgress color="secondary" size="15px"/> : "Submit"}*/}
