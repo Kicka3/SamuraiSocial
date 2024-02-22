@@ -20,6 +20,8 @@ export const ProfileContacts: React.FC<ProfileContactsPropsType> = ({profileCont
     const link_twitter = profileContacts?.twitter ? profileContacts?.twitter : '✖';
     const link_website = profileContacts?.website ? profileContacts?.website : '✖';
 
+
+    //Попытка сделать итеррируемый OBJ
     // let prices = {
     //     banana: 1,
     //     orange: 2,

@@ -14,12 +14,12 @@ type ProfileBarPropsType = {
 export const RightBar: React.FC<ProfileBarPropsType> = ({profile}) => {
 
     let profileContacts = profile?.contacts;
-    // console.log('достаю контакты' )
-    // console.dir(profileContacts)
+
 
     return (
         <div className="rightbar">
             <div className="rightBarWrapper">
+                {/*//Дописать!!!*/}
                 <ProfileRightBar profile={profile}/>
                 <HomeRightBar profile={profile}/>
                 <ProfileContacts profileContacts={profileContacts}/>

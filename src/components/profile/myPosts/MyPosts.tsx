@@ -2,7 +2,6 @@ import "./myPosts.css"
 import MyPost from "./myPost/MyPost";
 import Share from "./share/Share";
 import React from "react";
-import {PostsType} from "../../../redux/profile-reducer/profile-reducer";
 import {PostsPropsType} from "./MyPostsContainer";
 
 
