@@ -37,7 +37,11 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = ({profile,
             </div>
             <div className="profileInfo">
                 <h4 className="profileInfoName">{profile.fullName}</h4>
-                <ProfileStatus profileStatus={status} updateUserStatusTC={updateUserStatusTC}/>
+
+                <ProfileStatus profileStatus={status}
+                               updateUserStatusTC={updateUserStatusTC}
+                />
+
                 {/*<span className="profileStatus">{profile.aboutMe}</span>*/}
             </div>
         </div>

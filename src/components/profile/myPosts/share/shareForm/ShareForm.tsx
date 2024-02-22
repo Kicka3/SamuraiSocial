@@ -10,6 +10,7 @@ export const ShareForm: React.FC<InjectedFormProps<ShareFormDataType>> = (props)
 
     return (
         <form className="shareBottom" onSubmit={props.handleSubmit}>
+
             <div className="shareOptions">
                 <label htmlFor="file" className="shareOption">
                     {/*ИКОНКА*/}
@@ -41,14 +42,8 @@ export const ShareForm: React.FC<InjectedFormProps<ShareFormDataType>> = (props)
                 {/*   <span className="shareOptionText">Feelings</span>*/}
                 {/*</div>*/}
             </div>
-            <button className="shareBtn"
-                // type="submit"
-                //     onClick={(e) => {
-                //         e.preventDefault();
-                //         onAddPost()
-                //     }}
-            >Share
-            </button>
+            <button className="shareBtn">Share</button>
+
         </form>
     );
 };

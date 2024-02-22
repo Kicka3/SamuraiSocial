@@ -15,9 +15,8 @@ export const AddMessageForm: React.FC<InjectedFormProps<FormDialogsDataType>> = 
                    placeholder={"Say hello!"}
                    component={'textarea'}
                    name={'newMessageBody'}
-
-                   required
                    type={'text'}
+                   required
             ></Field>
 
             <button className="chatSubmitBtn">Send</button>

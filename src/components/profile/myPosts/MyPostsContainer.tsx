@@ -17,7 +17,7 @@ type mapStateToPropsType = {
 }
 type MapDispatchToPropsType = {
     addNewPost: (newText: string) => void
-    updateNewPostText: (newText: string) => void
+    // updateNewPostText: (newText: string) => void
 }
 
 const mapStateToProps = (state: RootReduxStoreType): mapStateToPropsType => {
@@ -33,10 +33,10 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
             const action = addPostAC(newPostText);
             dispatch(action);
         },
-        updateNewPostText: (newText: string) => {
-            const action = updatePostNewTextAC(newText);
-            dispatch(action);
-        },
+        // updateNewPostText: (newText: string) => {
+        //     const action = updatePostNewTextAC(newText);
+        //     dispatch(action);
+        // },
     }
 }
 

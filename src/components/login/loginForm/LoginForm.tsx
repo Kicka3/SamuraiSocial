@@ -17,9 +17,10 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
         <section className="forms">
             <div className="form-content">
                 <div className="login-form">
-                    <div className="title">Login</div>
-                    <form onSubmit={props.handleSubmit}>
 
+                    <div className="title">Login</div>
+
+                    <form onSubmit={props.handleSubmit}>
                         <div className="input-boxes">
                             <div className="input-box">
                                 <Field
@@ -74,9 +75,9 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                                 </label>
                             </div>
 
-
                         </div>
                     </form>
+
                 </div>
             </div>
         </section>
@@ -86,25 +87,6 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 export const LoginReduxForm = reduxForm<FormDataType>({
     form: 'login'
 })(LoginForm);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {/*animation for registerPage*/

@@ -5,24 +5,17 @@ import React from "react";
 import {PostsPropsType} from "./MyPostsContainer";
 
 
-// type MyPostsPropsType = {
-//     posts: PostsType[]
-//     newPostText: string
-//     addNewPost: (newPostText: string) => void
-//     updateNewPostText: (newText: string) => void
-// }
-
-export const MyPosts = (props: PostsPropsType) => {
-    // const {posts, addNewPost, updateNewPostText} = props;
-
+export const MyPosts: React.FC<PostsPropsType> = (props) => {
+    const {addNewPost} = props;
 
     return (
         <section className="feed">
             <div className="feedWrapper">
-                <Share addNewPost={props.addNewPost}
+                <Share addNewPost={addNewPost}
                        newPostText={props.posts.newPostText}
-                       updateNewPostText={props.updateNewPostText}
+                       // updateNewPostText={updateNewPostText}
                 />
+
                 <MyPost posts={props.posts.postsData}
 
                 />

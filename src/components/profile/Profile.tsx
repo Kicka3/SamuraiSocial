@@ -23,14 +23,20 @@ export const Profile: React.FC<ProfilePropsType> = ({profile,
 
                 {/*ПРОФИЛЬ*/}
                 <div className="profileRight">
-                    <ProfileInfo profile={profile} status={status} updateUserStatusTC={updateUserStatusTC}/>
+
+                    <ProfileInfo profile={profile}
+                                 status={status}
+                                 updateUserStatusTC={updateUserStatusTC}
+                    />
 
                     {/*ПОСТЫ В ПРОФИЛЕ*/}
                     <div className="profileRightBottom">
 
                         <MyPostsContainer/>
+
                         {/*/PROFILEINFO/*/}
                         <RightBar profile={profile}/>
+
                     </div>
 
                 </div>
