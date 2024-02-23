@@ -10,13 +10,9 @@ type SharePropsType = {
 }
 
 const Share: React.FC<SharePropsType> = (props) => {
-    const {addNewPost, newPostText} = props
-
-    // let newPostElement = React.createRef<HTMLInputElement>();
 
     const onAddPost = () => {
-        // addNewPost()
-
+        // addNewPost(newPostText)
     }
 
     // const onPostChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,14 +32,13 @@ const Share: React.FC<SharePropsType> = (props) => {
 
                     <ShareReduxInputTextForm onSubmit={onAddPost}/>
 
-                 </div>
-                <hr className="sharHr"/>
+                  </div>
+                 <hr className="sharHr"/>
 
-                {/*<ShareReduxForm onSubmit={onAddPost}/>*/}
+                <ShareReduxForm/>
 
               </div>
           </div>
-
 
         </>
     );

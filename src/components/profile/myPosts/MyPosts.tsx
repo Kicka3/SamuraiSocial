@@ -1,8 +1,8 @@
 import "./myPosts.css"
 import MyPost from "./myPost/MyPost";
-import Share from "./share/Share";
 import React from "react";
 import {PostsPropsType} from "./MyPostsContainer";
+import Share from "./share/Share";
 
 
 export const MyPosts: React.FC<PostsPropsType> = (props) => {
@@ -11,9 +11,9 @@ export const MyPosts: React.FC<PostsPropsType> = (props) => {
     return (
         <section className="feed">
             <div className="feedWrapper">
-                <Share addNewPost={addNewPost}
-                       newPostText={props.posts.newPostText}
-                       // updateNewPostText={updateNewPostText}
+
+                <Share newPostText={props.posts.newPostText}
+                           addNewPost={addNewPost}
                 />
 
                 <MyPost posts={props.posts.postsData}
