@@ -86,11 +86,8 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
 }
 
 //Actions
-
 export type AddPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = (newPostText: AddNewPostFormType) => {
-    console.log(newPostText.newPostText);  //Тут undefined
-    console.log(newPostText);
     return {
         type: 'ADD-POST',
         payload: {

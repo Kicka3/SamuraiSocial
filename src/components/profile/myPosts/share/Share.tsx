@@ -11,31 +11,12 @@ const Share: React.FC<SharePropsType> = (props) => {
 
 
     const onAddPost = (newPostText: AddNewPostFormType) => {
-        addNewPost(newPostText)
+        addNewPost(newPostText);
     }
 
     return (<>
             <div className="addPostForm">
                 <AddNewPostReduxForm onSubmit={onAddPost}/>
-
-                {/*<form  className="shareWrapper"*/}
-                {/*       onSubmit={props.handleSubmit}*/}
-                {/*       onSubmit={onAddPost}*/}
-                {/*>*/}
-                {/*    <div className="shareTop">*/}
-
-                {/*//AВАТАРКА USERA*/}
-                {/*       <img className="shareProfileImg"*/}
-                {/*            src={'assets/person/person0.jpeg'}*/}
-                {/*            alt="User's Avatar"/>*/}
-
-                {/*       <ShareReduxInputTextForm />*/}
-
-                {/*     </div>*/}
-                {/*    <hr className="sharHr"/>*/}
-
-                {/*   <ShareReduxForm/>*/}
-                {/* </form>*/}
             </div>
         </>
     );
