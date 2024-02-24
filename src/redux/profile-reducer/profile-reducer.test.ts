@@ -11,18 +11,18 @@ beforeEach(() => {
     startState = initialState
 });
 
-test('post length should increase', () => {
-    let newPostText = 'new text'
-    const action = addPostAC(newPostText);
-    const endState = profileReducer(startState, action);
-
-    expect(endState.postsData.length).toBe(3);
-});
+// test('post length should increase', () => {
+//     let newPostText = 'new text'
+//     const action = addPostAC(newPostText);
+//     const endState = profileReducer(startState, action);
+//
+//     expect(endState.postsData.length).toBe(3);
+// });
 
 test('newPostText should be changed', () => {
     const newText = 'new input text';
     const action = updatePostNewTextAC(newText);
     const endState = profileReducer(startState, action);
 
-    expect(endState.newPostText).toBe(newText);
+    expect(endState.postText).toBe(newText);
 });

@@ -5,6 +5,7 @@ import {FormDataType, LoginReduxForm} from "../../../src/components/login/loginF
 
 export default function Login() {
 
+    //Доделать логинизацию через сервер
     const onSubmit = (formData: FormDataType) => {
         console.log(formData);
     }

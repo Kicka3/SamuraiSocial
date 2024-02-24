@@ -12,8 +12,8 @@ export const MyPosts: React.FC<PostsPropsType> = (props) => {
         <section className="feed">
             <div className="feedWrapper">
 
-                <Share newPostText={props.posts.newPostText}
-                           addNewPost={addNewPost}
+                <Share
+                    addNewPost={addNewPost}
                 />
 
                 <MyPost posts={props.posts.postsData}

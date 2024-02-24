@@ -12,7 +12,9 @@ const ShareInputForm: React.FC<InjectedFormProps<ShareInputFormDataType>> = (pro
 
     return (<>
 
-            <form onSubmit={props.handleSubmit}>
+            <div
+                // onSubmit={props.handleSubmit}
+            >
                 <div className="shareTop">
                     <Field className="shareInput"
                            name={'shareNewPostText'}
@@ -22,7 +24,7 @@ const ShareInputForm: React.FC<InjectedFormProps<ShareInputFormDataType>> = (pro
                     />
                 </div>
 
-            </form>
+            </div>
         </>
     );
 };

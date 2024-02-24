@@ -1,45 +1,42 @@
 import "./share.css"
 import React from "react";
-import {ShareReduxForm} from "../../../../../src/components/profile/myPosts/share/shareForm/ShareForm";
-import {ShareReduxInputTextForm} from "../../../../../src/components/profile/myPosts/share/shareForm/ShareInputForm";
+import {AddNewPostFormType, AddNewPostReduxForm} from "../share/addNewPostForm/AddNewPostForm";
 
 type SharePropsType = {
-    newPostText: string
-    addNewPost: (newPostText: string) => void
-    // updateNewPostText: (newText: string) => void
+    addNewPost: (newPostText: AddNewPostFormType) => void
 }
 
 const Share: React.FC<SharePropsType> = (props) => {
+    const {addNewPost} = props;
 
-    const onAddPost = () => {
-        // addNewPost(newPostText)
+
+    const onAddPost = (newPostText: AddNewPostFormType) => {
+        addNewPost(newPostText)
     }
 
-    // const onPostChange = (e: ChangeEvent<HTMLInputElement>) => {
-    //     let newText = e.currentTarget.value;
-    //     updateNewPostText(newText)
-    // }
-
     return (<>
-         <div className="share">
-             <div className="shareWrapper">
-                 <div className="shareTop">
+            <div className="addPostForm">
+                <AddNewPostReduxForm onSubmit={onAddPost}/>
 
-                    {/*//AВАТАРКА USERA*/}
-                    <img className="shareProfileImg"
-                         src={'assets/person/person0.jpeg'}
-                         alt="User's Avatar"/>
+                {/*<form  className="shareWrapper"*/}
+                {/*       onSubmit={props.handleSubmit}*/}
+                {/*       onSubmit={onAddPost}*/}
+                {/*>*/}
+                {/*    <div className="shareTop">*/}
 
-                    <ShareReduxInputTextForm onSubmit={onAddPost}/>
+                {/*//AВАТАРКА USERA*/}
+                {/*       <img className="shareProfileImg"*/}
+                {/*            src={'assets/person/person0.jpeg'}*/}
+                {/*            alt="User's Avatar"/>*/}
 
-                  </div>
-                 <hr className="sharHr"/>
+                {/*       <ShareReduxInputTextForm />*/}
 
-                <ShareReduxForm/>
+                {/*     </div>*/}
+                {/*    <hr className="sharHr"/>*/}
 
-              </div>
-          </div>
-
+                {/*   <ShareReduxForm/>*/}
+                {/* </form>*/}
+            </div>
         </>
     );
 }

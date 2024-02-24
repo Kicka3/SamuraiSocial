@@ -9,7 +9,9 @@ type ShareFormDataType = {
 export const ShareForm: React.FC<InjectedFormProps<ShareFormDataType>> = (props) => {
 
     return (
-        <form className="shareBottom" onSubmit={props.handleSubmit}>
+        <div className="shareBottom"
+             // onSubmit={props.handleSubmit}
+        >
 
             <div className="shareOptions">
                 <label htmlFor="file" className="shareOption">
@@ -44,7 +46,7 @@ export const ShareForm: React.FC<InjectedFormProps<ShareFormDataType>> = (props)
             </div>
             <button className="shareBtn">Share</button>
 
-        </form>
+        </div>
     );
 };
 

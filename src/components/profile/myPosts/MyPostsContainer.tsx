@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {RootReduxStoreType} from "../../../redux/redux-store";
 import {Dispatch} from "redux";
 import {MyPosts} from "./MyPosts";
+import {AddNewPostFormType} from "../../profile/myPosts/share/addNewPostForm/AddNewPostForm";
 
 
 
@@ -16,8 +17,7 @@ type mapStateToPropsType = {
     newPostText: InitialProfileStateType
 }
 type MapDispatchToPropsType = {
-    addNewPost: (newText: string) => void
-    // updateNewPostText: (newText: string) => void
+    addNewPost: (newPostText: AddNewPostFormType) => void
 }
 
 const mapStateToProps = (state: RootReduxStoreType): mapStateToPropsType => {
@@ -29,14 +29,10 @@ const mapStateToProps = (state: RootReduxStoreType): mapStateToPropsType => {
 
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
     return {
-        addNewPost: (newPostText: string) => {
+        addNewPost: (newPostText: AddNewPostFormType) => {
             const action = addPostAC(newPostText);
             dispatch(action);
         },
-        // updateNewPostText: (newText: string) => {
-        //     const action = updatePostNewTextAC(newText);
-        //     dispatch(action);
-        // },
     }
 }
 

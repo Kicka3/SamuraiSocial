@@ -1,6 +1,7 @@
 import {v1} from "uuid";
 import {Dispatch} from "redux";
 import {profileAPI, usersAPI} from "../../../src/api/API";
+import {AddNewPostFormType} from "../../../src/components/profile/myPosts/share/addNewPostForm/AddNewPostForm";
 
 
 export type MainProfileReducerType = AddPostACType
@@ -42,7 +43,7 @@ export type PhotosProfileType = {
 
 export type InitialProfileStateType = {
     postsData: PostsType[]
-    newPostText: string
+    postText: string
     profile: ProfileResponseType | null
     status: string
 }
@@ -53,7 +54,7 @@ export const initialState: InitialProfileStateType = {
         {id: v1(), message: "Jopa", likesCount: 5},
         {id: v1(), message: "My little Jopa", likesCount: 25},
     ] as PostsType[],
-    newPostText: 'Whussap?',
+    postText: '',
     profile: null,
     status: ''
 }
@@ -64,14 +65,14 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
         case 'ADD-POST': {
             let newPost = {
                 id: v1(),
-                message: state.newPostText,
-                likesCount: 10
+                // message: action.payload.newPostText.newPostText === undefined ? 'undef' : action.payload.newPostText.newPostText,
+                message: action.payload.newPostText.newPostText,
+                likesCount: 0
             }
-            state.newPostText = '';
             return {...state, postsData: [newPost, ...state.postsData]}
         }
         case 'UPDATE-NEW-POST-TEXT': {
-            return {...state, newPostText: state.newPostText = action.payload.newText};
+            return {...state, postText: state.postText = action.payload.newText};
         }
         case "SET-USER-PROFILE": {
             return {...state, profile: action.payload.profileData}
@@ -87,7 +88,9 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
 //Actions
 
 export type AddPostACType = ReturnType<typeof addPostAC>
-export const addPostAC = (newPostText: string) => {
+export const addPostAC = (newPostText: AddNewPostFormType) => {
+    console.log(newPostText.newPostText);  //Тут undefined
+    console.log(newPostText);
     return {
         type: 'ADD-POST',
         payload: {
