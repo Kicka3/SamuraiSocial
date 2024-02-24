@@ -1,10 +1,18 @@
 import React from 'react';
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {Field, InjectedFormProps, reduxForm} from 'redux-form';
+import {
+    maxLengthСreator,
+    minLength3,
+    required
+} from '../../../../../utils/validators/Valodators';
+import {Textarea} from "../../../../common/formsControl/FormsControl";
 
 
 export type AddNewPostFormType = {
     newPostText: string
 }
+
+const maxLength20 = maxLengthСreator(20);
 
 export const AddNewPostForm: React.FC<InjectedFormProps<AddNewPostFormType>> = (props) => {
     const {handleSubmit} = props;
@@ -24,9 +32,10 @@ export const AddNewPostForm: React.FC<InjectedFormProps<AddNewPostFormType>> = (
                     <div className="shareTop">
                         <Field className="shareInput"
                                name={'newPostText'}
-                               component={'input'}
+                               component={Textarea}
                                placeholder={"What's in your mind ?"}
                                type={'text'}
+                               validate={[required, maxLength20, minLength3]}
                         />
                     </div>
 

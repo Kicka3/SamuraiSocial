@@ -12,7 +12,8 @@
 
 .shareTop {
     display: flex;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .shareProfileImg {
@@ -25,7 +26,9 @@
 
 .shareInput {
     border: none;
-    width: 80%;
+    /*width: 100%;*/
+    min-width: 388px;
+    resize: none;
 }
 
 .shareInput:focus {

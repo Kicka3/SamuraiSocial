@@ -5,7 +5,6 @@ import {AddNewPostFormType} from "../../../src/components/profile/myPosts/share/
 
 
 export type MainProfileReducerType = AddPostACType
-    | UpdatePostNewTextACType
     | SetUserProfileACType
     | SetUserStatusACType
 
@@ -65,14 +64,10 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
         case 'ADD-POST': {
             let newPost = {
                 id: v1(),
-                // message: action.payload.newPostText.newPostText === undefined ? 'undef' : action.payload.newPostText.newPostText,
                 message: action.payload.newPostText.newPostText,
                 likesCount: 0
             }
             return {...state, postsData: [newPost, ...state.postsData]}
-        }
-        case 'UPDATE-NEW-POST-TEXT': {
-            return {...state, postText: state.postText = action.payload.newText};
         }
         case "SET-USER-PROFILE": {
             return {...state, profile: action.payload.profileData}
@@ -92,15 +87,6 @@ export const addPostAC = (newPostText: AddNewPostFormType) => {
         type: 'ADD-POST',
         payload: {
             newPostText
-        }
-    } as const
-}
-export type UpdatePostNewTextACType = ReturnType<typeof updatePostNewTextAC>
-export const updatePostNewTextAC = (newText: string) => {
-    return {
-        type: 'UPDATE-NEW-POST-TEXT',
-        payload: {
-            newText
         }
     } as const
 }
