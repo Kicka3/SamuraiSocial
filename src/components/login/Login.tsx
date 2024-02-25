@@ -53,6 +53,7 @@ const Login: React.FC<LoginContainerPropsType> = (props) => {
 
                 <LoginReduxForm onSubmit={onSubmit}/>
 
+
             </div>
         </section>
     )
