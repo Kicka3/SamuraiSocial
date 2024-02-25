@@ -2,12 +2,6 @@ import {PhotosProfileType} from "../profile-reducer/profile-reducer";
 import {Dispatch} from "redux";
 import {authAPI} from "../../../src/api/API";
 
-// export type AuthResponseType = {
-//     resultCode: number
-//     messages: [],
-//     data: InitialAuthStateType | null
-// }
-
 export type LoginResponseType = {
     resultCode: number
     messages: [],

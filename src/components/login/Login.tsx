@@ -6,27 +6,26 @@ import {connect} from "react-redux";
 import {loginTC} from "../../redux/auth-reducer/auth-reducer";
 
 
-type LoginPropsType = {}
+type LoginContainerPropsType = MapDispatchToProps;
 
-const Login: React.FC<LoginPropsType> = (props) => {
 
-    const emailRegExpLogin = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+const emailRegExpLogin = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 
-    function validationEmail(value: string) {
+const Login: React.FC<LoginContainerPropsType> = (props) => {
+
+    function validationEmail(value: string, formData: FormDataType) {
+        console.log(formData);
         let result = emailRegExpLogin.test(value);
         if (result) {
             //диспатчить санку LOGINTC
-
+            props.loginTC(formData.login, formData.password, formData.rememberMe)
         } else {
             return false
         }
-
     }
 
-
     const onSubmit = (formData: FormDataType) => {
-        console.log(formData);
-        validationEmail(formData.login);
+        validationEmail(formData.login, formData);
     }
 
 
@@ -63,4 +62,4 @@ type MapDispatchToProps = {
     loginTC: (email: string, password: string, rememberMe: boolean) => void
 }
 
-export default connect<MapDispatchToProps>(null, {loginTC})(Login)
+export default connect<MapDispatchToProps>(null, {loginTC})(Login);
