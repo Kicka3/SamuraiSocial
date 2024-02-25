@@ -163,10 +163,10 @@ export const getUserTC = (currentPage: number, pageSize: number) => (dispatch: D
     dispatch(toggleIsFetching(true));
 
     usersAPI.getUsers(currentPage, pageSize)
-        .then((data) => {
+        .then((res) => {
             dispatch(toggleIsFetching(false));
-            dispatch(setUsersAC(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
+            dispatch(setUsersAC(res.items));
+            dispatch(setTotalUsersCount(res.totalCount));
         })
         .catch(err => console.log(err))
 }

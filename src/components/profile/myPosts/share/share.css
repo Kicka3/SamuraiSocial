@@ -10,9 +10,12 @@
     padding: 10px;
 }
 
+.shareContainer {
+    width: 90%;
+}
+
 .shareTop {
     display: flex;
-    justify-content: center;
     align-items: flex-end;
 }
 
@@ -26,8 +29,7 @@
 
 .shareInput {
     border: none;
-    /*width: 100%;*/
-    min-width: 388px;
+    width: 100%;
     resize: none;
 }
 

@@ -10,10 +10,9 @@ type DialogItemPropsType = {
 }
 
 export const DialogItem: React.FC<DialogItemPropsType> = (props) => {
-    const {name, id} = props
+    const {name, id} = props;
+    let path = '/dialogs/' + id;
 
-
-    let path = '/dialogs/' + id
     return (
         <>
             <div className={`${"conversation"} ${'conversationActive'}`}>

@@ -2,12 +2,18 @@ import React from 'react';
 import '../login.css'
 import {Link} from "react-router-dom";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {Input} from "../../common/formsControl/Input";
+import {maxLengthСreator, minLength, required} from "../../../utils/validators/Valodators";
 
 export type FormDataType = {
     login: string
     password: string
     rememberMe: boolean
 }
+
+const maxLength50 = maxLengthСreator(50);
+const maxLength16 = maxLengthСreator(16);
+
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
@@ -24,11 +30,12 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                         <div className="input-boxes">
                             <div className="input-box">
                                 <Field
-                                    name={'login'}
                                     type="email"
+                                    name={'login'}
                                     placeholder="Enter your email"
                                     required
-                                    component={'input'}
+                                    validate={[required, maxLength50, minLength]}
+                                    component={Input}
                                 />
                             </div>
 
@@ -39,14 +46,15 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                                     name={'password'}
                                     placeholder="Enter your password"
                                     required
-                                    component={'input'}
+                                    validate={[required, maxLength16, minLength]}
+                                    component={Input}
                                 />
                             </div>
 
 
-                            <div className={'text login-text-middle'}>
+                            <div className={'text loginTextMiddle'}>
                                 <div><a href="#">Forgot password?</a></div>
-                                <div>
+                                <div className={'rememberMe'}>
                                     <Field
                                         component={'input'}
                                         type={"checkbox"}
@@ -59,7 +67,6 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                             <div className="button input-box">
                                 <button className="inputBtn"
                                         type="submit"
-                                        // value={valueForInp}
                                 >Submit
 
                                     {/*   value="sumbit"{isFetching ?*/}
@@ -70,7 +77,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                             </div>
 
 
-                            <div className="text sign-up-text">Don't have an account?
+                            <div className="text signUpText">Don't have an account?
                                 <label>
                                     <Link to="/register" style={{textDecoration: "none"}}> Sigup now</Link>
                                 </label>

@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React from 'react';
 import './dialogs.css'
 import {Message} from "./message/Message";
 import {ChatOnline} from "./chatOnline/ChatOnline";
@@ -26,8 +26,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     const {
         dialogsData,
         messagesData,
-        newMessageBody,
-        updateNewMessageBody,
         sendMessage
     } = props;
 

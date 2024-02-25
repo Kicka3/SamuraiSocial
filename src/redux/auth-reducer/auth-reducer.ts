@@ -2,10 +2,19 @@ import {PhotosProfileType} from "../profile-reducer/profile-reducer";
 import {Dispatch} from "redux";
 import {authAPI} from "../../../src/api/API";
 
-export type AuthResponseType = {
+// export type AuthResponseType = {
+//     resultCode: number
+//     messages: [],
+//     data: InitialAuthStateType | null
+// }
+
+export type LoginResponseType = {
     resultCode: number
     messages: [],
-    data: InitialAuthStateType | null
+    data: LoginDataResponseType
+}
+type LoginDataResponseType = {
+    userId: number
 }
 
 type InitialAuthStateType = {
@@ -45,7 +54,7 @@ export const authReducer = (state: InitialAuthStateType = initialState, action: 
 //Actions
 
 type SetAuthUserDataType = ReturnType<typeof setAuthUserDataAC>
-export const setAuthUserDataAC = (email: string, id: number, login: string) => {
+export const setAuthUserDataAC = (email: string | null, id: number | null, login: string | null, isAuth: boolean) => {
     return {
         type: 'SET-USER-DATA',
         payload: {
@@ -53,6 +62,7 @@ export const setAuthUserDataAC = (email: string, id: number, login: string) => {
                 email,
                 id,
                 login,
+                isAuth,
             }
         }
     } as const
@@ -70,12 +80,32 @@ export const setAvatarCurrentUserDataType = (currentAvatars: PhotosProfileType) 
 
 //Thunks
 
-export const getAuthUserDataTC = () => (dispatch: Dispatch) => {
+export const getAuthUserDataTC = (): any => (dispatch: Dispatch) => {
     authAPI.me()
-        .then((data) => {
-            if (data.resultCode === 0) {
-                const {email, id, login} = data.data;
-                dispatch(setAuthUserDataAC(email, id, login));
+        .then((res) => {
+            if (res.resultCode === 0) {
+                const {email, id, login,} = res.data;
+                dispatch(setAuthUserDataAC(email, id, login, true));
+            }
+        })
+        .catch(err => console.log(err));
+}
+
+export const loginTC = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch) => {
+    authAPI.login(email, password, rememberMe)
+        .then((res) => {
+            if (res.resultCode === 0) {
+                dispatch(getAuthUserDataTC())
+            }
+        })
+        .catch(err => console.log(err));
+}
+
+export const logoutTC = () => (dispatch: Dispatch) => {
+    authAPI.logout()
+        .then((res) => {
+            if (res.resultCode === 0) {
+                dispatch(setAuthUserDataAC(null, null, null, false));
             }
         })
         .catch(err => console.log(err));

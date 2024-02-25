@@ -9,32 +9,25 @@ import {
 import {connect} from "react-redux";
 import {RootReduxStoreType} from "../../redux/redux-store";
 import {compose, Dispatch} from "redux";
-import {WithAuthRedirect} from "../../../src/hoc/WithAuthRedirect";
 import React from "react";
 
 
 type MapStateToPropsType = {
     dialogsData: DialogsType[]
     messagesData: MessagesDataType[]
-    // newMessageBody: string
 }
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
         dialogsData: state.messagePage.dialogsData,
         messagesData: state.messagePage.messagesData,
-        // newMessageBody: state.messagePage.newMessageBody,
     }
 }
 
 type MapDispatchToProps = {
-    // updateNewMessageBody: (body: string) => void
     sendMessage: (messageBody: FormDialogsDataType) => void
 }
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
     return {
-        // updateNewMessageBody: (body: string) => {
-        //     dispatch(updateNewMessageBodyAC(body));
-        // },
         sendMessage: (messageBody: FormDialogsDataType) => {
             dispatch(sendMessageAC(messageBody));
         },
@@ -44,10 +37,4 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
 
 
 export default compose<React.ComponentType>(
-    connect<MapStateToPropsType,
-        MapDispatchToProps,
-        any,
-        RootReduxStoreType>
-    (mapStateToProps, mapDispatchToProps),
-    WithAuthRedirect
-)(Dialogs)
+    connect<MapStateToPropsType,MapDispatchToProps, any, RootReduxStoreType>(mapStateToProps, mapDispatchToProps))(Dialogs)

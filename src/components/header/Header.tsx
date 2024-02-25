@@ -3,7 +3,6 @@ import "./header.css";
 import {NavLink} from "react-router-dom";
 import {PhotosProfileType} from "../../redux/profile-reducer/profile-reducer";
 import noUserAvatar from "../../assets/images/avatars/noAvatar.jpeg";
-import noAvatar from "../../assets/images/avatars/noAvatar.jpeg";
 
 
 //Всё будет на ant-design!!!

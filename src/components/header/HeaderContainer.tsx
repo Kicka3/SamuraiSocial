@@ -24,7 +24,7 @@ class HeaderContainer extends React.Component<HeaderPropsContainerType> {
 
 
 type MapDispatchToProps = {
-    setAuthUserData: (email: string, id: number, login: string) => void
+    setAuthUserData: (email: string | null, id: number | null, login: string | null, isAuth: boolean) => void
     setAvatarCurrentUserDataType: (currentAvatars: PhotosProfileType) => void
     getAuthUserDataTC: () => void
 }

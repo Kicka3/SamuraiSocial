@@ -1,0 +1,39 @@
+
+.formControl {
+    width: 100%;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.formControl.error textarea {
+    border-bottom: 2px solid red;
+}
+
+.formControl {
+    height: 100%;
+    width: 100%;
+}
+
+
+/*InputFormLogin*/
+.formInputWrapper {
+    /*display: flex;*/
+    /*align-items: center;*/
+    height: 50px;
+    /*width: 100%;*/
+    /*margin: 10px 0;*/
+    /*position: relative;*/
+}
+
+#formsInput {
+    border-bottom: 2px solid red;
+    transition: all 0.3s ease;
+}
+
+.inputErrorMessage {
+    color: red;
+    font-size: 14px;
+}
