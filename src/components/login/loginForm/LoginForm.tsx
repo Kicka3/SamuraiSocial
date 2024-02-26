@@ -62,7 +62,11 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                                 </div>
                             </div>
 
-
+                            {props.error &&
+                               <span className={'formSummaryError'}>
+                                {props.error}
+                                </span>
+                            }
                             <div className="button input-box">
                                 <button className="inputBtn"
                                         type="submit"

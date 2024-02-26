@@ -92,8 +92,8 @@ export const loginTC = (email: string, password: string, rememberMe: boolean) =>
             if (res.resultCode === 0) {
                 dispatch(getAuthUserDataTC())
             } else {
-                const action = stopSubmit('Sorry u are stupid');
-                dispatch(action);
+                const message = res.messages.length > 0 ? res.messages : 'Some error'
+                dispatch(stopSubmit('login', {_error: message}));
             }
         })
         .catch(err => console.log(err));

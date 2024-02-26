@@ -159,6 +159,10 @@
     accent-color: #7d2ae8;
 }
 
+.formSummaryError {
+    color: red;
+}
+
 .login-text-middle input {
     cursor: pointer;
 }
