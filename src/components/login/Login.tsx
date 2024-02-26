@@ -4,20 +4,21 @@ import loginImg from '../../assets/images/things/loginPage.png'
 import {FormDataType, LoginReduxForm} from "../../../src/components/login/loginForm/LoginForm";
 import {connect} from "react-redux";
 import {loginTC} from "../../redux/auth-reducer/auth-reducer";
+import {Redirect} from "react-router-dom";
+import {RootReduxStoreType} from "../../redux/redux-store";
 
 
-type LoginContainerPropsType = MapDispatchToProps;
+type LoginContainerPropsType = MapDispatchToPropsType & MapStateToPropsType;
 
 
 const emailRegExpLogin = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 
 const Login: React.FC<LoginContainerPropsType> = (props) => {
 
+
     function validationEmail(value: string, formData: FormDataType) {
-        console.log(formData);
         let result = emailRegExpLogin.test(value);
         if (result) {
-            //диспатчить санку LOGINTC
             props.loginTC(formData.login, formData.password, formData.rememberMe)
         } else {
             return false
@@ -28,7 +29,9 @@ const Login: React.FC<LoginContainerPropsType> = (props) => {
         validationEmail(formData.login, formData);
     }
 
-
+    if (props.isAuth) {
+        return <Redirect to={'/profile'}/>
+    }
     return (
         <section className='loginWrapper'>
             <div className="container">
@@ -59,8 +62,17 @@ const Login: React.FC<LoginContainerPropsType> = (props) => {
     )
 };
 
-type MapDispatchToProps = {
+type MapDispatchToPropsType = {
     loginTC: (email: string, password: string, rememberMe: boolean) => void
 }
 
-export default connect<MapDispatchToProps>(null, {loginTC})(Login);
+type MapStateToPropsType = {
+    isAuth: boolean
+}
+const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+
+export default connect(mapStateToProps, {loginTC})(Login);

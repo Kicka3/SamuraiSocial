@@ -2,7 +2,11 @@ import "./header.css";
 import React from "react";
 import {Header} from "./Header";
 import {connect} from "react-redux";
-import {getAuthUserDataTC, setAuthUserDataAC, setAvatarCurrentUserDataType} from "../../redux/auth-reducer/auth-reducer";
+import {
+    getAuthUserDataTC, logoutTC,
+    setAuthUserDataAC,
+    setAvatarCurrentUserDataType
+} from "../../redux/auth-reducer/auth-reducer";
 import {RootReduxStoreType} from "../../redux/redux-store";
 import {PhotosProfileType} from "../../redux/profile-reducer/profile-reducer";
 import {useParams} from "react-router-dom";
@@ -27,6 +31,7 @@ type MapDispatchToProps = {
     setAuthUserData: (email: string | null, id: number | null, login: string | null, isAuth: boolean) => void
     setAvatarCurrentUserDataType: (currentAvatars: PhotosProfileType) => void
     getAuthUserDataTC: () => void
+    logoutTC: () => void
 }
 type MapStateToPropsType = {
     login: string | null,
@@ -43,7 +48,6 @@ const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     }
 }
 
-
 const WithParams = (props: HeaderPropsContainerType) => {
     const {userId} = useParams<{ userId?: string }>()
     return <HeaderContainer id={userId} {...props} />
@@ -52,5 +56,6 @@ const WithParams = (props: HeaderPropsContainerType) => {
 export default connect(mapStateToProps, {
     setAuthUserData: setAuthUserDataAC,
     setAvatarCurrentUserDataType,
-    getAuthUserDataTC
+    getAuthUserDataTC,
+    logoutTC
 })(WithParams)

@@ -17,7 +17,6 @@ const maxLength16 = maxLengthСreator(16);
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
-    // const valueForInp = 'заглушка'
 
     return (
         <section className="forms">

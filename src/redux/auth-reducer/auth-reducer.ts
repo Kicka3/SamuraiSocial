@@ -1,6 +1,7 @@
 import {PhotosProfileType} from "../profile-reducer/profile-reducer";
 import {Dispatch} from "redux";
 import {authAPI} from "../../../src/api/API";
+import {stopSubmit} from "redux-form";
 
 export type LoginResponseType = {
     resultCode: number
@@ -35,7 +36,7 @@ export const authReducer = (state: InitialAuthStateType = initialState, action: 
     switch (action.type) {
 
         case 'SET-USER-DATA': {
-            return {...state, ...action.payload.data, isAuth: true};
+            return {...state, ...action.payload.data};
         }
         case "SET-AVATAR-CURRENT-USER": {
             return {...state, ...action.payload.currentAvatars}
@@ -90,6 +91,9 @@ export const loginTC = (email: string, password: string, rememberMe: boolean) =>
         .then((res) => {
             if (res.resultCode === 0) {
                 dispatch(getAuthUserDataTC())
+            } else {
+                const action = stopSubmit('Sorry u are stupid');
+                dispatch(action);
             }
         })
         .catch(err => console.log(err));
