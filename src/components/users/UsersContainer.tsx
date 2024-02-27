@@ -3,7 +3,7 @@ import './usersMenu.css'
 import {RootReduxStoreType} from "../../redux/redux-store";
 import React from "react";
 import {Users} from "./Users";
-import {Preloader} from "../common/preloader/Preloader";
+import {Preloader} from "../common/preloaders/Preloader";
 import {
     InitialUsersStateType,
     setCurrentPageAC,

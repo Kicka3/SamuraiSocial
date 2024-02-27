@@ -82,7 +82,7 @@ export const Header: React.FC<HeaderPropsType> = ({isAuth, logoutTC, login, avat
                             <button className={'logoutBtn'} onClick={logoutClickHandler}>Log out</button>
                         </div>
                         : <div className={'headerLoginWrapper'}>
-                            <NavLink to={`/login`}></NavLink>
+                            <div className={'loginBtn'}><NavLink to={`/login`}></NavLink></div>
                         </div>
                     }
 

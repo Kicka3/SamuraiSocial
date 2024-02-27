@@ -1,9 +1,9 @@
-import "./header.css";
 import React from "react";
 import {Header} from "./Header";
 import {connect} from "react-redux";
 import {
-    getAuthUserDataTC, logoutTC,
+    getAuthUserDataTC,
+    logoutTC,
     setAuthUserDataAC,
     setAvatarCurrentUserDataType
 } from "../../redux/auth-reducer/auth-reducer";
@@ -11,15 +11,10 @@ import {RootReduxStoreType} from "../../redux/redux-store";
 import {PhotosProfileType} from "../../redux/profile-reducer/profile-reducer";
 import {useParams} from "react-router-dom";
 
-//протипизировать get-запросы
 
 export type HeaderPropsContainerType = MapStateToPropsType & MapDispatchToProps & { id?: string }
 
 class HeaderContainer extends React.Component<HeaderPropsContainerType> {
-
-    componentDidMount() {
-        this.props.getAuthUserDataTC();
-    }
 
     render() {
         return <Header {...this.props}/>
@@ -30,7 +25,6 @@ class HeaderContainer extends React.Component<HeaderPropsContainerType> {
 type MapDispatchToProps = {
     setAuthUserData: (email: string | null, id: number | null, login: string | null, isAuth: boolean) => void
     setAvatarCurrentUserDataType: (currentAvatars: PhotosProfileType) => void
-    getAuthUserDataTC: () => void
     logoutTC: () => void
 }
 type MapStateToPropsType = {

@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 import {RootReduxStoreType} from "../../redux/redux-store";
 import {compose, Dispatch} from "redux";
 import React from "react";
+import {withRouter} from "react-router-dom";
 
 
 type MapStateToPropsType = {
@@ -37,4 +38,5 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
 
 
 export default compose<React.ComponentType>(
+    withRouter,
     connect<MapStateToPropsType,MapDispatchToProps, any, RootReduxStoreType>(mapStateToProps, mapDispatchToProps))(Dialogs)

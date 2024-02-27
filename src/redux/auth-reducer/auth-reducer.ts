@@ -76,7 +76,7 @@ export const setAvatarCurrentUserDataType = (currentAvatars: PhotosProfileType) 
 //Thunks
 
 export const getAuthUserDataTC = (): any => (dispatch: Dispatch) => {
-    authAPI.me()
+   return authAPI.me()
         .then((res) => {
             if (res.resultCode === 0) {
                 const {email, id, login,} = res.data;

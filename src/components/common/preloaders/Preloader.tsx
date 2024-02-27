@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import "./preloader.css";
 import preloader from "../../../assets/images/things/loader.svg";
 
 
@@ -8,7 +9,7 @@ type PreloaderType = {
 
 export const Preloader: React.FC<PreloaderType> = ({isFetching}) => {
     return (
-        <div>
+        <div className={'preloaderWrapper'}>
             {isFetching ? <img src={preloader} alt={preloader}/> : null}
         </div>
     );
