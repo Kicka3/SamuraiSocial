@@ -11,7 +11,7 @@ export const usersAPI = {
     getUsers: (currentPage: number, pageSize: number) => {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(data => data.data)
-            .catch((e) => console.log('getUsers Error ' + e));
+            .catch((e) => console.log('getUsersSelector Error ' + e));
     },
     unFollow: (id: string) => {
         return instance.delete(`follow/${id}`)

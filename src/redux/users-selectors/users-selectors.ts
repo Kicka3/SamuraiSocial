@@ -1,8 +1,15 @@
 import {RootReduxStoreType} from "../redux-store";
+import {createSelector} from "reselect";
 
-export const getUsers = (state: RootReduxStoreType) => {
+const getUsers = (state: RootReduxStoreType) => {
     return state.usersPage;
 }
+
+//With RESELECT LB
+export const getUsersSelector = createSelector(getUsers,(users: any) => {
+    return users;
+})
+
 
 export const getPageSize = (state: RootReduxStoreType) => {
     return state.usersPage.pageSize;

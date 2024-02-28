@@ -36,7 +36,6 @@ export const Profile: React.FC<ProfilePropsType> = ({profile,
 
                         {/*/PROFILEINFO/*/}
                         <RightBar profile={profile}/>
-
                     </div>
 
                 </div>
