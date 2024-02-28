@@ -28,6 +28,9 @@ class ProfileContainer extends React.Component<PropsType> {
 
         if (!userId) {
             userId = authUserId ? authUserId.toString() : '';
+            if (!userId) {
+                this.props.history.push('/login');
+            }
         }
         this.props.getUserProfileTC(userId);
         this.props.getUserStatusTC(userId)
@@ -36,7 +39,6 @@ class ProfileContainer extends React.Component<PropsType> {
 
 
     render() {
-
         return (
             <Profile {...this.props}
                      profile={this.props.profile}
@@ -74,4 +76,4 @@ export default compose<React.ComponentType>(connect(mapStateToProps, {
     getUserProfileTC,
     getUserStatusTC,
     updateUserStatusTC
-}), withRouter,)(ProfileContainer);
+}), withRouter)(ProfileContainer);

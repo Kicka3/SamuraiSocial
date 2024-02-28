@@ -2,7 +2,6 @@ import {usersAPI} from "../../../src/api/API";
 import {Dispatch} from "redux";
 
 
-
 export type ResponseUsersType = {
     id: string,
     name: string,
@@ -159,10 +158,11 @@ export const toggleFollowingProgressAC = (userId: string, isFetching: boolean) =
 
 //Thunks
 
-export const getUserTC = (currentPage: number, pageSize: number) => (dispatch: Dispatch) => {
+export const getUserTC = (page: number, pageSize: number) => (dispatch: Dispatch) => {
     dispatch(toggleIsFetching(true));
+    dispatch(setCurrentPageAC(page));
 
-    usersAPI.getUsers(currentPage, pageSize)
+    usersAPI.getUsers(page, pageSize)
         .then((res) => {
             dispatch(toggleIsFetching(false));
             dispatch(setUsersAC(res.items));

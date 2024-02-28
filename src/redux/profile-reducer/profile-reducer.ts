@@ -50,8 +50,8 @@ export type InitialProfileStateType = {
 export const initialState: InitialProfileStateType = {
     postsData: [
         //fake posts
-        {id: v1(), message: "Jopa", likesCount: 5},
-        {id: v1(), message: "My little Jopa", likesCount: 25},
+        {id: v1(), message: "First Fake Jopa1 post", likesCount: 5},
+        {id: v1(), message: "Second fake Jopa2 Post", likesCount: 25},
     ] as PostsType[],
     postText: '',
     profile: null,

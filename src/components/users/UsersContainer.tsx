@@ -11,8 +11,14 @@ import {
     getUserTC,
     setUserTC, unfollowTC, followTC
 } from "../../redux/users-reducer/users-reducer";
-import {WithAuthRedirect} from "../../../src/hoc/WithAuthRedirect";
 import {compose} from "redux";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching, getPageSize,
+    getTotalUsersCount,
+    getUsers
+} from "../../redux/users-selectors/users-selectors";
 
 
 //протипизировать запросы
@@ -27,7 +33,6 @@ class UsersContainer extends React.Component<UsersPropsType> {
 
     componentDidMount() {
         this.props.getUserTC(this.props.currentPage, this.props.pageSize);
-
 
 
     }
@@ -64,17 +69,28 @@ type MapStateToPropsType = {
     isFetching: boolean
     followingInProgress: string[]
 }
+// const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
+//     return {
+//         users: state.usersPage,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         currentPage: state.usersPage.currentPage,
+//         isFetching: state.usersPage.isFetching,
+//         followingInProgress: state.usersPage.followingInProgress,
+//     }
+// }
+
+
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
-        users: state.usersPage,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress,
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
     }
 }
-
 type mapDispatchToPropsType = {
     //types for UI-component from container
     setCurrentPage: (pageNumber: number) => void
@@ -94,4 +110,6 @@ export default compose<React.ComponentType>(
             setCurrentPage: setCurrentPageAC,
             toggleFollowingProgress: toggleFollowingProgressAC,
         }
-    ), WithAuthRedirect)(UsersContainer)
+    ),
+    // WithAuthRedirect
+)(UsersContainer)

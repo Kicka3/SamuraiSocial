@@ -11,6 +11,7 @@ import {RootReduxStoreType} from "../../redux/redux-store";
 import {compose, Dispatch} from "redux";
 import React from "react";
 import {withRouter} from "react-router-dom";
+import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 
 type MapStateToPropsType = {
@@ -36,7 +37,7 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
 }
 
 
-
 export default compose<React.ComponentType>(
     withRouter,
-    connect<MapStateToPropsType,MapDispatchToProps, any, RootReduxStoreType>(mapStateToProps, mapDispatchToProps))(Dialogs)
+    WithAuthRedirect,
+    connect<MapStateToPropsType, MapDispatchToProps, any, RootReduxStoreType>(mapStateToProps, mapDispatchToProps))(Dialogs)
