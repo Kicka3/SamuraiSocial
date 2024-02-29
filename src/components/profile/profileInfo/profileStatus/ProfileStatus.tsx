@@ -48,8 +48,8 @@ export class ProfileStatus extends React.Component<ProfileStatusType> {
                 ? <input value={this.state.status}
                          onChange={this.changeStatusHandler}
                          onBlur={this.activateViewModeHandler}
-                         autoFocus
                          maxLength={30}
+                         autoFocus
                 />
                 : <span className="profileStatus"
                         onDoubleClick={this.activeEditModeHandler}

@@ -1,10 +1,10 @@
 import React from 'react';
-import './profileInfo.css'
+
 import {Preloader} from "../../common/preloaders/Preloader";
 import imageLarge from '../../../assets/images/Cover/cover1.jpeg'
 import noAvatar from '../../../assets/images/avatars/noAvatar.jpeg'
 import {ProfileResponseType} from "../../../redux/profile-reducer/profile-reducer";
-import {ProfileStatus} from "../../../components/profile/profileInfo/profileStatus/ProfileStatus";
+import {ProfileStatusWithHooks} from "../profileInfo/profileStatus/ProfileStatusWithHooks";
 
 
 type ProfileInfoPropsType = {
@@ -38,7 +38,10 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = ({profile,
             <div className="profileInfo">
                 <h4 className="profileInfoName">{profile.fullName}</h4>
 
-                <ProfileStatus profileStatus={status}
+                {/*<ProfileStatus profileStatus={status}*/}
+                {/*               updateUserStatusTC={updateUserStatusTC}*/}
+                {/*/>*/}
+                <ProfileStatusWithHooks profileStatus={status}
                                updateUserStatusTC={updateUserStatusTC}
                 />
 

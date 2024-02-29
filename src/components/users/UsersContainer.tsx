@@ -69,6 +69,8 @@ type MapStateToPropsType = {
     isFetching: boolean
     followingInProgress: string[]
 }
+
+//For example
 // const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
 //     return {
 //         users: state.usersPage,
@@ -79,7 +81,6 @@ type MapStateToPropsType = {
 //         followingInProgress: state.usersPage.followingInProgress,
 //     }
 // }
-
 
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
