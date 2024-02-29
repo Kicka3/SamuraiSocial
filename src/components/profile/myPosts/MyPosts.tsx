@@ -5,21 +5,30 @@ import {PostsPropsType} from "./MyPostsContainer";
 import Share from "./share/Share";
 
 
-export const MyPosts: React.FC<PostsPropsType> = (props) => {
-    const {addNewPost} = props;
+export class MyPosts extends React.Component<PostsPropsType> {
 
-    return (
-        <section className="feed">
-            <div className="feedWrapper">
+    shouldComponentUpdate(nextProps: Readonly<PostsPropsType>, nextState: Readonly<{}>,): boolean {
+        return nextProps != this.props || nextState != this.state
+    }
 
-                <Share
-                    addNewPost={addNewPost}
-                />
+    render() {
+        console.log('RENDER YO')
 
-                <MyPost posts={props.posts.postsData}
+        const {addNewPost} = this.props;
 
-                />
-            </div>
-        </section>
-    );
-};
+        return (
+            <section className="feed">
+                <div className="feedWrapper">
+
+                    <Share
+                        addNewPost={addNewPost}
+                    />
+
+                    <MyPost posts={this.props.posts.postsData}
+
+                    />
+                </div>
+            </section>
+        );
+    }
+}
