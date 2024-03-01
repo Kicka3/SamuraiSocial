@@ -5,30 +5,18 @@ import {PostsPropsType} from "./MyPostsContainer";
 import Share from "./share/Share";
 
 
-export class MyPosts extends React.Component<PostsPropsType> {
+export const MyPosts: React.FC<PostsPropsType> = React.memo((props) => {
+    console.log('RENDER YO')
 
-    shouldComponentUpdate(nextProps: Readonly<PostsPropsType>, nextState: Readonly<{}>,): boolean {
-        return nextProps != this.props || nextState != this.state
-    }
+    const {addNewPost} = props;
 
-    render() {
-        console.log('RENDER YO')
+    return (
+        <section className="feed">
+            <div className="feedWrapper">
 
-        const {addNewPost} = this.props;
-
-        return (
-            <section className="feed">
-                <div className="feedWrapper">
-
-                    <Share
-                        addNewPost={addNewPost}
-                    />
-
-                    <MyPost posts={this.props.posts.postsData}
-
-                    />
-                </div>
-            </section>
-        );
-    }
-}
+                <Share addNewPost={addNewPost}/>
+                <MyPost posts={props.posts.postsData}/>
+            </div>
+        </section>
+    );
+});

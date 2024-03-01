@@ -8,7 +8,6 @@ import {MyPosts} from "./MyPosts";
 import {AddNewPostFormType} from "../../profile/myPosts/share/addNewPostForm/AddNewPostForm";
 
 
-
 export type PostsPropsType = mapStateToPropsType & MapDispatchToPropsType
 
 type mapStateToPropsType = {
