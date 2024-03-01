@@ -20,6 +20,7 @@ export type InitialMessageStateType = typeof initialState;
 
 const initialState = {
     dialogsData: [
+        //fake friends
         {id: v1(), name: 'Diana'},
         {id: v1(), name: 'Alex'},
         {id: v1(), name: 'John'},
@@ -27,6 +28,7 @@ const initialState = {
         {id: v1(), name: 'Pank'},
     ] as DialogsType[],
     messagesData: [
+        //fake messages
         {id: v1(), ownMessage: false, message: 'Hello this is a messagePage!'},
         {id: v1(), ownMessage: true, message: 'Hello this is a messagePage from own!!'},
         {id: v1(), ownMessage: false, message: 'Hello this is a messagePage!'},
@@ -36,20 +38,13 @@ const initialState = {
         {id: v1(), ownMessage: false, message: 'Hello this is a messagePage!'},
         {id: v1(), ownMessage: true, message: 'Hello this is a messagePage from own!!!'},
     ] as MessagesDataType [],
-    // newMessageBody: '',
 }
 
 export type MainMessageActionsType = SendMessageACType
-    // UpdateNewMessageBodyACType
 
 
 const messagesReducer = (state: InitialMessageStateType = initialState, action: MainMessageActionsType): InitialMessageStateType => {
     switch (action.type) {
-        // case 'UPDATE-NEW-MESSAGE-BODY': {
-        //     return {
-        //         ...state, newMessageBody: action.payload.body
-        //     }
-        // }
         case "SEND-MESSAGE": {
             return {
                 ...state,
@@ -61,16 +56,6 @@ const messagesReducer = (state: InitialMessageStateType = initialState, action: 
     }
 }
 
-
-// export type UpdateNewMessageBodyACType = ReturnType<typeof updateNewMessageBodyAC>
-// export const updateNewMessageBodyAC = (body: string) => {
-//     return {
-//         type: 'UPDATE-NEW-MESSAGE-BODY',
-//         payload: {
-//             body
-//         }
-//     } as const
-// }
 export type SendMessageACType = ReturnType<typeof sendMessageAC>
 export const sendMessageAC = (messageBody: FormDialogsDataType) => {
     return {

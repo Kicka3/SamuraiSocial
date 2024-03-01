@@ -7,6 +7,7 @@ import {AddNewPostFormType} from "../../../src/components/profile/myPosts/share/
 export type MainProfileReducerType = AddPostACType
     | SetUserProfileACType
     | SetUserStatusACType
+    | DeletePostACType
 
 export type PostsType = {
     id: string;
@@ -75,6 +76,9 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
         case 'SET-USER-STATUS': {
             return {...state, status: action.payload.status}
         }
+        case 'DELETE-POST': {
+            return {...state, postsData: state.postsData.filter(p => p.id !== action.payload.postId)}
+        }
         default:
             return state
     }
@@ -101,12 +105,22 @@ export const setUserProfile = (profileData: ProfileResponseType) => {
     } as const
 }
 
-export type SetUserStatusACType = ReturnType<typeof SetUserStatusAC>
-export const SetUserStatusAC = (status: string) => {
+export type SetUserStatusACType = ReturnType<typeof setUserStatusAC>
+export const setUserStatusAC = (status: string) => {
     return {
         type: 'SET-USER-STATUS',
         payload: {
             status
+        }
+    } as const
+}
+
+export type DeletePostACType = ReturnType<typeof deletePostAC>
+export const deletePostAC = (postId: string) => {
+    return {
+        type: 'DELETE-POST',
+        payload: {
+            postId
         }
     } as const
 }
@@ -126,7 +140,7 @@ export const getUserProfileTC = (userId: string) => (dispatch: Dispatch) => {
 export const getUserStatusTC = (status: string) => (dispatch: Dispatch) => {
     profileAPI.getStatus(status)
         .then((statusFromServer) => {
-            dispatch(SetUserStatusAC(statusFromServer));
+            dispatch(setUserStatusAC(statusFromServer));
         })
         .catch(err => {
             console.log('Error in set user status' + err);
@@ -137,7 +151,7 @@ export const updateUserStatusTC = (status: string) => (dispatch: Dispatch) => {
     profileAPI.updateStatus(status)
         .then((res) => {
             if (res.resultCode === 0) {
-                dispatch(SetUserStatusAC(status));
+                dispatch(setUserStatusAC(status));
             }
         })
         .catch(err => {

@@ -3,7 +3,6 @@ import messagesReducer, {
     InitialMessageStateType,
     MessagesDataType,
     sendMessageAC,
-    // updateNewMessageBodyAC
 } from "./messages-reducer";
 import {v1} from "uuid";
 
@@ -32,10 +31,3 @@ test('message must be sent', () => {
     expect(endState.messagesData.length).toBe(2);
 });
 
-// test('new message body should be changed', () => {
-//     const newBody = 's13';
-//     const action = updateNewMessageBodyAC(newBody);
-//     const endState = messagesReducer(startState, action);
-//
-//     expect(endState.newMessageBody).toBe(newBody);
-// });

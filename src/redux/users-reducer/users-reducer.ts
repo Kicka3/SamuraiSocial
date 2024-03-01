@@ -16,8 +16,6 @@ type PhotosUserType = {
     large: string
 }
 
-
-// export type InitialUsersStateType = typeof initialState;
 export type InitialUsersStateType = {
     users: ResponseUsersType[],
     pageSize: number,
@@ -26,7 +24,6 @@ export type InitialUsersStateType = {
     isFetching: boolean,
     followingInProgress: string[],
 }
-
 
 let initialState = {
     users: [] as ResponseUsersType[],
