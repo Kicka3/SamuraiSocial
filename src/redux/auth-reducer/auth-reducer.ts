@@ -35,10 +35,10 @@ export type MainProfileReducerType = SetAuthUserDataType | SetAvatarCurrentUserD
 export const authReducer = (state: InitialAuthStateType = initialState, action: MainProfileReducerType): InitialAuthStateType => {
     switch (action.type) {
 
-        case 'SET-USER-DATA': {
+        case 'auth/SET-USER-DATA': {
             return {...state, ...action.payload.data};
         }
-        case "SET-AVATAR-CURRENT-USER": {
+        case "auth/SET-AVATAR-CURRENT-USER": {
             return {...state, ...action.payload.currentAvatars}
         }
         default:
@@ -51,7 +51,7 @@ export const authReducer = (state: InitialAuthStateType = initialState, action: 
 type SetAuthUserDataType = ReturnType<typeof setAuthUserDataAC>
 export const setAuthUserDataAC = (email: string | null, id: number | null, login: string | null, isAuth: boolean) => {
     return {
-        type: 'SET-USER-DATA',
+        type: 'auth/SET-USER-DATA',
         payload: {
             data: {
                 email,
@@ -66,7 +66,7 @@ export const setAuthUserDataAC = (email: string | null, id: number | null, login
 type SetAvatarCurrentUserDataType = ReturnType<typeof setAvatarCurrentUserDataType>
 export const setAvatarCurrentUserDataType = (currentAvatars: PhotosProfileType) => {
     return {
-        type: 'SET-AVATAR-CURRENT-USER',
+        type: 'auth/SET-AVATAR-CURRENT-USER',
         payload: {
             currentAvatars
         }
@@ -75,36 +75,33 @@ export const setAvatarCurrentUserDataType = (currentAvatars: PhotosProfileType) 
 
 //Thunks
 
-export const getAuthUserDataTC = (): any => (dispatch: Dispatch) => {
-   return authAPI.me()
-        .then((res) => {
-            if (res.resultCode === 0) {
-                const {email, id, login,} = res.data;
-                dispatch(setAuthUserDataAC(email, id, login, true));
-            }
-        })
-        .catch(err => console.log(err));
+//Типизация: any
+export const getAuthUserDataTC = (): any => async (dispatch: Dispatch) => {
+    const response = await authAPI.me();
+
+    if (response.resultCode === 0) {
+        const {email, id, login,} = response.data;
+        dispatch(setAuthUserDataAC(email, id, login, true));
+    }
 }
 
-export const loginTC = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch) => {
-    authAPI.login(email, password, rememberMe)
-        .then((res) => {
-            if (res.resultCode === 0) {
-                dispatch(getAuthUserDataTC())
-            } else {
-                const message = res.messages.length > 0 ? res.messages : 'Some error'
-                dispatch(stopSubmit('login', {_error: message}));
-            }
-        })
-        .catch(err => console.log(err));
+export const loginTC = (email: string, password: string, rememberMe: boolean) => async (dispatch: Dispatch) => {
+    const response = await authAPI.login(email, password, rememberMe);
+
+    if (response.resultCode === 0) {
+        dispatch(getAuthUserDataTC());
+    } else {
+        const message = response.messages.length > 0 ? response.messages : 'Some error'
+        dispatch(stopSubmit('login', {_error: message}));
+    }
+
 }
 
-export const logoutTC = () => (dispatch: Dispatch) => {
-    authAPI.logout()
-        .then((res) => {
-            if (res.resultCode === 0) {
-                dispatch(setAuthUserDataAC(null, null, null, false));
-            }
-        })
-        .catch(err => console.log(err));
+export const logoutTC = () => async (dispatch: Dispatch) => {
+    const response = await authAPI.logout();
+
+    if (response.resultCode === 0) {
+        dispatch(setAuthUserDataAC(null, null, null, false));
+    }
 }
+

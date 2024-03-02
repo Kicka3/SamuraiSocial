@@ -127,36 +127,33 @@ export const deletePostAC = (postId: string) => {
 
 //Thunks
 
-export const getUserProfileTC = (userId: string) => (dispatch: Dispatch) => {
-    usersAPI.profile(userId)
-        .then((res) => {
-            dispatch(setUserProfile(res));
-        })
-        .catch(err => {
-            console.log('Error in get user' + err);
-        })
+export const getUserProfileTC = (userId: string) => async (dispatch: Dispatch) => {
+    const response = await usersAPI.profile(userId);
+    dispatch(setUserProfile(response));
+
+    // .catch(err => {
+    //     console.log('Error in get user' + err);
+    // })
 }
 
-export const getUserStatusTC = (status: string) => (dispatch: Dispatch) => {
-    profileAPI.getStatus(status)
-        .then((statusFromServer) => {
-            dispatch(setUserStatusAC(statusFromServer));
-        })
-        .catch(err => {
-            console.log('Error in set user status' + err);
-        })
+export const getUserStatusTC = (status: string) => async (dispatch: Dispatch) => {
+    const response = await profileAPI.getStatus(status)
+    dispatch(setUserStatusAC(response));
+
+    // .catch(err => {
+    //     console.log('Error in set user status' + err);
+    // })
 }
 
-export const updateUserStatusTC = (status: string) => (dispatch: Dispatch) => {
-    profileAPI.updateStatus(status)
-        .then((res) => {
-            if (res.resultCode === 0) {
-                dispatch(setUserStatusAC(status));
-            }
-        })
-        .catch(err => {
-            console.log('Error in set user status' + err);
-        })
+export const updateUserStatusTC = (status: string) => async (dispatch: Dispatch) => {
+    const response = await profileAPI.updateStatus(status)
+    if (response.resultCode === 0) {
+        dispatch(setUserStatusAC(status));
+    }
+
+    // .catch(err => {
+    //     console.log('Error in set user status' + err);
+    // })
 }
 
 export default profileReducer;
