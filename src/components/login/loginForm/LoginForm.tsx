@@ -10,13 +10,11 @@ export type FormDataType = {
     password: string
     rememberMe: boolean
 }
-
 const maxLength50 = maxLengthСreator(50);
 const maxLength16 = maxLengthСreator(16);
 
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
-
 
     return (
         <section className="forms">
@@ -28,6 +26,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                     <form onSubmit={props.handleSubmit}>
                         <div className="input-boxes">
                             <div className="input-box">
+
                                 <Field
                                     type="email"
                                     name={'login'}
@@ -76,7 +75,6 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                                     {/*<CircularProgress color="secondary" size="15px"/> : "Submit"}*/}
 
                                 </button>
-                                {/*<input className="inputBtn" type="submit" value="sumbit"/>*/}
                             </div>
 
 
@@ -98,6 +96,8 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 export const LoginReduxForm = reduxForm<FormDataType>({
     form: 'login'
 })(LoginForm);
+
+
 
 
 {/*animation for registerPage*/

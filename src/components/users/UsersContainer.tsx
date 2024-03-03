@@ -32,15 +32,14 @@ class UsersContainer extends React.Component<UsersPropsType> {
     }
 
     componentDidMount() {
-        this.props.getUserTC(this.props.currentPage, this.props.pageSize);
-
-
+        const {currentPage, pageSize} = this.props;
+        this.props.getUserTC(currentPage, pageSize);
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.setUserTC(pageNumber, this.props.pageSize);
+        const {pageSize} = this.props;
+        this.props.setUserTC(pageNumber, pageSize);
     }
-
 
     render() {
         return <>
@@ -69,18 +68,6 @@ type MapStateToPropsType = {
     isFetching: boolean
     followingInProgress: string[]
 }
-
-//For example
-// const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
-//     return {
-//         users: state.usersPage,
-//         pageSize: state.usersPage.pageSize,
-//         totalUsersCount: state.usersPage.totalUsersCount,
-//         currentPage: state.usersPage.currentPage,
-//         isFetching: state.usersPage.isFetching,
-//         followingInProgress: state.usersPage.followingInProgress,
-//     }
-// }
 
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {

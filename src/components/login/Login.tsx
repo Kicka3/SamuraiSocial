@@ -13,13 +13,13 @@ type LoginContainerPropsType = MapDispatchToPropsType & MapStateToPropsType;
 
 const emailRegExpLogin = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 
-const Login: React.FC<LoginContainerPropsType> = (props) => {
+const Login: React.FC<LoginContainerPropsType> = ({loginTC, isAuth}) => {
 
 
     function validationEmail(value: string, formData: FormDataType) {
         let result = emailRegExpLogin.test(value);
         if (result) {
-            props.loginTC(formData.login, formData.password, formData.rememberMe)
+            loginTC(formData.login, formData.password, formData.rememberMe)
         } else {
             return false
         }
@@ -29,7 +29,7 @@ const Login: React.FC<LoginContainerPropsType> = (props) => {
         validationEmail(formData.login, formData);
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to={'/profile'}/>
     }
     return (
