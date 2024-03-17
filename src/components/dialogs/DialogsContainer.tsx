@@ -36,7 +36,6 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
     }
 }
 
-
 export default compose<React.ComponentType>(
     withRouter,
     WithAuthRedirect,
