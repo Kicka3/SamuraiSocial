@@ -80,7 +80,6 @@ const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     }
 }
 type mapDispatchToPropsType = {
-    //types for UI-component from container
     setCurrentPage: (pageNumber: number) => void
     toggleFollowingProgress: (userId: string, isFetching: boolean) => void
     followTC: (userId: string) => void
@@ -99,5 +98,5 @@ export default compose<React.ComponentType>(
             toggleFollowingProgress: toggleFollowingProgressAC,
         }
     ),
-    // WithAuthRedirect
+    // WithAuthRedirect //Это HOC для редиректа
 )(UsersContainer)
