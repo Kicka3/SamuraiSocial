@@ -8,10 +8,13 @@ export const instance = axios.create({
 })
 
 export const usersAPI = {
-    getUsers: (currentPage: number, pageSize: number) => {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-            .then(data => data.data)
-            .catch((e) => console.log('getUsersSelector Error ' + e));
+    getUsers: async (currentPage: number, pageSize: number) => {
+        try {
+            let data = await instance.get(`users?page=${currentPage}&count=${pageSize}`);
+            return await data.data;
+        } catch (e) {
+            return console.log('getUsersSelector Error ' + e);
+        }
     },
     unFollow: (id: string) => {
         return instance.delete(`follow/${id}`)
@@ -30,58 +33,65 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-    getProfile: (userId: string) => {
-        return instance.get(`profile/${userId}`)
-            .then(data => {
-                return data.data
-            })
-            .catch(e => console.log('profileAPI profile Error ' + e));
+    getProfile: async (userId: string) => {
+        try {
+            let data = await instance.get(`profile/${userId}`);
+            return data.data
+        } catch (e) {
+            return console.log('profileAPI profile Error ' + e);
+        }
     },
-    getStatus: (userId: string) => {
-        return instance.get(`profile/status/${userId}`)
-            .then(data => {
-                return data.data
-            })
-            .catch(e => console.log('profileAPI status Error ' + e));
+    getStatus: async (userId: string) => {
+        try {
+            let data = await instance.get(`profile/status/${userId}`);
+            return data.data
+        } catch (e) {
+            return console.log('profileAPI status Error ' + e);
+        }
     },
-    updateStatus: (status: string) => {
-        return instance.put(`profile/status`, {status})
-            .then(data => {
-                return data.data
-            })
-            .catch(e => console.log('profileAPI status Error ' + e));
+    updateStatus: async (status: string) => {
+        try {
+            let data = await instance.put(`profile/status`, {status});
+            return data.data
+        } catch (e) {
+            return console.log('profileAPI status Error ' + e);
+        }
     },
-    savePhoto: (userPhoto: File) => {
+    savePhoto: async (userPhoto: File) => {
         const formData = new FormData();
         formData.append("image", userPhoto);
-        return instance.put(`profile/photo`, formData, {
-            headers: {
-                'content-Type': 'multipart/form-data'
-            }
-        })
-            .then(data => {
-                return data.data
-            })
-            .catch(e => console.log('Error in savePhoto ' + e));
+        try {
+            let data = await instance.put(`profile/photo`, formData, {
+                headers: {
+                    'content-Type': 'multipart/form-data'
+                }
+            });
+            return data.data
+        } catch (e) {
+            return console.log('Error in savePhoto ' + e);
+        }
     }
 }
 
 export const authAPI = {
-    me: () => {
-        return instance.get(`auth/me`)
-            .then((data) => data.data)
-            .catch((e) => console.log('authAPI Error ' + e));
+    me: async () => {
+        try {
+            let data = await instance.get(`auth/me`);
+            return await data.data;
+        } catch (e) {
+            return console.log('authAPI Error ' + e);
+        }
     },
-    login: (email: string, password: string, rememberMe: boolean = false) => {
-        return instance.post<LoginResponseType>('/auth/login', {email, password, rememberMe})
-            .then(data => {
-                console.log(data.data)
-                return data.data
-            })
+    login: async (email: string, password: string, rememberMe: boolean = false) => {
+        let data = await instance.post<LoginResponseType>('/auth/login', {email, password, rememberMe});
+        return data.data
     },
-    logout: () => {
-        return instance.delete('/auth/login')
-            .then(data => data.data)
-            .catch(e => console.log('authAPI Error ' + e));
+    logout: async () => {
+        try {
+            let data = await instance.delete('/auth/login');
+            return await data.data;
+        } catch (e) {
+            return console.log('authAPI Error ' + e);
+        }
     }
 }
