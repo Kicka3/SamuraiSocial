@@ -88,6 +88,9 @@ const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
         isFetching: state.usersPage.isFetching,
     }
 }
+
+
+
 export default compose<React.ComponentType>(
     withRouter,
     connect(mapStateToProps, {InitializeAppTC}))(App);

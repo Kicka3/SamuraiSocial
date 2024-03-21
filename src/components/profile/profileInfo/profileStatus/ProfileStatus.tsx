@@ -43,7 +43,6 @@ export class ProfileStatus extends React.Component<ProfileStatusType> {
     }
 
     render() {
-
         return (this.state.editMode
                 ? <input value={this.state.status}
                          onChange={this.changeStatusHandler}
