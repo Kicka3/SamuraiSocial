@@ -88,7 +88,7 @@ test('currentPage must change', () => {
     expect(endState.currentPage).toBe(3);
 });
 
-test('totalUsersCount must change', () => {
+test('totalItemsCount must change', () => {
     const totalCount: number = 13;
     const action = setTotalUsersCount(totalCount);
     const endState = usersReducer(startState, action);

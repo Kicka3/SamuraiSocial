@@ -1,18 +1,20 @@
-import React from "react";
+import React, {Suspense} from "react";
 import "./App.css";
 import Sidebar from "./components/sidebar/Sidebar";
 import {Route, withRouter} from "react-router-dom";
 import {MyPostsContainer} from "./components/profile/myPosts/MyPostsContainer";
-import ProfileContainer from "./components/profile/ProfileContainer";
 import HeaderContainer from "./components/header/HeaderContainer";
 import Login from "../src/components/login/Login";
 import UsersContainer from "../src/components/users/UsersContainer";
-import DialogsContainer from "../src/components/dialogs/DialogsContainer";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {InitializeAppTC} from "./redux/app-reducer/app-reducer";
 import {RootReduxStoreType} from "./redux/redux-store";
 import {Preloader} from "./components/common/preloaders/Preloader";
+
+
+const DialogsContainer = React.lazy(() => import ("../src/components/dialogs/DialogsContainer"))
+const ProfileContainer = React.lazy(() => import ("./components/profile/ProfileContainer"))
 
 
 type AppPropsType = MapDispatchToPropsType & MapStateToPropsType;
@@ -42,18 +44,27 @@ class App extends React.Component<AppPropsType> {
 
                     <div>
                         <Route path={'/dialogs'}
-                               render={() =>
-                                   <DialogsContainer/>}
+                               render={() => {
+                                   return <Suspense fallback={<Preloader/>}>
+                                       <DialogsContainer/>
+                                   </Suspense>
+                               }}
                         />
                         <Route path={'/profile/:userId?'}
-                               render={() =>
-                                   <ProfileContainer/>
-                               }/>
+                               render={() => {
+                                   return <Suspense fallback={<Preloader/>}>
+                                       <ProfileContainer/>
+                                   </Suspense>
+                               }}
+                        />
 
                         <Route path={'/users'}
-                               render={() =>
-                                   <UsersContainer/>
-                               }/>
+                               render={() => {
+                                   return <Suspense fallback={<Preloader/>}>
+                                       <UsersContainer/>
+                                   </Suspense>
+                               }}
+                        />
 
                         <Route path={'/login'}
                                render={() =>
@@ -88,7 +99,6 @@ const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
         isFetching: state.usersPage.isFetching,
     }
 }
-
 
 
 export default compose<React.ComponentType>(
