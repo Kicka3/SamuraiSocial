@@ -50,6 +50,19 @@ export const profileAPI = {
                 return data.data
             })
             .catch(e => console.log('profileAPI status Error ' + e));
+    },
+    savePhoto: (userPhoto: File) => {
+        const formData = new FormData();
+        formData.append("image", userPhoto);
+        return instance.put(`profile/photo`, formData, {
+            headers: {
+                'content-Type': 'multipart/form-data'
+            }
+        })
+            .then(data => {
+                return data.data
+            })
+            .catch(e => console.log('Error in savePhoto ' + e));
     }
 }
 
@@ -63,7 +76,8 @@ export const authAPI = {
         return instance.post<LoginResponseType>('/auth/login', {email, password, rememberMe})
             .then(data => {
                 console.log(data.data)
-               return data.data})
+                return data.data
+            })
     },
     logout: () => {
         return instance.delete('/auth/login')

@@ -1,6 +1,6 @@
 import {PhotosProfileType} from "../profile-reducer/profile-reducer";
 import {Dispatch} from "redux";
-import {authAPI} from "../../../src/api/API";
+import {authAPI} from "../../api/api";
 import {stopSubmit} from "redux-form";
 
 export type LoginResponseType = {

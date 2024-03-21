@@ -1,4 +1,4 @@
-import {usersAPI} from "../../../src/api/API";
+import {usersAPI} from "../../api/api";
 import {AnyAction, Dispatch} from "redux";
 import {updateObjInArray} from "../../utils/objects-helpers/object-helper";
 
