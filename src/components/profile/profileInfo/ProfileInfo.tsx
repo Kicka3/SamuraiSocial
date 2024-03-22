@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import {Preloader} from "../../common/preloaders/Preloader";
 import imageLarge from '../../../assets/images/Cover/cover1.jpeg'
 import noAvatar from '../../../assets/images/avatars/noAvatar.jpeg'
-import {ProfileResponseType, savePhotoTC} from "../../../redux/profile-reducer/profile-reducer";
+import {ProfileResponseType} from "../../../redux/profile-reducer/profile-reducer";
 import {ProfileStatusWithHooks} from "../profileInfo/profileStatus/ProfileStatusWithHooks";
 
 
@@ -11,7 +11,6 @@ type ProfileInfoPropsType = {
     status: string
     isOwner: boolean
     updateUserStatusTC: (status: string) => void
-    // savePhoto: (userPhoto: Blob) => void
     savePhotoTC: (userPhoto: File) => void
 }
 
@@ -30,19 +29,8 @@ export const ProfileInfo: React.FC<ProfileInfoPropsType> = ({
 
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.currentTarget.files?.length) {
-            console.log(e.currentTarget.files)
             savePhotoTC(e.currentTarget.files[0])
-            // console.log(e.currentTarget.files[0])
         }
-        // if (e.target.files) {
-        //     const file = e.target.files[0];
-        //     const reader = new FileReader();
-        //     reader.onloadend = () => {
-        //         savePhoto(reader.result as string);
-        //     };
-        //     reader.readAsDataURL(file);
-        //     console.log(file)
-        // }
     }
 
     return (

@@ -2,7 +2,7 @@ import "./profile.css";
 import React from "react";
 import {ProfileInfo} from "./profileInfo/ProfileInfo";
 import {MyPostsContainer} from "./myPosts/MyPostsContainer";
-import {ProfileResponseType, savePhotoTC} from "../../redux/profile-reducer/profile-reducer";
+import {ProfileResponseType} from "../../redux/profile-reducer/profile-reducer";
 import {RightBar} from "./rightbar/Rightbar";
 
 

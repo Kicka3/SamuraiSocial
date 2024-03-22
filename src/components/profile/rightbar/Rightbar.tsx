@@ -15,14 +15,13 @@ export const RightBar: React.FC<ProfileBarPropsType> = ({profile}) => {
 
     let profileContacts = profile?.contacts;
 
-
     return (
         <div className="rightbar">
             <div className="rightBarWrapper">
                 {/*//Дописать!!!*/}
                 <ProfileRightBar profile={profile}/>
                 <HomeRightBar profile={profile}/>
-                <ProfileContacts profileContacts={profileContacts}/>
+                <ProfileContacts profile={profile}/>
             </div>
         </div>
     );
