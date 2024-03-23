@@ -77,7 +77,6 @@ export const profileAPI = {
     saveProfile: async (formData: ProfileContactsFormDataType) => {
         try {
             let data = await instance.put(`profile`, formData);
-            console.log(data.data)
             return data.data
         } catch (e) {
             return console.log('Error in saveProfile ' + e);

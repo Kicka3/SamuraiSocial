@@ -23,6 +23,7 @@ export const ProfileContacts: React.FC<ProfileContactsPropsType> = ({profile, is
 
     const onSubmit = (formData: ProfileContactsFormDataType) => {
         saveProfileInfoTC(formData)
+        setEditMode(false)
     }
 
     return (
@@ -30,7 +31,8 @@ export const ProfileContacts: React.FC<ProfileContactsPropsType> = ({profile, is
             <nav className={'profile_contacts__wrapper'}>
                 <div className={'profile_contacts__section'}>
                     {editMode
-                        ? <ProfileContactsReduxForm onSubmit={onSubmit} />
+                        ? <ProfileContactsReduxForm initialValues={profile as Partial<ProfileResponseType>}
+                                                    onSubmit={onSubmit}/>
                         : <ProfileData profile={profile}
                                        isOwner={isOwner}
                                        goToEditeMode={onToggleEditMode}

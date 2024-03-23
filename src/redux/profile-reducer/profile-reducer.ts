@@ -1,10 +1,12 @@
 import {v1} from "uuid";
-import {Dispatch} from "redux";
+import {AnyAction, Dispatch} from "redux";
 import {profileAPI, usersAPI} from "../../api/api";
 import {AddNewPostFormType} from "../../../src/components/profile/myPosts/share/addNewPostForm/AddNewPostForm";
 import {
     ProfileContactsFormDataType
 } from "../../components/profile/rightbar/profileContacts/profileContactsForm/ProfileContactsForm";
+import {RootReduxStoreType, StoreType} from "../redux-store";
+import {ThunkAction} from "redux-thunk";
 
 export type PostsType = {
     id: string;
@@ -18,7 +20,7 @@ export type ProfileResponseType = {
     lookingForAJob: boolean;
     lookingForAJobDescription: string;
     fullName: string;
-    userId: number;
+    userId: number | undefined;
     photos: PhotosProfileType;
 }
 export type ContactsProfileType = {
@@ -48,7 +50,6 @@ export type MainProfileReducerType = AddPostACType
     | SetUserStatusACType
     | DeletePostACType
     | SavePhotoACType
-    | SaveProfileInfoACType
 
 export const initialState: InitialProfileStateType = {
     postsData: [
@@ -146,15 +147,15 @@ export const savePhotoAC = (userPhoto: string) => {
     } as const
 }
 
-export type SaveProfileInfoACType = ReturnType<typeof savePhotoAC>
-export const saveProfileInfoAC = (userPhoto: string) => {
-    return {
-        type: 'SET-USER-PHOTO',
-        payload: {
-            userPhoto
-        }
-    } as const
-}
+// export type SaveProfileInfoACType = ReturnType<typeof savePhotoAC>
+// export const saveProfileInfoAC = (userPhoto: string) => {
+//     return {
+//         type: 'SET-USER-PHOTO',
+//         payload: {
+//             userPhoto
+//         }
+//     } as const
+// }
 
 //Thunks
 
@@ -200,18 +201,23 @@ export const savePhotoTC = (userPhoto: File) => {
     };
 }
 
-export const saveProfileInfoTC = (formData: ProfileContactsFormDataType) => {
-    return async (dispatch: Dispatch) => {
+type ThunkResult<R> = ThunkAction<R, RootReduxStoreType, unknown, AnyAction>;
+export const saveProfileInfoTC = (formData: ProfileContactsFormDataType): ThunkResult<void> => {
+    return async (dispatch, getState) => {
+        const userId = getState().auth.id;
+        if (userId === null) {
+            console.log('User ID is null');
+            return;
+        }
         try {
-            const response = await profileAPI.saveProfile(formData)
-            if (response.data.resultCode === 0) {
-                console.log(response.data)
-                // dispatch(saveProfileInfoAC(response.data));
+            const response = await profileAPI.saveProfile(formData);
+            if (response.resultCode === 0) {
+                await dispatch(getUserProfileTC(userId.toString()));
             } else {
-                // console.log(response.data.messages)
+                console.log(response.data.messages);
             }
         } catch (e) {
-            console.log(`Error in saveProfileInfo` + e)
+            console.log(`Error in saveProfileInfo` + e);
         }
     };
 }

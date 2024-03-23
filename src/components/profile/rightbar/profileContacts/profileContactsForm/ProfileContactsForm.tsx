@@ -7,10 +7,9 @@ import "./profileContactsForm.css"
 
 
 //НАДО ЛИ MIXED TYPE?
-type CombinedProfileFormType = ProfileContactsFormDataType & ProfileContactsFormMixedType;
+export type CombinedProfileFormType = ProfileContactsFormDataType & ProfileContactsFormMixedType;
 
 type ProfileContactsFormMixedType = {
-    initialValues: ProfileResponseType | null
     saveProfileInfo: (formData: ProfileContactsFormDataType) => void
 }
 export type ProfileContactsFormDataType = {
@@ -19,15 +18,16 @@ export type ProfileContactsFormDataType = {
     fullName: string
     AboutMe: string
 
-    facebook: string
-    website: string
-    vk: string
-    twitter: string
-    instagram: string
-    youtube: string
     github: string
+    vk: string
+    facebook: string
+    instagram: string
+    twitter: string
+    website: string
+    youtube: string
     mainLink: string
 }
+
 
 
 const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> = ({handleSubmit}) => {
@@ -55,7 +55,6 @@ const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> 
                         type="checkbox"
                         name={'lookingForAJob'}
                         placeholder="Enter your lookingForAJob"
-                        required
                         validate={validate}
                         component={SecretContactInput}
                     />
