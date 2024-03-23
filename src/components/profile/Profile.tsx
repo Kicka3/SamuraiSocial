@@ -1,6 +1,6 @@
 import "./profile.css";
 import React from "react";
-import {ProfileInfo} from "./profileInfo/ProfileInfo";
+import {MainProfileInfo} from "../profile/profileInfo/MainProfileInfo";
 import {MyPostsContainer} from "./myPosts/MyPostsContainer";
 import {ProfileResponseType} from "../../redux/profile-reducer/profile-reducer";
 import {RightBar} from "./rightbar/Rightbar";
@@ -28,16 +28,16 @@ export const Profile: React.FC<ProfilePropsType> = ({
 
                 <div className="profileRight">
 
-                    <ProfileInfo profile={profile}
-                                 status={status}
-                                 updateUserStatusTC={updateUserStatusTC}
-                                 isOwner={isOwner}
-                                 savePhotoTC={savePhotoTC}
+                    <MainProfileInfo profile={profile}
+                                     status={status}
+                                     updateUserStatusTC={updateUserStatusTC}
+                                     isOwner={isOwner}
+                                     savePhotoTC={savePhotoTC}
                     />
 
                     <div className="profileRightBottom">
                         <MyPostsContainer/>
-                        <RightBar profile={profile}/>
+                        <RightBar profile={profile} isOwner={isOwner}/>
                     </div>
 
                 </div>

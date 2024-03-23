@@ -14,7 +14,7 @@ type ProfileInfoPropsType = {
     savePhotoTC: (userPhoto: File) => void
 }
 
-export const ProfileInfo: React.FC<ProfileInfoPropsType> = ({
+export const MainProfileInfo: React.FC<ProfileInfoPropsType> = ({
                                                                 profile,
                                                                 status,
                                                                 updateUserStatusTC,

@@ -7,7 +7,7 @@ type HomeRightBarPropsType = {
     profile: ProfileResponseType | null,
 }
 
-export const HomeRightBar:React.FC<HomeRightBarPropsType> = ({profile}) => {
+export const FriendsRightBar:React.FC<HomeRightBarPropsType> = ({profile}) => {
     return (
         <div className="HomeRightbarWrapper">
 

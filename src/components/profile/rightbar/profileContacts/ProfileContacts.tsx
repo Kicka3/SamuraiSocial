@@ -1,29 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './profileContacts.css'
 import {ProfileResponseType} from "../../../../redux/profile-reducer/profile-reducer";
-import {Contacts} from "../profileContacts/contacts/Contacts";
+import {ProfileData} from "./profileData/ProfileData";
+import {
+    ProfileContactsForm
+} from "./profileContactsForm/ProfileContactsForm";
 
 
 type ProfileContactsPropsType = {
     profile: ProfileResponseType | null
+    isOwner: boolean
 }
 
-export const ProfileContacts: React.FC<ProfileContactsPropsType> = ({profile}) => {
+export const ProfileContacts: React.FC<ProfileContactsPropsType> = ({profile, isOwner}) => {
+    const [editMode, setEditMode] = useState(false);
 
     return (
         <>
             <nav className={'profile_contacts__wrapper'}>
                 <div className={'profile_contacts__section'}>
-                    <h4 className={'profile_contacts__title'}>Contact me:</h4>
-                    <ul className={'profile_contacts__list'}>
-                        {
-                            profile?.contacts && Object.entries(profile.contacts).map((([key, value]) => (
-                                <div key={key}><Contacts contactTitle={key} contactValue={value}/></div>
-                            )))
-                        }
-                    </ul>
+
+                    {editMode ? <ProfileContactsForm profile={profile}/> :
+                        <ProfileData profile={profile} isOwner={isOwner} goToEditeMode={() => setEditMode(true)}/>}
+
                 </div>
             </nav>
         </>
     )
 }
+
+
+
+
+

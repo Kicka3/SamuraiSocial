@@ -3,25 +3,24 @@ import React from "react";
 import "./rightbar.css";
 import {ProfileResponseType} from "../../../redux/profile-reducer/profile-reducer";
 import {ProfileContacts} from "./profileContacts/ProfileContacts";
-import {ProfileRightBar} from "./pfrofileRightbar/ProfileRightBar";
-import {HomeRightBar} from "./homeRightbar/HomeRightBar";
+import {ProfileRightBar} from "./profileRightbar/ProfileRightBar";
+import {FriendsRightBar} from "../rightbar/homeRightbar/FriendsRightBar";
 
 
 type ProfileBarPropsType = {
-    profile: ProfileResponseType | null,
+    profile: ProfileResponseType | null
+    isOwner: boolean
 }
 
-export const RightBar: React.FC<ProfileBarPropsType> = ({profile}) => {
-
-    let profileContacts = profile?.contacts;
+export const RightBar: React.FC<ProfileBarPropsType> = ({profile, isOwner}) => {
 
     return (
         <div className="rightbar">
             <div className="rightBarWrapper">
                 {/*//Дописать!!!*/}
                 <ProfileRightBar profile={profile}/>
-                <HomeRightBar profile={profile}/>
-                <ProfileContacts profile={profile}/>
+                <FriendsRightBar profile={profile}/>
+                <ProfileContacts profile={profile} isOwner={isOwner}/>
             </div>
         </div>
     );
