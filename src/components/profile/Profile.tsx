@@ -4,6 +4,9 @@ import {MainProfileInfo} from "../profile/profileInfo/MainProfileInfo";
 import {MyPostsContainer} from "./myPosts/MyPostsContainer";
 import {ProfileResponseType} from "../../redux/profile-reducer/profile-reducer";
 import {RightBar} from "./rightbar/Rightbar";
+import {
+    ProfileContactsFormDataType
+} from "./rightbar/profileContacts/profileContactsForm/ProfileContactsForm";
 
 
 type ProfilePropsType = {
@@ -12,6 +15,7 @@ type ProfilePropsType = {
     isOwner: boolean
     updateUserStatusTC: (status: string) => void
     savePhotoTC: (userPhoto: File) => void
+    saveProfileInfoTC: (formData: ProfileContactsFormDataType) => void
 }
 
 export const Profile: React.FC<ProfilePropsType> = ({
@@ -19,7 +23,8 @@ export const Profile: React.FC<ProfilePropsType> = ({
                                                         status,
                                                         updateUserStatusTC,
                                                         isOwner,
-                                                        savePhotoTC
+                                                        savePhotoTC,
+                                                        saveProfileInfoTC
                                                     }) => {
 
     return (
@@ -37,7 +42,7 @@ export const Profile: React.FC<ProfilePropsType> = ({
 
                     <div className="profileRightBottom">
                         <MyPostsContainer/>
-                        <RightBar profile={profile} isOwner={isOwner}/>
+                        <RightBar profile={profile} isOwner={isOwner} saveProfileInfoTC={saveProfileInfoTC}/>
                     </div>
 
                 </div>

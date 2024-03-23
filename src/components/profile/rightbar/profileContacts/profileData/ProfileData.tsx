@@ -14,7 +14,9 @@ export const ProfileData: React.FC<ProfileDataPropsType> = ({profile, isOwner, g
     return (
         <>
             <h4 className={'profile_contacts__title'}>Contact me:</h4>
+
             {isOwner && <button onClick={goToEditeMode}>Edite</button>}
+
             <ul className={'profile_contacts__list'}>
                 {
                     profile?.contacts && Object.entries(profile.contacts).map((([key, value]) => (

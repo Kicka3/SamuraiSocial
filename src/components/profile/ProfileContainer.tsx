@@ -4,12 +4,15 @@ import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import {
     getUserProfileTC, getUserStatusTC,
-    ProfileResponseType, savePhotoTC,
+    ProfileResponseType, savePhotoTC, saveProfileInfoTC,
     setUserProfile, updateUserStatusTC
 } from "../../redux/profile-reducer/profile-reducer";
 import {RootReduxStoreType} from "../../redux/redux-store";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {compose} from "redux";
+import {
+    ProfileContactsFormDataType
+} from "../profile/rightbar/profileContacts/profileContactsForm/ProfileContactsForm";
 
 
 export type ProfilePropsContainerType = MapStateToPropsType & MapDispatchToProps
@@ -53,6 +56,7 @@ class ProfileContainer extends React.Component<PropsType> {
                      status={this.props.status}
                      savePhotoTC={this.props.savePhotoTC}
                      updateUserStatusTC={this.props.updateUserStatusTC}
+                     saveProfileInfoTC={this.props.saveProfileInfoTC}
             />
         );
     }
@@ -65,6 +69,7 @@ type MapDispatchToProps = {
     getUserStatusTC: (status: string) => void
     updateUserStatusTC: (status: string) => void
     savePhotoTC: (userPhoto: File) => void
+    saveProfileInfoTC: (formData: ProfileContactsFormDataType) => void
 }
 type MapStateToPropsType = {
     profile: ProfileResponseType | null
@@ -88,5 +93,6 @@ export default compose<React.ComponentType>(connect(mapStateToProps,
         getUserStatusTC,
         updateUserStatusTC,
         savePhotoTC,
+        saveProfileInfoTC
     }
 ), withRouter)(ProfileContainer);

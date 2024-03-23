@@ -1,14 +1,14 @@
 import React from 'react';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {Textarea} from "../../common/formsControl/Textarea";
-import {maxLengthСreator, minLength, required} from "../../../utils/validators/Valodators";
+import {FormControlTextarea} from "../../common/formsControl/FormControlTextarea";
+import {maxLength, minLength, required} from "../../../utils/validators/Valodators";
 
 
 export type FormDialogsDataType = {
     newMessageBody: FormDialogsDataType
 }
 
-const maxLength45 = maxLengthСreator(45);
+const maxLength45 = maxLength(45);
 
 export const AddMessageForm: React.FC<InjectedFormProps<FormDialogsDataType>> = (props) => {
 
@@ -17,7 +17,7 @@ export const AddMessageForm: React.FC<InjectedFormProps<FormDialogsDataType>> = 
 
             <Field className="chatMessageInput"
                    placeholder={"Say hello!"}
-                   component={Textarea}
+                   component={FormControlTextarea}
                    validate={[required, maxLength45, minLength]}
                    name={'newMessageBody'}
                    type={'text'}

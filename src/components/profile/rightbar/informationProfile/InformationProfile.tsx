@@ -1,6 +1,6 @@
 import React from 'react';
 import "./profileRightBarStyles.css";
-import '../homeRightbar/homeRightBarStyles.css'
+import '../friendsRightbar/homeRightBarStyles.css'
 import {ProfileResponseType} from "../../../../redux/profile-reducer/profile-reducer";
 
 
@@ -9,7 +9,7 @@ type ProfileRightBarPropsType = {
 }
 
 
-export const ProfileRightBar: React.FC<ProfileRightBarPropsType> = ({profile}) => {
+export const InformationProfile: React.FC<ProfileRightBarPropsType> = ({profile}) => {
     return (
         <>
             <h4 className="rightbarTitle">User information:</h4>

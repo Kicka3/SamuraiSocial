@@ -17,15 +17,8 @@
     width: 100%;
 }
 
-
-/*InputFormLogin*/
 .formInputWrapper {
-    /*display: flex;*/
-    /*align-items: center;*/
     height: 50px;
-    /*width: 100%;*/
-    /*margin: 10px 0;*/
-    /*position: relative;*/
 }
 
 #formsInput {

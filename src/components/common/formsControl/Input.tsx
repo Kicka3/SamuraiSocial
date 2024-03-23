@@ -1,6 +1,6 @@
 import React from "react";
 import "../formsControl/formsControl.css";
-import {FormsControlType} from "../formsControl/Textarea";
+import {FormsControlType} from "../../common/formsControl/FormControlTextarea";
 
 
 export const Input: React.FC<FormsControlType> = ({input, meta: {touched, error}, ...props}) => {

@@ -3,15 +3,15 @@ import '../login.css'
 import {Link} from "react-router-dom";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../../common/formsControl/Input";
-import {maxLengthСreator, minLength, required} from "../../../utils/validators/Valodators";
+import {maxLength, minLength, required} from "../../../utils/validators/Valodators";
 
 export type FormDataType = {
     login: string
     password: string
     rememberMe: boolean
 }
-const maxLength50 = maxLengthСreator(50);
-const maxLength16 = maxLengthСreator(16);
+const maxLength50 = maxLength(50);
+const minLength6 = minLength(6);
 
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
@@ -32,7 +32,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                                     name={'login'}
                                     placeholder="Enter your email"
                                     required
-                                    validate={[required, maxLength50, minLength]}
+                                    validate={[required, maxLength50]}
                                     component={Input}
                                 />
                             </div>
@@ -44,7 +44,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                                     name={'password'}
                                     placeholder="Enter your password"
                                     required
-                                    validate={[required, maxLength16, minLength]}
+                                    validate={[required, maxLength50, minLength6]}
                                     component={Input}
                                 />
                             </div>
@@ -96,55 +96,3 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 export const LoginReduxForm = reduxForm<FormDataType>({
     form: 'login'
 })(LoginForm);
-
-
-
-
-{/*animation for registerPage*/
-}
-{/*<div className="signup-form">*/
-}
-{/*  <div className="title">Signup</div>*/
-}
-{/*  <form action="#">*/
-}
-{/*     <div className="input-boxes">*/
-}
-{/*        <div className="input-box">*/
-}
-{/*           <i className="fas fa-user"></i>*/
-}
-{/*           <input type="text" placeholder="Enter your name" required />*/
-}
-{/*        </div>*/
-}
-{/*        <div className="input-box">*/
-}
-{/*           <i className="fas fa-envelope"></i>*/
-}
-{/*           <input type="text" placeholder="Enter your email" required />*/
-}
-{/*        </div>*/
-}
-{/*        <div className="input-box">*/
-}
-{/*           <i className="fas fa-lock"></i>*/
-}
-{/*           <input type="password" placeholder="Enter your password" required />*/
-}
-{/*        </div>*/
-}
-{/*        <div className="button input-box">*/
-}
-{/*           <input type="submit" value="Sumbit" />*/
-}
-{/*        </div>*/
-}
-{/*        <div className="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>*/
-}
-{/*     </div>*/
-}
-{/*</form>*/
-}
-{/*</div>*/
-}

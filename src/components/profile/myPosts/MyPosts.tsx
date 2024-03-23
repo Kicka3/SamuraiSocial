@@ -6,8 +6,6 @@ import Share from "./share/Share";
 
 
 export const MyPosts: React.FC<PostsPropsType> = React.memo((props) => {
-    console.log('RENDER YO')
-
     const {addNewPost} = props;
 
     return (

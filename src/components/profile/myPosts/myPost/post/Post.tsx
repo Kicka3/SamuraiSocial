@@ -1,6 +1,5 @@
 import "./post.css"
 import React from "react";
-import App8 from "./App8";
 
 
 type PostPropsType = {

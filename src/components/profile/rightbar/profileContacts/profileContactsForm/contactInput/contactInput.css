@@ -1,0 +1,43 @@
+
+.formControl {
+    width: 100%;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.formControl.error textarea {
+    border-bottom: 2px solid red;
+}
+
+.formControl {
+    height: 100%;
+    width: 100%;
+}
+
+.contactInput {
+    border: none;
+    text-align: center;
+    padding-left: 10px;
+    border-bottom: 2px solid blueviolet;
+    width: 100%;
+    transition: .2s;
+}
+
+.contactInput:focus {
+    border: none;
+    border-bottom: 2px solid blueviolet;
+    outline: none;
+}
+
+#contactFormsInput {
+    border-bottom: 2px solid red;
+    transition: all 0.3s ease;
+}
+
+.ContactInputErrorMessage {
+    color: red;
+    font-size: 14px;
+}

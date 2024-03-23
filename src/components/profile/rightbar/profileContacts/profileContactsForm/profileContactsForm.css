@@ -1,0 +1,31 @@
+.input-contact-boxes {
+
+}
+
+.contact-input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-input-box:not(:first-child) {
+    margin-top: 26px;
+}
+
+.save-form-contact {
+    cursor: pointer;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #7d2ae8;
+    color: white;
+    margin-top: 20px;
+    height: 30px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+.save-form-contact:hover {
+    background-color: #6623be;
+}
+.save-form-contact:active {
+    transform: translateY(-5px);
+}

@@ -3,6 +3,7 @@ import "../formsControl/formsControl.css";
 
 
 export type FormsControlType = {
+    inputClassName?: string
     input: {}
     meta: {
         touched: boolean,
@@ -10,7 +11,7 @@ export type FormsControlType = {
     }
 }
 
-export const Textarea: React.FC<FormsControlType> = ({input, meta: {touched, error}, ...props}) => {
+export const FormControlTextarea: React.FC<FormsControlType> = ({input, meta: {touched, error}, ...props}) => {
     const hasError = touched && error;
 
     return (

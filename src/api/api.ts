@@ -1,5 +1,8 @@
 import axios from "axios";
 import {LoginResponseType} from "../redux/auth-reducer/auth-reducer";
+import {
+    ProfileContactsFormDataType
+} from "../components/profile/rightbar/profileContacts/profileContactsForm/ProfileContactsForm";
 
 export const instance = axios.create({
     withCredentials: true,
@@ -69,6 +72,15 @@ export const profileAPI = {
             return data.data
         } catch (e) {
             return console.log('Error in savePhoto ' + e);
+        }
+    },
+    saveProfile: async (formData: ProfileContactsFormDataType) => {
+        try {
+            let data = await instance.put(`profile`, formData);
+            console.log(data.data)
+            return data.data
+        } catch (e) {
+            return console.log('Error in saveProfile ' + e);
         }
     }
 }

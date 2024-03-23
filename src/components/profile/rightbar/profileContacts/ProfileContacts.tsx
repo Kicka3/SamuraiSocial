@@ -3,26 +3,39 @@ import './profileContacts.css'
 import {ProfileResponseType} from "../../../../redux/profile-reducer/profile-reducer";
 import {ProfileData} from "./profileData/ProfileData";
 import {
-    ProfileContactsForm
-} from "./profileContactsForm/ProfileContactsForm";
+    ProfileContactsFormDataType,
+    ProfileContactsReduxForm
+} from "../profileContacts/profileContactsForm/ProfileContactsForm";
 
 
 type ProfileContactsPropsType = {
     profile: ProfileResponseType | null
     isOwner: boolean
+    saveProfileInfoTC: (formData: ProfileContactsFormDataType) => void
 }
 
-export const ProfileContacts: React.FC<ProfileContactsPropsType> = ({profile, isOwner}) => {
+export const ProfileContacts: React.FC<ProfileContactsPropsType> = ({profile, isOwner, saveProfileInfoTC}) => {
     const [editMode, setEditMode] = useState(false);
+
+    const onToggleEditMode = () => {
+        setEditMode(true)
+    }
+
+    const onSubmit = (formData: ProfileContactsFormDataType) => {
+        saveProfileInfoTC(formData)
+    }
 
     return (
         <>
             <nav className={'profile_contacts__wrapper'}>
                 <div className={'profile_contacts__section'}>
-
-                    {editMode ? <ProfileContactsForm profile={profile}/> :
-                        <ProfileData profile={profile} isOwner={isOwner} goToEditeMode={() => setEditMode(true)}/>}
-
+                    {editMode
+                        ? <ProfileContactsReduxForm onSubmit={onSubmit} />
+                        : <ProfileData profile={profile}
+                                       isOwner={isOwner}
+                                       goToEditeMode={onToggleEditMode}
+                        />
+                    }
                 </div>
             </nav>
         </>

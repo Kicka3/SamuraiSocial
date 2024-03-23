@@ -2,6 +2,9 @@ import {v1} from "uuid";
 import {Dispatch} from "redux";
 import {profileAPI, usersAPI} from "../../api/api";
 import {AddNewPostFormType} from "../../../src/components/profile/myPosts/share/addNewPostForm/AddNewPostForm";
+import {
+    ProfileContactsFormDataType
+} from "../../components/profile/rightbar/profileContacts/profileContactsForm/ProfileContactsForm";
 
 export type PostsType = {
     id: string;
@@ -45,6 +48,7 @@ export type MainProfileReducerType = AddPostACType
     | SetUserStatusACType
     | DeletePostACType
     | SavePhotoACType
+    | SaveProfileInfoACType
 
 export const initialState: InitialProfileStateType = {
     postsData: [
@@ -78,7 +82,10 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
         }
         case "SET-USER-PHOTO": {
             if (state.profile) {
-                return {...state, profile: {...state.profile, photos: {...state.profile.photos,small: action.payload.userPhoto}}}
+                return {
+                    ...state,
+                    profile: {...state.profile, photos: {...state.profile.photos, small: action.payload.userPhoto}}
+                }
             } else {
                 return {...state}
             }
@@ -139,6 +146,16 @@ export const savePhotoAC = (userPhoto: string) => {
     } as const
 }
 
+export type SaveProfileInfoACType = ReturnType<typeof savePhotoAC>
+export const saveProfileInfoAC = (userPhoto: string) => {
+    return {
+        type: 'SET-USER-PHOTO',
+        payload: {
+            userPhoto
+        }
+    } as const
+}
+
 //Thunks
 
 export const getUserProfileTC = (userId: string) => async (dispatch: Dispatch) => {
@@ -175,11 +192,26 @@ export const savePhotoTC = (userPhoto: File) => {
         try {
             const response = await profileAPI.savePhoto(userPhoto)
             if (response.data.resultCode === 0) {
-                // dispatch(savePhotoAC(response.data.data.photos));
                 dispatch(savePhotoAC(response.data.photos));
             }
         } catch (e) {
             console.log(`Error in savePhotoTC` + e)
+        }
+    };
+}
+
+export const saveProfileInfoTC = (formData: ProfileContactsFormDataType) => {
+    return async (dispatch: Dispatch) => {
+        try {
+            const response = await profileAPI.saveProfile(formData)
+            if (response.data.resultCode === 0) {
+                console.log(response.data)
+                // dispatch(saveProfileInfoAC(response.data));
+            } else {
+                // console.log(response.data.messages)
+            }
+        } catch (e) {
+            console.log(`Error in saveProfileInfo` + e)
         }
     };
 }

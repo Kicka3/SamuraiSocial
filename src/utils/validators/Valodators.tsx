@@ -5,14 +5,14 @@ export const required = (value: string) => {
 
 }
 
-export const maxLengthСreator = (maxLength: number) => (value: string) => {
+export const maxLength = (maxLength: number) => (value: string) => {
     if (value && value.length > maxLength) return `Max length is ${maxLength} symbols`
 
     return undefined;
 }
 
-export const minLength = (value: string) => {
-    if (value && value.length < 3) return `Min length is 3 symbols`
+export const minLength = (minLength: number) => (value: string) => {
+    if (value && value.length < minLength) return `Min length is ${minLength} symbols`
 
     return undefined;
 }
