@@ -7,6 +7,7 @@ import {
 } from "../../components/profile/rightbar/profileContacts/profileContactsForm/ProfileContactsForm";
 import {RootReduxStoreType, StoreType} from "../redux-store";
 import {ThunkAction} from "redux-thunk";
+import {stopSubmit} from "redux-form";
 
 export type PostsType = {
     id: string;
@@ -205,7 +206,10 @@ export const saveProfileInfoTC = (formData: ProfileContactsFormDataType): ThunkR
                 await dispatch(getUserProfileTC(userId.toString()));
                 console.log(response)
             } else {
+                dispatch(stopSubmit('contacts', {_error: response.data.messages[0]}));
+                // dispatch(stopSubmit('contacts', {"contacts": {_error: response.data.messages[0]}}));
                 console.log(response.data.messages);
+                return Promise.reject(response.data.messages[0])
             }
         } catch (e) {
             console.log(`Error in saveProfileInfo` + e);

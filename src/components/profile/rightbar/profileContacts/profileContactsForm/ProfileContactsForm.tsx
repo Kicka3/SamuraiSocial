@@ -1,4 +1,4 @@
-import {ProfileResponseType} from "../../../../../redux/profile-reducer/profile-reducer";
+import '../../../../login/login.css'
 import React, {useMemo} from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLength, minLength, required} from "../../../../../utils/validators/Valodators";
@@ -8,9 +8,7 @@ import "./profileContactsForm.css"
 
 export type CombinedProfileFormType = ProfileContactsFormDataType & ProfileContactsFormMixedType;
 
-type ProfileContactsFormMixedType = {
-    profile: ProfileResponseType | null
-}
+type ProfileContactsFormMixedType = {}
 
 export type ProfileContactsFormDataType = {
     lookingForAJob: boolean
@@ -28,13 +26,12 @@ export type ProfileContactsFormDataType = {
     mainLink: string
 }
 
-const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> = ({handleSubmit}) => {
+const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> = ({handleSubmit, error}) => {
 
     const validate = useMemo(() => [required, maxLength(50), minLength(4)], [required]);
 
     return (<form onSubmit={handleSubmit}>
             <div className="input-contact-boxes">
-
                 <div className="contact-input-box">
                     <b className={"contact-item"}>AboutMe:</b>
                     <Field
@@ -46,7 +43,6 @@ const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> 
                         component={SecretContactInput}
                     />
                 </div>
-
                 <div className="contact-input-box">
                     <b className={"contact-item"}>My lookingForAJob:</b>
                     <Field
@@ -57,7 +53,6 @@ const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> 
                         component={SecretContactInput}
                     />
                 </div>
-
                 <div className="contact-input-box">
                     <b className={"contact-item"}>My lookingForAJobDescription:</b>
                     <Field
@@ -69,7 +64,6 @@ const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> 
                         component={SecretContactInput}
                     />
                 </div>
-
                 <div className="contact-input-box">
                     <b className={"contact-item"}>My full name:</b>
                     <Field
@@ -81,7 +75,6 @@ const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> 
                         component={SecretContactInput}
                     />
                 </div>
-
                 <div className="contact-input-box">
                     <b className={"contact-item"}>My facebook:</b>
                     <Field
@@ -93,7 +86,6 @@ const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> 
                         component={SecretContactInput}
                     />
                 </div>
-
                 <div className="contact-input-box">
                     <b className={"contact-item"}>My website:</b>
                     <Field
@@ -105,7 +97,6 @@ const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> 
                         component={SecretContactInput}
                     />
                 </div>
-
                 <div className="contact-input-box">
                     <b className={"contact-item"}>My vk:</b>
                     <Field
@@ -117,7 +108,6 @@ const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> 
                         component={SecretContactInput}
                     />
                 </div>
-
                 <div className="contact-input-box">
                     <b className={"contact-item"}>My twitter:</b>
                     <Field
@@ -129,7 +119,6 @@ const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> 
                         component={SecretContactInput}
                     />
                 </div>
-
                 <div className="contact-input-box">
                     <b className={"contact-item"}>My instagram:</b>
                     <Field
@@ -175,6 +164,7 @@ const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> 
                     />
                 </div>
                 <button className={"save-form-contact"}>Save</button>
+                {error && <span className={'formSummaryError'}>{error}</span>}
             </div>
         </form>
     );

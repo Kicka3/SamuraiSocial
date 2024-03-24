@@ -49,7 +49,6 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                                 />
                             </div>
 
-
                             <div className={'text loginTextMiddle'}>
                                 <div><a href="#">Forgot password?</a></div>
                                 <div className={'rememberMe'}>
