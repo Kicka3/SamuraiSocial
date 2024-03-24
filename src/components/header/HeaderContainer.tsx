@@ -5,7 +5,7 @@ import {
     getAuthUserDataTC,
     logoutTC,
     setAuthUserDataAC,
-    setAvatarCurrentUserDataType
+    setAvatarCurrentUserDataAC
 } from "../../redux/auth-reducer/auth-reducer";
 import {RootReduxStoreType} from "../../redux/redux-store";
 import {PhotosProfileType} from "../../redux/profile-reducer/profile-reducer";
@@ -49,7 +49,7 @@ const WithParams = (props: HeaderPropsContainerType) => {
 
 export default connect(mapStateToProps, {
     setAuthUserData: setAuthUserDataAC,
-    setAvatarCurrentUserDataType,
+    setAvatarCurrentUserDataType: setAvatarCurrentUserDataAC,
     getAuthUserDataTC,
     logoutTC
 })(WithParams)

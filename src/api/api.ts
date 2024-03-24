@@ -25,7 +25,7 @@ export const usersAPI = {
             .catch((e) => console.log('unFollow Error ' + e));
     },
     follow: (id: string) => {
-        return instance.post(`/follow/${id}`)
+        return instance.post(`follow/${id}`)
             .then(data => data.data)
             .catch((e) => console.log('follow Error ' + e));
     },
@@ -93,13 +93,24 @@ export const authAPI = {
             return console.log('authAPI Error ' + e);
         }
     },
-    login: async (email: string, password: string, rememberMe: boolean = false) => {
-        let data = await instance.post<LoginResponseType>('/auth/login', {email, password, rememberMe});
+    login: async (email: string, password: string, rememberMe: boolean = false, captcha: string) => {
+        let data = await instance.post<LoginResponseType>('auth/login', {email, password, rememberMe, captcha});
         return data.data
     },
     logout: async () => {
         try {
-            let data = await instance.delete('/auth/login');
+            let data = await instance.delete('auth/login');
+            return await data.data;
+        } catch (e) {
+            return console.log('authAPI Error ' + e);
+        }
+    }
+}
+
+export const securityAPI = {
+    getCaptchaUrl: async () => {
+        try {
+            let data = await instance.get('security/get-captcha-url');
             return await data.data;
         } catch (e) {
             return console.log('authAPI Error ' + e);

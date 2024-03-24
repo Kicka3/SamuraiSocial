@@ -10,16 +10,14 @@ import {RootReduxStoreType} from "../../redux/redux-store";
 
 type LoginContainerPropsType = MapDispatchToPropsType & MapStateToPropsType;
 
-
 const emailRegExpLogin = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 
-const Login: React.FC<LoginContainerPropsType> = ({loginTC, isAuth}) => {
-
+const Login: React.FC<LoginContainerPropsType> = ({loginTC, isAuth, captchaUrl}) => {
 
     function validationEmail(value: string, formData: FormDataType) {
         let result = emailRegExpLogin.test(value);
         if (result) {
-            loginTC(formData.login, formData.password, formData.rememberMe)
+            loginTC(formData.login, formData.password, formData.rememberMe, formData.captcha)
         } else {
             return false
         }
@@ -54,8 +52,7 @@ const Login: React.FC<LoginContainerPropsType> = ({loginTC, isAuth}) => {
                     </div>
                 </div>
 
-                <LoginReduxForm onSubmit={onSubmit}/>
-
+                <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
 
             </div>
         </section>
@@ -63,15 +60,17 @@ const Login: React.FC<LoginContainerPropsType> = ({loginTC, isAuth}) => {
 };
 
 type MapDispatchToPropsType = {
-    loginTC: (email: string, password: string, rememberMe: boolean) => void
+    loginTC: (email: string, password: string, rememberMe: boolean, captcha: string) => void
 }
 
 type MapStateToPropsType = {
+    captchaUrl: string | null
     isAuth: boolean
 }
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
-        isAuth: state.auth.isAuth
+        captchaUrl: state.auth.captcha,
+        isAuth: state.auth.isAuth,
     }
 }
 
