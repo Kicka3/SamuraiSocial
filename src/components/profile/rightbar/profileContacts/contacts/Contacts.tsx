@@ -1,15 +1,25 @@
 import React from 'react';
 import '../profileContacts.css'
+import {ContactsProfileType, ProfileResponseType} from "../../../../../redux/profile-reducer/profile-reducer";
 
 type ContactsPropsType = {
-    contactTitle: string;
-    contactValue: string | null;
+    valueContacts: ContactsProfileType | undefined
+    profile: ProfileResponseType | null
 }
-export const Contacts: React.FC<ContactsPropsType> = ({contactTitle, contactValue}) => {
-    const value = contactValue ? contactValue : '✖';
+export const Contacts: React.FC<ContactsPropsType> = ({valueContacts, profile}) => {
+    console.log(profile)
+    if (!valueContacts) {
+        return null;
+    }
 
-    return <div className={'profile_contacts__item'}>
-        <span className={'contact_item__title'}>{contactTitle}: </span>
-        <a href="#" target={'_blank'} className={'contact_link'}>{value}</a>
-    </div>
+    return (
+        <ul>
+            {profile?.contacts && Object.entries(profile.contacts).map(([key, value]) => (
+                <li key={key}>
+                    <span>{key}: </span>
+                    <div>{value || '✖'}</div>
+                </li>
+            ))}
+        </ul>
+    );
 };

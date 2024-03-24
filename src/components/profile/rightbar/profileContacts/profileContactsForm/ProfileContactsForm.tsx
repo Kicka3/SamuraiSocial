@@ -6,12 +6,12 @@ import {SecretContactInput} from "../profileContactsForm/contactInput/SecretCont
 import "./profileContactsForm.css"
 
 
-//НАДО ЛИ MIXED TYPE?
 export type CombinedProfileFormType = ProfileContactsFormDataType & ProfileContactsFormMixedType;
 
 type ProfileContactsFormMixedType = {
-    saveProfileInfo: (formData: ProfileContactsFormDataType) => void
+    profile: ProfileResponseType | null
 }
+
 export type ProfileContactsFormDataType = {
     lookingForAJob: boolean
     lookingForAJobDescription: string
@@ -27,8 +27,6 @@ export type ProfileContactsFormDataType = {
     youtube: string
     mainLink: string
 }
-
-
 
 const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> = ({handleSubmit}) => {
 
@@ -83,10 +81,6 @@ const ProfileContactsForm: React.FC<InjectedFormProps<CombinedProfileFormType>> 
                         component={SecretContactInput}
                     />
                 </div>
-
-
-
-                {/*//==============================================================//*/}
 
                 <div className="contact-input-box">
                     <b className={"contact-item"}>My facebook:</b>

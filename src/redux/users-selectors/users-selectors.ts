@@ -30,3 +30,7 @@ export const getIsFetching = (state: RootReduxStoreType) => {
 export const getFollowingInProgress = (state: RootReduxStoreType) => {
     return state.usersPage.followingInProgress;
 }
+
+export const getProfileContacts = (state: RootReduxStoreType) => {
+    return state.profilePage.profile?.contacts;
+}

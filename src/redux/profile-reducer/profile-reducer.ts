@@ -147,16 +147,6 @@ export const savePhotoAC = (userPhoto: string) => {
     } as const
 }
 
-// export type SaveProfileInfoACType = ReturnType<typeof savePhotoAC>
-// export const saveProfileInfoAC = (userPhoto: string) => {
-//     return {
-//         type: 'SET-USER-PHOTO',
-//         payload: {
-//             userPhoto
-//         }
-//     } as const
-// }
-
 //Thunks
 
 export const getUserProfileTC = (userId: string) => async (dispatch: Dispatch) => {
@@ -213,6 +203,7 @@ export const saveProfileInfoTC = (formData: ProfileContactsFormDataType): ThunkR
             const response = await profileAPI.saveProfile(formData);
             if (response.resultCode === 0) {
                 await dispatch(getUserProfileTC(userId.toString()));
+                console.log(response)
             } else {
                 console.log(response.data.messages);
             }
