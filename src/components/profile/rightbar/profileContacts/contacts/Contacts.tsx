@@ -7,7 +7,6 @@ type ContactsPropsType = {
     profile: ProfileResponseType | null
 }
 export const Contacts: React.FC<ContactsPropsType> = ({valueContacts, profile}) => {
-    console.log(profile)
     if (!valueContacts) {
         return null;
     }

@@ -59,7 +59,6 @@ class UsersContainer extends React.Component<UsersPropsType> {
     }
 }
 
-
 type MapStateToPropsType = {
     users: InitialUsersStateType
     pageSize: number

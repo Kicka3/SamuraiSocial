@@ -6,6 +6,9 @@ import {
     required
 } from '../../../../../utils/validators/Valodators';
 import {FormControlTextarea} from "../../../../common/formsControl/FormControlTextarea";
+import {getUsrAvatar} from "../../../../../utils/fucntions/getAvatars";
+import noUserAvatar from "../../../../../assets/images/avatars/noAvatar.jpeg";
+import {ToTopOutlined} from '@ant-design/icons';
 
 
 export type AddNewPostFormType = {
@@ -13,29 +16,29 @@ export type AddNewPostFormType = {
 }
 
 const maxLength20 = maxLength(20);
+const minLength3 = minLength(3);
+const avatar = getUsrAvatar('small')
+console.log(avatar)
 
 export const AddNewPostForm: React.FC<InjectedFormProps<AddNewPostFormType>> = (props) => {
     const {handleSubmit} = props;
 
     return (
-        <form className="shareWrapper"
-              onSubmit={handleSubmit}
-        >
-            <div className="shareTop">
-                {/*//AВАТАРКА USERA*/}
-                <img className="shareProfileImg"
-                     src={'assets/person/person0.jpeg'}
+        <form className={"shareWrapper"} onSubmit={handleSubmit}>
+            <div className={"shareTop"}>
+
+                <img className={"shareProfileImg"}
+                     src={avatar ? avatar : noUserAvatar}
                      alt="User's Avatar"/>
 
-                {/*<ShareReduxInputTextForm />*/}
                 <div className={'shareContainer'}>
-                    <div className="shareTop">
-                        <Field className="shareInput"
+                    <div className={"shareTop"}>
+                        <Field className={"shareInput"}
                                name={'newPostText'}
                                component={FormControlTextarea}
                                placeholder={"What's in your mind ?"}
                                type={'text'}
-                               validate={[required, maxLength20, minLength]}
+                               validate={[required, maxLength20, minLength3]}
                         />
                     </div>
 
@@ -43,14 +46,15 @@ export const AddNewPostForm: React.FC<InjectedFormProps<AddNewPostFormType>> = (
             </div>
 
             <hr className="sharHr"/>
-            {/*<ShareReduxForm/>*/}
 
             <div className="shareBottom">
                 <div className="shareOptions">
                     <label htmlFor="file" className="shareOption">
                         {/*ИКОНКА*/}
-                        {/*<PermMediaIcon htmlColor="#7B68EE" className="shareIcon"/>*/}
 
+                        <div className="shareIcon">
+                            <ToTopOutlined/>
+                        </div>
                         <span className="shareOptionText">Photo / Video</span>
 
                         <Field style={{display: "none"}}

@@ -57,6 +57,7 @@ class ProfileContainer extends React.Component<PropsType> {
                      savePhotoTC={this.props.savePhotoTC}
                      updateUserStatusTC={this.props.updateUserStatusTC}
                      saveProfileInfoTC={this.props.saveProfileInfoTC}
+                     isUpdating={this.props.isUpdating}
             />
         );
     }
@@ -76,6 +77,7 @@ type MapStateToPropsType = {
     status: string
     authorizedUserId: number | null
     isAuth: boolean
+    isUpdating: boolean
 }
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
@@ -83,6 +85,7 @@ const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
         status: state.profilePage.status,
         authorizedUserId: state.auth.id,
         isAuth: state.auth.isAuth,
+        isUpdating: state.profilePage.updateProfileStatus
     }
 };
 

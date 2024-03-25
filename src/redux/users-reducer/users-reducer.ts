@@ -1,5 +1,5 @@
 import {usersAPI} from "../../api/api";
-import {AnyAction, Dispatch} from "redux";
+import {Dispatch} from "redux";
 import {updateObjInArray} from "../../utils/objects-helpers/object-helper";
 
 
@@ -26,6 +26,14 @@ export type InitialUsersStateType = {
     followingInProgress: string[],
 }
 
+export type MainProfileReducerType = FollowSuccessACType
+    | UnFollowSuccessACType
+    | SetUsersACType
+    | SetCurrentPageACType
+    | SetTotalUserCountACType
+    | ToggleIsFetchingACType
+    | ToggleFollowingProgressType
+
 let initialState = {
     users: [] as ResponseUsersType[],
     pageSize: 10,
@@ -34,14 +42,6 @@ let initialState = {
     isFetching: true,
     followingInProgress: [],
 }
-
-export type MainProfileReducerType = FollowSuccessACType
-    | UnFollowSuccessACType
-    | SetUsersACType
-    | SetCurrentPageACType
-    | SetTotalUserCountACType
-    | ToggleIsFetchingACType
-    | ToggleFollowingProgressType
 
 export const usersReducer = (state: InitialUsersStateType = initialState, action: MainProfileReducerType): InitialUsersStateType => {
     switch (action.type) {
@@ -161,40 +161,49 @@ export const toggleFollowingProgressAC = (userId: string, isFetching: boolean) =
 }
 
 //Thunks
-
 export const getUserTC = (page: number, pageSize: number) => async (dispatch: Dispatch) => {
-    dispatch(toggleIsFetching(true));
-    dispatch(setCurrentPageAC(page));
+    try {
+        dispatch(toggleIsFetching(true));
+        dispatch(setCurrentPageAC(page));
 
-    const response = await usersAPI.getUsers(page, pageSize);
-    dispatch(toggleIsFetching(false));
-    dispatch(setUsersAC(response.items));
-    dispatch(setTotalUsersCount(response.totalCount));
-    // .catch(err => console.log(err))
+        const response = await usersAPI.getUsers(page, pageSize);
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsersAC(response.items));
+        dispatch(setTotalUsersCount(response.totalCount));
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 export const setUserTC = (pageNumber: number, pageSize: number) => async (dispatch: Dispatch) => {
-    dispatch(toggleIsFetching(true));
-    dispatch(setCurrentPageAC(pageNumber));
+    try {
+        dispatch(toggleIsFetching(true));
+        dispatch(setCurrentPageAC(pageNumber));
 
-    const response = await usersAPI.getUsers(pageNumber, pageSize);
-    dispatch(toggleIsFetching(false));
-    dispatch(setUsersAC(response.items));
-
-    // .catch(err => console.log(err))
+        const response = await usersAPI.getUsers(pageNumber, pageSize);
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsersAC(response.items));
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 const followUnfollowFlow =
-    async (dispatch: Dispatch, userId: string, apiMethod: (id: string) => Promise<any>, actionCreator: (userId: string) => FollowSuccessACType |
-        UnFollowSuccessACType): Promise<void> => {
-        dispatch(toggleFollowingProgressAC(userId, true));
-        const response = await apiMethod(userId);
+    async (dispatch: Dispatch, userId: string, apiMethod: (id: string) => Promise<any>,
+           actionCreator: (userId: string) => FollowSuccessACType | UnFollowSuccessACType): Promise<void> => {
+        try {
+            dispatch(toggleFollowingProgressAC(userId, true));
+            const response = await apiMethod(userId);
 
-        if (response.data.resultCode === 0) {
-            dispatch(actionCreator(userId));
+            if (response.data.resultCode === 0) {
+                dispatch(actionCreator(userId));
+            }
+            dispatch(toggleFollowingProgressAC(userId, false));
+        } catch (e) {
+            console.log(e)
         }
-        dispatch(toggleFollowingProgressAC(userId, false));
     }
+
 
 export const followTC = (userId: string) => async (dispatch: Dispatch) => {
     await followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(userId), followSuccessAC.bind(userId));

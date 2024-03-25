@@ -1,14 +1,20 @@
 import "./post.css"
 import React from "react";
+import {store} from "../../../../../redux/redux-store";
+import {getProfileAvatars} from "../../../../../redux/users-selectors/users-selectors";
+import noAvatar from "../../../../../assets/images/avatars/noAvatar.jpeg";
 
 
 type PostPropsType = {
     titlePost: string
     likesCount: number
+    userAvatars: string | null | undefined
 }
 
 const Post: React.FC<PostPropsType> = (props) => {
-    const {titlePost, likesCount, ...restProps} = props;
+    const {titlePost, likesCount,userAvatars, ...restProps} = props;
+
+    const smallPhoto = userAvatars ? userAvatars: noAvatar;
 
     return (
         <div className="post">
@@ -17,7 +23,7 @@ const Post: React.FC<PostPropsType> = (props) => {
                     <div className="postTop">
                         <div className="postTopLeft">
                             <img className="postProfileImg"
-                                 src={'assets/person/person0.jpeg'}
+                                 src={smallPhoto}
                                  alt="ProfilePucture"/>
                             <span className="postUserName">Name of user</span>
                         </div>
@@ -30,7 +36,9 @@ const Post: React.FC<PostPropsType> = (props) => {
                     </div>
                     <div className="postCenter">
                         <span className="postText">{titlePost}</span>
-                        <img className="postImg" src={"/assets/posts/post2.jpeg"} alt="postThree"/>
+                        {/*//Фото поста*/}
+                        {/*<img className="postImg" src={smallPhoto} alt="postThree"/>*/}
+                        <img className="postImg" src={'https://a.d-cd.net/acc6855s-1920.jpg'} alt="postThree"/>
                     </div>
                     <div className="postBottom">
                         <div className="postBottomLeft">

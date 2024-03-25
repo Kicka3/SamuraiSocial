@@ -1,7 +1,7 @@
 import React, {Suspense} from "react";
 import "./App.css";
 import Sidebar from "./components/sidebar/Sidebar";
-import {Route, withRouter} from "react-router-dom";
+import {Redirect, Route, Switch, withRouter} from "react-router-dom";
 import {MyPostsContainer} from "./components/profile/myPosts/MyPostsContainer";
 import HeaderContainer from "./components/header/HeaderContainer";
 import Login from "../src/components/login/Login";
@@ -21,16 +21,24 @@ type AppPropsType = MapDispatchToPropsType & MapStateToPropsType;
 
 class App extends React.Component<AppPropsType> {
 
+    // catchAllUnhandledErrors = (reason: any, promise: any) => {
+    //     alert("some error occured")
+    // }
+
     componentDidMount() {
         this.props.InitializeAppTC();
+        // window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors)
     }
 
+    //
+    // //Обязательно делаем remove для подписки при размонтировании компоненты
+    // componentWillUnmount() {
+    //     window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors)
+    // }
+
     render() {
-
-        //Добавить нормальную крутилку
-
         if (!this.props.initialized) {
-            return <Preloader isFetching={this.props.isFetching}/>
+            return <div className={'preloaderAppWrapper'}><Preloader isFetching={this.props.isFetching}/></div>
         }
 
         return (
@@ -43,40 +51,51 @@ class App extends React.Component<AppPropsType> {
                     <Sidebar/>
 
                     <div>
-                        <Route path={'/dialogs'}
-                               render={() => {
-                                   return <Suspense fallback={<Preloader/>}>
-                                       <DialogsContainer/>
-                                   </Suspense>
-                               }}
-                        />
-                        <Route path={'/profile/:userId?'}
-                               render={() => {
-                                   return <Suspense fallback={<Preloader/>}>
-                                       <ProfileContainer/>
-                                   </Suspense>
-                               }}
-                        />
+                        <Switch>
+                            <Route path={'/dialogs'}
+                                   render={() => {
+                                       return <Suspense fallback={<Preloader/>}>
+                                           <DialogsContainer/>
+                                       </Suspense>
+                                   }}
+                            />
 
-                        <Route path={'/users'}
-                               render={() => {
-                                   return <Suspense fallback={<Preloader/>}>
-                                       <UsersContainer/>
-                                   </Suspense>
-                               }}
-                        />
+                            <Route exact path={'/'}
+                                   render={() => <Redirect to={"/profile"}/>}
+                            />
 
-                        <Route path={'/login'}
-                               render={() =>
-                                   <Login/>
-                               }/>
+                            <Route path={'/profile/:userId?'}
+                                   render={() => {
+                                       return <Suspense fallback={<Preloader/>}>
+                                           <ProfileContainer/>
+                                       </Suspense>
+                                   }}
+                            />
 
-                        <Route path={'/register'}
-                               render={() =>
-                                   <h1>Register page</h1>
-                               }/>
+                            <Route path={'/users'}
+                                   render={() => {
+                                       return <Suspense fallback={<Preloader/>}>
+                                           <UsersContainer/>
+                                       </Suspense>
+                                   }}
+                            />
 
-                        <Route path={'/posts'} component={MyPostsContainer}/>
+                            <Route path={'/login'}
+                                   render={() =>
+                                       <Login/>
+                                   }/>
+
+                            <Route path={'/register'}
+                                   render={() =>
+                                       <h1>Register page</h1>
+                                   }/>
+
+                            <Route path={'/posts'} component={MyPostsContainer}/>
+
+                            {/*//Сделать красивую 404*/}
+                            {/*<Route path={'*'} render={()=> <div>Page NOT FOUND</div>}/>*/}
+
+                        </Switch>
                     </div>
 
                 </div>

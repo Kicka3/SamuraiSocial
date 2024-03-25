@@ -18,6 +18,56 @@
     border: 3px solid white;
 }
 
+.inputWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.profileInfoOption {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    top: -8px;
+}
+
+.profileInfoOption:hover {
+    opacity: 1;
+}
+
+.profileInfoOption .inputProfile {
+    display: none;
+}
+
+.profileInfoOption .uploadAvatar {
+    position: absolute;
+    bottom: 36px;
+    left: -34px;
+    background-color: rgba(125, 42, 232, 0.62);
+    border: none;
+    color: white;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    text-align: center;
+    width: 86px;
+}
+
+.profileInfoOption:hover .uploadAvatar {
+    opacity: 1; /* Делаем окно видимым */
+    visibility: visible; /* Показываем окно */
+}
+
+.inputProfile {
+    display: none;
+}
+
 .profileInfo {
     display: flex;
     flex-direction: column;
@@ -27,6 +77,7 @@
 .profileInfoName {
     color: #000;
     font-size: 20px;
+    margin-bottom: 8px;
 }
 
 .profileStatus {
@@ -35,14 +86,41 @@
     margin-bottom: 20px;
     color: grey;
     font-style: italic;
+    position: relative; /* Добавляем относительное позиционирование для корректного отображения иконки */
+}
+
+.profileStatus:after {
+    content: url("../../../assets/images/things/pencil.svg");
+    width: 4px;
+    height: 4px;
+    font-family: 'FontAwesome', sans-serif;
+    font-size: 16px;
+    position: absolute; /* Абсолютное позиционирование для отображения иконки рядом с текстом */
+    top: 9%;
+    right: -8px;
+    transform: translateY(-50%) scale(0.2); /* Выравнивание иконки по вертикали и уменьшение размера в 2 раза */
+    opacity: 0; /* Скрываем иконку по умолчанию */
+    transition: opacity 0.3s ease; /* Добавляем эффект плавности при отображении иконки */
+}
+
+.profileStatus:hover:after {
+    opacity: 1; /* Отображаем иконку при наведении на элемент */
 }
 
 .statusInput {
+    border: none;
+    border-bottom: 2px solid #7d2ae8;
+    color: #333;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
     margin: 14px 0 14px 0;
     font-family: 'Roboto', sans-serif;
-    color: #333;
     font-size: 14px;
     padding: 2px 10px;
-    border-radius: 5px;
-    background-color: #e6e6e6;
+    text-align: center;
+}
+
+.statusInput:focus {
+    outline: none;
+    border-bottom-color: #581cd3;
 }

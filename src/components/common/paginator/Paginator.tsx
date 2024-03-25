@@ -9,27 +9,23 @@ type PaginatorPropsType = {
     onPageChanged: (pageNumber: number) => void
 }
 
-export const Paginator: React.FC<PaginatorPropsType> = ({
-                                                            totalItemsCount,
-                                                            pageSize,
-                                                            currentPage,
-                                                            onPageChanged
-                                                        }) => {
+export const Paginator: React.FC<PaginatorPropsType> = (props) => {
+    const {
+        totalItemsCount,
+        pageSize,
+        currentPage,
+        onPageChanged
+    } = props;
 
     //Рассчитываю кол-во страниц
     const pagesCount = Math.ceil(totalItemsCount / pageSize);
 
-    //НЕ ДОДЕЛАНО!
-    //кликаешь на last el + 5 к стейту//
     const pages = [];
     for (let i = 1; i < pagesCount; i++) {
-        // if (pages.length < 10) {
         pages.push(i);
-        // }
     }
 
     const portionCount = Math.ceil(pagesCount / pageSize);
-    // const [portionNumber, setPortionNumber] = useState(1);
     const [portionNumber, setPortionNumber] = useState(Math.ceil(currentPage / pageSize));
     const leftPortionPageNumber = (portionNumber - 1) * pageSize + 1;
     const rightPortionPageNumber = portionNumber * pageSize;

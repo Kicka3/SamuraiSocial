@@ -19,6 +19,7 @@ export const User: React.FC<UsersTypePropsType> = ({
                                                        followingInProgress,
                                                    }) => {
 
+
     return <>
         <div className={'users_wrapper'} key={user.id}>
 
@@ -33,18 +34,20 @@ export const User: React.FC<UsersTypePropsType> = ({
                 </div>
 
                 <div className="user_info">
-                    <div className="user_info__item">
+                    <NavLink to={'/profile/' + user.id}>
+                        <div className="user_info__item">
                                              <span className="user_info_value">
                                                 <span className={'user_info_value__name'}>{user.name}</span>
                                             </span>
-                    </div>
+                        </div>
+                    </NavLink>
 
                     <div className="user_info__item">
                                         <span className="user_info_key">
                                             <span className="user_info_key__city">City: </span>
                                         </span>
                         <span className="user_info_value">
-                                            <span className="user_info_key__city">{'user.location.city'}</span>
+                                            <span className="user_info_key__city">{"INFO"}</span>
                                         </span>
                     </div>
 
@@ -53,7 +56,7 @@ export const User: React.FC<UsersTypePropsType> = ({
                                             <span className="user_info_key__city">From: </span>
                                         </span>
                         <span className="rightbar_info_value">
-                                           <span className="user_info_key__city">{'user.location.country'}</span>
+                                           <span className="user_info_key__city">{'some user location..'}</span>
                                     </span>
                     </div>
 

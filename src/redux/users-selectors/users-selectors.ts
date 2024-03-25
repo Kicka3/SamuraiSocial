@@ -31,6 +31,6 @@ export const getFollowingInProgress = (state: RootReduxStoreType) => {
     return state.usersPage.followingInProgress;
 }
 
-export const getProfileContacts = (state: RootReduxStoreType) => {
-    return state.profilePage.profile?.contacts;
+export const getProfileAvatars = (state: RootReduxStoreType) => {
+    return state.profilePage.profile?.photos.small;
 }

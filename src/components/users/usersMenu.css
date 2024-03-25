@@ -38,12 +38,12 @@
 }
 
 .usersTitle {
-    margin-bottom: 20px;
+    margin: 30px 0 20px 0;
 }
 
 
 .usersListWrapper {
-    padding: 0 20px 10px 20px;
+    padding: 0 20px 10px 100px;
 }
 
 .users_wrapper {
@@ -110,7 +110,6 @@
 
 .disabled_btn {
     opacity: .5;
-    margin-left: 6px;
     border: none;
     border-radius: 5px;
     background-color: #7B68EE;

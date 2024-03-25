@@ -10,3 +10,10 @@ a.text:hover,  /* при наведении */
 a.text {
     text-decoration: none;
 }
+
+.preloaderAppWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

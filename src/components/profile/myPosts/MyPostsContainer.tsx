@@ -13,6 +13,7 @@ export type PostsPropsType = mapStateToPropsType & MapDispatchToPropsType
 type mapStateToPropsType = {
     posts: InitialProfileStateType
     newPostText: InitialProfileStateType
+    userAvatars?: string | null | undefined
 }
 type MapDispatchToPropsType = {
     addNewPost: (newPostText: AddNewPostFormType) => void
@@ -21,7 +22,8 @@ type MapDispatchToPropsType = {
 const mapStateToProps = (state: RootReduxStoreType): mapStateToPropsType => {
     return {
         posts: state.profilePage,
-        newPostText: state.profilePage
+        newPostText: state.profilePage,
+        userAvatars: state.profilePage.profile?.photos.small,
     }
 }
 

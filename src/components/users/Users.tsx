@@ -1,9 +1,7 @@
-import React from "react";
-import {UsersPageTop} from "../../../src/components/users/usersPageTop/UsersPageTop";
+import React, {useState} from "react";
 import {InitialUsersStateType} from "../../redux/users-reducer/users-reducer";
 import {Paginator} from "../common/paginator/Paginator";
 import {User} from "./user/User";
-
 
 type UsersTypePropsType = {
     users: InitialUsersStateType
@@ -36,9 +34,31 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
         followTC(userId)
     }
 
+    // Добавляем состояние для хранения текущего значения поиска
+    const [searchValue, setSearchValue] = useState<string>("");
+
+    // Обновляем значение поиска при изменении значения в input
+    const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(e.currentTarget.value);
+    };
+
+    // Фильтруем список пользователей на основе значения поиска
+    const filteredUsers = users.users.filter(user =>
+        user.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
 
     return <>
-        <UsersPageTop/>
+        <div className="usersMenu">
+            <div className="usersTitle">Your dialogues:</div>
+            <div className="usersMenuWrapper">
+                <input className={"usersMenuInput"}
+                       type="text"
+                       placeholder={"Search for friends"}
+                       value={searchValue} // Устанавливаем текущее значение поиска
+                       onChange={onSearchChange} // Обновляем значение поиска при изменении значения в input
+                />
+            </div>
+        </div>
 
         <div className={"usersPage"}>
             <div className="usersTitleWrapper">
@@ -53,12 +73,12 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
 
             <div className={'usersListWrapper'}>
 
-                {users.users.map(el => <User key={el.id}
-                                             user={el}
-                                             followingInProgress={followingInProgress}
-                                             followTC={followClickHandler}
-                                             unFollowTC={unFollowClickHandler}
-                                             toggleFollowingProgress={toggleFollowingProgress}
+                {filteredUsers.map(el => <User key={el.id}
+                                               user={el}
+                                               followingInProgress={followingInProgress}
+                                               followTC={followClickHandler}
+                                               unFollowTC={unFollowClickHandler}
+                                               toggleFollowingProgress={toggleFollowingProgress}
                     />
                 )}
             </div>
@@ -66,5 +86,3 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
         </div>
     </>
 }
-
-

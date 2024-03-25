@@ -2,10 +2,12 @@
 
 .pagination-wrapper {
     max-width: 62%;
+    /*width: 100%;*/
     display: flex;
     justify-content: center;
-    /*border: 2px solid red;*/
     overflow: hidden;
+    margin-bottom: 18px;
+    padding-left: 100px;
 }
 
 .pagination {

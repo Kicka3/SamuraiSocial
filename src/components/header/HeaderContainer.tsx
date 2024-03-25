@@ -30,14 +30,12 @@ type MapDispatchToProps = {
 type MapStateToPropsType = {
     login: string | null,
     isAuth: boolean,
-    avatarCurrenUser: PhotosProfileType
     userId: number | null
 }
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
         isAuth: state.auth.isAuth,
         login: state.auth.login,
-        avatarCurrenUser: state.auth.avatarCurrenUser,
         userId: state.auth.id
     }
 }

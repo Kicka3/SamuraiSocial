@@ -8,24 +8,26 @@ import {
     ProfileContactsFormDataType
 } from "./rightbar/profileContacts/profileContactsForm/ProfileContactsForm";
 
-
 type ProfilePropsType = {
     profile: ProfileResponseType | null,
     status: string
     isOwner: boolean
+    isUpdating: boolean
     updateUserStatusTC: (status: string) => void
     savePhotoTC: (userPhoto: File) => void
     saveProfileInfoTC: (formData: ProfileContactsFormDataType) => void
 }
 
-export const Profile: React.FC<ProfilePropsType> = ({
-                                                        profile,
-                                                        status,
-                                                        updateUserStatusTC,
-                                                        isOwner,
-                                                        savePhotoTC,
-                                                        saveProfileInfoTC
-                                                    }) => {
+export const Profile: React.FC<ProfilePropsType> = (props) => {
+    const {
+        profile,
+        status,
+        updateUserStatusTC,
+        isOwner,
+        savePhotoTC,
+        saveProfileInfoTC,
+        isUpdating
+    } = props
 
     return (
         <section className="ProfileWrapper">
@@ -38,6 +40,7 @@ export const Profile: React.FC<ProfilePropsType> = ({
                                      updateUserStatusTC={updateUserStatusTC}
                                      isOwner={isOwner}
                                      savePhotoTC={savePhotoTC}
+                                     isUpdating={isUpdating}
                     />
 
                     <div className="profileRightBottom">

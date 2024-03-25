@@ -1,22 +1,23 @@
 import '../profileInfo.css';
 import React, {ChangeEvent, useState} from 'react';
-
+import { LoadingOutlined, CheckOutlined } from '@ant-design/icons';
 
 type ProfileStatusWithHooksType = {
     profileStatus: string
+    isUpdating: boolean
     updateUserStatusTC: (status: string) => void
 }
 
 export const ProfileStatusWithHooks: React.FC<ProfileStatusWithHooksType> = (props) => {
     const {
         profileStatus,
-        updateUserStatusTC
+        updateUserStatusTC,
+        isUpdating
     } = props;
-
 
     const [editMode, setEditMode] = useState(false);
     const [status, setStatus] = useState(profileStatus);
-
+    const [showOkMessage, setShowOkMessage] = useState(false);
 
     const activeEditModeHandler = () => {
         setEditMode(true);
@@ -32,29 +33,37 @@ export const ProfileStatusWithHooks: React.FC<ProfileStatusWithHooksType> = (pro
             activateViewModeHandler()
         }
     }
+
     const activateViewModeHandler = () => {
         setEditMode(false);
-        updateUserStatusTC(status)
-    }
+        updateUserStatusTC(status);
+        setShowOkMessage(true);
+        setTimeout(() => {
+            setShowOkMessage(false);
+        }, 2000);
+    };
 
     return (<>
             {!editMode
-                ? <span className="profileStatus"
-                        onDoubleClick={activeEditModeHandler}
-                >{props.profileStatus || 'no status'}</span>
-
-                //СТИЛИ ИНПУТА!!!!
+                ? <div>
+                    {isUpdating
+                        ? <span><LoadingOutlined style={{color: "#7d2ae8"}}/></span>
+                        : showOkMessage
+                            ? <span className={"ok-message"}><CheckOutlined style={{color: "green"}} /></span>
+                            : <span className={"profileStatus"}
+                                    onDoubleClick={activeEditModeHandler}
+                            >{props.profileStatus || 'no status'}</span>
+                    }
+                </div>
                 : <input className={'statusInput'}
-                              value={status}
-                              onChange={changeStatusHandler}
-                              onBlur={activateViewModeHandler}
-                              maxLength={40}
-                              onKeyPress={onKeyPressHandler}
-                              autoFocus
+                         value={status}
+                         onChange={changeStatusHandler}
+                         onBlur={activateViewModeHandler}
+                         maxLength={40}
+                         onKeyPress={onKeyPressHandler}
+                         autoFocus
                 />
             }
-
         </>
     );
 }
-

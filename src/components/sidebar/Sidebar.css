@@ -30,8 +30,8 @@
 }
 
 .sidebarListItem {
-    display: flex;
-    align-items: center;
+    /*display: flex;*/
+    /*align-items: center;*/
     margin-bottom: 20px;
     cursor: pointer;
     color: #282c34;

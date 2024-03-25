@@ -8,6 +8,7 @@ import {
 import {RootReduxStoreType, StoreType} from "../redux-store";
 import {ThunkAction} from "redux-thunk";
 import {stopSubmit} from "redux-form";
+import {toggleIsFetching} from "../users-reducer/users-reducer";
 
 export type PostsType = {
     id: string;
@@ -44,6 +45,7 @@ export type InitialProfileStateType = {
     postText: string
     profile: ProfileResponseType | null
     status: string
+    updateProfileStatus: boolean
 }
 
 export type MainProfileReducerType = AddPostACType
@@ -51,6 +53,7 @@ export type MainProfileReducerType = AddPostACType
     | SetUserStatusACType
     | DeletePostACType
     | SavePhotoACType
+    | IsUpdatingACType
 
 export const initialState: InitialProfileStateType = {
     postsData: [
@@ -60,7 +63,8 @@ export const initialState: InitialProfileStateType = {
     ] as PostsType[],
     postText: '',
     profile: null,
-    status: ''
+    status: '',
+    updateProfileStatus: false
 }
 
 const profileReducer = (state: InitialProfileStateType = initialState, action: MainProfileReducerType): InitialProfileStateType => {
@@ -82,7 +86,7 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
         case 'DELETE-POST': {
             return {...state, postsData: state.postsData.filter(p => p.id !== action.payload.postId)}
         }
-        case "SET-USER-PHOTO": {
+        case 'SET-USER-PHOTO': {
             if (state.profile) {
                 return {
                     ...state,
@@ -92,13 +96,16 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
                 return {...state}
             }
         }
+        case 'SET-PROFILE-UPDATING' : {
+            return {...state, updateProfileStatus: action.payload.status}
+        }
         default:
             return state
     }
 }
 
 //Actions
-export type AddPostACType = ReturnType<typeof addPostAC>
+type AddPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = (newPostText: AddNewPostFormType) => {
     return {
         type: 'ADD-POST',
@@ -108,7 +115,7 @@ export const addPostAC = (newPostText: AddNewPostFormType) => {
     } as const
 }
 
-export type SetUserProfileACType = ReturnType<typeof setUserProfile>
+type SetUserProfileACType = ReturnType<typeof setUserProfile>
 export const setUserProfile = (profileData: ProfileResponseType) => {
     return {
         type: 'SET-USER-PROFILE',
@@ -118,7 +125,7 @@ export const setUserProfile = (profileData: ProfileResponseType) => {
     } as const
 }
 
-export type SetUserStatusACType = ReturnType<typeof setUserStatusAC>
+type SetUserStatusACType = ReturnType<typeof setUserStatusAC>
 export const setUserStatusAC = (status: string) => {
     return {
         type: 'SET-USER-STATUS',
@@ -128,7 +135,7 @@ export const setUserStatusAC = (status: string) => {
     } as const
 }
 
-export type DeletePostACType = ReturnType<typeof deletePostAC>
+type DeletePostACType = ReturnType<typeof deletePostAC>
 export const deletePostAC = (postId: string) => {
     return {
         type: 'DELETE-POST',
@@ -138,12 +145,22 @@ export const deletePostAC = (postId: string) => {
     } as const
 }
 
-export type SavePhotoACType = ReturnType<typeof savePhotoAC>
+type SavePhotoACType = ReturnType<typeof savePhotoAC>
 export const savePhotoAC = (userPhoto: string) => {
     return {
         type: 'SET-USER-PHOTO',
         payload: {
             userPhoto
+        }
+    } as const
+}
+
+type IsUpdatingACType = ReturnType<typeof isUpdatingAC>
+export const isUpdatingAC = (status: boolean) => {
+    return {
+        type: 'SET-PROFILE-UPDATING',
+        payload: {
+            status
         }
     } as const
 }
@@ -169,13 +186,17 @@ export const getUserStatusTC = (status: string) => async (dispatch: Dispatch) =>
 }
 
 export const updateUserStatusTC = (status: string) => async (dispatch: Dispatch) => {
+    dispatch(isUpdatingAC(true))
     try {
         const response = await profileAPI.updateStatus(status)
         if (response.resultCode === 0) {
             dispatch(setUserStatusAC(status));
+            dispatch(isUpdatingAC(false))
         }
     } catch (e) {
         console.log(`Error in updateUserStatusTC` + e)
+        dispatch(isUpdatingAC(false))
+        dispatch(stopSubmit('login', {_error: e}));
     }
 }
 

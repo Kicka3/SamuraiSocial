@@ -106,7 +106,9 @@
 .headerLogoutWrapper {
    display: flex;
    gap: 12px;
-   align-items: flex-end;
+   align-items: center;
+   flex-direction: row;
+   justify-content: center;
 }
 
 .headerUserImg {

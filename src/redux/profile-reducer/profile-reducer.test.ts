@@ -8,12 +8,13 @@ const startState: InitialProfileStateType = {
     ] as PostsType[],
     postText: '',
     profile: null,
-    status: ''
+    status: '',
+    updateProfileStatus: false
 }
 
 test('length of posts should be incremented', () => {
 
-    let newPostText = {newPostText: 'new text'}
+    let newPostText = {newPostText: 'new text', userAvatars: 'mok'}
     const action = addPostAC(newPostText);
     const endState = profileReducer(startState, action);
 
@@ -22,7 +23,7 @@ test('length of posts should be incremented', () => {
 
 test('message of new posts should be correct', () => {
 
-    let newPostText = {newPostText: 'new text'}
+    let newPostText = {newPostText: 'new text', userAvatars: 'mok'}
     const action = addPostAC(newPostText);
     const endState = profileReducer(startState, action);
 
