@@ -6,15 +6,25 @@ import {PostsType} from "../../../../redux/profile-reducer/profile-reducer";
 type MyPostPropsType = {
     posts: PostsType[]
     userAvatars: string | null | undefined
+    userName: string | null | undefined
+    setCountLikes: (postId: string) => void
 }
 
 const MyPost = (props: MyPostPropsType) => {
-    const {userAvatars} = props
+    const {
+        userAvatars,
+        userName,
+        setCountLikes,
+    } = props
 
     const postsElements = props.posts.map(posts => <Post key={posts.id}
                                                          titlePost={posts.message}
-                                                         likesCount={posts.likesCount}
+                                                         likesCounter={posts.likesCount}
                                                          userAvatars={userAvatars}
+                                                         userName={userName}
+                                                         postId={posts.id}
+                                                         setCountLikes={setCountLikes}
+
     />)
 
     return (

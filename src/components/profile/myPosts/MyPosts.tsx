@@ -6,13 +6,22 @@ import Share from "./share/Share";
 
 
 export const MyPosts: React.FC<PostsPropsType> = React.memo((props) => {
-    const {addNewPost, userAvatars} = props;
+    const {
+        addNewPost,
+        userAvatars,
+        userName,
+        setCountLikes
+    } = props;
 
     return (
         <section className="feed">
             <div className="feedWrapper">
                 <Share addNewPost={addNewPost} />
-                <MyPost posts={props.posts.postsData} userAvatars={userAvatars}/>
+                <MyPost posts={props.posts.postsData}
+                        userAvatars={userAvatars}
+                        userName={userName}
+                        setCountLikes={setCountLikes}
+                />
             </div>
         </section>
     );

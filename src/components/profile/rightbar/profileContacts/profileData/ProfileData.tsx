@@ -3,6 +3,7 @@ import {ContactsProfileType, ProfileResponseType} from "../../../../../redux/pro
 import {useSelector} from "react-redux";
 import {RootReduxStoreType} from "../../../../../redux/redux-store";
 import {Contacts} from "../contacts/Contacts";
+import { SettingOutlined } from '@ant-design/icons';
 
 
 type ProfileDataPropsType = {
@@ -18,11 +19,13 @@ export const ProfileData: React.FC<ProfileDataPropsType> = ({profile, isOwner, g
     return (
         <>
             <h4 className={'profile_contacts__title'}>Contact me:</h4>
-            {isOwner && <button onClick={goToEditeMode}>Edite</button>}
+
             <Contacts
                 profile={profile}
                 valueContacts={valueContacts}
             />
+            {isOwner && <button className={"editeContactsMode"} onClick={goToEditeMode}>Edite <SettingOutlined /></button>}
+
         </>
     );
 };

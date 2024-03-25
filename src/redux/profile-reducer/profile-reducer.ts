@@ -54,6 +54,7 @@ export type MainProfileReducerType = AddPostACType
     | DeletePostACType
     | SavePhotoACType
     | IsUpdatingACType
+|LikesCounterACType
 
 export const initialState: InitialProfileStateType = {
     postsData: [
@@ -99,12 +100,25 @@ const profileReducer = (state: InitialProfileStateType = initialState, action: M
         case 'SET-PROFILE-UPDATING' : {
             return {...state, updateProfileStatus: action.payload.status}
         }
+        case 'LIKES-COUNTER' : {
+            return {...state, postsData: state.postsData.map(el => el.id === action.payload.postId ? {...el, likesCount: el.likesCount + 1} : el)}
+        }
         default:
             return state
     }
 }
 
 //Actions
+type LikesCounterACType = ReturnType<typeof likesCounterAC>
+export const likesCounterAC = (postId: string) => {
+    return {
+        type: 'LIKES-COUNTER',
+        payload: {
+            postId
+        }
+    } as const
+}
+// ======
 type AddPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = (newPostText: AddNewPostFormType) => {
     return {

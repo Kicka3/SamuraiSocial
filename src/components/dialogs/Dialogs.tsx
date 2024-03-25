@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import './dialogs.css'
 import {Message} from "./message/Message";
 import {ChatOnline} from "./chatOnline/ChatOnline";
@@ -11,6 +11,7 @@ import {
     NewMessageBody
 } from "../../redux/messages-reducer/messages-reducer";
 import {AddMessageReduxForm, FormDialogsDataType} from "../../../src/components/dialogs/addMessageForm/AddMessageForm";
+import {reset} from "redux-form";
 
 
 type DialogsPropsType = {
@@ -36,7 +37,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
         />
     );
 
-
     const messageElements = messagesData.map(message =>
         <Message key={message.id}
                  message={message.message}
@@ -45,21 +45,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
         />
     );
 
-    //SEND MESSAGE:
-    // const PressEnterHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    //     const value = e.key;
-    //     if (value === 'Enter') {
-    //         onSendMessageClickHandler();
-    //     }
-    // }
-    // const onSendMessageClickHandler = () => {
-    //     console.log('SEND')
-    //     sendMessage();
-    // }
-    // const onNewMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    //     let body = e.currentTarget.value;
-    //     updateNewMessageBody(body)
-    // }
     const addNewMessage = (messageBody: FormDialogsDataType) => {
         sendMessage(messageBody);
     }
@@ -73,7 +58,7 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                             {messageElements}
                         </div>
 
-                        <AddMessageReduxForm onSubmit={addNewMessage} />
+                        <AddMessageReduxForm onSubmit={addNewMessage}/>
 
                     </div>
                 </div>
@@ -90,7 +75,8 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                                     <div className="chatMenuWrapper">
                                         <input className={"chatMenuInput"}
                                                type="text"
-                                               placeholder={"Search for friends"}/>
+                                               placeholder={"Search for friends"}
+                                        />
                                     </div>
                                 </div>
                                 {dialogsElements}
@@ -106,4 +92,3 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
         </>
     );
 };
-

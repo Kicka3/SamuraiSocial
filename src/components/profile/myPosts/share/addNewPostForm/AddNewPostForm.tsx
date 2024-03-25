@@ -8,7 +8,7 @@ import {
 import {FormControlTextarea} from "../../../../common/formsControl/FormControlTextarea";
 import {getUsrAvatar} from "../../../../../utils/fucntions/getAvatars";
 import noUserAvatar from "../../../../../assets/images/avatars/noAvatar.jpeg";
-import {ToTopOutlined} from '@ant-design/icons';
+import {UpCircleOutlined, ToTopOutlined} from '@ant-design/icons';
 
 
 export type AddNewPostFormType = {
@@ -66,7 +66,7 @@ export const AddNewPostForm: React.FC<InjectedFormProps<AddNewPostFormType>> = (
 
                     </label>
                 </div>
-                <button className="shareBtn">Share</button>
+                <button className={"shareBtn"} >Share <UpCircleOutlined /> </button>
             </div>
         </form>
     );
