@@ -1,4 +1,3 @@
-
 /* Google Font Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
@@ -159,6 +158,12 @@
     accent-color: #7d2ae8;
 }
 
+.summaryError {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
 .formSummaryError {
     color: red;
 }
@@ -248,8 +253,12 @@
     display: none;
 }
 
-.register__btn {
-
+.captcha {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
 }
 
 @media (max-width: 730px) {

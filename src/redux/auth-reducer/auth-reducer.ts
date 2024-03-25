@@ -101,34 +101,16 @@ export const getAuthUserDataTC = (): any => async (dispatch: Dispatch) => {
         dispatch(setAuthUserDataAC(email, id, login, true));
     }
 }
-// type ThunkResult<R> = ThunkAction<R, RootReduxStoreType, unknown, AnyAction>;
-// export const loginTC = (email: string, password: string, rememberMe: boolean): ThunkResult<Promise<void>> => async (dispatch: ThunkDispatch<RootReduxStoreType, unknown, AnyAction>) => {
-//     const response = await authAPI.login(email, password, rememberMe);
-//     if (response.resultCode === 0) {
-//         dispatch(getAuthUserDataTC());
-//         debugger
-//     } else {
-//         if (response.resultCode === 10) {
-//             debugger
-//             dispatch(getCaptchaUrlTC())
-//         }
-//         const message = response.messages.length > 0 ? response.messages : 'Some error'
-//         dispatch(stopSubmit('login', {_error: message}));
-//     }
-// };
 
 type ThunkResult<R> = ThunkAction<R, RootReduxStoreType, unknown, AnyAction>;
 export const loginTC = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkResult<Promise<void>> => async (dispatch: ThunkDispatch<RootReduxStoreType, unknown, AnyAction>) => {
     const response = await authAPI.login(email, password, rememberMe, captcha);
     if (response.resultCode === 0) {
         dispatch(getAuthUserDataTC());
+    } else if (response.resultCode === 10) {
         await dispatch(getCaptchaUrlTC())
-        debugger
+        dispatch(stopSubmit('login', {_error: "Пройдите анти-бот првоерку"}));
     } else {
-        if (response.resultCode === 10) {
-            debugger
-            await dispatch(getCaptchaUrlTC())
-        }
         const message = response.messages.length > 0 ? response.messages : 'Some error'
         dispatch(stopSubmit('login', {_error: message}));
     }

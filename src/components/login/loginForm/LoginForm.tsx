@@ -65,25 +65,19 @@ export const LoginForm: React.FC<MainMixedLoginFormType> = ({handleSubmit, error
                                 </div>
                             </div>
 
-                            {error &&
-                               <span className={'formSummaryError'}>
+                            <div className={"summaryError"}>
+                                {error &&
+                                   <span className={'formSummaryError'}>
                                 {error}
                                 </span>
-                            }
-
-
-                            <div className="button input-box">
-                                <button className="inputBtn"
-                                        type="submit"
-                                >Submit
-
-                                    {/*   value="sumbit"{isFetching ?*/}
-                                    {/*<CircularProgress color="secondary" size="15px"/> : "Submit"}*/}
-
-                                </button>
+                                }
                             </div>
 
-                            {captchaUrl && <img alt={'captcha'} src={captchaUrl}/>}
+                            {captchaUrl &&
+                               <div className={"captcha"}>
+                                  <img alt={'captcha'} src={captchaUrl}/>
+                               </div>
+                            }
                             {captchaUrl &&
                                <div className="input-box">
                                   <Field
@@ -95,6 +89,17 @@ export const LoginForm: React.FC<MainMixedLoginFormType> = ({handleSubmit, error
                                      component={Input}
                                   />
                                </div>}
+
+                            <div className="button input-box">
+                                <button className="inputBtn"
+                                        type="submit"
+                                >Submit
+
+                                    {/*   value="sumbit"{isFetching ?*/}
+                                    {/*<CircularProgress color="secondary" size="15px"/> : "Submit"}*/}
+
+                                </button>
+                            </div>
 
                             <div className="text signUpText">Don't have an account?
                                 <label>
