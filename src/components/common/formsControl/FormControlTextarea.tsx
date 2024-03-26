@@ -18,7 +18,7 @@ export const FormControlTextarea: React.FC<FormsControlType> = ({input, meta: {t
         <div className={'formControl' + ' ' + (hasError ? 'error' : '')}>
             <div>
                 <textarea className={"textareaFormControl"}
-                          style={{resize: "none", maxHeight: "40px", border: "1px solid #7d2ae8", borderRadius: "4px"}} {...input} {...props}/>
+                          style={{resize: "none", maxHeight: "40px", borderRadius: "4px"}} {...input} {...props}/>
             </div>
             {hasError && <span>{error}</span>}
         </div>

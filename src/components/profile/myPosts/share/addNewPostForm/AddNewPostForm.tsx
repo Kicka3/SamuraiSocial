@@ -17,11 +17,11 @@ export type AddNewPostFormType = {
 
 const maxLength20 = maxLength(20);
 const minLength3 = minLength(3);
-const avatar = getUsrAvatar('small')
-console.log(avatar)
 
 export const AddNewPostForm: React.FC<InjectedFormProps<AddNewPostFormType>> = (props) => {
     const {handleSubmit} = props;
+
+    const avatar = getUsrAvatar('small')
 
     return (
         <form className={"shareWrapper"} onSubmit={handleSubmit}>

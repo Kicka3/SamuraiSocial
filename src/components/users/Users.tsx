@@ -24,7 +24,7 @@ export const Users: React.FC<UsersTypePropsType> = (props) => {
         unFollowTC,
         followTC,
         followingInProgress,
-        toggleFollowingProgress
+        toggleFollowingProgress,
     } = props;
 
     const unFollowClickHandler = (userId: string) => {

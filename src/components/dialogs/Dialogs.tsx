@@ -1,17 +1,12 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import './dialogs.css'
 import {Message} from "./message/Message";
 import {ChatOnline} from "./chatOnline/ChatOnline";
 import './/chatMenu/chatMenu.css'
 import './dialogItem/dialogItem.css'
 import {DialogItem} from "./dialogItem/DialogItem";
-import {
-    DialogsType,
-    MessagesDataType,
-    NewMessageBody
-} from "../../redux/messages-reducer/messages-reducer";
+import {DialogsType, MessagesDataType, NewMessageBody} from "../../redux/messages-reducer/messages-reducer";
 import {AddMessageReduxForm, FormDialogsDataType} from "../../../src/components/dialogs/addMessageForm/AddMessageForm";
-import {reset} from "redux-form";
 
 
 type DialogsPropsType = {

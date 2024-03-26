@@ -45,7 +45,10 @@ export const Profile: React.FC<ProfilePropsType> = (props) => {
 
                     <div className="profileRightBottom">
                         <MyPostsContainer/>
-                        <RightBar profile={profile} isOwner={isOwner} saveProfileInfoTC={saveProfileInfoTC}/>
+                        <RightBar profile={profile}
+                                  isOwner={isOwner}
+                                  saveProfileInfoTC={saveProfileInfoTC}
+                        />
                     </div>
 
                 </div>

@@ -2,6 +2,9 @@
 .birthdayContainer {
    display: flex;
    align-items: center;
+   padding: 4px;
+   border: 1px solid #9000ff;
+   border-radius: 4px;
 }
 
 .birthdayImg {

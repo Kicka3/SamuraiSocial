@@ -21,7 +21,7 @@ const Share: React.FC<SharePropsType> = (props) => {
 
     return (<>
             <div className="addPostForm">
-                <AddNewPostReduxForm onSubmit={onAddPost}/>
+                <AddNewPostReduxForm onSubmit={onAddPost} />
             </div>
         </>
     );

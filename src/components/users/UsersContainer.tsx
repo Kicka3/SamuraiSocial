@@ -5,28 +5,27 @@ import React from "react";
 import {Users} from "./Users";
 import {Preloader} from "../common/preloaders/Preloader";
 import {
+    followTC,
+    getUserTC,
     InitialUsersStateType,
     setCurrentPageAC,
+    setUserTC,
     toggleFollowingProgressAC,
-    getUserTC,
-    setUserTC, unfollowTC, followTC
+    unfollowTC
 } from "../../redux/users-reducer/users-reducer";
 import {compose} from "redux";
 import {
     getCurrentPage,
     getFollowingInProgress,
-    getIsFetching, getPageSize,
+    getIsFetching,
+    getPageSize,
     getTotalUsersCount,
-    getUsersSelector
+    getUsersSelector,
 } from "../../redux/users-selectors/users-selectors";
-
-
-//протипизировать запросы
 
 export type UsersPropsType = MapStateToPropsType & mapDispatchToPropsType
 
 class UsersContainer extends React.Component<UsersPropsType> {
-
     constructor(props: UsersPropsType) {
         super(props);
     }

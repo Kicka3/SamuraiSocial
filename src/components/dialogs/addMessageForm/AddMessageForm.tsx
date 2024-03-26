@@ -12,7 +12,6 @@ export type FormDialogsDataType = {
 const minLength1 = minLength(1);
 
 export const AddMessageForm: React.FC<InjectedFormProps<FormDialogsDataType>> = (props) => {
-    const {reset} = props
 
     return (
         <form className="chatMessagesBottom" onSubmit={props.handleSubmit} >
@@ -26,7 +25,7 @@ export const AddMessageForm: React.FC<InjectedFormProps<FormDialogsDataType>> = 
                    required
             />
             {/*<button className="chatSubmitBtn" >Send</button>*/}
-            <button className={"chatSubmitBtn"} >Send <PlusOutlined /> </button>
+            <button className={"chatSubmitBtn"}>Send <PlusOutlined /> </button>
         </form>
     );
 };

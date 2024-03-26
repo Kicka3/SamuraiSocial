@@ -24,7 +24,7 @@ export const ProfileData: React.FC<ProfileDataPropsType> = ({profile, isOwner, g
                 profile={profile}
                 valueContacts={valueContacts}
             />
-            {isOwner && <button className={"editeContactsMode"} onClick={goToEditeMode}>Edite <SettingOutlined /></button>}
+            {isOwner && <button className={"editeContactsMode"} onClick={goToEditeMode}>Edite contacts <SettingOutlined /></button>}
 
         </>
     );

@@ -12,13 +12,13 @@ type UsersTypePropsType = {
     toggleFollowingProgress: (userId: string, isFetching: boolean) => void
 }
 
-export const User: React.FC<UsersTypePropsType> = ({
-                                                       user,
-                                                       unFollowTC,
-                                                       followTC,
-                                                       followingInProgress,
-                                                   }) => {
-
+export const User: React.FC<UsersTypePropsType> = (props) => {
+    const {
+        user,
+        unFollowTC,
+        followTC,
+        followingInProgress,
+    } = props;
 
     return <>
         <div className={'users_wrapper'} key={user.id}>
@@ -41,24 +41,28 @@ export const User: React.FC<UsersTypePropsType> = ({
                                             </span>
                         </div>
                     </NavLink>
+                                            {/*//Back не позволяет отрисовать данные*/}
+                       {/*<div className="user_info__item">*/}
+                       {/*                 <span className="user_info_key">*/}
+                       {/*                     <span className="user_info_key__city">userDesc: </span>*/}
+                       {/*                 </span>*/}
+                       {/*   <span className="user_info_value">*/}
+                       {/*                     <span className="user_info_key__city">*/}
+                       {/*                         */}
+                       {/*                     </span>*/}
+                       {/*                 </span>*/}
+                       {/*</div>*/}
 
-                    <div className="user_info__item">
-                                        <span className="user_info_key">
-                                            <span className="user_info_key__city">City: </span>
-                                        </span>
-                        <span className="user_info_value">
-                                            <span className="user_info_key__city">{"INFO"}</span>
-                                        </span>
-                    </div>
-
-                    <div className="user_info__item">
-                                        <span className="user_info_key">
-                                            <span className="user_info_key__city">From: </span>
-                                        </span>
-                        <span className="rightbar_info_value">
-                                           <span className="user_info_key__city">{'some user location..'}</span>
-                                    </span>
-                    </div>
+                       {/* <div className="user_info__item">*/}
+                       {/*                 <span className="user_info_key">*/}
+                       {/*                     <span className="user_info_key__city">userFindJobStatus: </span>*/}
+                       {/*                 </span>*/}
+                       {/*     <span className="rightbar_info_value">*/}
+                       {/*                    <span className="user_info_key__city">*/}
+                       {/*                        {userFindJob}*/}
+                       {/*                    </span>*/}
+                       {/*             </span>*/}
+                       {/* </div>*/}
 
                     <div className="user_info__item">
                                     <span className="user_info_value">
@@ -72,14 +76,14 @@ export const User: React.FC<UsersTypePropsType> = ({
             {user.followed
                 ? <button disabled={followingInProgress.some(id => id === user.id)}
                           onClick={() => unFollowTC(user.id)}
-                          className={'user_btn'}>unfollow
-                    {/*}} className={!followingInProgress ? 'disabled_btn' : 'user_btn'}>{followingInProgress ? 'unfollow' : ''}*/}
+                    // className={'user_btn'}>unfollow
+                          className={!followingInProgress ? 'disabled_btn' : 'user_btn'}>{followingInProgress ? 'unfollow' : ''}
                 </button>
 
                 : <button disabled={followingInProgress.some(id => id === user.id)}
                           onClick={() => followTC(user.id)}
-                          className={'user_btn'}>follow
-                    {/*}} className={!followingInProgress ? 'disabled_btn' : 'user_btn'}>follow*/}
+                    // className={'user_btn'}>follow
+                          className={!followingInProgress ? 'disabled_btn' : 'user_btn'}>follow
                 </button>
             }
 
