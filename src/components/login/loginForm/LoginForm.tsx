@@ -93,12 +93,7 @@ export const LoginForm: React.FC<MainMixedLoginFormType> = ({handleSubmit, error
                             <div className="button input-box">
                                 <button className="inputBtn"
                                         type="submit"
-                                >Submit
-
-                                    {/*   value="sumbit"{isFetching ?*/}
-                                    {/*<CircularProgress color="secondary" size="15px"/> : "Submit"}*/}
-
-                                </button>
+                                >Submit</button>
                             </div>
 
                             <div className="text signUpText">Don't have an account?

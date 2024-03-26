@@ -7,7 +7,7 @@ type HomeRightBarPropsType = {
     profile: ProfileResponseType | null,
 }
 
-export const FriendsRightBar:React.FC<HomeRightBarPropsType> = ({profile}) => {
+export const FriendsRightBar:React.FC<HomeRightBarPropsType> = () => {
     return (
         <div className="HomeRightbarWrapper">
 
@@ -24,9 +24,6 @@ export const FriendsRightBar:React.FC<HomeRightBarPropsType> = ({profile}) => {
             <b>Alexandr Mironov</b> <b>and 2 other friends</b> have a birthday today.
           </span>
             </div>
-            {/*//КАРТИНКА с днем рождения*/}
-            {/*<img className="rightbarAd" src={'assets/ad.png'} alt="rightbarAdImg"/>*/}
-
         </div>
     )
 };

@@ -49,7 +49,6 @@ export const usersReducer = (state: InitialUsersStateType = initialState, action
             debugger
             return {
                 ...state, users: updateObjInArray(state.users, action.payload.userId, 'id', {followed: true})
-                // state.users.map(u => u.id === action.payload.userId ? {...u, followed: true} : u)
             }
         }
         case "UNFOLLOW": {
@@ -57,7 +56,6 @@ export const usersReducer = (state: InitialUsersStateType = initialState, action
             return {
                 ...state, users:
                     updateObjInArray(state.users, action.payload.userId, 'id', {followed: false})
-                // state.users.map(u => u.id === action.payload.userId ? {...u, followed: false} : u)
             }
         }
         case "SET-USERS": {

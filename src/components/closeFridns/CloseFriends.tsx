@@ -1,6 +1,6 @@
 import "./closeFriends.css"
 
-export default function CloseFriends() {
+export function CloseFriends() {
    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
    return (
       <div>

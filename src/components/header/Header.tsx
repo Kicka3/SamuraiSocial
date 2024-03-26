@@ -40,7 +40,6 @@ export const Header: React.FC<HeaderPropsType> = ({isAuth, logoutTC}) => {
                             <div className={'loginBtn'}><NavLink to={`/login`}></NavLink></div>
                         </div>
                     }
-
                 </div>
 
             </div>

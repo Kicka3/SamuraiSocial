@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field, InjectedFormProps, reduxForm, reset} from "redux-form";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {FormControlTextarea} from "../../common/formsControl/FormControlTextarea";
 import {minLength, required} from "../../../utils/validators/Valodators";
 import {PlusOutlined} from "@ant-design/icons";
@@ -24,7 +24,6 @@ export const AddMessageForm: React.FC<InjectedFormProps<FormDialogsDataType>> = 
                    type={'text'}
                    required
             />
-            {/*<button className="chatSubmitBtn" >Send</button>*/}
             <button className={"chatSubmitBtn"}>Send <PlusOutlined /> </button>
         </form>
     );

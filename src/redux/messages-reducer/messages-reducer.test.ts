@@ -18,7 +18,6 @@ beforeEach(() => {
         messagesData: [
             {id: v1(), ownMessage: false, message: 'Hello this is a messagePage!'},
         ] as MessagesDataType [],
-        // newMessageBody: '',
     }
 
 });

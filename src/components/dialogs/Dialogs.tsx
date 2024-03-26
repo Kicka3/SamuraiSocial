@@ -78,7 +78,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                             </div>
                         </div>
 
-                        {/*<ChatMenu/>*/}
                         <ChatOnline/>
                     </div>
 

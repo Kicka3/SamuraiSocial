@@ -1,11 +1,4 @@
 import {ResponseUsersType} from "../../redux/users-reducer/users-reducer";
-//after:
-// export const updateObjInArray = () => {
-//     state.users.map(u => u.id === action.payload.userId ? {...u, followed: true} : u)
-// }
-
-//now:
-
 type KeysObjPropName = 'id'| 'name'| 'status'| 'photos'|'followed'| 'totalCount'| 'error'
 
 // Функция обновления объекта в массиве по заданным параметрам

@@ -5,10 +5,9 @@ import {AddNewPostFormType} from "../../../src/components/profile/myPosts/share/
 import {
     ProfileContactsFormDataType
 } from "../../components/profile/rightbar/profileContacts/profileContactsForm/ProfileContactsForm";
-import {RootReduxStoreType, StoreType} from "../redux-store";
+import {RootReduxStoreType} from "../redux-store";
 import {ThunkAction} from "redux-thunk";
 import {stopSubmit} from "redux-form";
-import {toggleIsFetching} from "../users-reducer/users-reducer";
 
 export type PostsType = {
     id: string;

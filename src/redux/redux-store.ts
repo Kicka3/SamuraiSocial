@@ -1,11 +1,11 @@
-import {AnyAction, applyMiddleware, combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import profileReducer from "./profile-reducer/profile-reducer";
 import messagesReducer from "./messages-reducer/messages-reducer";
 import {usersReducer} from "./users-reducer/users-reducer";
 import {authReducer} from "./auth-reducer/auth-reducer";
 import {appReducer} from "./app-reducer/app-reducer";
 import {reducer as formReducer} from 'redux-form';
-import thunkMiddleware, {ThunkDispatch} from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk'
 
 
 const rootReducer = combineReducers({
