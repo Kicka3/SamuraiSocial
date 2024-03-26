@@ -40,15 +40,19 @@ class App extends React.Component<AppPropsType> {
         if (!this.props.initialized) {
             return <div className={'preloaderAppWrapper'}><Preloader isFetching={this.props.isFetching}/></div>
         }
+        const isLoggedIn = this.props.isLoggedIn
 
         return (
             <div className="App-wrapper">
-                <div className="contentWrapper">
-                    <HeaderContainer/>
-                </div>
-
-                <div className="mainContentWrapper">
-                    <Sidebar/>
+                {isLoggedIn &&
+                   <div className="contentWrapper">
+                      <HeaderContainer/>
+                   </div>
+                }
+                <div className="mainContentWrapper" style={isLoggedIn
+                    ? {position: "relative", display: "grid", gridTemplateColumns: "400px 1fr", top: "40px"}
+                    : {display: "block", top: "0"}}>
+                    {isLoggedIn && <Sidebar/>}
 
                     <div>
                         <Switch>
@@ -99,6 +103,7 @@ class App extends React.Component<AppPropsType> {
                     </div>
 
                 </div>
+
             </div>
 
         );
@@ -111,11 +116,13 @@ type MapDispatchToPropsType = {
 type MapStateToPropsType = {
     initialized: boolean
     isFetching: boolean
+    isLoggedIn: boolean
 }
 const mapStateToProps = (state: RootReduxStoreType): MapStateToPropsType => {
     return {
         initialized: state.app.initialized,
         isFetching: state.usersPage.isFetching,
+        isLoggedIn: state.auth.isAuth,
     }
 }
 
